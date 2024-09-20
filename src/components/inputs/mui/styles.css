@@ -1,0 +1,13 @@
+.custom-demo-container {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.custom-demo-item {
+  margin-bottom: 20px;
+}
+
+.custom-demo-item .MuiFormLabel-root {
+  color: #00796b;
+}

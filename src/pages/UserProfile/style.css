@@ -1,0 +1,22 @@
+.user-details {
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  max-width: 700px;
+}
+.new-password-container {
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.new-pwd-btn-wrap {
+  display: flex;
+  gap: 12px;
+  justify-content: end;
+}
+.close-btn {
+  rotate: 45deg;
+}

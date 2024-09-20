@@ -1,0 +1,4 @@
+.overview-main-container{padding: 33px 39px 25px 37px ; height: 100%;flex-grow: 1;overflow-y: auto;}
+.overview-inner-container{display: flex;gap: 18px;}
+.overview-main-container .overview-inner-container .overview-inner-container-left{width: 50%;display: flex; flex-direction: column; gap: 18px;}
+.overview-main-container .overview-inner-container .overview-inner-container-right{width: 50%;}

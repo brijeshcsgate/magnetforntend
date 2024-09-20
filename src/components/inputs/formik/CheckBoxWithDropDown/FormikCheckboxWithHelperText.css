@@ -1,0 +1,18 @@
+.fcwht-flex{
+    display:'flex';
+    flex-direction: column;
+}
+.fcwht-helpertext{
+    color: var(--Tone-Grey-Text-Sub-title-2, #7C7D7E);
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.fcwht-mt9-mb-9
+{
+    /* margin-top: 9px !important;
+    margin-bottom: 9px !important; */
+    margin-left: 9px;
+}

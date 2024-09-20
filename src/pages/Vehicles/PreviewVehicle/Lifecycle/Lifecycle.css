@@ -1,0 +1,34 @@
+.lifecycle-main-container {
+  padding: 33px 39px 25px 37px;
+  height: 100%;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+.lifecycle-inner-container {
+  display: flex;
+  gap: 18px;
+}
+.lifecycle-main-container
+  .lifecycle-inner-container
+  .lifecycle-inner-container-top {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.lifecycle-main-container
+  .lifecycle-inner-container
+  .lifecycle-inner-container-left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.lifecycle-main-container
+  .lifecycle-inner-container
+  .lifecycle-inner-container-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}

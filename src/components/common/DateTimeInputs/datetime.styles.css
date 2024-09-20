@@ -1,0 +1,43 @@
+.react-datepicker {
+    background-color: #fff; /* Your background color */
+    border: 1px solid #ccc; /* Your border style */
+    border-radius: 8px; /* Your border radius */
+    /* Add any other styles you want */
+  }
+  
+  .react-datepicker__header {
+    background-color: #227fd9; /* Your header background color */
+    color: #fff; /* Your header text color */
+  }
+
+  .react-datepicker__current-month {
+    color: #fff; /* Your current month text color */
+  }
+
+  .react-datepicker__day-name {
+    color: #fff; /* Your day names text color */
+  }
+
+  .react-datepicker-time__header {
+    color: #fff; /* Your time header text color */
+  }
+
+  .react-datepicker__time-list-item--selected {
+    background-color: #227fd9 !important; /* Your selected time item background color */
+    color: #fff; /* Your selected time item text color */
+  }
+
+  .react-datepicker__day--selected {
+    background-color: #227fd9 !important; /* Your selected day background color */
+    color: #fff; /* Your selected day text color */
+  }
+  .react-datepicker__month-dropdown-container--select{
+    color: black; 
+  }
+
+  .react-datepicker__year-dropdown-container--select{
+    color: black; 
+  }
+  
+
+  

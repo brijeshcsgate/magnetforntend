@@ -1,0 +1,55 @@
+.formik-async-dropdown .toInputField {
+  position: relative;
+}
+
+.formik-async-dropdown .toLabel {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.formik-async-dropdown .toInputAll {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.formik-async-dropdown .errorMessage {
+  color: red;
+}
+
+.formik-async-dropdown .dropdownList {
+  position: absolute;
+  z-index: 1;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.formik-async-dropdown .dropdownItem {
+  cursor: pointer;
+  padding: 8px 16px;
+}
+
+.formik-async-dropdown .dropdownItem:hover {
+  background-color: #f0f0f0;
+}
+/* Ensure the dropdown menu opens upwards if there's no space below */
+.custom-select .my-async-select__menu {
+  position: absolute;
+  bottom: 100%; /* Try to open the dropdown above the select box */
+  /* transform: translateY(-4px);  */
+}
+
+.custom-select .my-async-select__menu {
+  z-index: 9999; /* Ensure the dropdown is above other content */
+}
+
+.custom-select .my-async-select__menu-list {
+  max-height: 200px; /* Set a max height for the dropdown list */
+  overflow-y: auto; /* Enable scrolling if the list is too long */
+}

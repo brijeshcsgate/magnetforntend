@@ -1,0 +1,11 @@
+.police-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 15px 0px;
+}
+.condition-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

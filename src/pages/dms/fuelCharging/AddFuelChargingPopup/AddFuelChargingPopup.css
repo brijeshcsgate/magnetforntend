@@ -1,0 +1,33 @@
+.aip-header-txt {
+  color: var(--Tone-Blue-Blue-4, #002850) !important;
+  font-size: 24px !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  line-height: 36px !important;
+}
+.css-140puxv-MuiTypography-root-MuiDialogTitle-root {
+  color: var(--Tone-Blue-Blue-4, #002850) !important;
+  font-size: 24px !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  line-height: 36px !important;
+}
+.aip-txt-20-400-030303 {
+  color: #030303 !important;
+  font-size: 20px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: normal !important;
+}
+.aip-cta-15-700-roboto {
+  color: var(--black-white-white, #fff) !important;
+  font-size: 15px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: normal !important;
+  text-transform: none !important;
+}
+
+.aip-pad-8-16 {
+  padding: 8px 16px !important;
+}

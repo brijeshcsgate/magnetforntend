@@ -1,0 +1,10 @@
+.text-details-one{background: #FFF;box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.10);display: flex;flex-direction: column;}
+.text-details-one .text-details-title{padding: 24px 28px 2px 24px;}
+.text-details-one .text-detail-box{padding: 15px 24px;display: flex;border-bottom:1px solid #D1D1D1;}
+.text-details-one .text-detail-box .text-detail-box-title{width: 33%;}
+.text-details-one .text-detail-box .text-detail-box-name{width: 37%;}
+.text-details-one .text-detail-box .text-detail-box-title2{width: 33%;}
+.text-details-one .text-detail-box .text-detail-box-name2{width: 66%;}
+
+.text-details-one .text-detail-box .text-detail-box-last-text{width: 30%;text-align: end;}
+.text-detail-box:last-child{border-bottom: unset;}

@@ -1,0 +1,17 @@
+.field-group-wrap{display:flex;align-items:center;column-gap:20px;width:100%;}
+.upload-wrap{display:flex;flex-direction:column;background:#FFFF;border-radius: 6px;padding:20px;box-sizing:border-box;width:100%;align-items:center;justify-content:center;}
+.upload-wrap .desc{margin-top: 8px;}
+.upload-bottom-message{padding-top: px;}
+.upload-btn{border-radius: 6px;border: 1px solid #1273D2;background: #1273D2;padding:7px 11px;color: #FFF;margin-top: 10px;cursor:pointer;}
+.upload-file{display:none;}
+.uploading-wrap{display: flex; flex-wrap: wrap;gap: 7px;}
+.uploading-wrap .uploading-item{position: relative; width: 120px;height: 120px;flex-direction: column; display: flex; justify-content: center; align-items: center;border-radius: 9px;border: 2px solid #C0C4C5;background: #FBFBFB;}
+.uploading-wrap .uploading-item .del-img{position: absolute;right:8px;top:7px;width: 16px;height: 16px;background-color: #FFF;border-radius: 50%;cursor: pointer;rotate: 45deg; display: flex;justify-content: center;align-items: center;}
+.uploded-img-container{width: 100%;height: 100%;border-radius: 9px;}
+.uploded-img{width: 100%;height: 100%;border-radius: 9px;}
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 12px;
+  }
+  

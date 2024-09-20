@@ -1,0 +1,487 @@
+.add-v-main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.add-v-main-container .add-v-form-container {
+  width: 100%;
+  /* height: 100%; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 17px 0px 20px 0px;
+  background-color: #fff;
+}
+.add-v-main-container .add-v-form-container .add-v-form-top-section {
+  width: 100%;
+  padding: 0px 39px 0px 37px;
+  border-bottom: 1px solid #dcdcdc;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-top-section
+  .top-bottom-section
+  .tabs {
+  display: flex;
+  gap: 23px;
+  padding-top: 15px;
+}
+.flex-center{
+  display:flex;
+  justify-content: center;
+}
+.width100{
+  width:100%;
+  display:flex;
+  justify-content: center;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-top-section
+  .top-bottom-section
+  .tabs
+  .tab {
+  display: flex;
+  cursor: pointer;
+  gap: 8px;
+  padding-bottom: 12px;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-top-section
+  .top-bottom-section
+  .tabs
+  .tab-active {
+  border-bottom: 2px solid #256eb5;
+}
+.check-vahan {
+  /* margin-top: 38px; */
+}
+.check-vahan-aligned{display:flex !important;align-items: end !important;}
+.veh-just{display:flex;flex-direction: row; width:100%;gap:12px;}
+.veh-just-child {
+  flex: 1;
+}
+/* bottom section css */
+.add-v-form-bottom-section {
+  width: 100%;
+  padding: 20px 5.8% 20px 5.8%;
+  flex: 1;
+}
+.add-v-form {
+  display: flex;
+}
+
+.add-v-form-left-section {
+  width: 17%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.add-v-form-right-section {
+  /* width: 62%; */
+  width: 100%;
+}
+.border-v{
+  
+/* p.outset {border-left-style: outset;}
+
+p.outset {border-top-style: outset;}
+p.outset {border-right-style: inset;} */
+  border-top:0.5px outset #E8E8E8 !important;
+  
+  border-left:0.5px outset #E8E8E8 !important;
+  
+  border-right:0.5px inset #E8E8E8 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+.add-v-form-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.group-type-1 {
+  width: 100%;
+}
+.width-30{
+  width:30% !important;
+}
+.width-50{
+  width:50% !important;
+}
+/* .width-50{
+  width:30%;
+} */
+ .v-rel{
+  /* position:relative;
+  display: flex;
+  flex-direction: row; */
+ }
+ .v-abs{
+  /* position:absolute;
+  top:20px */
+ }
+.v-flex{
+  display:flex !important;
+  gap:20px !important;
+  justify-content: space-between !important;
+}
+.group-type-1-70 {
+  width: calc(100% );
+}
+.group-type-2-70-30 {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+}
+
+.group-type-3-equal {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  align-items: start;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-bottom-section
+  .add-v-form
+  .add-v-form-right-section
+  .add-v-form-section
+  .field-type-three
+  div,
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-bottom-section
+  .add-v-form
+  .add-v-form-right-section
+  .add-v-form-section
+  .field-type-four
+  div {
+  flex: 1;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-bottom-section
+  .add-v-form
+  .add-v-form-right-section
+  .add-v-form-section
+  .field-type-three
+  .field-type-three-right-section {
+  display: flex;
+  gap: 33px;
+}
+
+.group-type-2-33-33 {
+  display: flex;
+  gap: 12px;
+  width: 66%;
+}
+/* .add-v-main-container
+  .add-v-form-container
+  .add-v-form-bottom-section
+  .add-v-form
+  .add-v-form-right-section
+  .add-v-form-section */
+.group-type-2-equal {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-bottom-section
+  .add-v-form
+  .add-v-form-right-section
+  .add-v-form-section
+  .field-type-seven {
+  display: flex;
+  width: 50%;
+  padding-right: 19px;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-bottom-section
+  .add-v-form
+  .add-v-form-right-section
+  .add-v-form-section
+  .field-type-eight {
+  display: flex;
+  gap: 36px;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-bottom-section
+  .add-v-form
+  .add-v-form-right-section
+  .add-v-form-section
+  .field-type-eight
+  div:nth-child(1) {
+  flex: 2;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-bottom-section
+  .add-v-form
+  .add-v-form-right-section
+  .add-v-form-section
+  .field-type-eight
+  div:nth-child(2) {
+  flex: 2;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-bottom-section
+  .add-v-form
+  .add-v-form-right-section
+  .add-v-form-section
+  .field-type-eight
+  div:nth-child(3) {
+  flex: 1;
+}
+
+.group-type-1-33 {
+  display: flex;
+  width: 33%;
+  padding-right: 6px;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-bottom-section
+  .add-v-form
+  .add-v-form-right-section
+  .add-v-form-section
+  .field-type-ten {
+  display: flex;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-bottom-section
+  .add-v-form
+  .add-v-form-right-section
+  .add-v-form-section
+  .field-type-ten
+  .type-ten-left {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  width: 55%;
+  padding-right: 32px;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-bottom-section
+  .add-v-form
+  .add-v-form-right-section
+  .add-v-form-section
+  .field-type-ten
+  .type-ten-right-container {
+  width: 45%;
+}
+.add-v-main-container
+  .add-v-form-container
+  .add-v-form-bottom-section
+  .add-v-form
+  .add-v-form-right-section
+  .add-v-form-section
+  .field-type-ten
+  .type-ten-right-container
+  .type-ten-right {
+  position: relative;
+  width: 100%;
+  margin-top: 3px;
+  border-radius: 6px;
+  padding-top: 23px;
+  padding-bottom: 16px;
+  border: 1px solid #d8d6d6;
+}
+.specification-imgdiv {
+  position: relative;
+  margin-top: 2px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  height:95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* .specification-imgdiv {
+  position: relative;
+  margin-top: 2px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* .specification-imgdiv .controls {
+  position: absolute;
+  display: block;
+  right: 10px;
+  top: 10px;
+  z-index: 99;
+} */
+/* .specification-imgdiv .bus-img-contaniner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%; 
+  background-color: #f0f0f0;
+  transition: transform 0.3s ease;
+  overflow: scroll;
+} */
+/* .specification-imgdiv .bus-img-contaniner .bus-img { */
+/* object-fit: contain;
+  height: 229px; */
+/* max-width: 100%;
+  max-height: 100%;
+  user-select: none; 
+  pointer-events: none; 
+} */
+
+.bus-img {
+  object-fit: contain;
+  height: 295px;
+  max-width: 100%;
+  max-height: 100%;
+  user-select: none;
+  pointer-events: none;
+}
+.specification-title1 {
+  margin-top: 16px;
+}
+.specification-title2 {
+  margin-top: 77px;
+}
+.specification-imgdiv-text {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.group-type-4-1-33-3-equal {
+  display: flex;
+  gap: 12px;
+}
+.group-type-4-1-33-3-equal .eleven-left {
+  flex: 1;
+}
+.group-type-4-1-33-3-equal .eleven-right {
+  flex: 2;
+  display: flex;
+  gap: 12px;
+}
+
+.add-v-form-bottom-section .formik-wrap-button {
+  position: absolute;
+  z-index: 1;
+  top: 23px;
+  right: 39px;
+  display: flex;
+  gap: 15px;
+  padding-top: 6px;
+}
+.image-uploder-block {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+}
+
+.image-uploder-block.w-67 {
+  width: 67%;
+}
+.activetabIcon svg path {
+  fill: #256eb5;
+}
+.specification-step {
+  height: calc(100vh - 345px);
+  overflow-y: scroll;
+  padding-bottom: 20px;
+}
+.group-type-2-33-66 {
+  display: flex;
+  width: 100%;
+}
+.group-type-2-33-66left {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 6px;
+}
+.group-type-2-33-66right {
+  width: 67%;
+  padding-left: 5px;
+}
+.maintenance-drop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #0dc440;
+  padding: 10px;
+  border-radius: 4px;
+  height: 60px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.device-card-wrapper{
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 12px;
+}
+.add-button{
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 200px;
+  width: 200px;
+  color: #FFF;
+  font-size: 40px;
+}
+
+@media screen and (max-width: 1897px) {
+  .add-v-form-right-section {
+    /* width: 69%; */
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1728px) {
+  .add-v-form-right-section {
+    /* width: 85%; */
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1667px) {
+  .add-v-main-container .add-v-form-container .add-v-form-bottom-section .add-v-form .add-v-form-right-section .add-v-form-section .group-type-2-33-33, 
+    .add-v-main-container .add-v-form-container .add-v-form-bottom-section .add-v-form .add-v-form-right-section .add-v-form-section .field-type-three,
+    .add-v-main-container .add-v-form-container .add-v-form-bottom-section .add-v-form .add-v-form-right-section .add-v-form-section .field-type-four,
+    /* .add-v-main-container .add-v-form-container .add-v-form-bottom-section .add-v-form .add-v-form-right-section .add-v-form-section .group-type-2-equal {gap:15px} */
+    .add-v-main-container .add-v-form-container .add-v-form-bottom-section .add-v-form .add-v-form-right-section .add-v-form-section .field-type-seven,.group-type-1-33 {
+    padding-right: 0px;
+  }
+}
+@media screen and (max-width: 1444px) {
+  .add-v-form-left-section {
+    width: 21%;
+  }
+
+  .add-v-form-right-section {
+    /* width: 79%; */
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1367px) {
+  .add-v-main-container .add-v-form-container .add-v-form-bottom-section .add-v-form .add-v-form-right-section .add-v-form-section .field-type-three,
+    .add-v-main-container .add-v-form-container .add-v-form-bottom-section .add-v-form .add-v-form-right-section .add-v-form-section .field-type-four,
+    /* .add-v-main-container .add-v-form-container .add-v-form-bottom-section .add-v-form .add-v-form-right-section .add-v-form-section .group-type-2-equal {gap:26px} */
+    .add-v-main-container .add-v-form-container .add-v-form-bottom-section .add-v-form .add-v-form-right-section .add-v-form-section .field-type-seven, .group-type-1-33 {
+    padding-right: 6px;
+  }
+
+  .add-v-form-section .group-type-2-33-33 {
+    padding-right: 0px;
+  }
+}

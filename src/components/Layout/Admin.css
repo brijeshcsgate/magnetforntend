@@ -1,0 +1,519 @@
+/* Admin Layout CSS */
+.adminLayoutWrap {
+  display: flex;
+  height: 100vh;
+  max-height: 100%;
+  position: relative;
+}
+
+.adminLayoutWrap .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background: #00000047;
+}
+
+/* SideBar CSS */
+.adminLayoutWrap .biSidebarWrap {
+  width: 100%;
+  max-width: 60px;
+  padding: 10px 5px;
+  background: #002850;
+  display: flex;
+  flex-direction: column;
+  row-gap: 14px;
+  position: relative;
+  z-index: 999;
+}
+
+.adminLayoutWrap .biSidebarWrap .arrowBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  background: #002850;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 70px;
+  right: -16px;
+  transition: .2s;
+}
+
+.adminLayoutWrap .biSidebarWrap .arrowBtn.rotate {
+  transform: rotate(180deg);
+}
+
+.adminLayoutWrap .biSidebarWrap .arrowBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  background: #002850;
+  border: 1px solid #F5FBFD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 55px;
+  right: -16px;
+  transition: .2s;
+}
+
+.adminLayoutWrap .biSidebarWrap .arrowBtn.rotate {
+  transform: rotate(180deg);
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  overflow: auto;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar::-webkit-scrollbar-track {
+  background-color: #002850;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar::-webkit-scrollbar-thumb {
+  background-color: #8da3b6;
+  border-radius: 4px;
+}
+
+/* .sidebar-scroll-bg{background-color: red;} */
+
+/* .sidebar-scroll-bg-hover{background-color: yellow;} */
+.adminLayoutWrap .biSidebarWrap .biSidebar .biList .biLink {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  height: 45px;
+  padding: 0 15px;
+  transition: .1s;
+  position: relative;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar .biList .biLink span {
+  display: none;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar .biList .biLink:hover svg {
+  fill: #fff;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar .biList .biLink.active:before {
+  content: "";
+  height: 32px;
+  width: 4px;
+  background: #fff;
+  position: absolute;
+  left: -20px;
+  border-radius: 0px 4px 4px 0px;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar .biList .biLink.active svg {
+  fill: #fff;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar .biList .biLink:hover:before {
+  content: "";
+  height: 32px;
+  width: 4px;
+  background: #fff;
+  position: absolute;
+  left: -20px;
+  border-radius: 0px 4px 4px 0px;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide {
+  max-width: 240px;
+  position: fixed;
+  height: 100%;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar .biList .biLink span {
+  display: block !important;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar .biList .biLink.active {
+  color: #002850;
+  font-weight: 600;
+  background: #CDE9F6;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar .biList .biLink.active:before {
+  display: none;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar .biList .biLink:hover {
+  color: #002850;
+  font-weight: 600;
+  background: #CDE9F6;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar .biList .biLink:hover:before {
+  display: none;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar .biList .biLink svg {
+  flex-shrink: 0;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar .biList .biLink:hover svg {
+  fill: #002850 !important;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar .biList .biLink.active svg {
+  fill: #002850 !important;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar .biList .biLink {
+  font-size: 12px;
+  color: #8590A5;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  height: 45px;
+  padding: 0 8px;
+  transition: .1s;
+}
+
+.adminLayoutWrap .adminLayoutInner {
+  width: 100%;
+  overflow-y: auto;
+  background: #f5fbfd;
+}
+
+.adminLayoutWrap .adminLayoutInner.marginLeft {
+  margin-left: 90px;
+}
+
+.adminLayoutWrap .adminLayoutInner .layoutContent {
+  padding: 0px 15px 12px 15px;
+  display: flex;
+  margin-top: 59px;
+}
+
+/* Admin Layout CSS */
+.adminLayoutWrap {
+  display: flex;
+  height: 100vh;
+  max-height: 100%;
+  position: relative;
+}
+
+.adminLayoutWrap .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background: #00000047;
+}
+
+/* SideBar CSS */
+.adminLayoutWrap .biSidebarWrap {
+  width: 100%;
+  max-width: 60px;
+  padding: 10px 5px;
+  background: #002850;
+  display: flex;
+  flex-direction: column;
+  row-gap: 14px;
+  position: relative;
+  z-index: 999;
+}
+
+.adminLayoutWrap .biSidebarWrap .arrowBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  background: #002850;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 70px;
+  right: -16px;
+  transition: .2s;
+}
+
+.adminLayoutWrap .biSidebarWrap .arrowBtn.rotate {
+  transform: rotate(180deg);
+}
+
+.adminLayoutWrap .biSidebarWrap .arrowBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  background: #002850;
+  border: 1px solid #F5FBFD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 55px;
+  right: -16px;
+  transition: .2s;
+}
+
+.adminLayoutWrap .biSidebarWrap .arrowBtn.rotate {
+  transform: rotate(180deg);
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar2 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  overflow: auto;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar2::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar2::-webkit-scrollbar-track {
+  background-color: #002850;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar2::-webkit-scrollbar-thumb {
+  background-color: #002850;
+  border-radius: 4px;
+}
+
+/* .sidebar-scroll-bg{background-color: red;} */
+
+/* .sidebar-scroll-bg-hover{background-color: yellow;} */
+.adminLayoutWrap .biSidebarWrap .biSidebar2 .biList .biLink {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  height: 45px;
+  padding: 0 15px;
+  transition: .1s;
+  position: relative;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar2 .biList .biLink span {
+  display: none;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar2 .biList .biLink:hover svg {
+  fill: #fff;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar2 .biList .biLink.active:before {
+  content: "";
+  height: 32px;
+  width: 4px;
+  background: #fff;
+  position: absolute;
+  left: -20px;
+  border-radius: 0px 4px 4px 0px;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar2 .biList .biLink.active svg {
+  fill: #fff;
+}
+
+.adminLayoutWrap .biSidebarWrap .biSidebar2 .biList .biLink:hover:before {
+  content: "";
+  height: 32px;
+  width: 4px;
+  background: #fff;
+  position: absolute;
+  left: -20px;
+  border-radius: 0px 4px 4px 0px;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide {
+  max-width: 240px;
+  position: fixed;
+  height: 100%;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar2 .biList .biLink span {
+  display: block !important;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar2 .biList .biLink.active {
+  color: #002850;
+  font-weight: 600;
+  background: #CDE9F6;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar2 .biList .biLink.active:before {
+  display: none;
+}
+
+/* .adminLayoutWrap .biSidebarWrap.hide .biSidebar2 .biList .biLink:hover{color:#002850;font-weight:600;background:#CDE9F6;}
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar2 .biList .biLink:hover:before{display:none;} */
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar2 .biList .biLink svg {
+  flex-shrink: 0;
+}
+
+/* .adminLayoutWrap .biSidebarWrap.hide .biSidebar2 .biList .biLink:hover svg{fill:#002850 !important;} */
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar2 .biList .biLink.active svg {
+  fill: #002850 !important;
+}
+
+.adminLayoutWrap .biSidebarWrap.hide .biSidebar2 .biList .biLink {
+  font-size: 12px;
+  color: #8590A5;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  height: 45px;
+  padding: 0 8px;
+  transition: .1s;
+}
+
+.adminLayoutWrap .adminLayoutInner {
+  width: 100%;
+  overflow-y: auto;
+  background: #f5fbfd;
+}
+
+.adminLayoutWrap .adminLayoutInner.marginLeft {
+  margin-left: 90px;
+}
+
+.adminLayoutWrap .adminLayoutInner .layoutContent {
+  padding: 0px 15px 12px 15px;
+  display: flex;
+  margin-top: 59px;
+}
+
+/* Dashboard Header CSS */
+.adminLayoutWrap .adminLayoutInner .biHeader {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  justify-content: space-between;
+  padding: 12px 30px 0px 0px;
+  position: fixed;
+  z-index: 99;
+  background: #f5fbfd;
+  left: 73px;
+  right: 0;
+}
+.adminLayoutWrap .adminLayoutInner .biHeader2 {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  justify-content: space-between;
+  padding: 12px 30px 0px 30px;
+  position: fixed;
+  z-index: 99;
+  background: #f5fbfd;
+  left: 90px;
+  right: 0;
+}
+
+.adminLayoutWrap .adminLayoutInner .biHeader .biHeaderNav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+}
+
+.adminLayoutWrap .adminLayoutInner .biHeader .logo {
+  height: 39px;
+}
+
+.adminLayoutWrap .adminLayoutInner .biHeader .biHeaderNav .biList {
+  cursor: pointer;
+}
+
+.adminLayoutWrap .adminLayoutInner .biHeader .biHeaderNav .biUser {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.adminLayoutWrap .adminLayoutInner .biHeader .biHeaderNav .biUser .biUserWrap {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.adminLayoutWrap .adminLayoutInner .biHeader .biHeaderNav .biUser .biUserWrap .biUserImg {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.adminLayoutWrap .adminLayoutInner .biHeader .biHeaderNav .biUser .biUserWrap .biUserNameWrap .biUserName {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #424750;
+}
+
+.adminLayoutWrap .adminLayoutInner .biHeader .biHeaderNav .biUser .biUserWrap .biUserNameWrap .biUserRole {
+  font-size: 12px;
+  color: #424750;
+}
+
+
+
+
+
+.menu-disp span {
+  color: #002850 !important;
+}
+
+.sub-menu-disp {
+  /* background-color: #002850 !important; */
+  /* color: #8590A5 !important; */
+}
+.sub-menu-disp:hover {
+  background-color: #f5fbfd !important;
+  /* color: #8590A5 !important; */
+}
+
+.submenu-active {
+  /* background-color: #f0f0f0; */
+  color: #002850 !important;
+  font-weight: 600 !important;
+  background: #cde9f6 !important;
+}
+
+.child-active {
+  color: #002850 !important;
+  font-weight: 600 !important;
+  background: #cde9f6 !important;
+}
+.sub-menu-text span {color:#8590A5 !important;
+  font-weight: 400 !important; font-size: 12px;}
+  .sub-menu-text span:hover {
+    color: #002850 !important; /* Change color on hover */
+    font-weight: 400 !important; /* Optional: Change weight on hover */
+    font-size: 12px; /* Optional: Change size on hover */
+  }

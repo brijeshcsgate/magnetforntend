@@ -1,0 +1,51 @@
+
+.form-content {
+  display: flex;
+  justify-content: center;
+}
+
+.workflow-card {
+  width: 100%;
+  max-width: 900px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+}
+
+.workflow-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.add-workflow-button {
+  color: #0f5cf1;
+  cursor: pointer;
+}
+
+.status-tag {
+  background-color: #abe7f4;
+  color: #002850;
+  padding: 4px 8px;
+  border-radius: 12px;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.workflow-details {
+  background-color: #eff7fe;
+
+  padding: 16px;
+}
+
+.workflow-item {
+  display: flex;
+  align-items: center;
+}
+
+.workflow-item svg {
+  margin-right: 8px;
+}

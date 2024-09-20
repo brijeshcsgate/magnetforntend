@@ -1,0 +1,110 @@
+.vehicle-wrap {
+  width: 100%;
+  background: #fff;
+  box-shadow: 4px 4px 20px #0000001a;
+  padding-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+/* .bluk-upload-btn {
+  width: 32px !important;
+} */
+.vehicle-wrap .head {
+  display: flex;
+  column-gap: 15px;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding: 0px 20px;
+}
+.vehicle-wrap .head .heading {
+  font-size: 24px;
+  font-weight: 600;
+  color: #002850;
+  line-height: 32px;
+}
+.vehicle-wrap .head .head-btns {
+  display: flex;
+  column-gap: 12px;
+}
+.vehicle-wrap .head .head-btns .button {
+  font-size: 13px;
+  font-weight: 600;
+  color: #256eb5;
+  cursor: pointer;
+
+  padding: 0 20px;
+  border: 1px solid #256eb5;
+  background: none;
+}
+.vehicle-wrap .head .head-btns .button:hover {
+  background: #256eb5;
+  color: #fff;
+}
+
+.vehicle-wrap .head .head-btns .button.dot {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  /* fill: "#256EB5" */
+}
+.dot svg {
+  fill: #256eb5;
+}
+.vehicle-wrap .head .head-btns .button.dot:hover > svg {
+  fill: #fff;
+}
+.vehicle-wrap .head .head-btns .dialog-content {
+  color: red !important;
+}
+.vehicle-wrap .action-main {
+  margin-bottom: 12px;
+  padding: 0px 20px;
+}
+.vehicle-wrap .action-div {
+  padding: 6px 10px;
+  border: 1px solid #d9d9d9;
+  background: #fff;
+  gap: 5px;
+  cursor: pointer;
+}
+.vehicle-wrap .action-div .action-notification {
+  width: 18px;
+  height: 18px;
+  color: #fff;
+  background-color: #0a56a9;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
+}
+.vehicle-wrap .action-main .action-container {
+  gap: 11px;
+  position: relative;
+}
+
+.list-tab {
+  border-bottom: 1px solid #dcdcdc;
+  margin-bottom: 18px;
+  padding: 0px 20px;
+}
+
+.vehicle-wrap .tabs {
+  display: flex;
+  gap: 23px;
+}
+.vehicle-wrap .tabs .tab {
+  display: flex;
+  cursor: pointer;
+  gap: 8px;
+  padding-bottom: 12px;
+}
+.vehicle-wrap .tabs .tab-active {
+  border-bottom: 2px solid #256eb5;
+}
+.clear-all-button {
+  font-size: 13px;
+  font-weight: 400;
+  color: #1463b0;
+}

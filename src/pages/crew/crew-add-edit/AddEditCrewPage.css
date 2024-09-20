@@ -1,0 +1,22 @@
+/* add-edit-user-card */
+.add-edit-crew-card {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 18px;
+}
+/* w100 */
+.ceu-w100 {
+  padding: 20px;
+}
+/* width90 */
+.ceu-width90 {
+  width: 90%;
+}
+/* aeu-flex */
+.ceu-flex{
+    display:flex;
+    flex-direction:row ;
+    justify-content: space-between;
+}

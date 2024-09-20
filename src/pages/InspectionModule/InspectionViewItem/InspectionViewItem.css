@@ -1,0 +1,35 @@
+/* bottom section css */
+.IVI-bottom-section2 {
+    width: 100%;
+    padding: 0px 39px 0px 37px;
+    flex: 1;
+  }
+
+  .IVI-flex-er {
+    display: flex !important;
+    flex-direction:column;
+      gap: 5px;
+      width:100%;
+  }
+  .IVI-font-20-600{color: var(--Tone-Blue-Blue-4, #002850);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 36px; }
+
+    .accordion-icon-class {
+        transform: rotate(90deg);
+        color: #002850;
+      }
+      .accordion-icon {
+        justify-content: start;
+        gap: 20px;
+      }
+      
+      .\[\&\[data-state\=open\]\>svg\]\:rotate-180[data-state="open"] > svg {
+        --tw-rotate: 90deg;
+      }
+      .acc-onSelect {
+        cursor: "pointer";
+      }
+      
