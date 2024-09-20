@@ -1,7 +1,7 @@
 import { VEHICLE } from './permissionsConstants';
 
 export const APIS = {
-  LOGIN: 'v1/auth/login',
+  LOGIN: 'user/login',
   // ADD_USER: 'v1/adminusers/addUser',
   FORGET_PASSWORD: 'v1/auth/forgotPassword',
 

@@ -22,7 +22,7 @@ const Login = () => {
                 <div className="login-form-container">
                   <div className="login-top">
                     <div className="logo-section">
-                      <div className="logo-img-div">
+                      <div className="logo-img-div hover-text">
                         <img
                           className="w-100"
                           src="/assets/images/mag_logo.png"
@@ -33,7 +33,7 @@ const Login = () => {
                       </div>
                     </div>
 
-                    <div className={`wel-alignment heading-600-26`}>
+                    <div className={`wel-alignment heading-600-26 `}>
                       {isTitlePara.title}
                     </div>
                     <div className="sign-alignment heading-400-16">

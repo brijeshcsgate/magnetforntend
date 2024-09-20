@@ -16,7 +16,7 @@ import ResetPassword from '@/pages/Authentication/ResetPassword';
 // import CommonMastersList from '@/pages/MastersV2/CommonMastersList/CommonMastersList';
 // import AddEditMasters from '@/pages/MastersV2/AddMasters';
 // import Test from '@/components/Test';
-// import DashBoard from '@/pages/DashBoard/DashBoard';
+import DashBoard from '@/pages/DashBoard/DashBoard';
 import UserRole from '@/pages/user-role';
 // import Dispatcher from '@/pages/dms/Dispatcher';
 // import Issues from '@/pages/issues';
@@ -39,7 +39,7 @@ import UserRole from '@/pages/user-role';
 // import Reports from '@/pages/reports';
 // import Help from '@/pages/help';
 import PrivacyPolice from '@/pages/Authentication/PrivacyPolicy';
-// import GettingStarted from '@/pages/getting-started';
+import GettingStarted from '@/pages/getting-started';
 // // Route
 // import Route from '@/pages/dms/Route';
 // import CreateRoute from '@/pages/dms/Route/AddEditRoute';
@@ -85,8 +85,8 @@ import TermsOfUse from './pages/Authentication/PrivacyPolicy/TermsOfUse';
 // import InspectionFormGen from './pages/InsGeneratedFormModule';
 const protectedRoutes = [
   // { path: '/test', component: Test },
-  // { path: '/', component: GettingStarted },
-  // { path: '/dashboard', component: DashBoard },
+  { path: '/', component: GettingStarted },
+  { path: '/dashboard', component: DashBoard },
 
   // { path: ROUTES.NEW_PASSWORD, component: ResetPassword },
   // { path: ROUTES.USER_PROFILE, component: UserProfilePage },

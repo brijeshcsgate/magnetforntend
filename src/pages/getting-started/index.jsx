@@ -139,15 +139,15 @@ export default function GettingStartedPage() {
         <div className="flex items-center justify-between gap-4 p-12 pb-0">
           <div className="flex flex-col gap-1 border-l-4 pl-4 border-blue-primary-200">
             <h1 className="text-2xl font-medium text-blue-primary-200">
-              Welcome to UPSRTC Depot Management System
+              Welcome to Magn8.One System
             </h1>
             <p className="leading-7 text-base text-gray-tertiary">
-              Access this quick menu to navigate to the important parts of this
-              system{' '}
+            Build Better Communications With Peers
+            & Businesses{' '}
             </p>
           </div>
         </div>
-        <section className="mt-4 px-12 pt-4 scrollbar overflow-y-scroll h-[calc(100vh-71px-30px-114px)] ">
+        {/* <section className="mt-4 px-12 pt-4 scrollbar overflow-y-scroll h-[calc(100vh-71px-30px-114px)] ">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-start items-start">
             {links.map((item, idx) => (
               <div
@@ -182,7 +182,7 @@ export default function GettingStartedPage() {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
       </section>
     </section>
   );

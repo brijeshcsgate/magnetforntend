@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { EyeOffIcon, EyeIcon } from 'lucide-react';
+import { EyeOffIcon, EyeIcon, FacebookIcon } from 'lucide-react';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
@@ -51,7 +51,7 @@ export default function LoginForm() {
 
       setIsLoading(true);
       postWithoutAuthApi(APIS.LOGIN, {
-        loginEmail: values.email.toLowerCase(),
+        email: values.email.toLowerCase(),
         password: values.password,
       })
         .then((res) => {
@@ -153,13 +153,35 @@ export default function LoginForm() {
           onChange={handleCaptchaChange}
           onExpired={handleCaptchaExpire}
         />
-        <Button type="submit" disabled={isLoading}>
+        <Button type="submit" disabled={isLoading} className='hover-text'>
           {isLoading ? <ButtonLoadingIcon className=" h-8 w-8" /> : 'LOGIN'}
         </Button>
+
+
+        <div className="col-md-12 mt-4">
+              <p>
+                Don't have an account?{' '}
+                <span>
+                  <Link
+                  
+            to="/terms-conditions"
+            className={cn(buttonVariants({ variant: 'link' }), 'p-0 h-fit')}
+                  >Request Invite</Link>
+                  
+                </span>
+              </p>
+            </div>
+            <div className="col -md-12 mt-4" style={{display:'flex',flexDirection:'row', gap:'8px', justifyContent:'center'}}>
+             <div className='hover-text'> <img src='/assets/images/login-img/facebook.png' alt="" /></div>
+              <div className='hover-text'><img src="/assets/images/login-img/instagram.png" alt="" /></div>
+              <div className='hover-text'><img src="/assets/images/login-img/twitter.png" alt="" /></div>
+              <div className='hover-text'><img src="/assets/images/login-img/youtube.png" alt="" /></div>
+            </div>
+         
         <div className="flex items-center justify-center gap-1 text-center text-xs ">
           <Link
             to="/privacy-policy"
-            className={cn(buttonVariants({ variant: 'link' }), 'p-0 h-fit')}
+            className=''
           >
             Privacy Policy
           </Link>
