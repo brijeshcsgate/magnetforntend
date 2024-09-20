@@ -5,7 +5,7 @@ import LoginForm from "./login.form";
 const Login = () => {
   const isTitlePara = {
     title: "Welcome Back!",
-    para1: "Login to continue to UPSRTC",
+    para1: "Login to continue to MAGN8.ONE",
     para2: "",
   };
 
@@ -25,9 +25,9 @@ const Login = () => {
                       <div className="logo-img-div">
                         <img
                           className="w-100"
-                          // src="/assets/images/loginHeaderLogo.svg"
+                          src="/assets/images/mag_logo.png"
                           
-                          src="#"
+                          // src="#"
                           alt="logo.svg"
                         />
                       </div>

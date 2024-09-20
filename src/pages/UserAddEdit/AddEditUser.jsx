@@ -63,59 +63,59 @@ const fetchRolePermissions = async (inputValue, page) => {
   };
 };
 
-const userSchema = Yup.object().shape({
-  // name: Yup.string().required("Name is required"),
-  employmentStatus: Yup.string().required('Employment status is required'),
-  contractorId: Yup.string(),
-  name: Yup.object().shape({
-    english: Yup.string().trim().required('Name is required'),
-    hindi: Yup.string().trim(),
-  }),
-  fatherName: Yup.object().shape({
-    english: Yup.string().trim(),
-    hindi: Yup.string().trim(),
-  }),
-  employeeId: Yup.string().required('Employee id is required'),
-  emergencyNo: Yup.string()
-    .trim()
-    .matches(/^[0-9]\d{9}$/, 'Invalid number'),
-  loginMobile: Yup.string()
-    .trim()
-    .required('Mobile no is required')
-    .matches(/^[0-9]\d{9}$/, 'Invalid number'),
-  roleId: Yup.mixed().required('User (roles & permissions) is required'),
-  loginEmail: customEmailValidation.max(320).required('Email is required'),
-  stateId: Yup.string().required('State is required'),
-  designation: Yup.string(),
-  regionId: Yup.mixed()
-    .test('is-string-or-array', 'Region is required', function (value) {
-      return (
-        typeof value === 'string' || (Array.isArray(value) && value?.length > 0)
-      );
-    })
-    .required('Region is required'),
-  depotId: Yup.array(),
-  presentAddress: Yup.object().shape({
-    // country: Yup.string().nullable(),
-    address1: Yup.string().nullable(),
-    address2: Yup.string().nullable(),
-    stateId: Yup.string().nullable(),
-    districtId: Yup.string().nullable(),
-    pinCode: Yup.string()
-      .matches(/^\d{6}$/, 'Pin code must be 6 digits')
-      .nullable(),
-  }),
-  permanentAddress: Yup.object().shape({
-    // country: Yup.string().nullable(),
-    address1: Yup.string().nullable(),
-    address2: Yup.string().nullable(),
-    stateId: Yup.string().nullable(),
-    districtId: Yup.string().nullable(),
-    pinCode: Yup.string()
-      .matches(/^\d{6}$/, 'Pin code must be 6 digits')
-      .nullable(),
-  }),
-});
+// const userSchema = Yup.object().shape({
+//   // name: Yup.string().required("Name is required"),
+//   employmentStatus: Yup.string().required('Employment status is required'),
+//   contractorId: Yup.string(),
+//   name: Yup.object().shape({
+//     english: Yup.string().trim().required('Name is required'),
+//     hindi: Yup.string().trim(),
+//   }),
+//   fatherName: Yup.object().shape({
+//     english: Yup.string().trim(),
+//     hindi: Yup.string().trim(),
+//   }),
+//   employeeId: Yup.string().required('Employee id is required'),
+//   emergencyNo: Yup.string()
+//     .trim()
+//     .matches(/^[0-9]\d{9}$/, 'Invalid number'),
+//   loginMobile: Yup.string()
+//     .trim()
+//     .required('Mobile no is required')
+//     .matches(/^[0-9]\d{9}$/, 'Invalid number'),
+//   roleId: Yup.mixed().required('User (roles & permissions) is required'),
+//   loginEmail: customEmailValidation.max(320).required('Email is required'),
+//   stateId: Yup.string().required('State is required'),
+//   designation: Yup.string(),
+//   regionId: Yup.mixed()
+//     .test('is-string-or-array', 'Region is required', function (value) {
+//       return (
+//         typeof value === 'string' || (Array.isArray(value) && value?.length > 0)
+//       );
+//     })
+//     .required('Region is required'),
+//   depotId: Yup.array(),
+//   presentAddress: Yup.object().shape({
+//     // country: Yup.string().nullable(),
+//     address1: Yup.string().nullable(),
+//     address2: Yup.string().nullable(),
+//     stateId: Yup.string().nullable(),
+//     districtId: Yup.string().nullable(),
+//     pinCode: Yup.string()
+//       .matches(/^\d{6}$/, 'Pin code must be 6 digits')
+//       .nullable(),
+//   }),
+//   permanentAddress: Yup.object().shape({
+//     // country: Yup.string().nullable(),
+//     address1: Yup.string().nullable(),
+//     address2: Yup.string().nullable(),
+//     stateId: Yup.string().nullable(),
+//     districtId: Yup.string().nullable(),
+//     pinCode: Yup.string()
+//       .matches(/^\d{6}$/, 'Pin code must be 6 digits')
+//       .nullable(),
+//   }),
+// });
 
 const AddEditUser = () => {
   const navigate = useNavigate();
@@ -126,7 +126,7 @@ const AddEditUser = () => {
     roleType: '',
     contractStartDate: '',
     contractEndDate: '',
-    stateId: '660bd0c8471febdfca7be9bc',
+    stateId: '',
     regionId: [],
     depotId: [],
     designation: 'User',
@@ -143,16 +143,16 @@ const AddEditUser = () => {
     govImage: [],
     profileImage: [],
     presentAddress: {
-      country: '6631f4585cbf7a33a5904343',
-      stateId: '660bd0c8471febdfca7be9bc',
+      country: '',
+      stateId: '',
       districtId: '',
       pinCode: '',
       address1: '',
       address2: '',
     },
     permanentAddress: {
-      country: '6631f4585cbf7a33a5904343',
-      stateId: '660bd0c8471febdfca7be9bc',
+      country: '',
+      stateId: '',
       districtId: '',
       pinCode: '',
       address1: '',
@@ -350,7 +350,7 @@ const AddEditUser = () => {
     <Formik
       enableReinitialize
       initialValues={data}
-      validationSchema={userSchema}
+      // validationSchema={userSchema}
       onSubmit={handleSubmit}
     >
       {({
@@ -431,7 +431,7 @@ const AddEditUser = () => {
                             label="Email"
                             placeholder="Enter email"
                             name="loginEmail"
-                            isRequired
+                            // isRequired
                           />
                         </div>
                         <div className="w-100 flex-1">
@@ -446,24 +446,13 @@ const AddEditUser = () => {
                                 'loginMobile'
                               )
                             }
-                            isRequired
+                            // isRequired
                           />
                         </div>
                       </div>
                       <div className="group-type-3-equal">
                         <div className="w-100 flex-1">
 
-                          {/* <FormikSelect
-                            id="state"
-                            isMulti
-                            name="stateId"
-                            label="State"
-                            onChange={(e) => {
-                              setFieldValue('regionId', []);
-                              setFieldValue('depotId', []);
-                              setFieldValue('stateId', e?.value);
-                            }}
-                          /> */}
 
                           <CustomSelectById
                             id="state"
@@ -534,7 +523,7 @@ const AddEditUser = () => {
                             selectProps={{
                               placeholder: 'Select',
                               isClearable: true,
-                              isRequired: true,
+                              // isRequired: true,
                             }}
                           />
                         </div>
@@ -550,7 +539,7 @@ const AddEditUser = () => {
                                 startSpcaeRemover(value)
                               );
                             }}
-                            isRequired
+                            // isRequired
                           />
                         </div>
                       </div>
@@ -560,7 +549,7 @@ const AddEditUser = () => {
                             label="Name [En]"
                             placeholder="Enter name"
                             name="name.english"
-                            isRequired
+                            // isRequired
                             onChange={(e) =>
                               validateAlphabets(
                                 e,
@@ -619,7 +608,7 @@ const AddEditUser = () => {
                                   selectProps={{
                                     placeholder: 'Select',
                                     isClearable: true,
-                                    isRequired: true,
+                                    // isRequired: true,
                                   }}
                                 />
                               </div>
