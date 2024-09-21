@@ -6,7 +6,10 @@ const BASE_URL = `${import.meta.env.VITE_APP_BASE_URL}`;
 
 const HttpFileClient = axios.create({
   timeout: 60000,
+  // baseURL: BASE_URL,
+  
   baseURL: BASE_URL,
+  
   headers: {
     'Content-Type': 'multipart/form-data',
     'Device-Platform': 'web',

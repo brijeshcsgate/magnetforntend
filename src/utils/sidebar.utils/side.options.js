@@ -224,6 +224,13 @@ const sidebarRoutes = [
     route: ROUTES.USERS,
     subItems: [],
   },
+  {
+    label: 'Reseller/Company',
+    isMenu: false,
+    img: cardIcon({ width: 16, height: 16, fill: '#8da3b6' }),
+    route:ROUTES.RESELLERCOMPANY,
+    subItems: [],
+  },
   // {
   //   label: 'Masters',
   //   isMenu: false,

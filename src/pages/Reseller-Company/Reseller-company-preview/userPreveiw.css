@@ -1,0 +1,18 @@
+.section-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+.mr-10{
+    margin-bottom: 15px;
+}
+.pd-l-4{
+    padding-left: 10px;
+}
+
+.pd-r-4{
+    padding-right: 10px;
+}
+.border-radius-50{
+    border-radius: 50% !important;
+}

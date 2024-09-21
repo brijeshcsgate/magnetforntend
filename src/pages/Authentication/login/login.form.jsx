@@ -153,7 +153,7 @@ export default function LoginForm() {
           onChange={handleCaptchaChange}
           onExpired={handleCaptchaExpire}
         />
-        <Button type="submit" disabled={isLoading} className='hover-text'>
+        <Button type="submit" disabled={isLoading} className=''>
           {isLoading ? <ButtonLoadingIcon className=" h-8 w-8" /> : 'LOGIN'}
         </Button>
 

@@ -8,6 +8,22 @@
     border-radius: 7.5px;
 background-color: #FFF;} */
 
+.slide-heading {
+  /* font-size: 2.5rem;
+  color: #002850;
+  font-weight: 700; */
+  opacity: 0;
+  transform: translateX(-100%);
+  animation: slide-in 1s ease-in-out forwards;
+}
+
+/* Keyframes for sliding in the heading */
+@keyframes slide-in {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 .slider-container,
 .slider-container .slick-slider,
 .slider-container .slick-slider .slick-list {

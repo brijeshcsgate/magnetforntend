@@ -56,7 +56,7 @@ const IndicatoreSlider = () => {
             </div>
 
             <div className="image-title-para">
-              <div className="heading-600-24 c-white">{slide.title}</div>
+              <div className="heading-600-24 c-white ">{slide.title}</div>
             </div>
 
           </div>

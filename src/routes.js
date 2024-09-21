@@ -61,6 +61,9 @@ import SetPassword from '@/pages/verify-email/set-password';
 // import InspectionViewNewItem from '@/pages/InspectionModule/InspectionViewItem/InspectionViewItem';
 // import AddWorkshop from '@/pages/InspectionModule/WorkShopForms/AddWorshop';
 import TermsOfUse from './pages/Authentication/PrivacyPolicy/TermsOfUse';
+import ResellCompany from './pages/Reseller-Company';
+import PreviewResellCompany from './pages/Reseller-Company/Reseller-company-preview';
+import ResellCompanyAddEdit from './pages/Reseller-Company/Reseller-company-add-edt/ResellCompanyAddEdit';
 // import UserListView from './pages/user/index2';
 // import PreviewUsers from './pages/user-role/UserPreview';
 // import InspectionFormList from './pages/InspectionModule/InspectionForm/InspectionFormList/InspectionFormList';
@@ -203,6 +206,38 @@ const protectedRoutes = [
     component: UserRole,
     // //permission: { moduleName: 'User Management', actions: 'view' },
   },
+  
+  {
+    path: ROUTES.RESELLERCOMPANY,
+    component: ResellCompany,
+    // //permission: { moduleName: 'User Management', actions: 'create' },
+  },
+  {
+    path: ROUTES.RESELLCOMP_ADD,
+    component: ResellCompanyAddEdit,
+    // //permission: { moduleName: 'User Management', actions: 'create' },
+  },
+  {
+    path: `${ROUTES.RESELLCOMP_ADDEDIT}/:id`,
+    component: ResellCompanyAddEdit,
+    // //permission: { moduleName: 'User Management', actions: 'update' },
+  },
+  {
+    path: ROUTES.RESELLCOMP_PREVIE,
+    component: PreviewResellCompany,
+    // //permission: { moduleName: 'User Management', actions: 'view' },
+  },
+
+
+
+
+
+
+
+
+
+
+
   // {
   //   path: ROUTES.DISPATCHER,
   //   component: Dispatcher,

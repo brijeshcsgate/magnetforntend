@@ -10,6 +10,67 @@ export const ROUTES = {
   DASHBOARDS: '/dashboard',
   PRIVACYPOLICE: '/privacy-policy',
   TERMS_CONDITIONS: '/terms-conditions',
+
+
+//   Reseller/Company
+
+
+RESELLERCOMPANY: '/reseller-company',
+RESELLCOMP_ADD: '/reseller-company/add',
+
+RESELLCOMP_ADDEDIT: '/reseller-company/form',
+
+RESELLCOMP_PREVIE: '/reseller-company/preview',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   //Inspections
 
   INSPECTIONS_FORMS_LIST: '/inspection-form-list',

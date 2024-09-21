@@ -263,14 +263,17 @@ const CustomSelectById = ({
   const debouncedInputValue = useDebounce(inputValue, 300);
 
   const fetchData = async (searchValue, isInitialFetch = false) => {
-    const response = await apiService.get(`v2/masters/search/${id}`, {
+    //http://localhost:4005/api/user/login
+
+    //https://magnet.evalue8.info/api/statebycountry
+    const response = await apiService.get(`http://localhost:4005/api/${id}`, {
       params: {
         search: searchValue,
         ...(isInitialFetch && defaultValue ? { _id: defaultValue } : {}),
         ...filters,
       },
     });
-
+console.log('response',response)
     if (isInitialFetch && defaultValue && response.data.length > 0) {
       setSelectedValue(response.data);
       setInitialFetchDone(true);
@@ -290,8 +293,19 @@ const CustomSelectById = ({
     queryFn: () => fetchData(debouncedInputValue, !initialFetchDone),
   });
 
-  const options = useMemo(() => (data ? data.results : []), [data]);
+  // const options = useMemo(() => (data ? data.results : []), [data]);
 
+
+  const options = useMemo(() => {
+    if (!data || !data.results) return [];
+  
+    return data.results.map((item) => ({
+      value: item._id,
+      label: `${item.country} (${item.countryCode})`,
+      flag: item.flag, // Assuming the flag can be represented as a short code or a URL
+    }));
+  }, [data]);
+console.log('options',options)
   useEffect(() => {
     if (useFormik && Array.isArray(values[name])) {
       setSelectedValue(values[name]);
