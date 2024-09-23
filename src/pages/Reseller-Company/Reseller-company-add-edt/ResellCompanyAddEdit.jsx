@@ -45,6 +45,7 @@ import dayjs from 'dayjs';
 
 import { CounterContext } from '@/components/Layout/commonLayout/TitleOfPageProvider';
 import CustomOptionSelect from '@/components/common/CustomSelect/CustomOptionSelect';
+import axios from 'axios';
 
 const fetchRolePermissions = async (inputValue, page) => {
   const limit = 15;
@@ -77,59 +78,6 @@ const validationSchema = Yup.object().shape({
   // gstNo: Yup.string().required('GST number is required.'),
   // logo: Yup.mixed().required('Please select an organization logo.'),
 });
-// const userSchema = Yup.object().shape({
-//   // name: Yup.string().required("Name is required"),
-//   employmentStatus: Yup.string().required('Employment status is required'),
-//   contractorId: Yup.string(),
-//   name: Yup.object().shape({
-//     english: Yup.string().trim().required('Name is required'),
-//     hindi: Yup.string().trim(),
-//   }),
-//   fatherName: Yup.object().shape({
-//     english: Yup.string().trim(),
-//     hindi: Yup.string().trim(),
-//   }),
-//   employeeId: Yup.string().required('Employee id is required'),
-//   emergencyNo: Yup.string()
-//     .trim()
-//     .matches(/^[0-9]\d{9}$/, 'Invalid number'),
-//   loginMobile: Yup.string()
-//     .trim()
-//     .required('Mobile no is required')
-//     .matches(/^[0-9]\d{9}$/, 'Invalid number'),
-//   roleId: Yup.mixed().required('User (roles & permissions) is required'),
-//   loginEmail: customEmailValidation.max(320).required('Email is required'),
-//   stateId: Yup.string().required('State is required'),
-//   designation: Yup.string(),
-//   regionId: Yup.mixed()
-//     .test('is-string-or-array', 'Region is required', function (value) {
-//       return (
-//         typeof value === 'string' || (Array.isArray(value) && value?.length > 0)
-//       );
-//     })
-//     .required('Region is required'),
-//   depotId: Yup.array(),
-//   presentAddress: Yup.object().shape({
-//     // country: Yup.string().nullable(),
-//     address1: Yup.string().nullable(),
-//     address2: Yup.string().nullable(),
-//     stateId: Yup.string().nullable(),
-//     districtId: Yup.string().nullable(),
-//     pinCode: Yup.string()
-//       .matches(/^\d{6}$/, 'Pin code must be 6 digits')
-//       .nullable(),
-//   }),
-//   permanentAddress: Yup.object().shape({
-//     // country: Yup.string().nullable(),
-//     address1: Yup.string().nullable(),
-//     address2: Yup.string().nullable(),
-//     stateId: Yup.string().nullable(),
-//     districtId: Yup.string().nullable(),
-//     pinCode: Yup.string()
-//       .matches(/^\d{6}$/, 'Pin code must be 6 digits')
-//       .nullable(),
-//   }),
-// });
 
 const ResellCompanyAddEdit = () => {
   const navigate = useNavigate();
@@ -155,7 +103,7 @@ const ResellCompanyAddEdit = () => {
 const [imagePreview, setImagePreview] = useState(null);
 const [data, setData] = useState({
   orgName: '',
-  industry: '',
+  industry: null,
   name: '',
   email: '',
   mobile: '',
@@ -166,14 +114,47 @@ const [data, setData] = useState({
   pinCode: '',
   gstNo: '',
   countryCode: '+1', // Default country code
-  logo: null,
+  orgLogo: null,
 });
+
+
+
+
+const [industries, setIndustries] = useState([]);
+
+// Fetch industry options from backend
+useEffect(() => {
+  axios.get('http://localhost:4005/industry')
+    .then(response => {
+      console.log(response.data.data)
+      setIndustries(response.data.data);
+    })
+    .catch(error => {
+      console.error('Error fetching industries:', error);
+    });
+}, []);
+
+// Handle input change
+const handleChange = (e) => {
+  // setFormData({
+  //   ...formData,
+  //   [e.target.name]: e.target.value
+  // });
+};
+
+
+
+
+
+
+
+
 
 
 
   const { setCount } = useContext(CounterContext);
   useEffect(() => {
-    setCount('User Management');
+    setCount('');
   }, []);
   const fetchUserById = useQuery({
     queryKey: ['userById', id || ''],
@@ -241,127 +222,81 @@ const [data, setData] = useState({
     refetchOnWindowFocus: false,
   });
 
-  // const handleSubmit = (values, { setSubmitting, resetForm }) => {
-  //   let payload = {
-  //     roleId: values?.roleId.value,
-  //     roleType: values?.roleId.label,
-  //     employeeId: values?.employeeId,
-
-  //     employmentStatus: values?.employmentStatus,
-
-  //     servicePeriod: {
-  //       startDate: values?.contractStartDate,
-  //       endDate: values?.contractEndDate,
-  //     },
-  //     stateId: values?.stateId,
-  //     regionId: values?.regionId,
-  //     depotId: values?.depotId,
-  //     payRollId: values?.payRollId,
-  //     designation: values?.designation,
-  //     name: {
-  //       english: values?.name?.english,
-  //       hindi: values?.name?.hindi,
-  //       hinglish: `${values?.name?.english || ''} (${values?.name?.hindi || ''})`,
-  //     },
-  //     loginEmail: values?.loginEmail,
-  //     loginMobile: values?.loginMobile,
-  //     dob: values?.dob,
-  //     fatherName: {
-  //       english: values?.fatherName?.english,
-  //       hindi: values?.fatherName?.hindi,
-  //       hinglish: `${values?.fatherName?.english || ''} (${values?.fatherName?.hindi || ''})`,
-  //     },
-  //     emergencyNumber: values?.emergencyNo,
-  //     profileImage: values?.profileImage,
-
-  //     govtIssuedCard: values?.govtIssuedCard,
-  //     cardNumber: values?.cardNo,
-  //     bloodGroup: values?.bloodGroup,
-  //     govImage: values?.govImage,
-
-  //     dateofJoining: values?.contractStartDate, //
-  //     presentAddress: {
-  //       pinCode: values?.presentAddress?.pinCode,
-  //       address1: values?.presentAddress?.address1,
-  //       address2: values?.presentAddress?.address2,
-  //     },
-  //     permanentAddress: {
-  //       pinCode: values?.permanentAddress?.pinCode,
-  //       address1: values?.permanentAddress?.address1,
-  //       address2: values?.permanentAddress?.address2,
-  //     },
-  //     isActive: true,
-  //     shortName: {
-  //       english: '',
-  //       hindi: '',
-  //     },
-  //   };
-  //   if (values?.contractorId !== '') {
-  //     payload.contractorId = values?.contractorId;
-  //   }
-  //   if (values?.presentAddress?.country) {
-  //     payload.presentAddress.country = values?.presentAddress?.country;
-  //   }
-  //   if (values?.presentAddress?.stateId) {
-  //     payload.presentAddress.stateId = values.presentAddress.stateId;
-  //   }
-
-  //   if (values?.presentAddress?.districtId) {
-  //     payload.presentAddress.districtId = values.presentAddress.districtId;
-  //   }
-  //   if (values?.permanentAddress?.country) {
-  //     payload.permanentAddress.country = values?.permanentAddress?.country;
-  //   }
-  //   if (values?.permanentAddress?.stateId) {
-  //     payload.permanentAddress.stateId = values?.permanentAddress.stateId;
-  //   }
-
-  //   if (values?.permanentAddress?.districtId) {
-  //     payload.permanentAddress.districtId =
-  //       values?.permanentAddress?.districtId;
-  //   }
-  //   if (id) {
-  //     payload._id = id;
-  //     patchApi(APIS.UPDATE_USER_BY_ID, id, payload).then(() => {
-  //       toast.success('Data updated successfully');
-  //       if (values?.saveAndNew) {
-  //         resetForm();
-  //         setData(initialValues);
-  //       } else {
-  //         navigate(-1);
-  //       }
-  //     });
-  //   } else {
-  //     postApi(APIS.ADD_USER, payload)
-  //       .then((res) => {
-  //         toast.success('Data saved successfully');
-  //         if (values?.saveAndNew) {
-  //           resetForm();
-  //           setData(initialValues);
-  //         } else {
-  //           navigate(-1);
-  //         }
-  //       })
-  //       .finally(() => {
-  //         setSubmitting(false);
-  //       });
-  //   }
+  // const handleSubmit = (values) => {
+  //   console.log('Form Data:', values);
+  //   // Handle form submission logic here
   // };
-  const handleSubmit = (values) => {
-    console.log('Form Data:', values);
-    // Handle form submission logic here
+
+
+    const handleSubmit = (values, { setSubmitting, resetForm }) => {
+      let payload = {
+      }
+
+console.log('valuse',values.orgLogo)
+      const formData = new FormData();
+    formData.append('name', values.name);
+    formData.append('orgName', values.orgName);
+    formData.append('mobile', values.mobile);
+    formData.append('email', values.email);
+    formData.append('address', values.address);
+    formData.append('country', values.country);
+    formData.append('state', values.state);
+    formData.append('city', values.city);
+    formData.append('industry', values.industry);
+    formData.append('pinCode', values.pinCode);
+    formData.append('gstNo', values.gstNo);
+    formData.append('orgLogo', values.orgLogo);
+    formData.append('invitationCode', 'S16974');
+
+    formData.append('countryCode', '+91');
+    
+    formData.append('userType', 'Company');
+    
+    // formData.append('orgLogo', values.orgLogo);
+
+   
+
+      if (id) {
+        payload._id = id;
+        patchApi(APIS.UPDATE_USER_BY_ID, id, payload).then(() => {
+          toast.success('Data updated successfully');
+          if (values?.saveAndNew) {
+            resetForm();
+            setData(initialValues);
+          } else {
+            navigate(-1);
+          }
+        });
+      } else {
+        postApi(APIS.ADD_USER, formData)
+          .then((res) => {
+            toast.success('Data saved successfully');
+            if (values?.saveAndNew) {
+              resetForm();
+              setData(initialValues);
+            } else {
+              navigate(-1);
+            }
+          })
+          .finally(() => {
+            setSubmitting(false);
+          });
+      }
+    };
+
+
+  
+// Handle image change and show preview
+const handleImageChange = (event, setFieldValue) => {
+  const file = event.target.files[0];
+  setFieldValue('orgLogo', file);
+
+  const reader = new FileReader();
+  reader.onloadend = () => {
+    setImagePreview(reader.result);
   };
-  const handleFileChange = (event, setFieldValue) => {
-    const file = event.currentTarget.files[0];
-    if (file) {
-      setFieldValue('logo', file);
-      const reader = new FileReader();
-      reader.onload = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  reader.readAsDataURL(file);
+};
 
   if (id && fetchUserById.isLoading) {
     return <div>Loading...</div>;
@@ -405,7 +340,10 @@ const [data, setData] = useState({
                       breadCrumbs={[]}
                       boldItem={'User'}
                     />
-                    <Heading>{id ? 'Edit' : 'Add'} User</Heading>
+                    <Heading>
+                      {/* {
+                    id ? 'Edit' : 'Add'} */}
+                     Reseller</Heading>
                   </div>
                   <ButtonContainer>
                     <Button
@@ -443,45 +381,66 @@ const [data, setData] = useState({
                   className="add-v-form"
                   style={{ padding: '20px', justifyContent: 'center' }}
                 >
+                  
+                  <Heading>
+                      {/* {
+                    id ? 'Edit' : 'Add'} */}
+                     Let's MAGNETize an Organization</Heading>
+                     Invite an Organization to onboard on MAGNET and Invite there users
                   <div className="width90">
                     <div className="add-v-form-section  pt-43  w100 add-edit-user-card">
-                      <SidePanel title={`User Information`} />
+                      <SidePanel title={`Organization Information`} />
 
                       <div className="group-type-3-equal">
                         <div className="w-100 flex-1">
                           <FormikTextField
-                            label="orgName"
-                            placeholder="orgName"
+                            label="Organization Name"
+                            placeholder="Enter organization name"
                             name="orgName"
-                            // isRequired
+                            isRequired
                           />
                         </div>
-                        {/* <div className="w-100 flex-1">
-                          <FormikTextField
-                            label="Mobile No"
-                            placeholder="Enter mobile no"
-                            name="loginMobile"
-                            onChange={(e) =>
-                              validateMobileNumber(
-                                e,
-                                setFieldValue,
-                                'loginMobile'
-                              )
-                            }
-                            // isRequired
-                          />
-                        </div> */}
                         
                         <div className="flex-1 w-100">
                           <CustomOptionSelect
                             name="industry"
                             label="industry"
                             placeholder="Select"
-                            options={bloodGroup}
+                            options={industries}
                           />
+                          
+      {/* <div>
+        <label htmlFor="industry">Industry:</label>
+        <select
+          id="industry"
+          name="industry"
+          value={data.industry}
+          // onChange={handleChange}
+          
+          onChange={(e)=>setFieldValue('data.industry',e.target.value)}
+          required
+        >
+          <option value="">Select an industry</option>
+          {industries?.map((industry) => (
+            <option key={industry._id} value={industry._id}>
+              {industry.industry}
+            </option>
+          ))}
+        </select>
+      </div> */}
+                        {/* <FormikTextField
+                            label="Industry"
+                            placeholder="Select"
+                            name="industry"
+                            // isRequired
+                          /> */}
                         </div>
                       </div>
                       
+                    </div>
+                    <div className="add-v-form-section  pt-43  w100 add-edit-user-card">
+                      <SidePanel title={`Concerned Information`} />
+
                       <div className="group-type-3-equal">
                         <div className="w-100 flex-1">
                           <FormikTextField
@@ -518,15 +477,11 @@ const [data, setData] = useState({
                             // isRequired
                           />
                         </div>
-                        <div className="w-100 flex-1">
-                          <FormikTextField
-                            label="address"
-                            placeholder="address"
-                            name="address"
-                            // isRequired
-                          />
-                        </div>
                       </div>
+                    </div>
+                    <div className="add-v-form-section  pt-43  w100 add-edit-user-card">
+                      <SidePanel title={`BILLING & SHIPPING INFORMATION`} />
+
                       <div className="group-type-3-equal">
                         <div className="flex-1 w-100">
                           <FormikTextField
@@ -543,134 +498,36 @@ const [data, setData] = useState({
                           />
                         </div>
                         <div className="flex-1 w-100">
-                          <CustomSelectById
-                            id="getcountry"
-                            isMulti={false}
-                            useFormik={true}
+                          <FormikTextField
+                            label="country"
+                            placeholder="country"
                             name="country"
-                            onChange={(e) => {
-                              setFieldValue('country', e.value);
-                              setFieldValue('state', '');
-                              setFieldValue('city', '');
-                            }}
-                            label="Country"
-                            showLabel={true}
-                            defaultValue={values?.country}
-                            selectProps={{
-                              placeholder: 'Select',
-                              isClearable: true,
-                            }}
+                            // isRequired
                           />
                         </div>
                         <div className="flex-1 w-100">
-                          <CustomSelectById
-                            id="statebycountry"
-                            isMulti={false}
-                            useFormik={true}
+                       
+<FormikTextField
+                            label="state"
+                            placeholder="state"
                             name="state"
-                            refetch={values?.state && generateRandomString()}
-
-                            onChange={(e) => {
-                              setFieldValue('state', e.value);
-                              setFieldValue('city', '');
-                            }}
-                            label="State"
-                            showLabel={true}
-                            defaultValue={values?.state}
-                            // filters={{
-                            // }}
-                            selectProps={{
-                              placeholder: 'Select',
-                              isClearable: true,
-                              isDisabled: !values?.country
-                                ? true
-                                : false,
-                            }}
+                            // isRequired
                           />
-
                         </div>
                       </div>
                         <div className="flex-1 w-100">
-                          <CustomSelectById
-                            id="city"
-                            isMulti={false}
-                            useFormik={true}
-                            refetch={values?.city && generateRandomString()}
-
+                        <FormikTextField
+                            label="city"
+                            placeholder="city"
                             name="city"
-                            onChange={(e) => {
-                              setFieldValue(
-                                'city',
-                                e.value
-                              );
-                            }}
-                            label="District"
-                            showLabel={true}
-                            defaultValue={values?.city}
-                            filters={{
-                              stateId: values?.state,
-                            }}
-                            selectProps={{
-                              placeholder: 'Select',
-                              isClearable: true,
-                              isDisabled: !values?.state
-                                ? true
-                                : false,
-                            }}
-                          />
-                        </div>
-                      {/* <div className="group-type-3-equal">
-                        <div className="w-100 flex-1">
-                          <FormikTextField
-                            label="Email"
-                            placeholder="Enter email"
-                            name="loginEmail"
                             // isRequired
                           />
                         </div>
-                        <div className="w-100 flex-1">
-                          <FormikTextField
-                            label="Mobile No"
-                            placeholder="Enter mobile no"
-                            name="loginMobile"
-                            onChange={(e) =>
-                              validateMobileNumber(
-                                e,
-                                setFieldValue,
-                                'loginMobile'
-                              )
-                            }
-                            // isRequired
-                          />
-                        </div>
-                      </div>
-                      
-                      <div className="group-type-3-equal">
-                        <div className="w-100 flex-1">
-                          <FormikTextField
-                            label="Email"
-                            placeholder="Enter email"
-                            name="loginEmail"
-                            // isRequired
-                          />
-                        </div>
-                        <div className="w-100 flex-1">
-                          <FormikTextField
-                            label="Mobile No"
-                            placeholder="Enter mobile no"
-                            name="loginMobile"
-                            onChange={(e) =>
-                              validateMobileNumber(
-                                e,
-                                setFieldValue,
-                                'loginMobile'
-                              )
-                            }
-                            // isRequired
-                          />
-                        </div>
-                      </div> */}
-                      
+                    </div>
+                    <div className="add-v-form-section  pt-43  w100 add-edit-user-card">
+                      <SidePanel title={`Additional Information`} />
+
+
                       <div className="group-type-3-equal">
                         <div className="w-100 flex-1">
                           <FormikTextField
@@ -680,679 +537,44 @@ const [data, setData] = useState({
                             // isRequired
                           />
                         </div>
-                        {/* <div className="w-100 flex-1">
-                          <FormikTextField
-                            label="Mobile No"
-                            placeholder="Enter mobile no"
-                            name="loginMobile"
-                            onChange={(e) =>
-                              validateMobileNumber(
-                                e,
-                                setFieldValue,
-                                'loginMobile'
-                              )
-                            }
-                            // isRequired
-                          />
-                        </div> */}
                       </div>
-                      {/* <div>
-            <label>Select Logo<span style={{ color: 'red' }}>*</span></label>
-            <input type="file" accept="image/*" onChange={(event) => handleFileChange(event, setFieldValue)} />
-            <ErrorMessage name="logo" component="div" style={{ color: 'red' }} />
-          </div> */}
-          {/* {imagePreview && (
+                
+
+
+
+{/* <FormikDocumentUploder
+                            name="orgLogo"
+                            id="govImage-crew"
+                            title="Logo"
+                            message="or drag & drop Logo files here"
+                            btnText="BROWSE FILE"
+                            bottomMessage="Supported File Format: jpeg, png & pdf (upto 1 MB)"
+                            accept="image/*,application/pdf"
+                            isSingle={true}
+                          /> */}
+
+
+
+<div>
+            <label htmlFor="orgLogo">Image</label>
+            <input
+              id="orgLogo"
+              name="orgLogo"
+              type="file"
+              accept="image/*"
+              onChange={(event) => handleImageChange(event, setFieldValue)}
+            />
+            <ErrorMessage name="orgLogo" component="div" className="error" />
+          </div>
+
+          {imagePreview && (
             <div>
-              <h5>Logo Preview:</h5>
-              <img src={imagePreview} alt="Logo Preview" style={{ width: '100px', height: '100px' }} />
+              <h4>Image Preview:</h4>
+              <img src={imagePreview} alt="Preview" width="150" />
             </div>
-          )} */}
+          )}
 
-
-
-<FormikDocumentUploder
-                            name="govImage"
-                            id="govImage-crew"
-                            title="Upload Govt. Issued Card"
-                            message="or drag & drop Govt. Issued Card image files here"
-                            btnText="BROWSE FILE"
-                            bottomMessage="Supported File Format: jpeg, png & pdf (upto 1 MB)"
-                            accept="image/*,application/pdf"
-                            isSingle={true}
-                          />
-                      {/* <div className="group-type-3-equal">
-                        <div className="w-100 flex-1">
-
-
-                          <CustomSelectById
-                            id="state"
-                            isMulti={false}
-
-                            refetch={values?.stateId && generateRandomString()}
-                            useFormik={true}
-                            name="stateId"
-                            onChange={(e) => {
-
-                              setFieldValue('regionId', []);
-                              setFieldValue('depotId', []);
-                              setFieldValue('stateId', e?.value)
-                            }}
-                            label="State"
-                            showLabel={true}
-                            filters={{
-                            }}
-                            defaultValue={values?.stateId}
-                            selectProps={{
-                              placeholder: 'Select',
-                              isClearable: true,
-
-                            }}
-                          />
-                        </div>
-
-                        <div className="w-100 flex-1">
-
-                          <FormikSelect
-                            id="region"
-                            isMulti
-                            name="regionId"
-                            label="Region"
-                            filters={{
-                              stateId: values?.stateId
-                            }}
-                            selectProps={{
-                              isDisabled: !values?.stateId,
-                            }}
-                          />
-
-                        </div>
-                        <div className="w-100 flex-1">
-                          <FormikSelect
-                            id="depot"
-                            isMulti
-                            name="depotId"
-                            label="Depot"
-                            filters={{
-                              regionId: values?.regionId?.map((r) => r.value),
-                            }}
-                            selectProps={{
-                              isDisabled: values?.regionId?.length < 1,
-                            }}
-                          />
-
-                        </div>
-                      </div>
-                      <div className="group-type-3-equal">
-                        <div className="flex-1 w-100">
-                          <CustomSelect
-                            useFormik={true}
-                            name="roleId"
-                            fetchData={fetchRolePermissions}
-                            label="User (Roles & Permissions)"
-                            defaultValue={values?.roleId}
-                            selectProps={{
-                              placeholder: 'Select',
-                              isClearable: true,
-                              // isRequired: true,
-                            }}
-                          />
-                        </div>
-                        <div className="w-100 flex-1">
-                          <FormikTextField
-                            label="Employee ID"
-                            placeholder="Enter employee id"
-                            name="employeeId"
-                            onChange={(e) => {
-                              let value = e.target.value;
-                              setFieldValue(
-                                'employeeId',
-                                startSpcaeRemover(value)
-                              );
-                            }}
-                            // isRequired
-                          />
-                        </div>
-                      </div>
-                      <div className="group-type-3-equal">
-                        <div className="w-100 flex-1">
-                          <FormikTextField
-                            label="Name [En]"
-                            placeholder="Enter name"
-                            name="name.english"
-                            // isRequired
-                            onChange={(e) =>
-                              validateAlphabets(
-                                e,
-                                setFieldValue,
-                                'name.english'
-                              )
-                            }
-                          />
-                        </div>
-                        <div className="w-100 flex-1">
-                          <FormikTextField
-                            label="Name [Hn]"
-                            placeholder="Enter name"
-                            name="name.hindi"
-                            onChange={(e) => {
-                              let value = e.target.value;
-                              setFieldValue(
-                                'name.hindi',
-                                startSpcaeRemover(value)
-                              );
-                            }}
-                          />
-                        </div>
-                      </div>
-                      <div className="group-type-3-equal">
-                        <div className="w-100 flex-1">
-                          <FormikRadioGroup
-                            label="Employment Status"
-                            name="employmentStatus"
-                            options={[
-                              {
-                                label: 'Contractual (Agency)',
-                                value: 'contractual',
-                              },
-                              { label: 'Samvida', value: 'samvida' },
-                              { label: 'Permanent', value: 'permanent' },
-                            ]}
-                          />
-                        </div>
-                        <div className="w-100 flex-1">
-                          {['contractual', 'samvida'].includes(
-                            values.employmentStatus
-                          ) && (
-                              <div>
-                                <CustomSelectById
-                                  id="contractor"
-                                  isMulti={false}
-                                  useFormik={true}
-                                  name="contractorId"
-                                  onChange={(e) => {
-                                    setFieldValue('contractorId', e.value);
-                                  }}
-                                  label="Contractor"
-                                  showLabel={true}
-                                  defaultValue={values?.contractorId}
-                                  selectProps={{
-                                    placeholder: 'Select',
-                                    isClearable: true,
-                                    // isRequired: true,
-                                  }}
-                                />
-                              </div>
-                            )}
-                        </div>
-                      </div> */}
                     </div>
-                    {/* <div className="add-v-form-section w100 add-edit-user-card">
-                      <SidePanel title={`Personal Information`} />
-                      <div className="group-type-3-equal">
-                        <div className="flex-1 w-100">
-                          <FormikTextField
-                            label="Emergency No"
-                            placeholder="Enter emergency no"
-                            name="emergencyNo"
-                            onChange={(e) =>
-                              validateMobileNumber(
-                                e,
-                                setFieldValue,
-                                'emergencyNo'
-                              )
-                            }
-                          />
-                        </div>
-                        <div className="flex-1 w-100">
-                          <DatePickerInput
-                            name="dob"
-                            labelName="DOB"
-                            placeholder="Select "
-                            maxDate={min18YearsDate.toDate()}
-                          />
-                        </div>
-                        <div className="flex-1 w-100">
-                          <CustomOptionSelect
-                            name="bloodGroup"
-                            label="Blood Group"
-                            placeholder="Select"
-                            options={bloodGroup}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="group-type-3-equal">
-                        <div className="w-100 flex-1">
-                          <FormikTextField
-                            label="Father's Name [En]"
-                            placeholder="Enter father's name"
-                            name="fatherName.english"
-                            onChange={(e) =>
-                              validateAlphabets(
-                                e,
-                                setFieldValue,
-                                'fatherName.english'
-                              )
-                            }
-                          />
-                        </div>
-                        <div className="w-100 flex-1">
-                          <FormikTextField
-                            label="Father's Name [Hn]"
-                            placeholder="Enter father's name"
-                            name="fatherName.hindi"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="group-type-1">
-                        <div className="image-uploder-block">
-                          <FormikDocumentUploder
-                            name="profileImage"
-                            id="profileImage-crew"
-                            title="Upload Profile Image"
-                            message="or drag & drop profile image files here"
-                            btnText="BROWSE FILE"
-                            bottomMessage="Supported File Format: jpeg, png (upto 1 MB)"
-                            accept="image/*"
-                            isSingle={true}
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="add-v-form-section pt-43 w100 add-edit-user-card">
-                      <SidePanel title={`Service Information`} />
-                      <div className="group-type-3-equal">
-                        <div className="flex-1 w-100">
-                          <FormikTextField
-                            label="Designation"
-                            placeholder="Enter designation"
-                            name="designation"
-                            onChange={(e) =>
-                              validateAlphabets(e, setFieldValue, 'designation')
-                            }
-                            defaultValue={values.designation}
-                          />
-                        </div>
-                        <div className="flex-1 w-100">
-                          <DatePickerInput
-                            maxDate={getTodaysDate()}
-                            name="contractStartDate"
-                            labelName="Service Period Start Date"
-                            placeholder="From"
-                          />
-                        </div>
-                        <div className="flex-1 w-100">
-                          <DatePickerInput
-                            minDate={
-                              values?.contractStartDate
-                                ? moment(values?.contractStartDate)
-                                  .add(1, 'days')
-                                  .format('YYYY-MM-DD')
-                                : getTodaysDate()
-                            }
-                            name="contractEndDate"
-                            labelName="Service Period End Date"
-                            placeholder="To"
-                          />
-                        </div>
-                      </div>
-                      <div className="group-type-3-equal">
-                        <div className="flex-1 w-100">
-                          <FormikTextField
-                            label="Payroll ID"
-                            placeholder="Enter payroll id"
-                            name="payRollId"
-                            onChange={(e) => {
-                              let value = e.target.value;
-                              setFieldValue(
-                                'payRollId',
-                                startSpcaeRemover(value)
-                              );
-                            }}
-                          />
-                        </div>
-                        <div className="flex-1 w-100"></div>
-                        <div className="flex-1 w-100"></div>
-                      </div>
-                    </div>
-                    <div className="add-v-form-section pt-43 w100 add-edit-user-card">
-                      <SidePanel title={`Identity Information`} />
-                      <div className="group-type-2-equal">
-                        <div className="flex-1 w-100">
-                          <CustomOptionSelect
-                            name="govtIssuedCard"
-                            label="Govt. Issued Card"
-                            placeholder="Select"
-                            options={governmentIssueCards}
-                          />
-                        </div>
-                        <div className="flex-1 w-100">
-                          <FormikTextField
-                            label="Card No."
-                            placeholder="Enter card no"
-                            name="cardNo"
-                            onChange={(e) => {
-                              let value = e.target.value;
-                              setFieldValue('cardNo', startSpcaeRemover(value));
-                            }}
-                          />
-                        </div>
-                      </div>
-                      <div className="group-type-1">
-                        <div className="image-uploder-block ">
-                          <FormikDocumentUploder
-                            name="govImage"
-                            id="govImage-crew"
-                            title="Upload Govt. Issued Card"
-                            message="or drag & drop Govt. Issued Card image files here"
-                            btnText="BROWSE FILE"
-                            bottomMessage="Supported File Format: jpeg, png & pdf (upto 1 MB)"
-                            accept="image/*,application/pdf"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="add-v-form-section pt-43 w100 add-edit-user-card">
-                      <SidePanel title={`Present Address `} />
-                      <div className="group-type-3-equal">
-                        <div className="flex-1 w-100">
-                          <FormikTextField
-                            label="Pin Code"
-                            placeholder="Enter pin code"
-                            name="presentAddress.pinCode"
-                            onChange={(e) =>
-                              validatePincode(
-                                e,
-                                setFieldValue,
-                                'presentAddress.pinCode'
-                              )
-                            }
-                          />
-                        </div>
-                        <div className="flex-1 w-100">
-                          <CustomSelectById
-                            id="country"
-                            isMulti={false}
-                            useFormik={true}
-                            name="presentAddress.country"
-                            onChange={(e) => {
-                              setFieldValue('presentAddress.country', e.value);
-                              setFieldValue('presentAddress.stateId', '');
-                              setFieldValue('presentAddress.districtId', '');
-                            }}
-                            label="Country"
-                            showLabel={true}
-                            defaultValue={values?.presentAddress.country}
-                            selectProps={{
-                              placeholder: 'Select',
-                              isClearable: true,
-                            }}
-                          />
-                        </div>
-                        <div className="flex-1 w-100">
-                          <CustomSelectById
-                            id="state"
-                            isMulti={false}
-                            useFormik={true}
-                            name="presentAddress.stateId"
-                            refetch={values?.presentAddress.stateId && generateRandomString()}
-
-                            onChange={(e) => {
-                              setFieldValue('presentAddress.stateId', e.value);
-                              setFieldValue('presentAddress.districtId', '');
-                            }}
-                            label="State"
-                            showLabel={true}
-                            defaultValue={values?.presentAddress.stateId}
-                            filters={{
-                            }}
-                            selectProps={{
-                              placeholder: 'Select',
-                              isClearable: true,
-                              isDisabled: !values?.presentAddress?.country
-                                ? true
-                                : false,
-                            }}
-                          />
-
-                        </div>
-                      </div>
-                      <div className="group-type-3-equal">
-                        <div className="flex-1 w-100">
-                          <CustomSelectById
-                            id="district"
-                            isMulti={false}
-                            useFormik={true}
-                            refetch={values?.presentAddress.districtId && generateRandomString()}
-
-                            name="presentAddress.districtId"
-                            onChange={(e) => {
-                              setFieldValue(
-                                'presentAddress.districtId',
-                                e.value
-                              );
-                            }}
-                            label="District"
-                            showLabel={true}
-                            defaultValue={values?.presentAddress.districtId}
-                            filters={{
-                              stateId: values?.presentAddress?.stateId,
-                            }}
-                            selectProps={{
-                              placeholder: 'Select',
-                              isClearable: true,
-                              isDisabled: !values?.presentAddress?.stateId
-                                ? true
-                                : false,
-                            }}
-                          />
-                        </div>
-                        <div className="flex-1 w-100">
-                          <FormikTextField
-                            label="Address 1"
-                            placeholder="Enter address"
-                            name="presentAddress.address1"
-                            onChange={(e) => {
-                              let value = e.target.value;
-                              setFieldValue(
-                                'presentAddress.address1',
-                                startSpcaeRemover(value)
-                              );
-                            }}
-                          />
-                        </div>
-                        <div className="flex-1 w-100">
-                          <FormikTextField
-                            label="Address 2"
-                            placeholder="Enter address"
-                            name="presentAddress.address2"
-                            onChange={(e) => {
-                              let value = e.target.value;
-                              setFieldValue(
-                                'presentAddress.address2',
-                                startSpcaeRemover(value)
-                              );
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="add-v-form-section pt-43 w100 add-edit-user-card">
-                      <div className="aeu-flex">
-                        <SidePanel title={`Permanent Address`} />
-
-                        <div className="aeu-flex-js">
-                          <Checkbox
-                            id="sameAddress"
-                            name="sameAddress"
-                            checked={values.sameAddress}
-                            onCheckedChange={(checked) => {
-                              setFieldValue('sameAddress', checked);
-                              if (checked === true) {
-                                setFieldValue('permanentAddress', {
-                                  ...values?.permanentAddress,
-                                  address1: 'values?.presentAddress?.address1',
-                                  address2: values?.presentAddress?.address2,
-                                  country: values?.presentAddress?.country,
-                                  stateId: values?.presentAddress?.stateId,
-                                  districtId: values?.presentAddress?.districtId,
-                                  pinCode: values?.presentAddress?.pinCode,
-                                })
-                              };
-                            }
-                            }
-                            className="w-5 h-5"
-                          />
-                          <label
-                            htmlFor="remember"
-                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                          >
-                            Same as Present Address
-                          </label>
-                        </div>
-                      </div>
-                      <div className="group-type-3-equal">
-                        <div className="flex-1 w-100">
-                          <FormikTextField
-                            label="Pin Code"
-                            placeholder="Enter Pin Code"
-                            name="permanentAddress.pinCode"
-                            onChange={(e) =>
-                              validatePincode(
-                                e,
-                                setFieldValue,
-                                'permanentAddress.pinCode'
-                              )
-                            }
-                          />
-                        </div>
-                        <div className="flex-1 w-100">
-
-                          <CustomSelectById
-                            id="country"
-                            isMulti={false}
-
-                            refetch={values?.permanentAddress.country && generateRandomString()}
-                            useFormik={true}
-                            name="permanentAddress.country"
-                            onChange={(e) => {
-                              setFieldValue(
-                                'permanentAddress.country', e.value
-                              );
-                              setFieldValue('permanentAddress.stateId', '');
-                              setFieldValue('permanentAddress.districtId', '');
-                            }}
-                            label="Country"
-                            showLabel={true}
-                            filters={{
-                            }}
-                            defaultValue={values?.permanentAddress.country}
-                            selectProps={{
-                              placeholder: 'Select',
-                              isClearable: true,
-                              isDisabled: !values?.permanentAddress?.country
-                                ? true
-                                : false,
-
-                            }}
-                          />
-                        </div>
-                        <div className="flex-1 w-100">
-                          <CustomSelectById
-                            id="state"
-                            isMulti={false}
-                            useFormik={true}
-                            refetch={values?.permanentAddress.stateId && generateRandomString()}
-
-                            name="permanentAddress.stateId"
-                            onChange={(e) => {
-                              setFieldValue(
-                                'permanentAddress.stateId',
-                                e.value
-                              );
-                              setFieldValue('permanentAddress.districtId', '');
-                            }}
-                            filters={{
-                            }}
-                            label="State"
-                            showLabel={true}
-                            defaultValue={values?.permanentAddress.stateId}
-                            selectProps={{
-                              placeholder: 'Select',
-                              isClearable: true,
-                              isDisabled: !values?.permanentAddress?.country
-                                ? true
-                                : false,
-                            }}
-                          />
-                        </div>
-                      </div>
-                      <div className="group-type-3-equal">
-                        <div className="flex-1 w-100">
-                          <CustomSelectById
-                            id="district"
-                            refetch={values?.permanentAddress.districtId && generateRandomString()}
-
-                            isMulti={false}
-                            useFormik={true}
-                            name="permanentAddress.districtId"
-                            onChange={(e) => {
-                              setFieldValue(
-                                'permanentAddress.districtId',
-                                e.value
-                              );
-                            }}
-                            label="District"
-                            showLabel={true}
-                            defaultValue={values?.permanentAddress.districtId}
-                            filters={{
-                              stateId: values?.permanentAddress?.stateId,
-                            }}
-                            selectProps={{
-                              placeholder: 'Select',
-                              isClearable: true,
-                              isDisabled: !values?.permanentAddress?.stateId
-                                ? true
-                                : false,
-                            }}
-                          />
-
-
-
-                        </div>
-                        <div className="flex-1 w-100">
-                          <FormikTextField
-                            label="Address 1"
-                            placeholder="Enter address"
-                            name="permanentAddress.address1"
-                            onChange={(e) => {
-                              let value = e.target.value;
-                              setFieldValue(
-                                'permanentAddress.address1',
-                                startSpcaeRemover(value)
-                              );
-                            }}
-                          />
-                        </div>
-                        <div className="flex-1 w-100">
-                          <FormikTextField
-                            label="Address 2"
-                            placeholder="Enter address"
-                            name="permanentAddress.address2"
-                            onChange={(e) => {
-                              let value = e.target.value;
-                              setFieldValue(
-                                'permanentAddress.address2',
-                                startSpcaeRemover(value)
-                              );
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </div> */}
                   </div>
                 </div>
               </>

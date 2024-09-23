@@ -22,7 +22,7 @@ const PreviewResellCompany = () => {
   const {setCount } = useContext(CounterContext);
 
   useEffect(() => { 
-    setCount('User Management');
+    setCount('');
   }, []);
 
   const onUserDetailsGetById = async () => {

@@ -84,13 +84,17 @@ export const APIS = {
   USER_LIST: 'adminusers/getAllUsers',
 
   USER_ALL_LIST: '/v1/user',
-
+COMP_RESEL:'/user/getAllUsers',
+  // USER_ALL_LIST: '/industry',
   UPDATE_USER_BY_ID: 'v1/user',
 
-  ADD_USER: '/v1/user',
+  ADD_USER: '/user/signup',
+  // https://magnet.evalue8.info/api/user/signup
   // USERS_BY_ID: 'adminusers/getUserById',
 
   USERS_BY_ID: '/v1/user',
+
+  // api/user/userList
   // UPDATE_USER_BY_ID: 'adminusers/updateUserById',
   DRIVER_CONDUCTOR: 'v2/driverconductor',
   GET_ALL_ROUTES: '/v1/route',

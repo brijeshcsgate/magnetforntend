@@ -11,10 +11,13 @@ const AxiosInstance = axios.create({
   timeout: 60000,
   baseURL: BaseUrl,
   headers: {
-    'Content-Type': 'application/json',
+    // 'Content-Type': 'application/json',
+    
+    'Content-Type': 'multipart/form-data',
     'Device-Platform': 'web',
   },
 });
+
 
 AxiosInstance.interceptors.request.use(
   (config) => {

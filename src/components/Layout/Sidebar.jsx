@@ -128,7 +128,7 @@ const Sidebar = ({ isShowSidebar, toggleSidebar, onMouseLeave, onMouseEnter }) =
           className={`${isShowSidebar ? 'd-flex' : ''}`}
           style={{ justifyContent: 'center' }}
         >
-          {closedStateLogo({ width: 50, height: 50 })}
+          {/* {closedStateLogo({ width: 50, height: 50 })} */}
         </div>
 
         {/* <button

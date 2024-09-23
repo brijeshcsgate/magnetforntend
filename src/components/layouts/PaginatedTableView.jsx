@@ -16,6 +16,8 @@ import {
 import KanbanBoard from '@/pages/issues/KanBan';
 
 const PaginatedTableView = ({
+
+  columns_data, rows_data, pageSizeOptions_data = [5, 10], loading = false, checkboxSelection = false,
   queryKey,
   queryFn,
   LIST_OF_FILTERS,
@@ -157,7 +159,7 @@ const PaginatedTableView = ({
           <TabsContent key={tab.value} value={tab.value}>
             <section className="pl-4 pr-4 flex flex-col gap-4">
               <section className="flex items-center justify-between gap-4">
-                <div>{/* Add filter section if needed */}</div>
+                <div></div>
               </section>
               <section className="w-full h-[calc(100vh-185px)]">
                 {viewMode === 'grid' ? (
@@ -165,16 +167,23 @@ const PaginatedTableView = ({
                     <KanbanBoard tasks={girdData} />
                   </div>
                 ) : (
+
                   <DataGrid
-                    rows={rows}
-                    columns={columns}
-                    paginationMode="server"
-                    rowCount={totalCount}
-                    pageSizeOptions={pageSizeOptions}
-                    paginationModel={paginationModel}
-                    onPaginationModelChange={handlePaginationModelChange}
-                    disableRowSelectionOnClick
-                    loading={isFetching}
+                    rows={rows_data}
+                    columns={columns_data}
+                    loading={loading}
+                    initialState={{ pagination: { paginationModel } }}
+                    pageSizeOptions={pageSizeOptions_data}
+                    checkboxSelection={checkboxSelection}
+                    sx={{
+                      border: '1 solid grey',
+                      '& .custom-header': {
+                        backgroundColor: '#f0f0f0', // Custom background color for headers
+                        fontSize: '14px',
+                        fontWeight: 'bold',
+                        color: '#002850', 
+                        // borderColor:'grey'// Custom font color
+                      },}}
                   />
                 )}
               </section>
@@ -187,3 +196,28 @@ const PaginatedTableView = ({
 };
 
 export default PaginatedTableView;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  // <DataGrid
+                  //   rows={rows}
+                  //   columns={columns}
+                  //   paginationMode="server"
+                  //   rowCount={totalCount}
+                  //   pageSizeOptions={pageSizeOptions}
+                  //   paginationModel={paginationModel}
+                  //   onPaginationModelChange={handlePaginationModelChange}
+                  //   disableRowSelectionOnClick
+                  //   loading={isFetching}
+                  // />

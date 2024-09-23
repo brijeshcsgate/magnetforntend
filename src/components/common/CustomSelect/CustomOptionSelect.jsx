@@ -68,8 +68,8 @@ const colourStyles = {
 };
 
 const getDefaultEndpoint = (id) => `v2/masters/search/${id}`;
-
 const CustomOptionSelect = ({ name, label, placeholder, options, className = "" }) => {
+  // console.log('options',options)
   return (
     <div>
       <Label htmlFor={name}>
@@ -90,8 +90,8 @@ const CustomOptionSelect = ({ name, label, placeholder, options, className = "" 
             <SelectGroup>
               {/* <SelectLabel>{label}</SelectLabel> */}
               {options?.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
+                <SelectItem key={option._id} value={option._id}>
+                  {option.industry}
                 </SelectItem>
               ))}
             </SelectGroup>
