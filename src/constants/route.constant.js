@@ -26,7 +26,10 @@ RESELLCOMP_PREVIE: '/reseller-company/preview',
 
 
 
+//profiles pages
 
+
+PROFILE_1: '/profile/v1',
 
 
 

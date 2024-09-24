@@ -1,4 +1,5 @@
-import './App.css';
+// import './App.css';
+// import './index.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useQuery } from '@tanstack/react-query';
@@ -13,6 +14,7 @@ import { protectedRoutes, publicRoutes } from '@/routes';
 import useAppStore from '@/store';
 import useStore from './store/userStore';
 import { TitleOfPageProvider } from './components/Layout/commonLayout/TitleOfPageProvider';
+import ProfilepageUser from './pages/ProfilePages/ProfilepageUser';
 
 const GOOGLE_MAP_KEY = import.meta.env.VITE_GOOGLE_MAP_KEY;
 
@@ -72,6 +74,11 @@ const App = () => {
       {isAuthenticated
         ? renderRoutes(protectedRoutes, AdminLayout)
         : renderRoutes(publicRoutes, CommonLayout)}
+        <Route
+          path='/profile'
+          // key={index}
+          element={<ProfilepageUser/>}
+        />
     </Routes>
   );
 };

@@ -64,6 +64,7 @@ import TermsOfUse from './pages/Authentication/PrivacyPolicy/TermsOfUse';
 import ResellCompany from './pages/Reseller-Company';
 import PreviewResellCompany from './pages/Reseller-Company/Reseller-company-preview';
 import ResellCompanyAddEdit from './pages/Reseller-Company/Reseller-company-add-edt/ResellCompanyAddEdit';
+import ProfilepageUser from './pages/ProfilePages/ProfilepageUser';
 // import UserListView from './pages/user/index2';
 // import PreviewUsers from './pages/user-role/UserPreview';
 // import InspectionFormList from './pages/InspectionModule/InspectionForm/InspectionFormList/InspectionFormList';
@@ -414,5 +415,9 @@ const publicRoutes = [
   { path: ROUTES.TERMS_CONDITIONS, component: TermsOfUse },
   { path: ROUTES.Email_Template, component: EmailTemplate },
   { path: ROUTES.SET_PASSWORD, component: SetPassword },
+  // { path: `${ROUTES.PROFILE_1}/:id`, component: ProfilepageUser },
+
+
+  
 ];
 export { protectedRoutes, publicRoutes };

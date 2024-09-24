@@ -122,4 +122,10 @@ COMP_RESEL:'/user/getAllUsers',
 
   START_INSPECTION: 'V2/startInspection',
   START_INSPECTION_Issues: 'V2/startInspection/issues',
+
+
+
+  //profile pages
+
+  PROFILE_1: 'user/getAllUsers',
 };

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
+import '../../../App.css';
+import '../../../index.css';
 import '../Admin.css';
 import useStore from '@/store/userStore';
 import { APIS } from '@/constants/api.constant';
