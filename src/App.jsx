@@ -3,7 +3,7 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useQuery } from '@tanstack/react-query';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import LoadingScreen from '@/components/LoadingScreen';
 import AdminLayout from '@/components/Layout/adminLayout';
 import CommonLayout from '@/components/Layout/commonLayout';
@@ -22,6 +22,8 @@ const App = () => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useAppStore();
   const { permissions, setPermissions } = useStore();
 
+  const { id } = useParams(); // Access the id from URL
+  // let profileId = id;
   const { isLoading } = useQuery({
     queryKey: ['verifyToken'],
     queryFn: async () =>
@@ -74,11 +76,12 @@ const App = () => {
       {isAuthenticated
         ? renderRoutes(protectedRoutes, AdminLayout)
         : renderRoutes(publicRoutes, CommonLayout)}
-        <Route
+        {/* <Route
           path='/profile'
           // key={index}
           element={<ProfilepageUser/>}
-        />
+        /> */}
+        <Route path='/profile/:id' element={<ProfilepageUser />} />
     </Routes>
   );
 };

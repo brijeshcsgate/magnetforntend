@@ -127,5 +127,11 @@ COMP_RESEL:'/user/getAllUsers',
 
   //profile pages
 
-  PROFILE_1: 'user/getAllUsers',
+  // PROFILE_1: 'user/getAllUsers',
+  
+  PROFILE_1: 'user/userList',
+
+  INDUSTRY: 'industry',
+  
+  // user/userList
 };

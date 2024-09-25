@@ -41,7 +41,8 @@ const Header = ({isShowSidebar}) => {
   return (
     <div className="biHeader">
       
-        <div className={isShowSidebar===false?"text-2xl font-semibold text-[#002850]":"pl-2 ml-5 text-2xl font-semibold text-[#002850]"}>{count}
+        <div className={isShowSidebar===false?"text-2xl font-semibold text-[#002850]":"pl-2 ml-5 text-2xl font-semibold text-[#002850]"}>
+          {count}
 
         </div>
      

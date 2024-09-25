@@ -21,29 +21,33 @@ import ppt from "./Images/powerpoint.png";
 import linkico from "./Images/link_ico.png";
 import bgimg from "./Images/slide-bg.jpg";
 import "../ProfilePageCss/carousel.css";
-// import axiosInstance from "./AxiosInstance";
 import { Carousel } from "react-responsive-carousel";
 import { useParams } from "react-router-dom";
 import { APIS } from "@/constants/api.constant";
-import apiService from "@/lib/apiService";
+import apiService, { axiosInstanceWapi } from "@/lib/apiService";
+import TextToggler from "./TextToggler";
+import { resizeImage } from "./resizeImage";
+import DynamicImageBox from "./DynamicImageBox";
+import VideoCard from "./VideoCard";
 
 const ProfilepageUser = () => {
+
+
+
   const slides = [
     { src: img3, text: "Caption Text" },
     { src: img3, text: "Caption Two" },
     { src: img3, text: "Caption Three" },
   ];
-  const slides2 = [
-    { src: img2, text: "Caption Text" },
-    { src: img3, text: "Caption Two" },
-    { src: img1, text: "Caption Three" },
-  ];
+  const [profiles, setProfiles] = useState([]);
 
-  const slides3 = [
-    { src: img3, text: "Caption Text" },
-    { src: img2, text: "Caption Two" },
-    { src: img1, text: "Caption Three" },
-  ];
+  // Auto-increment count to cycle through profiles
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prevCount) => (prevCount + 1) % profiles.length);
+    }, 5000); // Slide every 5 seconds
+    return () => clearInterval(interval);
+  }, [profiles]);
 
   const myFunction = () => {
     const dots = document.getElementById("dots");
@@ -62,22 +66,19 @@ const ProfilepageUser = () => {
   };
   const [currentIndex, setCurrentIndex] = useState(0);
   const [count, setCount] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
+  // Toggle the text view
+  const toggleText = () => {
+    setIsExpanded(!isExpanded);
+  };
   useEffect(() => {
-    // Set the time interval for slide change (e.g., 3 seconds)
     const interval = setInterval(() => {
-      // setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-      // // setOut(true);
-      // // handleNextImage ()
-      // setCount(!count);
       nextSlide();
     }, 2500);
 
     return () => clearInterval(interval);
   }, []);
-
-  // const [currentIndex, setCurrentIndex] = useState(0);
-  // const [count, setCount] = useState(false);
 
   const nextSlide = () => {
     setCount(true);
@@ -98,8 +99,6 @@ const ProfilepageUser = () => {
     const handleScroll = () => {
       const topOffset = document.getElementById("profileName").offsetTop;
       const scrollPosition = window.scrollY;
-      // console.log('scrollPosition',scrollPosition)
-      // if (scrollPosition >= topOffset) {
       if (scrollPosition >= 288) {
         setIsSticky(true);
 
@@ -119,17 +118,26 @@ const ProfilepageUser = () => {
   }, []);
 
   const { id } = useParams(); // Access the id from URL
-  // Fetch profile details when the component mounts
   let profileId = id;
+  const [indus, setIndus] = useState([])
+
+
+  // const findIndustryById = (id) => {
+  //   return indus?.find(industry => industry._id === id);
+  // };
+
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        // const response = await axiosInstance.get(
-        //   `/profile/details/${profileId}`
-        // );
-const id='653f450f13948a9fd7fb7a70'
-        const response = await apiService.get(`${APIS.PROFILE_1}/${id }`);
+        // const id = '653f450f13948a9fd7fb7a70'
+        const response = await apiService.get(`${APIS.PROFILE_1}/${id}`);
+
+        const industry_data = await axiosInstanceWapi.get(`${APIS.INDUSTRY}`);
+        console.log(industry_data.data.data)
+
         setProfileDetails(response.data);
+        setIndus(industry_data.data?.data)
+        setProfiles(response.data.testimonials);
       } catch (err) {
         setError(err.response?.data?.error || "Error fetching profile");
       } finally {
@@ -192,20 +200,28 @@ const id='653f450f13948a9fd7fb7a70'
               className={`st-image ${isSticky ? "sticky" : ""}`}
               id="profileName"
             >
-              <img src={'http://localhost:4005'+profileDetails?.profileImage} alt="" />
+              <img src={profileDetails?.profileImage} alt="" />
               <div className="st-title">{profileDetails?.name}</div>
             </div>
             <div className="profile-quote">
-              {profileDetails?.profileShortDescription}
+              {profileDetails?.message}
             </div>
             <div className="st-title">{profileDetails?.name}</div>
             <div className="st-subtitle">
-              {profileDetails?.profession}
+              {profileDetails?.jobRoleName}
             </div>
-            <div className="life-ins">{profileDetails?.jobRole}</div>
+            <div className="life-ins">{profileDetails?.industryName}
+            </div>
             <div className="center_icon">
-            <img src={liclogo} className="liclogo" />
+              <img
+                // src={liclogo} 
+                style={resizeImage(80, 41)}
+                src={profileDetails?.orgLogo}
+                className="liclogo" />
             </div>
+            <br />
+
+
             <div className="bts">
               <a href="#popup-form" className="btn btn_animated has-popup">
                 <span className="circle center_icon">Refer Business</span>
@@ -238,7 +254,7 @@ const id='653f450f13948a9fd7fb7a70'
             <div className="st-soc">
               <a
                 target="blank"
-                href="https://www.facebook.com/"
+                href={profileDetails?.facebookLink}
                 className="btn_animated"
               >
                 <span className="circle center_icon">
@@ -282,7 +298,7 @@ const id='653f450f13948a9fd7fb7a70'
               </a>
               <a
                 target="blank"
-                href="https://twitter.com/"
+                href={profileDetails?.twitterLink}
                 className="btn_animated"
               >
                 <span className="circle center_icon">
@@ -349,7 +365,7 @@ const id='653f450f13948a9fd7fb7a70'
             </div>
           </div>
         </section>
-
+        {/* {JSON.stringify(profileDetails.name)} */}
         {/* <!-- Wrapper --> */}
         <div className="wrapper">
           {/* <!-- Section About --> */}
@@ -364,38 +380,41 @@ const id='653f450f13948a9fd7fb7a70'
                         <strong>
                           <span>Mobile No:</span>
                         </strong>
-                        (+91) 8126 139 074
+                        {/* (+91) 8126 139 074 */}
+                        (+{profileDetails?.countryCode}) {profileDetails?.mobile}
+
                       </li>
                       <li>
                         <strong>
                           <span>WhatsApp No:</span>
                         </strong>{" "}
-                        (+91) 8126 139 074
+                        {/* (+91) 8126 139 074 */}
+                        (+{profileDetails?.whatsappNumberCountryCode}) {profileDetails?.whatsappNumber}
                       </li>
                       <li>
                         <strong>
                           <span>Email address:</span>
                         </strong>{" "}
-                        gyanedra.s@troology.com
+                        {/* gyanedra.s@troology.com */}
+                        {profileDetails?.email}
                       </li>
                       <li>
                         <strong>
                           <span>Website:</span>
                         </strong>{" "}
-                        www.magnet.cards
+                        www.magnet.cards--?
                       </li>
                       <li>
                         <strong>
                           <span>Telegram:</span>
                         </strong>
-                        @gyangps
+                        @gyangps--?
                       </li>
                       <li>
                         <strong>
                           <span>Address:</span>
                         </strong>
-                        4th Floor, Himanshu Sadan, 5 Park Road, Hazratganj,
-                        Lucknow, Uttar Pradesh 226001
+                        {profileDetails?.address}
                       </li>
                     </ul>
                   </div>
@@ -404,23 +423,13 @@ const id='653f450f13948a9fd7fb7a70'
                   <div className="text-box">
                     <div className="contact-title">About Me</div>
                     <p>
-                      This section shall help you to have detailed information
-                      about yourself. Create it quickly with Magnet’s set of
-                      pre-defined ready to use templates across industries of
-                      your ch<span id="dots">...</span>
-                      <span id="more">
-                        oice enim ligula venenatis dolor. Maecenas nisl est,
-                        ultrices nec congue eget, auctor vitae massa. Fusce
-                        luctus vestibulum augue ut aliquet. Nunc sagittis dictum
-                        nisi, sed ullamcorper ipsum dignissim ac. In at libero
-                        sed nunc venenatis imperdiet sed ornare turpis. Donec
-                        vitae dui eget tellus gravida venenatis. Integer
-                        fringilla congue eros non fermentum. Sed dapibus
-                        pulvinar nibh tempor porta.
-                      </span>
-                      <span onclick="myFunction()" id="myBtn">
-                        see more
-                      </span>
+
+                      {isExpanded ? profileDetails?.aboutUs : profileDetails?.aboutUs?.slice(0, 200)}...
+                      {profileDetails?.aboutUs?.length >= 200 ?
+                        <span onClick={toggleText} id="myBtn">
+                          {isExpanded ? "show Less" : "see More"}
+                        </span> : <></>
+                      }
                     </p>
                   </div>
                 </div>
@@ -439,141 +448,48 @@ const id='653f450f13948a9fd7fb7a70'
                 // height: '1879.14px'
               }}
             >
-              <div
-                className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                data-sr-id="1"
-                style={{
-                  visibility: "visible",
-                  transform: "translateY(0px) scale(1)",
-                  opacity: "1",
-                  transition:
-                    "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)",
-                  left: "0%",
-                  // top: '0px'
-                }}
-              >
-                <div className="image">
-                  <a href="#popup-1" className="has-popup">
-                    <img src={img1} alt="" />
-                  </a>
-                </div>
-                <div className="content-box">
-                  <a href="#popup-1" className="name has-popup">
-                    LIFE INSURANCE
-                  </a>
-                  <p>
-                    We are a team of professional Insurance and Financial
-                    Advisors who are here to cater. So striking at of to
-                    welcomed resolved.
-                  </p>
-                  <div className="service-bts">
-                    <a href="#popup-1" className="btn btn_animated has-popup">
-                      <span className="circle center_icon">View detail</span>
-                    </a>
-                    <a
-                      href="#popup-1"
-                      className="btn extra contact-btn btn_animated has-popup"
-                    >
-                      <span className="circle center_icon">Enquiry</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+              {/* ------------------3333 */}
 
-              <div
-                className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                data-sr-id="2"
-                style={{
-                  visibility: "visible",
-                  opacity: "1",
-                  transitionBehavior: "normal, normal, normal",
-                  transitionTimingFunction:
-                    "ease, cubic-bezier(0.6, 0.2, 0.1, 1), cubic-bezier(0.6, 0.2, 0.1, 1)",
-                  transitionDelay: "0s, 0s, 0s",
-                  left: "0%",
-                  // top: '616px'
-                }}
-              >
-                <div className="image">
-                  <a href="#popup-2" className="has-popup">
-                    <img src={img1} alt="" />
-                  </a>
-                </div>
-                <div className="content-box">
-                  <a href="#popup-2" className="name has-popup">
-                    HEALTH INSURANCE
-                  </a>
-                  <p>
-                    Preference any astonished unreserved mrs. Prosperous
-                    understood middletons in conviction an uncommonly do.
-                    Supposing so be resolving.
-                  </p>
-                  <div className="service-bts">
-                    <a href="#popup-2" className="btn btn_animated has-popup">
-                      <span className="circle center_icon">View detail</span>
-                    </a>
-                    <a
-                      href="#popup-2"
-                      className="btn extra contact-btn btn_animated has-popup"
-                    >
-                      <span className="circle center_icon">Enquiry</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
 
-              <div
-                className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                data-sr-id="3"
-                style={{
-                  visibility: "visible",
-                  opacity: "1",
-                  transitionBehavior: "normal, normal, normal",
-                  transitionTimingFunction:
-                    "ease, cubic-bezier(0.6, 0.2, 0.1, 1), cubic-bezier(0.6, 0.2, 0.1, 1)",
-                  transitionDelay: "0s, 0s, 0s",
-                  left: "0%",
-                  // top: '1232px'
-                }}
-              >
-                <div className="image">
-                  <a href="#popup-3" className="has-popup">
-                    <img src={img1} alt="" />
-                  </a>
-                </div>
-                <div className="content-box">
-                  <a href="#popup-3" className="name has-popup">
-                    MUTUAL FUNDS
-                  </a>
-                  <p>
-                    Do answered bachelor occasion in of offended no concerns.
-                    Supply worthy warmth branch of no ye. Voice tried known to
-                    as my to.
-                  </p>
-                  <div className="service-bts">
-                    <a href="#popup-3" className="btn btn_animated has-popup">
-                      <span className="circle center_icon">
-                        <span
-                          className="ink animate"
-                          style={{
-                            height: "130px",
-                            width: "130px",
-                            top: "-42.875px",
-                            left: "-57.125px",
-                          }}
-                        ></span>
-                        View detail
-                      </span>
-                    </a>
-                    <a
-                      href="#popup-3"
-                      className="btn extra contact-btn btn_animated has-popup"
-                    >
-                      <span className="circle center_icon">Enquiry</span>
+              {profileDetails.services.map((item) => (
+                <div
+                  key={item.id}
+                  className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
+                  data-sr-id={item.id}
+                  style={{
+                    visibility: "visible",
+                    opacity: "1",
+                    transitionBehavior: "normal, normal, normal",
+                    transitionTimingFunction:
+                      "ease, cubic-bezier(0.6, 0.2, 0.1, 1), cubic-bezier(0.6, 0.2, 0.1, 1)",
+                    transitionDelay: "0s, 0s, 0s",
+                    left: "0%",
+                  }}
+                >
+                  <div className="image">
+                    <a href='#' className="has-popup">
+                      <img src={item.image} alt={item.name} style={resizeImage(342, 228)} />
                     </a>
                   </div>
+                  <div className="content-box">
+                    <a href='#' className="name has-popup">
+                      {item.name}
+                    </a>
+                    <TextToggler text={item.description} charLimit={60} isShowBtn={false} />
+                    <div className="service-bts">
+                      <a href='#' className="btn btn_animated has-popup">
+                        <span className="circle center_icon">View detail</span>
+                      </a>
+                      <a
+                        href='#'
+                        className="btn extra contact-btn btn_animated has-popup"
+                      >
+                        <span className="circle center_icon">Enquiry</span>
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
             <div className="clear"></div>
           </section>
@@ -591,433 +507,97 @@ const id='653f450f13948a9fd7fb7a70'
 
 
 
-<div className="row">
-      {profileDetails?.products?.map((product, index) => (
-        <div
-          key={index}
-          className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-          data-sr-id="4"
-          style={{
-            visibility: 'visible',
-            transform: 'translateY(0px) scale(1)',
-            opacity: '1',
-            transition:
-              'all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)',
-            left: '0%',
-            top: '0px',
-          }}
-        >
-          <div className="image">
-            <a href={`#popup-${index}`} className="has-popup">
-              <img
-                src={product?.image}
-                // className="p-in-image-slide"
-                className={`p-in-image-slide2 ${
-                  count ? "p-in-slide-out" : "p-in-slide-in"
-                }`}
-                alt={product?.title}
-              />
-            </a>
-          </div>
-          <div className="content-box">
-            <a href={`#popup-${index}`} className="name has-popup">
-              {product?.title}
-            </a>
-            <p>{product?.description}</p>
-            <div className="pricing">
-              <i
-                style={{
-                  fontSize: '12px',
-                  position: 'relative',
-                  top: '-8px',
-                }}
-                className="fa fa-inr"
-                aria-hidden="true"
-              ></i>
-              <a href="Javascript:void(0)" className="">
-                {' '}
-                {product?.price}
-              </a>
-              <br />
-              <span className="mrp">M.R.P.: </span>
-              <i
-                style={{
-                  fontSize: '10px',
-                  position: 'relative',
-                  top: '-1px',
-                }}
-                className="fa fa-inr"
-                aria-hidden="true"
-              ></i>
-              <del> {product?.offerPrice}</del>
-            </div>
-            <a href={product?.websiteLink} className="product-link">
-              {product?.websiteLink}
-            </a>
-            <div className="service-bts">
-              <a href={`#popup-${index}`} className="btn btn_animated has-popup">
-                <span className="circle center_icon">View detail</span>
-              </a>
-              <a
-                href={`#popup-${index}`}
-                className="btn extra contact-btn btn_animated has-popup"
-              >
-                <span className="circle center_icon">Enquiry</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Popup Modal */}
-          <div id={`#popup-${index}`} className="popup-box mfp-fade mfp-hide">
-            <div className="content">
-              <div className="desc">
-                <h3 className="mr">{product?.title}</h3>
-                <p>{product?.description}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-
-
-
-
-              {/* new */}
-              {/* <div
-                className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                data-sr-id="4"
-                style={{
-                  visibility: "visible",
-                  transform: "translateY(0px) scale(1)",
-                  opacity: "1",
-                  transition:
-                    "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)",
-                  left: "0%",
-                  top: "0px",
-                }}
-              >
-                <div className="image">
-                  <a href="#popup-5" className="has-popup">
-                    <img
-                      src={slides[currentIndex].src}
-                      className={`p-in-image-slide ${
-                        count ? "p-in-slide-out" : "p-in-slide-in"
-                      }`}
-                      alt="slide"
-                    />
-                  </a>
-                </div>
-                <div className="content-box">
-                  <a href="#popup-4" className="name has-popup">
-                    {title}
-                  </a>
-                  <p>
-                    {description}
-                  </p>
-                  <div className="pricing">
-                    <i
-                      style={{
-                        fontSize: "12px",
-                        position: "relative",
-                        top: "-8px",
-                      }}
-                      className="fa fa-inr"
-                      aria-hidden="true"
-                    ></i>
-                    <a href="Javascript:void(0)" className="">
-                      {" "}
-                      {price}
-                    </a>
-                    <br />
-                    <span className="mrp">M.R.P.: </span>
-                    <i
-                      style={{
-                        fontSize: "10px",
-                        position: "relative",
-                        top: "-1px",
-                      }}
-                      className="fa fa-inr"
-                      aria-hidden="true"
-                    ></i>
-                    <del> {offerPrice}</del>
-                  </div>
-                  <a href="javascript:void(0)" className="product-link">
-                  {websiteLink}
-                  </a>
-                  <div className="service-bts">
-                    <a href="#popup-4" className="btn btn_animated has-popup">
-                      <span className="circle center_icon">View detail</span>
-                    </a>
-                    <a
-                      href="#popup-4"
-                      className="btn extra contact-btn btn_animated has-popup"
-                    >
-                      <span className="circle center_icon">Enquiry</span>
-                    </a>
-                  </div>
-                </div>
-                <div id="popup-4" className="popup-box mfp-fade mfp-hide">
-                  <div className="content">
-                    <div className="desc">
-                      <h3 className="mr">Nike</h3>
-                      <p>
-                        So striking at of to welcomed resolved. Northward by
-                        described up household therefore attention. Excellence
-                        decisively nay man yet impression for contrasted
-                        remarkably.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-
-              <div
-                className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                data-sr-id="5"
-                style={{
-                  visibility: "visible",
-                  opacity: "1",
-                  transitionBehavior: "normal, normal, normal",
-                  transitionTimingFunction:
-                    "ease, cubic-bezier(0.6, 0.2, 0.1, 1), cubic-bezier(0.6, 0.2, 0.1, 1)",
-                  transitionDelay: "0s, 0s, 0s",
-                  left: "0%",
-                }}
-              >
-                <div className="image">
-                  <a href="#popup-5" className="has-popup">
-                    <img
-                      src={slides[currentIndex].src}
-                      className={`p-in-image-slide2 ${
-                        count ? "p-in-slide-out" : "p-in-slide-in"
-                      }`}
-                      alt="slide"
-                    />
-                  </a>
-                </div>
-                <div className="content-box">
-                  <a href="#popup-4" className="name has-popup">
-                    NIKE
-                  </a>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
-                  </p>
-                  <div className="pricing">
-                    <a href="javascript:void(0)">Rs.2000</a>
-                    <del>Rs.2000</del>
-                  </div>
-                  <a href="javascript:void(0)" className="product-link">
-                    https://www.troology.com/
-                  </a>
-                  <div className="service-bts">
-                    <a href="#popup-4" className="btn btn_animated has-popup">
-                      <span className="circle center_icon">View detail</span>
-                    </a>
-                    <a
-                      href="#popup-4"
-                      className="btn extra contact-btn btn_animated has-popup"
-                    >
-                      <span className="circle center_icon">Enquiry</span>
-                    </a>
-                  </div>
-                </div>
-                <div id="popup-4" className="popup-box mfp-fade mfp-hide">
-                  <div className="content">
+              <div className="row">
+                {profileDetails?.products?.map((product, index) => (
+                  <div
+                    key={index}
+                    className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
+                    data-sr-id="4"
+                    style={{
+                      visibility: 'visible',
+                      transform: 'translateY(0px) scale(1)',
+                      opacity: '1',
+                      transition:
+                        'all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)',
+                      left: '0%',
+                      top: '0px',
+                    }}
+                  >
                     <div className="image">
-                      <div className="owl-carousel owl-theme owl-loaded owl-drag">
-                        <div className="owl-stage-outer">
-                          <div
-                            className="owl-stage"
-                            style={{
-                              transform: "translate3d(0px, 0px, 0px)",
-                              transition: "all",
-                            }}
-                          >
-                            <div className="owl-item">
-                              <div className="item">
-                                <img src={img2} alt="" />
-                              </div>
-                            </div>
-                            <div className="owl-item">
-                              <div className="item">
-                                <img src={img1} alt="" />
-                              </div>
-                            </div>
-                            <div className="owl-item">
-                              <div className="item">
-                                <img src={img1} alt="" />
-                              </div>
-                            </div>
-                            <div className="owl-item">
-                              <div className="item">
-                                <img src={img1} alt="" />
-                              </div>
-                            </div>
-                            <div className="owl-item">
-                              <div className="item">
-                                <img src={img1} alt="" />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="owl-nav disabled">
-                          <button
-                            type="button"
-                            role="presentation"
-                            className="owl-prev"
-                          >
-                            <span aria-label="Previous">‹</span>
-                          </button>
-                          <button
-                            type="button"
-                            role="presentation"
-                            className="owl-next"
-                          >
-                            <span aria-label="Next">›</span>
-                          </button>
-                        </div>
-                        <div className="owl-dots disabled"></div>
+                      <a href={`#popup-${index}`} className="has-popup">
+                        <img
+                          src={product?.image}
+                          // className="p-in-image-slide"
+                          className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"
+                            }`}
+                          alt={product?.name}
+                        />
+                      </a>
+                    </div>
+                    <div className="content-box">
+                      <a href={`#popup-${index}`} className="name has-popup">
+                        {product?.name}
+                      </a>
+                      <p>{product?.description}</p>
+                      <div className="pricing">
+                        <i
+                          style={{
+                            fontSize: '12px',
+                            position: 'relative',
+                            top: '-8px',
+                          }}
+                          className="fa fa-inr"
+                          aria-hidden="true"
+                        ></i>
+                        <a href="Javascript:void(0)" className="">
+                          {' '}
+                          {product?.price}
+                        </a>
+                        <br />
+                        <span className="mrp">M.R.P.: </span>
+                        <i
+                          style={{
+                            fontSize: '10px',
+                            position: 'relative',
+                            top: '-1px',
+                          }}
+                          className="fa fa-inr"
+                          aria-hidden="true"
+                        ></i>
+                        <del> {product?.offerPrice}8888--Pend</del>
+                      </div>
+                      <a href={product?.websiteLink} className="product-link">
+                        {product?.websiteLink}--web link Pend
+                      </a>
+                      <div className="service-bts">
+                        <a href={`#popup-${index}`} className="btn btn_animated has-popup">
+                          <span className="circle center_icon">View detail</span>
+                        </a>
+                        <a
+                          href={`#popup-${index}`}
+                          className="btn extra contact-btn btn_animated has-popup"
+                        >
+                          <span className="circle center_icon">Enquiry</span>
+                        </a>
                       </div>
                     </div>
-                    <div className="desc">
-                      <h4>Nike</h4>
-                      <p>
-                        So striking at of to welcomed resolved. Northward by
-                        described up household therefore attention. Excellence
-                        decisively nay man yet impression for contrasted
-                        remarkably.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div
-                className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                data-sr-id="6"
-                style={{
-                  visibility: "visible",
-                  opacity: "1",
-                  transitionBehavior: "normal, normal, normal",
-                  transitionTimingFunction:
-                    "ease, cubic-bezier(0.6, 0.2, 0.1, 1), cubic-bezier(0.6, 0.2, 0.1, 1)",
-                  transitionDelay: "0s, 0s, 0s",
-                  left: "0%",
-                }}
-              >
-                <div className="image">
-                  <a href="#popup-5" className="has-popup">
-                    {/* <img src={slides3[currentIndex].src} className={count ? 'image-slide out' : 'image-slide'}alt="slide" /> */}
-                    <img
-                      src={slides3[currentIndex].src}
-                      className={`p-in-image-slide ${
-                        count ? "p-in-slide-out" : "p-in-slide-in"
-                      }`}
-                      alt="slide"
-                    />
-                  </a>
-                </div>
-                <div className="content-box">
-                  <a href="#popup-4" className="name has-popup">
-                    NIKE
-                  </a>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
-                  </p>
-                  <div className="pricing">
-                    <a href="javascript:void(0)">Rs.2000</a>
-                    <del>Rs.2000</del>
-                  </div>
-                  <a href="javascript:void(0)" className="product-link">
-                    https://www.troology.com/
-                  </a>
-                  <div className="service-bts">
-                    <a href="#popup-4" className="btn btn_animated has-popup">
-                      <span className="circle center_icon">View detail</span>
-                    </a>
-                    <a
-                      href="#popup-4"
-                      className="btn extra contact-btn btn_animated has-popup"
-                    >
-                      <span className="circle center_icon">Enquiry</span>
-                    </a>
-                  </div>
-                </div>
-                <div id="popup-4" className="popup-box mfp-fade mfp-hide">
-                  <div className="content">
-                    <div className="image">
-                      <div className="owl-carousel owl-theme owl-loaded owl-drag">
-                        <div className="owl-stage-outer">
-                          <div
-                            className="owl-stage"
-                            style={{
-                              transform: "translate3d(0px, 0px, 0px)",
-                              transition: "all",
-                            }}
-                          >
-                            <div className="owl-item">
-                              <div className="item">
-                                <img src={img1} alt="" />
-                              </div>
-                            </div>
-                            <div className="owl-item">
-                              <div className="item">
-                                <img src={img1} alt="" />
-                              </div>
-                            </div>
-                            <div className="owl-item">
-                              <div className="item">
-                                <img src={img1} alt="" />
-                              </div>
-                            </div>
-                            <div className="owl-item">
-                              <div className="item">
-                                <img src={img1} alt="" />
-                              </div>
-                            </div>
-                            <div className="owl-item">
-                              <div className="item">
-                                <img src={img1} alt="" />
-                              </div>
-                            </div>
-                          </div>
+                    {/* Popup Modal */}
+                    <div id={`#popup-${index}`} className="popup-box mfp-fade mfp-hide">
+                      <div className="content">
+                        <div className="desc">
+                          <h3 className="mr">{product?.name}</h3>
+                          <p>{product?.description}</p>
                         </div>
-                        <div className="owl-nav disabled">
-                          <button
-                            type="button"
-                            role="presentation"
-                            className="owl-prev"
-                          >
-                            <span aria-label="Previous">‹</span>
-                          </button>
-                          <button
-                            type="button"
-                            role="presentation"
-                            className="owl-next"
-                          >
-                            <span aria-label="Next">›</span>
-                          </button>
-                        </div>
-                        <div className="owl-dots disabled"></div>
                       </div>
                     </div>
-                    <div className="desc">
-                      <h4>Nike</h4>
-                      <p>
-                        So striking at of to welcomed resolved. Northward by
-                        described up household therefore attention. Excellence
-                        decisively nay man yet impression for contrasted
-                        remarkably.
-                      </p>
-                    </div>
                   </div>
-                </div>
+                ))}
               </div>
+
+
+
+
             </div>
             <div className="clear"></div>
           </section>
@@ -1025,7 +605,115 @@ const id='653f450f13948a9fd7fb7a70'
           {/* <!-- Offers --> */}
           <section className="section works" id="Offers-section">
             <div className="title">Offers</div>
-            <h4 className="Offers-content">Coming Soon</h4>
+            {/* <h4 className="Offers-content">Coming Soon</h4> */}
+
+            <div
+              className="row box-items"
+              style={{
+                position: "relative",
+              }}
+            >
+
+
+
+              <div className="row">
+                {profileDetails?.offers?.map((offer, index) => (
+                  <div
+                    key={index}
+                    className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
+                    data-sr-id="4"
+                    style={{
+                      visibility: 'visible',
+                      transform: 'translateY(0px) scale(1)',
+                      opacity: '1',
+                      transition:
+                        'all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)',
+                      left: '0%',
+                      top: '0px',
+                    }}
+                  >
+                    <div className="image">
+                      <a href={`#popup-${index}`} className="has-popup">
+                        <img
+                          src={offer?.image}
+                          // className="p-in-image-slide"
+                          className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"
+                            }`}
+                          alt={offer?.name}
+                        />
+                      </a>
+                    </div>
+                    <div className="content-box">
+                      <a href={`#popup-${index}`} className="name has-popup">
+                        {offer?.name}
+                      </a>
+                      <p>{offer?.description}</p>
+                      {/* <div className="pricing">
+                        <i
+                          style={{
+                            fontSize: '12px',
+                            position: 'relative',
+                            top: '-8px',
+                          }}
+                          className="fa fa-inr"
+                          aria-hidden="true"
+                        ></i>
+                        <a href="Javascript:void(0)" className="">
+                          {' '}
+                          {product?.price}
+                        </a>
+                        <br />
+                        <span className="mrp">M.R.P.: </span>
+                        <i
+                          style={{
+                            fontSize: '10px',
+                            position: 'relative',
+                            top: '-1px',
+                          }}
+                          className="fa fa-inr"
+                          aria-hidden="true"
+                        ></i>
+                        <del> {product?.offerPrice}8888--Pend</del>
+                      </div>
+                      <a href={product?.websiteLink} className="product-link">
+                        {product?.websiteLink}--web link Pend
+                      </a> */}
+                      <div className="service-bts">
+                        <a href={`#popup-${index}`} className="btn btn_animated has-popup">
+                          <span className="circle center_icon">
+                            Starts:
+                            {offer?.startDate} {offer?.startTime}
+                          </span>
+                        </a>
+                        <a
+                          href={`#popup-${index}`}
+                          className="btn extra contact-btn btn_animated has-popup"
+                        >
+                          <span className="circle center_icon">
+                            Ends:
+                            {offer?.endDate} {offer?.endTime}
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Popup Modal */}
+                    {/* <div id={`#popup-${index}`} className="popup-box mfp-fade mfp-hide">
+                      <div className="content">
+                        <div className="desc">
+                          <h3 className="mr">{product?.name}</h3>
+                          <p>{product?.description}</p>
+                        </div>
+                      </div>
+                    </div> */}
+                  </div>
+                ))}
+              </div>
+
+
+
+
+            </div>
             <div className="clear"></div>
           </section>
 
@@ -1036,115 +724,21 @@ const id='653f450f13948a9fd7fb7a70'
               className="row box-items"
               style={{
                 position: "relative",
-                // height: '1555.5px'
               }}
             >
-              <div
-                className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                data-sr-id="7"
-                style={{
-                  visibility: "visible",
-                  transform: "translateY(0px) scale(1)",
-                  opacity: "1",
-                  transition:
-                    "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)",
-                  left: "0%",
-                  top: "0px",
-                }}
-              >
-                <div className="image">
-                  <a href="#popup-5" className="has-popup">
-                    <img src={img3} alt="" />
-                  </a>
-                </div>
-                <div className="content-box">
-                  <a href="#popup-5" className="name has-popup">
-                    Magnet
-                  </a>
-                </div>
-                <div id="popup-5" className="popup-box mfp-fade mfp-hide">
-                  <div className="content">
-                    <div className="image">
-                      <img src={img3} alt="" />
-                    </div>
-                    <div className="desc">
-                      <h3 className="mr">Magnet</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div
-                className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                data-sr-id="8"
-                style={{
-                  visibility: "visible",
-                  opacity: "1",
-                  transitionBehavior: "normal, normal, normal",
-                  transitionTimingFunction:
-                    "ease, cubic-bezier(0.6, 0.2, 0.1, 1), cubic-bezier(0.6, 0.2, 0.1, 1)",
-                  transitionDelay: "0s, 0s, 0s",
-                  left: "0%",
-                  // top: '508px'
-                }}
-              >
-                <div className="image">
-                  <a href="#popup-6" className="has-popup">
-                    <img src={img3} alt="" />
-                  </a>
-                </div>
-                <div className="content-box">
-                  <a href="#popup-6" className="name has-popup">
-                    Magnet
-                  </a>
-                </div>
-                <div id="popup-6" className="popup-box mfp-fade mfp-hide">
-                  <div className="content">
-                    <div className="image">
-                      <img src={img3} alt="" />
-                    </div>
-                    <div className="desc">
-                      <h3 className="mr">Magnet</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div
-                className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                data-sr-id="9"
-                style={{
-                  visibility: "visible",
-                  opacity: "1",
-                  transitionBehavior: "normal, normal, normal",
-                  transitionTimingFunction:
-                    "ease, cubic-bezier(0.6, 0.2, 0.1, 1), cubic-bezier(0.6, 0.2, 0.1, 1)",
-                  transitionDelay: "0s, 0s, 0s",
-                  left: "0%",
-                  // top: '1017px'
-                }}
-              >
-                <div className="image">
-                  <a href="#popup-7" className="has-popup">
-                    <img src={img3} alt="" />
-                  </a>
-                </div>
-                <div className="content-box">
-                  <a href="#popup-7" className="name has-popup">
-                    Magnet
-                  </a>
-                </div>
-                <div id="popup-7" className="popup-box mfp-fade mfp-hide">
-                  <div className="content">
-                    <div className="image">
-                      <img src={img1} alt="" />
-                    </div>
-                    <div className="desc">
-                      <h3 className="mr">Magnet</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {profileDetails?.imageGalleries?.map((image, index) => (
+                <DynamicImageBox
+                  key={index}
+                  imgSrc={image.image}
+                  popupHref={image?.popupHref}
+                  name={image?.name}
+                  dataSrId={image?.dataSrId}
+                  customStyles={image?.customStyles}
+                />
+              ))}
+
             </div>
 
             {/* <!-- ---------video Gallery----------- --> */}
@@ -1154,158 +748,20 @@ const id='653f450f13948a9fd7fb7a70'
               className="row box-items"
               style={{
                 position: "relative",
-                // height: '1044px'
               }}
             >
-              <div
-                className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                data-sr-id="10"
-                style={{
-                  visibility: "visible",
-                  transform: "translateY(0px) scale(1)",
-                  opacity: "1",
-                  transition:
-                    "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)",
-                  left: "0%",
-                  top: "0px",
-                }}
-              >
-                <div className="image">
-                  <a href="#popup-8" className="has-popup">
-                    <iframe
-                      className="vedioCard"
-                      src="https://www.youtube.com/embed/k5E2AVpwsko"
-                      title="YouTube video player"
-                      frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen=""
-                    ></iframe>
-                  </a>
-                </div>
-                <div className="content-box">
-                  <a href="#popup-8" className="name has-popup">
-                    Magnet
-                  </a>
-                </div>
-                <div id="popup-8" className="popup-box mfp-fade mfp-hide">
-                  <div className="content">
-                    <div className="image">
-                      <iframe
-                        className="vedioCard"
-                        height="323px"
-                        src="https://www.youtube.com/embed/k5E2AVpwsko"
-                        title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen=""
-                      ></iframe>
-                    </div>
-                    <div className="desc">
-                      <h3 className="mr">Magnet</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div
-                className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                data-sr-id="11"
-                style={{
-                  visibility: "visible",
-                  opacity: "1",
-                  transitionBehavior: "normal, normal, normal",
-                  transitionTimingFunction:
-                    "ease, cubic-bezier(0.6, 0.2, 0.1, 1), cubic-bezier(0.6, 0.2, 0.1, 1)",
-                  transitionDelay: "0s, 0s, 0s",
-                  left: "0%",
-                  // top: '338px'
-                }}
-              >
-                <div className="image">
-                  <a href="#popup-9" className="has-popup">
-                    <iframe
-                      className="vedioCard"
-                      src="https://www.youtube.com/embed/k5E2AVpwsko"
-                      title="YouTube video player"
-                      frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen=""
-                    ></iframe>
-                  </a>
-                </div>
-                <div className="content-box">
-                  <a href="#popup-9" className="name has-popup">
-                    Magnet
-                  </a>
-                </div>
-                <div id="popup-9" className="popup-box mfp-fade mfp-hide">
-                  <div className="content">
-                    <div className="image">
-                      <iframe
-                        className="vedioCard"
-                        src="https://www.youtube.com/embed/k5E2AVpwsko"
-                        title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen=""
-                      ></iframe>
-                    </div>
-                    <div className="desc">
-                      <h3 className="mr">Magnet</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div
-                className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                data-sr-id="12"
-                style={{
-                  visibility: "visible",
-                  opacity: "1",
-                  transitionBehavior: "normal, normal, normal",
-                  transitionTimingFunction:
-                    "ease, cubic-bezier(0.6, 0.2, 0.1, 1), cubic-bezier(0.6, 0.2, 0.1, 1)",
-                  transitionDelay: "0s, 0s, 0s",
-                  left: "0%",
-                  // top: '676px'
-                }}
-              >
-                <div className="image">
-                  <a href="#popup-10" className="has-popup">
-                    <iframe
-                      className="vedioCard"
-                      src="https://www.youtube.com/embed/k5E2AVpwsko"
-                      title="YouTube video player"
-                      frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen=""
-                    ></iframe>
-                  </a>
-                </div>
-                <div className="content-box">
-                  <a href="#popup-10" className="name has-popup">
-                    Magnet
-                  </a>
-                </div>
-                <div id="popup-10" className="popup-box mfp-fade mfp-hide">
-                  <div className="content">
-                    <div className="image">
-                      <iframe
-                        className="vedioCard"
-                        src="https://www.youtube.com/embed/k5E2AVpwsko"
-                        title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen=""
-                      ></iframe>
-                    </div>
-                    <div className="desc">
-                      <h3 className="mr">Magnet</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {profileDetails?.videoGalleries?.map((video, index) => (
+
+                <VideoCard
+                  key={index}
+                  popupHref={video?.link}
+                  videoSrc={video?.link}
+                  title={video?.name}
+                  dataSrId={video?.dataSrId}
+                />
+              ))}
             </div>
 
             {/* <!-- ---------Imp links----------- --> */}
@@ -1317,9 +773,9 @@ const id='653f450f13948a9fd7fb7a70'
                 height: "30px",
               }}
             >
-              <div className="col col-m-12 col-t-6 col-d-4 ">
+              {/* <div className="col col-m-12 col-t-6 col-d-4 ">
                 <div className="imp-link">
-                  <div>
+                  <div className="center-align-contents">
                     <img src={word} alt="" />
                     <a href="javascript:void(0)" target="_blank">
                       Link Name 1
@@ -1330,7 +786,7 @@ const id='653f450f13948a9fd7fb7a70'
 
               <div className="col col-m-12 col-t-6 col-d-4 ">
                 <div className="imp-link">
-                  <div>
+                  <div className="center-align-contents">
                     <img src={ppt} alt="" />
                     <a href="javascript:void(0)" target="_blank">
                       Link Name 2
@@ -1341,16 +797,29 @@ const id='653f450f13948a9fd7fb7a70'
 
               <div className="col col-m-12 col-t-6 col-d-4 ">
                 <div className="imp-link">
-                  <div>
+                  <div className="center-align-contents">
                     <img src={ppt} alt="" />
                     <a href="javascript:void(0)" target="_blank">
                       Link Name 3
                     </a>
                   </div>
                 </div>
-              </div>
+              </div> */}
+
+              {profileDetails?.documentsLinks?.map((link, index) => (
+                <div key={index} className="col col-m-12 col-t-6 col-d-4">
+                  <div className="imp-link">
+                    <div className="center-align-contents">
+                      <img src={link?.fileType === ppt ? link?.fileType : word} alt={link?.name} />
+                      <a href="javascript:void(0)" target="_blank">
+                        {link?.name}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div
+            {/* <div
               className="row box-items"
               style={{
                 position: "relative",
@@ -1359,7 +828,7 @@ const id='653f450f13948a9fd7fb7a70'
             >
               <div className="col col-m-12 col-t-6 col-d-4 ">
                 <div className="imp-link">
-                  <div>
+                  <div className="center-align-contents">
                     <img src={pdf} alt="" />
                     <a href="javascript:void(0)" target="_blank">
                       Link Name 4
@@ -1370,7 +839,7 @@ const id='653f450f13948a9fd7fb7a70'
 
               <div className="col col-m-12 col-t-6 col-d-4 ">
                 <div className="imp-link">
-                  <div>
+                  <div className="center-align-contents">
                     <img src={csv} alt="" />
                     <a href="javascript:void(0)" target="_blank">
                       Link Name 5
@@ -1381,7 +850,7 @@ const id='653f450f13948a9fd7fb7a70'
 
               <div className="col col-m-12 col-t-6 col-d-4 ">
                 <div className="imp-link">
-                  <div>
+                  <div className="center-align-contents">
                     <img src={linkico} alt="" />
                     <a href="javascript:void(0)" target="_blank">
                       Link Name 6
@@ -1389,7 +858,7 @@ const id='653f450f13948a9fd7fb7a70'
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="clear"></div>
           </section>
 
@@ -1412,24 +881,31 @@ const id='653f450f13948a9fd7fb7a70'
             >
               <div
                 className="owl-carousel owl-loaded owl-drag"
+
                 style={{ display: "flex", justifyContent: "center" }}
               >
-                <div className="owl-stage-outer">
+                <div className="owl-stage-outer wd-100"
+
+                >
                   <div
-                    className="owl-stage"
+                    className="owl-stage wd-100"
                     style={{
                       transform: "translate3d(-0px, 0px, 0px)",
                       transition: "0.25s",
-                      // width: '1000px'
+
                     }}
                   >
-                    <div className="owl-item cloned" style={{ width: "605px" }}>
+                    {/* <div
+                      // className="owl-item cloned"
+                      className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"
+                        }`}
+                      style={{ width: "100%" }}>
                       <div className="item">
                         <div className="content-box">
                           <div className="reviews-item">
                             <div className="image">
                               <img src={profile} alt="" />
-                   
+
                             </div>
                             <div className="name">
                               — {profileDetails?.name},{" "}
@@ -1448,27 +924,36 @@ const id='653f450f13948a9fd7fb7a70'
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
+
+
+
+                    {profiles?.map((profileDetails, index) => (
+                      <div
+                        key={index}
+                        className={`p-in-image-slide2 ${count === index ? 'p-in-slide-in' : 'p-in-slide-out'}`}
+                        style={{ width: '100%' }}
+                      >
+                        <div className="item">
+                          <div className="content-box">
+                            <div className="reviews-item">
+                              <div className="image">
+                                <img src={profileDetails?.profileImg} alt={profileDetails?.name} />
+                              </div>
+                              <div className="name">
+                                — {profileDetails?.name}, {profileDetails?.profession}--pend
+                              </div>
+                              <p className="wd-100">
+                                {profileDetails?.description}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                <div className="owl-nav disabled">
-                  <button
-                    type="button"
-                    role="presentation"
-                    className="owl-prev"
-                  >
-                    <span aria-label="Previous">‹</span>
-                  </button>
-                  <button
-                    type="button"
-                    role="presentation"
-                    className="owl-next"
-                  >
-                    <span aria-label="Next">›</span>
-                  </button>
-                </div>
-                <div className="owl-dots disabled"></div>
               </div>
             </div>
           </section>
@@ -1497,50 +982,64 @@ const id='653f450f13948a9fd7fb7a70'
                         <strong>
                           <span>Bank Name:</span>
                         </strong>{" "}
-                        Bank of Maharashtra
+                        {/* Bank of Maharashtra */}
+                        {profileDetails?.bankAccountDetails?.bankName}
                       </li>
                       <li>
                         <strong>
                           <span>Account Name:</span>
                         </strong>{" "}
-                        {profileDetails?.name}
+                        {profileDetails?.bankAccountDetails?.accountName}
                       </li>
                       <li>
                         <strong>
                           <span>IFSC Code:</span>
                         </strong>
-                        PUNB0733600
+                        {/* PUNB0733600 */}
+                        {profileDetails?.bankAccountDetails?.ifsc}
+
                       </li>
                       <li>
                         <strong>
                           <span>PAN Card No:</span>
                         </strong>
-                        AAAAA7777A
+                        {/* AAAAA7777A */}
+
+                        {profileDetails?.bankAccountDetails?.pan}
                       </li>
                       <li>
                         <strong>
                           <span>Account Type:</span>
                         </strong>{" "}
-                        Savings Account
+                        {/* Savings Account
+                         */}
+
+                        {profileDetails?.bankAccountDetails?.ifsc}--pend
                       </li>
                       <li>
                         <strong>
                           <span>Account No:</span>
                         </strong>
-                        XXXXXXXXXX
+                        {/* XXXXXXXXXX */}
+
+                        {profileDetails?.bankAccountDetails?.accountNumber}
                       </li>
                       <li>
                         <strong>
                           <span>GST No.:</span>
                         </strong>
-                        07AAACP0165G2ZQ
+                        {/* 07AAACP0165G2ZQ */}
+
+                        {profileDetails?.bankAccountDetails?.gst}
                       </li>
                       <li>
                         <strong>
                           <span>Remark:</span>
                         </strong>
-                        Is it possible to reverse funds transferred to the wrong
-                        account.
+                        {/* Is it possible to reverse funds transferred to the wrong
+                        account. */}
+
+                        {profileDetails?.bankAccountDetails?.remark}
                       </li>
                     </ul>
                   </div>
@@ -1563,7 +1062,9 @@ const id='653f450f13948a9fd7fb7a70'
                   }}
                 >
                   <h5>UPI Image</h5>
-                  <img src={qr} alt="" />
+                  <img src={profileDetails?.paymentDetails?.image} style={resizeImage(150, 150)} alt="" />
+                  <p>Upi ID: {profileDetails?.paymentDetails?.upiId}</p>
+                  <p>Payment Gateway Link: {profileDetails?.paymentDetails?.paymentGatewayLink}</p>
                 </div>
               </div>
             </div>

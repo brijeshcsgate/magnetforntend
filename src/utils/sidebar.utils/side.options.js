@@ -217,13 +217,25 @@ const sidebarRoutes = [
   //   route: ROUTES.REPORTS,
   //   subItems: [],
   // },
-  {
-    label: 'User Management',
-    isMenu: false,
-    img: cardIcon({ width: 16, height: 16, fill: '#8da3b6' }),
-    route: ROUTES.USERS,
-    subItems: [],
-  },
+
+
+
+
+
+
+
+
+
+
+
+
+  // {
+  //   label: 'User Management',
+  //   isMenu: false,
+  //   img: cardIcon({ width: 16, height: 16, fill: '#8da3b6' }),
+  //   route: ROUTES.USERS,
+  //   subItems: [],
+  // },
   {
     label: 'Reseller/Company',
     isMenu: false,

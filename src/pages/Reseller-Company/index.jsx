@@ -62,6 +62,11 @@ const columns = [
 export default function ResellCompany() {
 
 
+  const {setCount } = useContext(CounterContext);
+
+  useEffect(() => { 
+    setCount('Reseller/Company');
+  }, []);
 
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);

@@ -59,7 +59,9 @@
   .p-in-slide-in {
     animation: p-in-slideIn 2.5s forwards;
   }
-  
+  .wd-100{
+    width:100% !important;
+  }
   .p-in-slide-out {
     animation: p-in-slideOut 2.5s forwards;
   }
