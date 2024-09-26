@@ -4,7 +4,7 @@ import { useField, useFormikContext } from 'formik';
 import PropTypes from 'prop-types';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { Label } from '@/components/ui/label';
-import apiService from '@/lib/apiService';
+import apiService, { BASE_URL_WAPI } from '@/lib/apiService';
 import { useRef } from 'react';
 import AxiosInstance from '@/services/baseService';
 import { useCallback } from 'react';
@@ -266,7 +266,7 @@ const CustomSelectById = ({
     //http://localhost:4005/api/user/login
 
     //https://magnet.evalue8.info/api/statebycountry
-    const response = await apiService.get(`http://localhost:4005/api/${id}`, {
+    const response = await apiService.get(`${BASE_URL_WAPI}api/${id}`, {
       params: {
         search: searchValue,
         ...(isInitialFetch && defaultValue ? { _id: defaultValue } : {}),

@@ -163,11 +163,13 @@ header .top-menu ul li.active a:before {
 
 header .menu-btn {
 	position: absolute;
-	top: 0;
+	top: 20px;
 	left: -57px;
 	display: block;
 	width: 57px;
 	height: 57px;
+	color: red;
+	
 }
 
 header .menu-btn:before {

@@ -55,6 +55,7 @@ export default function LoginForm() {
         password: values.password,
       })
         .then((res) => {
+          console.log('res',res)
           toast.success(res.message);
           setIsAuthenticated(true);
           setUser(res?.data?.user);

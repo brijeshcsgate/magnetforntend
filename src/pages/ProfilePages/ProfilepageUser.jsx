@@ -29,9 +29,20 @@ import TextToggler from "./TextToggler";
 import { resizeImage } from "./resizeImage";
 import DynamicImageBox from "./DynamicImageBox";
 import VideoCard from "./VideoCard";
+import { InboxIcon, MailIcon } from "lucide-react";
+import DrawerComponent from "@/components/common/Drawer/DrawerComponent";
 
 const ProfilepageUser = () => {
 
+  const items = [
+    { name: 'Inbox', icon: <InboxIcon /> },
+    { name: 'Starred', icon: <MailIcon /> },
+    { name: 'Send email', icon: <InboxIcon /> },
+    { name: 'Drafts', icon: <MailIcon /> },
+    { name: 'All mail', icon: <InboxIcon /> },
+    { name: 'Trash', icon: <MailIcon /> },
+    { name: 'Spam', icon: <InboxIcon /> },
+  ];
 
 
   const slides = [
@@ -119,24 +130,14 @@ const ProfilepageUser = () => {
 
   const { id } = useParams(); // Access the id from URL
   let profileId = id;
-  const [indus, setIndus] = useState([])
-
-
-  // const findIndustryById = (id) => {
-  //   return indus?.find(industry => industry._id === id);
-  // };
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        // const id = '653f450f13948a9fd7fb7a70'
         const response = await apiService.get(`${APIS.PROFILE_1}/${id}`);
 
-        const industry_data = await axiosInstanceWapi.get(`${APIS.INDUSTRY}`);
-        console.log(industry_data.data.data)
 
         setProfileDetails(response.data);
-        setIndus(industry_data.data?.data)
         setProfiles(response.data.testimonials);
       } catch (err) {
         setError(err.response?.data?.error || "Error fetching profile");
@@ -180,9 +181,12 @@ const ProfilepageUser = () => {
       {/* <!-- Header --> */}
       <header>
         <div className="top-menu">
-          <a href="#" className="menu-btn">
-            <span></span>
-          </a>
+          {/* <a href="#" className="menu-btn">
+            <span>
+              
+            </span>
+          </a> */}
+          <DrawerComponent title="Open Drawer" items={items} />
         </div>
       </header>
       {/* <!-- Container --> */}

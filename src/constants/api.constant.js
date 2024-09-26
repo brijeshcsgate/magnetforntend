@@ -2,7 +2,7 @@ import { VEHICLE } from './permissionsConstants';
 
 export const APIS = {
   LOGIN: 'user/login',
-  
+
   // LOGIN: 'v1/auth/login'
   // ADD_USER: 'v1/adminusers/addUser',
   FORGET_PASSWORD: 'v1/auth/forgotPassword',
@@ -84,7 +84,7 @@ export const APIS = {
   USER_LIST: 'adminusers/getAllUsers',
 
   USER_ALL_LIST: '/v1/user',
-COMP_RESEL:'/user/getAllUsers',
+  COMP_RESEL: '/user/getAllUsers',
   // USER_ALL_LIST: '/industry',
   UPDATE_USER_BY_ID: 'v1/user',
 
@@ -123,15 +123,13 @@ COMP_RESEL:'/user/getAllUsers',
   START_INSPECTION: 'V2/startInspection',
   START_INSPECTION_Issues: 'V2/startInspection/issues',
 
-
-
   //profile pages
 
   // PROFILE_1: 'user/getAllUsers',
-  
+
   PROFILE_1: 'user/userList',
 
   INDUSTRY: 'industry',
-  
+
   // user/userList
 };

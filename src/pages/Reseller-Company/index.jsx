@@ -62,9 +62,9 @@ const columns = [
 export default function ResellCompany() {
 
 
-  const {setCount } = useContext(CounterContext);
+  const { setCount } = useContext(CounterContext);
 
-  useEffect(() => { 
+  useEffect(() => {
     setCount('Reseller/Company');
   }, []);
 
@@ -99,17 +99,7 @@ export default function ResellCompany() {
     const fetchData = async () => {
       try {
         const response = await apiService.get(`${APIS.COMP_RESEL}`, {
-          //       params: {
-          //         // limit: pageSize,
-          //         // page: page + 1,
-          //         // search,
-          //         // sortBy,
-          //         // order,
-          //         // isInbound: tab === 'inbound' ? true : null,
-          //       },
         });; // Replace with your API endpoint
-
-        // setRows(response.result);
         setRows(
           response.result.map((item) => ({
             // Assuming `item` is an object, you can restructure it here

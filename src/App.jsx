@@ -28,14 +28,14 @@ const App = () => {
     queryKey: ['verifyToken'],
     queryFn: async () =>
       await apiService.get('v1/auth/verifyToken').then((res) => {
-        if (res.code === 200) {
+        // if (res.code === 200) {
           setIsAuthenticated(true);
           console.log('ussss>>', res.data?.user?.roleId?.permissions);
           setUser(res.data?.user);
           setPermissions(res.data?.user?.roleId?.permissions);
-        } else {
-          setIsAuthenticated(false);
-        }
+        // } else {
+        //   setIsAuthenticated(false);
+        // }
       }),
     retry: false,
     refetchOnWindowFocus: false,

@@ -37,7 +37,7 @@ import {
   CustomSelectById,
   FormikSelect,
 } from '@/components/common/CustomSelect';
-import apiService from '@/lib/apiService';
+import apiService, { BASE_URL_WAPI } from '@/lib/apiService';
 import { generateRandomString } from '@/lib/utils';
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
@@ -123,8 +123,9 @@ const [data, setData] = useState({
 const [industries, setIndustries] = useState([]);
 
 // Fetch industry options from backend
+
 useEffect(() => {
-  axios.get('http://localhost:4005/industry')
+  axios.get(`${BASE_URL_WAPI}/industry`)
     .then(response => {
       console.log(response.data.data)
       setIndustries(response.data.data);
