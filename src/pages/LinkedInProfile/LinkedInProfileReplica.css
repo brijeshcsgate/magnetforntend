@@ -1,0 +1,92 @@
+.profile-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+}
+
+.cover-photo {
+    height: 200px;
+    background-color: #dc4e41;
+}
+
+.profile-content {
+    padding: 20px;
+    position: relative;
+}
+
+.profile-picture {
+    width: 152px;
+    height: 152px;
+    border-radius: 50%;
+    border: 4px solid white;
+    position: absolute;
+    top: -76px;
+    left: 24px;
+}
+
+.name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 80px;
+}
+
+.title {
+    font-size: 16px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.location {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.contact-info {
+    font-size: 14px;
+    color: #0a66c2;
+    margin-top: 4px;
+}
+
+.company-logo {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.anniversary {
+    position: absolute;
+    right: 20px;
+    top: 60px;
+    text-align: right;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 6px 16px;
+    border-radius: 16px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.btn-primary {
+    background-color: #0a66c2;
+    color: white;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: white;
+    color: #666;
+    border: 1px solid #666;
+}

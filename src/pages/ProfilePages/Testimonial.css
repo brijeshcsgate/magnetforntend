@@ -1,0 +1,12 @@
+.slideshow-container {
+    display: flex;
+    /* transition: transform 0.5s ease-in; */
+  }
+  
+  .slide {
+    flex: 0 0 100%;
+  }
+  
+  .transitioning {
+    /* transition: transform 0.5s ease-in; */
+  }

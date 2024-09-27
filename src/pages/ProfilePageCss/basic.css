@@ -92,9 +92,17 @@ body {
 .wrapper {
 	position: relative;
 	margin: 0 auto;
+	/* max-width: 1100px;
+	 */
+	 /* width:100% !important; */
 	max-width: 1100px;
 }
-
+@media (min-width: 1400px) {
+    .container {
+        max-width: 100% !important;
+		/* max-width: 1100px; */
+    }
+}
 @media (max-width: 1080px) {
 	.wrapper {
 	margin: 0 20px;
@@ -483,12 +491,15 @@ a.btn .circle,
 	padding: 0 30px;
 }
 
-@media (max-width: 560px) {
+@media (min-width: 368px) and (max-width: 560px) {
 	a.btn,
 	.btn {
 	width: 100%;
 	}
-
+	.btn .circle {
+		padding: 0 0px !important;
+	}
+	
 }
 
 /* 7. Preloader */

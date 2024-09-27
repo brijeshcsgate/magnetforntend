@@ -31,6 +31,12 @@ import DynamicImageBox from "./DynamicImageBox";
 import VideoCard from "./VideoCard";
 import { InboxIcon, MailIcon } from "lucide-react";
 import DrawerComponent from "@/components/common/Drawer/DrawerComponent";
+import ImageCarousel from "./ImageCarousel";
+import ServicesCarousel from "./ServicesCarousel";
+import ProductCarousal from "./ProductCarousal";
+import OffersCarousel from "./OffersCarousel";
+import VideosCarousel from "./VideosCarousel";
+import TestimonailCarousel from "./TestimonailCarousel";
 
 const ProfilepageUser = () => {
 
@@ -75,8 +81,8 @@ const ProfilepageUser = () => {
       moreText.style.display = "inline";
     }
   };
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [count, setCount] = useState(true);
+
   const [isExpanded, setIsExpanded] = useState(false);
 
   // Toggle the text view
@@ -94,9 +100,7 @@ const ProfilepageUser = () => {
   const nextSlide = () => {
     setCount(true);
     setTimeout(() => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-      );
+
       setCount(false);
     }, 500); // Delay for animation
   };
@@ -454,46 +458,7 @@ const ProfilepageUser = () => {
             >
               {/* ------------------3333 */}
 
-
-              {profileDetails.services.map((item) => (
-                <div
-                  key={item.id}
-                  className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                  data-sr-id={item.id}
-                  style={{
-                    visibility: "visible",
-                    opacity: "1",
-                    transitionBehavior: "normal, normal, normal",
-                    transitionTimingFunction:
-                      "ease, cubic-bezier(0.6, 0.2, 0.1, 1), cubic-bezier(0.6, 0.2, 0.1, 1)",
-                    transitionDelay: "0s, 0s, 0s",
-                    left: "0%",
-                  }}
-                >
-                  <div className="image">
-                    <a href='#' className="has-popup">
-                      <img src={item.image} alt={item.name} style={resizeImage(342, 228)} />
-                    </a>
-                  </div>
-                  <div className="content-box">
-                    <a href='#' className="name has-popup">
-                      {item.name}
-                    </a>
-                    <TextToggler text={item.description} charLimit={60} isShowBtn={false} />
-                    <div className="service-bts">
-                      <a href='#' className="btn btn_animated has-popup">
-                        <span className="circle center_icon">View detail</span>
-                      </a>
-                      <a
-                        href='#'
-                        className="btn extra contact-btn btn_animated has-popup"
-                      >
-                        <span className="circle center_icon">Enquiry</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              ))}
+              <ServicesCarousel images={profileDetails.services} />
             </div>
             <div className="clear"></div>
           </section>
@@ -512,91 +477,8 @@ const ProfilepageUser = () => {
 
 
               <div className="row">
-                {profileDetails?.products?.map((product, index) => (
-                  <div
-                    key={index}
-                    className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                    data-sr-id="4"
-                    style={{
-                      visibility: 'visible',
-                      transform: 'translateY(0px) scale(1)',
-                      opacity: '1',
-                      transition:
-                        'all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)',
-                      left: '0%',
-                      top: '0px',
-                    }}
-                  >
-                    <div className="image">
-                      <a href={`#popup-${index}`} className="has-popup">
-                        <img
-                          src={product?.image}
-                          // className="p-in-image-slide"
-                          className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"
-                            }`}
-                          alt={product?.name}
-                        />
-                      </a>
-                    </div>
-                    <div className="content-box">
-                      <a href={`#popup-${index}`} className="name has-popup">
-                        {product?.name}
-                      </a>
-                      <p>{product?.description}</p>
-                      <div className="pricing">
-                        <i
-                          style={{
-                            fontSize: '12px',
-                            position: 'relative',
-                            top: '-8px',
-                          }}
-                          className="fa fa-inr"
-                          aria-hidden="true"
-                        ></i>
-                        <a href="Javascript:void(0)" className="">
-                          {' '}
-                          {product?.price}
-                        </a>
-                        <br />
-                        <span className="mrp">M.R.P.: </span>
-                        <i
-                          style={{
-                            fontSize: '10px',
-                            position: 'relative',
-                            top: '-1px',
-                          }}
-                          className="fa fa-inr"
-                          aria-hidden="true"
-                        ></i>
-                        <del> {product?.offerPrice}8888--Pend</del>
-                      </div>
-                      <a href={product?.websiteLink} className="product-link">
-                        {product?.websiteLink}--web link Pend
-                      </a>
-                      <div className="service-bts">
-                        <a href={`#popup-${index}`} className="btn btn_animated has-popup">
-                          <span className="circle center_icon">View detail</span>
-                        </a>
-                        <a
-                          href={`#popup-${index}`}
-                          className="btn extra contact-btn btn_animated has-popup"
-                        >
-                          <span className="circle center_icon">Enquiry</span>
-                        </a>
-                      </div>
-                    </div>
 
-                    {/* Popup Modal */}
-                    <div id={`#popup-${index}`} className="popup-box mfp-fade mfp-hide">
-                      <div className="content">
-                        <div className="desc">
-                          <h3 className="mr">{product?.name}</h3>
-                          <p>{product?.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                <ProductCarousal images={profileDetails?.products} />
               </div>
 
 
@@ -621,97 +503,7 @@ const ProfilepageUser = () => {
 
 
               <div className="row">
-                {profileDetails?.offers?.map((offer, index) => (
-                  <div
-                    key={index}
-                    className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
-                    data-sr-id="4"
-                    style={{
-                      visibility: 'visible',
-                      transform: 'translateY(0px) scale(1)',
-                      opacity: '1',
-                      transition:
-                        'all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)',
-                      left: '0%',
-                      top: '0px',
-                    }}
-                  >
-                    <div className="image">
-                      <a href={`#popup-${index}`} className="has-popup">
-                        <img
-                          src={offer?.image}
-                          // className="p-in-image-slide"
-                          className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"
-                            }`}
-                          alt={offer?.name}
-                        />
-                      </a>
-                    </div>
-                    <div className="content-box">
-                      <a href={`#popup-${index}`} className="name has-popup">
-                        {offer?.name}
-                      </a>
-                      <p>{offer?.description}</p>
-                      {/* <div className="pricing">
-                        <i
-                          style={{
-                            fontSize: '12px',
-                            position: 'relative',
-                            top: '-8px',
-                          }}
-                          className="fa fa-inr"
-                          aria-hidden="true"
-                        ></i>
-                        <a href="Javascript:void(0)" className="">
-                          {' '}
-                          {product?.price}
-                        </a>
-                        <br />
-                        <span className="mrp">M.R.P.: </span>
-                        <i
-                          style={{
-                            fontSize: '10px',
-                            position: 'relative',
-                            top: '-1px',
-                          }}
-                          className="fa fa-inr"
-                          aria-hidden="true"
-                        ></i>
-                        <del> {product?.offerPrice}8888--Pend</del>
-                      </div>
-                      <a href={product?.websiteLink} className="product-link">
-                        {product?.websiteLink}--web link Pend
-                      </a> */}
-                      <div className="service-bts">
-                        <a href={`#popup-${index}`} className="btn btn_animated has-popup">
-                          <span className="circle center_icon">
-                            Starts:
-                            {offer?.startDate} {offer?.startTime}
-                          </span>
-                        </a>
-                        <a
-                          href={`#popup-${index}`}
-                          className="btn extra contact-btn btn_animated has-popup"
-                        >
-                          <span className="circle center_icon">
-                            Ends:
-                            {offer?.endDate} {offer?.endTime}
-                          </span>
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Popup Modal */}
-                    {/* <div id={`#popup-${index}`} className="popup-box mfp-fade mfp-hide">
-                      <div className="content">
-                        <div className="desc">
-                          <h3 className="mr">{product?.name}</h3>
-                          <p>{product?.description}</p>
-                        </div>
-                      </div>
-                    </div> */}
-                  </div>
-                ))}
+                <OffersCarousel offers={profileDetails?.offers} />
               </div>
 
 
@@ -732,17 +524,7 @@ const ProfilepageUser = () => {
             >
 
 
-              {profileDetails?.imageGalleries?.map((image, index) => (
-                <DynamicImageBox
-                  key={index}
-                  imgSrc={image.image}
-                  popupHref={image?.popupHref}
-                  name={image?.name}
-                  dataSrId={image?.dataSrId}
-                  customStyles={image?.customStyles}
-                />
-              ))}
-
+              <ImageCarousel images={profileDetails?.imageGalleries} />
             </div>
 
             {/* <!-- ---------video Gallery----------- --> */}
@@ -756,7 +538,7 @@ const ProfilepageUser = () => {
             >
 
 
-              {profileDetails?.videoGalleries?.map((video, index) => (
+              {/* {profileDetails?.videoGalleries?.map((video, index) => (
 
                 <VideoCard
                   key={index}
@@ -765,7 +547,8 @@ const ProfilepageUser = () => {
                   title={video?.name}
                   dataSrId={video?.dataSrId}
                 />
-              ))}
+              ))} */}
+              <VideosCarousel videos={profileDetails?.videoGalleries}/>
             </div>
 
             {/* <!-- ---------Imp links----------- --> */}
@@ -899,43 +682,10 @@ const ProfilepageUser = () => {
 
                     }}
                   >
-                    {/* <div
-                      // className="owl-item cloned"
-                      className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"
-                        }`}
-                      style={{ width: "100%" }}>
-                      <div className="item">
-                        <div className="content-box">
-                          <div className="reviews-item">
-                            <div className="image">
-                              <img src={profile} alt="" />
-
-                            </div>
-                            <div className="name">
-                              — {profileDetails?.name},{" "}
-                              {profileDetails?.profession}
-                            </div>
-                            <p>
-                              "Lorem ipsum dolor sit amet, consectetur
-                              adipiscing elit. Morbi venenatis et tortor ac
-                              tincidunt. In euismod iaculis lobortis. Vestibulum
-                              posuere molestie ipsum vel. Vestibulum venenatis
-                              vestibulum elit ultricies. Lorem ipsum dolor sit
-                              amet, consectetur adipiscing elit. Morbi venenatis
-                              et tortor ac tincidunt. In euismod iaculis
-                              lobortis. Vestibulum posuere molestie ipsum vel."
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div> */}
-
-
-
-                    {profiles?.map((profileDetails, index) => (
+                    
+                    {/* {profileDetails.testimonials?.map((profileDetails, index) => (
                       <div
                         key={index}
-                        className={`p-in-image-slide2 ${count === index ? 'p-in-slide-in' : 'p-in-slide-out'}`}
                         style={{ width: '100%' }}
                       >
                         <div className="item">
@@ -954,7 +704,9 @@ const ProfilepageUser = () => {
                           </div>
                         </div>
                       </div>
-                    ))}
+                    ))} */}
+
+                    <TestimonailCarousel  testimonials={profileDetails.testimonials}/>
                   </div>
                 </div>
 
@@ -1075,18 +827,19 @@ const ProfilepageUser = () => {
           </section>
         </div>
         {/* footer */}
-        <footer className="footerSec">
+      </div>
+      <footer className="footerSec">
           <div className="bts">
             <a href="#popup-form" className="btn extra btn_animated has-popup">
               <span className="circle center_icon">
                 <span
                   className="ink animate"
-                  style={{
-                    height: "155px",
-                    width: "155px",
-                    top: "-65.5px",
-                    left: "73.8125px",
-                  }}
+                  // style={{
+                  //   height: "155px",
+                  //   width: "155px",
+                  //   top: "-65.5px",
+                  //   left: "73.8125px",
+                  // }}
                 ></span>
                 Refer Business
               </span>
@@ -1099,12 +852,12 @@ const ProfilepageUser = () => {
               <span className="circle center_icon">
                 <span
                   className="ink animate"
-                  style={{
-                    height: "107px",
-                    width: "107px",
-                    top: "-15.5px",
-                    left: "-36.4219px",
-                  }}
+                  // style={{
+                  //   height: "107px",
+                  //   width: "107px",
+                  //   top: "-15.5px",
+                  //   left: "-36.4219px",
+                  // }}
                 ></span>
                 Enquiry
               </span>
@@ -1117,28 +870,27 @@ const ProfilepageUser = () => {
               <span className="circle center_icon">
                 <span
                   className="ink animate"
-                  style={{
-                    height: "167px",
-                    width: "167px",
-                    top: "-80.5px",
-                    left: "34.2188px",
-                  }}
+                  // style={{
+                  //   height: "167px",
+                  //   width: "167px",
+                  //   top: "-80.5px",
+                  //   left: "34.2188px",
+                  // }}
                 ></span>
                 Save My Contact
               </span>
             </a>
           </div>
         </footer>
-      </div>
-
+     
       {/* More content and sections... */}
-      <button id="myBtn" onClick={myFunction}>
+      {/* <button id="myBtn" onClick={myFunction}>
         see more
       </button>
       <span id="dots">...</span>
       <span id="more" style={{ display: "none" }}>
         More content here.
-      </span>
+      </span> */}
     </div>
   );
 };

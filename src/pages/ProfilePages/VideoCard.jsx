@@ -3,7 +3,7 @@ import React from "react";
 const VideoCard = ({ popupHref, videoSrc, title, dataSrId }) => {
   return (
     <div
-      className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
+      className=" box-item f-mockup animated"
       data-sr-id={dataSrId}
       style={{
         visibility: "visible",
