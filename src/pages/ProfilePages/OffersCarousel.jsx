@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { resizeImage } from './resizeImage';
 import TextToggler from './TextToggler';
+import { Dialog, DialogContent, DialogTitle } from '@mui/material';
+import { Close } from '@mui/icons-material';
 
 const OffersCarousel = ({ offers = [] }) => {
   const [startIndex, setStartIndex] = useState(0);
-
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false); // Close dialog only when the Cancel button is clicked
+};
   const handlePrev = () => {
     setStartIndex((prevIndex) => Math.max(0, prevIndex - 1));
   };
@@ -34,7 +39,7 @@ const OffersCarousel = ({ offers = [] }) => {
     <div className="relative w-full  mx-auto">
       <div className="flex overflow-hidden" style={{ marginLeft: '25px' }}>
         {offers.slice(startIndex, startIndex + 3).map((offer, index) => (
-          <div key={startIndex + index} className="col col-m-12 col-t-6 col-d-4 p-2 transition-all duration-300 ease-in-out">
+          <div key={startIndex + index} className="col col-m-12 col-t-6 col-d-4 p-2 transition-all duration-300 ease-in-out" >
             <div
               key={index}
               className=" box-item f-mockup animated"
@@ -48,6 +53,7 @@ const OffersCarousel = ({ offers = [] }) => {
                 left: '0%',
                 top: '0px',
               }}
+              onClick={()=>setOpen(true)}
             >
               <div className="image">
                 <a href={`#popup-${index}`} className="has-popup">
@@ -86,6 +92,63 @@ const OffersCarousel = ({ offers = [] }) => {
               </div>
 
             </div>
+
+
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+                // maxWidth="md"  
+                fullWidth
+                
+            >
+                <DialogTitle style={{ fontSize: '16px', fontWeight: '700' , display:'flex',flexDirection:'row', justifyContent:'space-between'}}>
+                    
+                    <span></span><span onClick={handleClose}><Close /></span>
+                </DialogTitle>
+                <DialogContent>
+                  <div>
+                <div className="image">
+                <div className="has-popup">
+                  <img
+                    src={offer?.image}
+                    // className="p-in-image-slide"
+                    // className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"
+                      // }`}
+                    alt={offer?.name}
+                  />
+                </div>
+              </div>
+              <div className="content-box">
+                <a className="name has-popup">
+                  {offer?.name}
+                </a>
+                <p>{offer?.description}</p>
+
+                <div className="service-bts flex-row-g20">
+                  <a  className="btn btn_animated has-popup">
+                    <span className="circle center_icon">
+                      Starts:
+                      {offer?.startDate} {offer?.startTime}
+                    </span>
+                  </a>
+                  <a
+                    
+                    className="btn extra contact-btn btn_animated has-popup"
+                  >
+                    <span className="circle center_icon">
+                      Ends:
+                      {offer?.endDate} {offer?.endTime}
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+                </DialogContent>
+            </Dialog>
+
           </div>
         ))}
       </div>

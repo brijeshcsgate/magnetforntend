@@ -1,17 +1,12 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../ProfilePageCss/basic.css";
 import "../ProfilePageCss/layout.css";
 import "../ProfilePageCss/ionicons.css";
 import "../ProfilePageCss/owl-carousel.css";
 import "../ProfilePageCss/magnific-popup.css";
-// import "./animate.css";
 import "../ProfilePageCss/custom.css";
-import profile from "./Images/profile.jpg";
 import qr from "./Images/qr.png";
-import liclogo from "./Images/liclogo.png";
-import img1 from "./Images/1.png";
-import img2 from "./Images/2.jpg";
 import img3 from "./Images/product.jpg";
 import pdf from "./Images/pdf.png";
 import word from "./Images/word.png";
@@ -27,9 +22,7 @@ import { APIS } from "@/constants/api.constant";
 import apiService, { axiosInstanceWapi } from "@/lib/apiService";
 import TextToggler from "./TextToggler";
 import { resizeImage } from "./resizeImage";
-import DynamicImageBox from "./DynamicImageBox";
-import VideoCard from "./VideoCard";
-import { InboxIcon, MailIcon } from "lucide-react";
+import { BanknoteIcon, HandCoins, HandHelpingIcon, HomeIcon, ImagesIcon, InboxIcon, MailIcon, Pyramid, ShoppingBasketIcon, UserIcon } from "lucide-react";
 import DrawerComponent from "@/components/common/Drawer/DrawerComponent";
 import ImageCarousel from "./ImageCarousel";
 import ServicesCarousel from "./ServicesCarousel";
@@ -37,25 +30,36 @@ import ProductCarousal from "./ProductCarousal";
 import OffersCarousel from "./OffersCarousel";
 import VideosCarousel from "./VideosCarousel";
 import TestimonailCarousel from "./TestimonailCarousel";
+import VistiorInfoForm from "./VistiorInfoForm";
+import EnquiryInfoForm from "./EnquiryInfoForm";
+import ReferrelInfoForm from "./ReferrelInfoForm";
+import { Button } from "@mui/material";
 
 const ProfilepageUser = () => {
 
   const items = [
-    { name: 'Inbox', icon: <InboxIcon /> },
-    { name: 'Starred', icon: <MailIcon /> },
-    { name: 'Send email', icon: <InboxIcon /> },
-    { name: 'Drafts', icon: <MailIcon /> },
-    { name: 'All mail', icon: <InboxIcon /> },
-    { name: 'Trash', icon: <MailIcon /> },
-    { name: 'Spam', icon: <InboxIcon /> },
-  ];
+    { name: 'Home', link: '#Home', icon: <HomeIcon /> },
+    { name: 'Profile', link: '#Profile', icon: <UserIcon /> },
+    { name: 'Services', link: '#Services', icon: <HandHelpingIcon /> },
+    { name: 'Products', link: '#Products', icon: <ShoppingBasketIcon /> },
+    { name: 'Offers', link: '#Offers', icon: <HandCoins /> },
+    { name: 'Gallery', link: '#Gallery', icon: <ImagesIcon /> },
+    { name: 'Testimonials', link: '#Testimonials', icon: <Pyramid /> },
 
-
-  const slides = [
-    { src: img3, text: "Caption Text" },
-    { src: img3, text: "Caption Two" },
-    { src: img3, text: "Caption Three" },
+    { name: 'Payments', link: '#Testimonials', icon: <BanknoteIcon /> },
   ];
+  const sectionRefs = {
+    Home: useRef(null),
+    Profile: useRef(null),
+    Services: useRef(null),
+    Products: useRef(null),
+    Offers: useRef(null),
+    Gallery: useRef(null),
+    Testimonials: useRef(null),
+    Payments: useRef(null),
+
+  };
+
   const [profiles, setProfiles] = useState([]);
 
   // Auto-increment count to cycle through profiles
@@ -66,21 +70,6 @@ const ProfilepageUser = () => {
     return () => clearInterval(interval);
   }, [profiles]);
 
-  const myFunction = () => {
-    const dots = document.getElementById("dots");
-    const moreText = document.getElementById("more");
-    const btnText = document.getElementById("myBtn");
-
-    if (dots.style.display === "none") {
-      dots.style.display = "inline";
-      btnText.innerHTML = "see more";
-      moreText.style.display = "none";
-    } else {
-      dots.style.display = "none";
-      btnText.innerHTML = "see less";
-      moreText.style.display = "inline";
-    }
-  };
   const [count, setCount] = useState(true);
 
   const [isExpanded, setIsExpanded] = useState(false);
@@ -109,40 +98,48 @@ const ProfilepageUser = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isSticky, setIsSticky] = useState(false);
+  const [visitorInfoType, setVisitorInfoType] = useState('')
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const topOffset = document.getElementById("profileName").offsetTop;
-      const scrollPosition = window.scrollY;
-      if (scrollPosition >= 288) {
-        setIsSticky(true);
-
-        console.log("scrollPositiontrue", scrollPosition);
-      } else {
-        setIsSticky(false);
-
-        console.log("scrollPositionfalse", scrollPosition);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const [visitorInfo, setVisitorInfo] = useState('')
+  const [enquiryInfoType, setEnquiryInfoType] = useState(false)
+  const [referrelInfoType, setReferrelInfoType] = useState(false)
+  const [profileUserId, setProfileUserId] = useState('')
+  const [handleSection, setHandleSection] = useState('')
 
   const { id } = useParams(); // Access the id from URL
   let profileId = id;
+  const scrollToSection = (sectionId) => {
+    sectionRefs[sectionId].current.scrollIntoView({ behavior: 'smooth' });
+  };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+
+      Object.entries(sectionRefs).forEach(([key, ref]) => {
+        const element = ref.current;
+        if (element.offsetTop <= scrollPosition && element.offsetTop + element.offsetHeight > scrollPosition) {
+          document.querySelector(`nav a[href="#${key}"]`).classList.add('text-blue-500');
+        } else {
+          document.querySelector(`nav a[href="#${key}"]`).classList.remove('text-blue-500');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await apiService.get(`${APIS.PROFILE_1}/${id}`);
+        // const response = await apiService.get(`${APIS.PROFILE_1}/${id}`);
+        const response = await apiService.get(`${APIS.PROFILE_IDENT}/${id}`);
 
-
+        console.log('response', response.data._id)
+        setProfileUserId(response.data._id)
         setProfileDetails(response.data);
         setProfiles(response.data.testimonials);
+        setVisitorInfoType(response.data.vistor_info_type)
       } catch (err) {
         setError(err.response?.data?.error || "Error fetching profile");
       } finally {
@@ -169,8 +166,8 @@ const ProfilepageUser = () => {
           </div>
         </div>
       </div>
+      <VistiorInfoForm openP={visitorInfoType!='Not Required' ? true : false} visitorInfoType={visitorInfoType} profileUserId={profileUserId} setVisitorInfo={setVisitorInfo} />
 
-      {/* Started Background       background-image: url(images/works/slide-bg.jpg); */}
       <div className="started-bg">
         <div
           className="slide"
@@ -185,19 +182,14 @@ const ProfilepageUser = () => {
       {/* <!-- Header --> */}
       <header>
         <div className="top-menu">
-          {/* <a href="#" className="menu-btn">
-            <span>
-              
-            </span>
-          </a> */}
-          <DrawerComponent title="Open Drawer" items={items} />
+          <DrawerComponent title="Open Drawer" items={items} scrollToSection={scrollToSection} sectionRefs={sectionRefs} handleSection={(e) => setHandleSection(e)} />
         </div>
       </header>
       {/* <!-- Container --> */}
 
-      <div className="container">
+      <div className="container" >
         {/* <!-- Started --> */}
-        <section className="section started">
+        <section className="section started" ref={sectionRefs.Home}>
           <div className="st-box">
             <div className="st-bts">
               <a href="#popup-11" className="has-popup">
@@ -228,22 +220,11 @@ const ProfilepageUser = () => {
                 className="liclogo" />
             </div>
             <br />
-
-
             <div className="bts">
-              <a href="#popup-form" className="btn btn_animated has-popup">
-                <span className="circle center_icon">Refer Business</span>
-              </a>
-              <a
-                href="javascript:void(0)"
-                className="btn extra contact-btn btn_animated"
-              >
-                <span className="circle center_icon">Enquiry</span>
-              </a>
-
-              <a
-                href="javascript:void(0)"
-                className="btn extra contact-btn btn_animated"
+              <ReferrelInfoForm footer={false} profileUserId={profileUserId} visitorInfo={visitorInfo}/>
+<EnquiryInfoForm footer={false} profileUserId={profileUserId} visitorInfo={visitorInfo}/>
+              <Button
+                className="btn extra contact-btn btn_animated" 
               >
                 <span className="circle center_icon">
                   <span
@@ -257,7 +238,7 @@ const ProfilepageUser = () => {
                   ></span>
                   Save My Contact
                 </span>
-              </a>
+              </Button>
             </div>
             <div className="st-soc">
               <a
@@ -373,11 +354,10 @@ const ProfilepageUser = () => {
             </div>
           </div>
         </section>
-        {/* {JSON.stringify(profileDetails.name)} */}
         {/* <!-- Wrapper --> */}
         <div className="wrapper">
           {/* <!-- Section About --> */}
-          <section className="section about" id="about-section">
+          <section className="section about" ref={sectionRefs.Profile}>
             <div className="content-box">
               <div className="row">
                 <div className="col col-m-12 col-t-5 col-d-5">
@@ -446,7 +426,7 @@ const ProfilepageUser = () => {
           </section>
 
           {/* <!-- Services --> */}
-          <section className="section works" id="works-section">
+          <section className="section works" id="works-section" ref={sectionRefs.Services}>
             <div className="title">Services</div>
 
             <div
@@ -464,7 +444,7 @@ const ProfilepageUser = () => {
           </section>
 
           {/* <!-- Products --> */}
-          <section className="section works" id="Products-section">
+          <section className="section works" id="Products-section" ref={sectionRefs.Products}>
             <div className="title">Products</div>
 
             <div
@@ -489,7 +469,7 @@ const ProfilepageUser = () => {
           </section>
 
           {/* <!-- Offers --> */}
-          <section className="section works" id="Offers-section">
+          <section className="section works" id="Offers-section" ref={sectionRefs.Offers}>
             <div className="title">Offers</div>
             {/* <h4 className="Offers-content">Coming Soon</h4> */}
 
@@ -514,7 +494,7 @@ const ProfilepageUser = () => {
           </section>
 
           {/* <!-- Gallery --> */}
-          <section className="section works" id="Gallery-section">
+          <section className="section works" id="Gallery-section" ref={sectionRefs.Gallery}>
             <div className="title">Image Gallery</div>
             <div
               className="row box-items"
@@ -536,19 +516,7 @@ const ProfilepageUser = () => {
                 position: "relative",
               }}
             >
-
-
-              {/* {profileDetails?.videoGalleries?.map((video, index) => (
-
-                <VideoCard
-                  key={index}
-                  popupHref={video?.link}
-                  videoSrc={video?.link}
-                  title={video?.name}
-                  dataSrId={video?.dataSrId}
-                />
-              ))} */}
-              <VideosCarousel videos={profileDetails?.videoGalleries}/>
+              <VideosCarousel videos={profileDetails?.videoGalleries} />
             </div>
 
             {/* <!-- ---------Imp links----------- --> */}
@@ -560,38 +528,6 @@ const ProfilepageUser = () => {
                 height: "30px",
               }}
             >
-              {/* <div className="col col-m-12 col-t-6 col-d-4 ">
-                <div className="imp-link">
-                  <div className="center-align-contents">
-                    <img src={word} alt="" />
-                    <a href="javascript:void(0)" target="_blank">
-                      Link Name 1
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col col-m-12 col-t-6 col-d-4 ">
-                <div className="imp-link">
-                  <div className="center-align-contents">
-                    <img src={ppt} alt="" />
-                    <a href="javascript:void(0)" target="_blank">
-                      Link Name 2
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col col-m-12 col-t-6 col-d-4 ">
-                <div className="imp-link">
-                  <div className="center-align-contents">
-                    <img src={ppt} alt="" />
-                    <a href="javascript:void(0)" target="_blank">
-                      Link Name 3
-                    </a>
-                  </div>
-                </div>
-              </div> */}
 
               {profileDetails?.documentsLinks?.map((link, index) => (
                 <div key={index} className="col col-m-12 col-t-6 col-d-4">
@@ -606,51 +542,11 @@ const ProfilepageUser = () => {
                 </div>
               ))}
             </div>
-            {/* <div
-              className="row box-items"
-              style={{
-                position: "relative",
-                height: "30px",
-              }}
-            >
-              <div className="col col-m-12 col-t-6 col-d-4 ">
-                <div className="imp-link">
-                  <div className="center-align-contents">
-                    <img src={pdf} alt="" />
-                    <a href="javascript:void(0)" target="_blank">
-                      Link Name 4
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col col-m-12 col-t-6 col-d-4 ">
-                <div className="imp-link">
-                  <div className="center-align-contents">
-                    <img src={csv} alt="" />
-                    <a href="javascript:void(0)" target="_blank">
-                      Link Name 5
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col col-m-12 col-t-6 col-d-4 ">
-                <div className="imp-link">
-                  <div className="center-align-contents">
-                    <img src={linkico} alt="" />
-                    <a href="javascript:void(0)" target="_blank">
-                      Link Name 6
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div> */}
             <div className="clear"></div>
           </section>
 
           {/* <!-- Section Testimonials --> */}
-          <section className="section clients" id="clients-section">
+          <section className="section clients" id="clients-section" ref={sectionRefs.Testimonials}>
             <div className="title">Testimonials</div>
             <div
               className="reviews-carousel animated"
@@ -682,31 +578,9 @@ const ProfilepageUser = () => {
 
                     }}
                   >
-                    
-                    {/* {profileDetails.testimonials?.map((profileDetails, index) => (
-                      <div
-                        key={index}
-                        style={{ width: '100%' }}
-                      >
-                        <div className="item">
-                          <div className="content-box">
-                            <div className="reviews-item">
-                              <div className="image">
-                                <img src={profileDetails?.profileImg} alt={profileDetails?.name} />
-                              </div>
-                              <div className="name">
-                                — {profileDetails?.name}, {profileDetails?.profession}--pend
-                              </div>
-                              <p className="wd-100">
-                                {profileDetails?.description}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))} */}
 
-                    <TestimonailCarousel  testimonials={profileDetails.testimonials}/>
+
+                    <TestimonailCarousel testimonials={profileDetails.testimonials} />
                   </div>
                 </div>
 
@@ -715,7 +589,7 @@ const ProfilepageUser = () => {
           </section>
 
           {/* <!-- Section Contacts --> */}
-          <section className="section contacts" id="payments-section">
+          <section className="section contacts" id="payments-section" ref={sectionRefs.Payments}>
             <div className="title">Payments</div>
             <div className="row">
               <div className="col col-m-12 col-t-6 col-d-6">
@@ -751,7 +625,6 @@ const ProfilepageUser = () => {
                         <strong>
                           <span>IFSC Code:</span>
                         </strong>
-                        {/* PUNB0733600 */}
                         {profileDetails?.bankAccountDetails?.ifsc}
 
                       </li>
@@ -759,7 +632,6 @@ const ProfilepageUser = () => {
                         <strong>
                           <span>PAN Card No:</span>
                         </strong>
-                        {/* AAAAA7777A */}
 
                         {profileDetails?.bankAccountDetails?.pan}
                       </li>
@@ -767,16 +639,12 @@ const ProfilepageUser = () => {
                         <strong>
                           <span>Account Type:</span>
                         </strong>{" "}
-                        {/* Savings Account
-                         */}
-
                         {profileDetails?.bankAccountDetails?.ifsc}--pend
                       </li>
                       <li>
                         <strong>
                           <span>Account No:</span>
                         </strong>
-                        {/* XXXXXXXXXX */}
 
                         {profileDetails?.bankAccountDetails?.accountNumber}
                       </li>
@@ -784,16 +652,12 @@ const ProfilepageUser = () => {
                         <strong>
                           <span>GST No.:</span>
                         </strong>
-                        {/* 07AAACP0165G2ZQ */}
-
                         {profileDetails?.bankAccountDetails?.gst}
                       </li>
                       <li>
                         <strong>
                           <span>Remark:</span>
                         </strong>
-                        {/* Is it possible to reverse funds transferred to the wrong
-                        account. */}
 
                         {profileDetails?.bankAccountDetails?.remark}
                       </li>
@@ -829,68 +693,46 @@ const ProfilepageUser = () => {
         {/* footer */}
       </div>
       <footer className="footerSec">
-          <div className="bts">
-            <a href="#popup-form" className="btn extra btn_animated has-popup">
-              <span className="circle center_icon">
-                <span
-                  className="ink animate"
-                  // style={{
-                  //   height: "155px",
-                  //   width: "155px",
-                  //   top: "-65.5px",
-                  //   left: "73.8125px",
-                  // }}
-                ></span>
-                Refer Business
-              </span>
-            </a>
+        <div className="bts">
+          {/* <Button className="btn extra btn_animated has-popup"
+          onClick={()=>{setReferrelInfoType(true)}}
+          >
+            <span className="circle center_icon">
+              <span
+                className="ink animate"
+              ></span>
+              Refer Business
+            </span>
+          </Button> */}
+          <ReferrelInfoForm footer={true} profileUserId={profileUserId} visitorInfo={visitorInfo}/>
+{/* 
+          <Button
+            className="btn extra contact-btn btn_animated"
+            
+            onClick={()=>{setEnquiryInfoType(true)}}
+          >
+            <span className="circle center_icon">
+              <span
+                className="ink animate"
+              ></span>
+              Enquiry
+            </span>
+          </Button> */}
+          <EnquiryInfoForm footer={true} profileUserId={profileUserId} visitorInfo={visitorInfo}/>
 
-            <a
-              href="javascript:void(0)"
-              className="btn extra contact-btn btn_animated"
-            >
-              <span className="circle center_icon">
-                <span
-                  className="ink animate"
-                  // style={{
-                  //   height: "107px",
-                  //   width: "107px",
-                  //   top: "-15.5px",
-                  //   left: "-36.4219px",
-                  // }}
-                ></span>
-                Enquiry
-              </span>
-            </a>
+          <Button
+            className="btn extra contact-btn btn_animated"
+          >
+            <span className="circle center_icon">
+              <span
+                className="ink animate"
+              ></span>
+              Save My Contact
+            </span>
+          </Button>
+        </div>
+      </footer>
 
-            <a
-              href="javascript:void(0)"
-              className="btn extra contact-btn btn_animated"
-            >
-              <span className="circle center_icon">
-                <span
-                  className="ink animate"
-                  // style={{
-                  //   height: "167px",
-                  //   width: "167px",
-                  //   top: "-80.5px",
-                  //   left: "34.2188px",
-                  // }}
-                ></span>
-                Save My Contact
-              </span>
-            </a>
-          </div>
-        </footer>
-     
-      {/* More content and sections... */}
-      {/* <button id="myBtn" onClick={myFunction}>
-        see more
-      </button>
-      <span id="dots">...</span>
-      <span id="more" style={{ display: "none" }}>
-        More content here.
-      </span> */}
     </div>
   );
 };

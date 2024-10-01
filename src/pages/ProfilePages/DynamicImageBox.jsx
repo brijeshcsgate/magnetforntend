@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DynamicImageBox = ({ imgSrc, popupHref, name, dataSrId, customStyles }) => {
+const DynamicImageBox = ({ imgSrc, popupHref, name, dataSrId, customStyles, setOpen }) => {
   return (
     <div
       className="col col-m-12 col-t-6 col-d-4 box-item f-mockup animated"
@@ -10,6 +10,7 @@ const DynamicImageBox = ({ imgSrc, popupHref, name, dataSrId, customStyles }) =>
         opacity: "1",
         ...customStyles, // Custom dynamic styles passed as props
       }}
+      onClick={() => setOpen(true)}
     >
       <div className="image">
         <a href={popupHref} className="has-popup">

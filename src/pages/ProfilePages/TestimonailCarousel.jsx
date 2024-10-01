@@ -87,6 +87,7 @@
 
 
 
+import img3 from "./Images/product.jpg";
 import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './Testimonial.css'
@@ -129,7 +130,8 @@ const TestimonialCarousel = ({ testimonials }) => {
                           <div className="content-box">
                             <div className="reviews-item">
                               <div className="image">
-                                <img src={profileDetails?.profileImg} alt={profileDetails?.name} />
+                                <img src={profileDetails?.profileImg?profileDetails?.profileImg:img3} alt={profileDetails?.name} 
+                                />
                               </div>
                               <div className="name">
                                 — {profileDetails?.name}, {profileDetails?.profession}--pend

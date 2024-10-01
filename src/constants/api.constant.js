@@ -89,6 +89,9 @@ export const APIS = {
   UPDATE_USER_BY_ID: 'v1/user',
 
   ADD_USER: '/user/signup',
+
+
+  // /visitors
   // https://magnet.evalue8.info/api/user/signup
   // USERS_BY_ID: 'adminusers/getUserById',
 
@@ -129,7 +132,13 @@ export const APIS = {
 
   PROFILE_1: 'user/userList',
 
+  PROFILE_IDENT:'user/userListIdentifier',
+
   INDUSTRY: 'industry',
 
-  // user/userList
+  ADD_VISITOR: 'visitors',
+  ADD_ENQUIRY: 'enquiry',
+  ADD_REFERREL: 'referrel',
+
+
 };
