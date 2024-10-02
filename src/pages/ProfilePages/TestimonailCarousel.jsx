@@ -117,6 +117,15 @@ const TestimonialCarousel = ({ testimonials }) => {
   }, [goToNextSlide]);
 
   return (
+    <div
+    className="owl-stage wd-100"
+    style={{
+      transform: "translate3d(-0px, 0px, 0px)",
+      transition: "0.25s",
+
+    }}
+  >
+
     <div className="relative w-full max-w-2xl mx-auto">
       <div className="overflow-hidden w-full">
         <div 
@@ -159,6 +168,7 @@ const TestimonialCarousel = ({ testimonials }) => {
       >
         <ChevronRight className="w-6 h-6" />
       </button>
+    </div>
     </div>
   );
 };

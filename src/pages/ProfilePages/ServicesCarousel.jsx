@@ -42,7 +42,9 @@ const ServicesCarousel = ({ images }) => {
                 >
                   <div className="image">
                     <a href='#' className="has-popup">
-                      <img src={item.image} alt={item.name} style={resizeImage(342, 228)} />
+                      <img src={item.image} alt={item.name}
+                      
+                      style={resizeImage(342, 228)} />
                     </a>
                   </div>
                   <div className="content-box">

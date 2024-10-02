@@ -139,6 +139,10 @@ export const APIS = {
   ADD_VISITOR: 'visitors',
   ADD_ENQUIRY: 'enquiry',
   ADD_REFERREL: 'referrel',
+  
+  GET_VISITOR: 'user/visitors',
+  GET_ENQUIRY: 'user/enquiry',
+  GET_REFERREL: 'user/referrel',
 
 
 };

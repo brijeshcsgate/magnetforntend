@@ -1,0 +1,52 @@
+.no-profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #FFF3E0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .no-profile-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .no-profile-title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #FF6F00;
+    margin-bottom: 16px;
+  }
+  
+  .rotated-left {
+    display: inline-block;
+    transform: rotate(-12deg);
+  }
+  
+  .rotated-right {
+    display: inline-block;
+    transform: rotate(12deg);
+  }
+  
+  .no-profile-emoji {
+    font-size: 64px;
+    margin-bottom: 16px;
+  }
+  
+  .no-profile-message {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 16px;
+  }
+  
+  .no-profile-sub-message {
+    font-size: 14px;
+    color: #666;
+  }
+  

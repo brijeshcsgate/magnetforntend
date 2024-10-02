@@ -97,9 +97,9 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
 
                     <Formik
                         initialValues={{
-                            name: '',
-                            email: '',
-                            mobile: '',
+                            name: visitorInfo.name,
+                            email: visitorInfo.email,
+                            mobile: visitorInfo.mobile,
                             ref_name: '',
                             ref_email: '',
                             ref_mobile: '',

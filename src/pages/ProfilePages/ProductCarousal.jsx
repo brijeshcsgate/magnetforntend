@@ -46,7 +46,9 @@ const ProductCarousal = ({ images }) => {
     <div className="relative w-full  mx-auto">
       <div className="flex overflow-hidden" style={{ marginLeft: '25px' }}>
         {images.slice(startIndex, startIndex + 3).map((product, index) => (
-          <div key={startIndex + index} className="col col-m-12 col-t-6 col-d-4 p-2 transition-all duration-300 ease-in-out ">
+        
+        
+        <div key={startIndex + index} className="col col-m-12 col-t-6 col-d-4 p-2 transition-all duration-300 ease-in-out ">
           
             <div
               key={index}
@@ -63,7 +65,7 @@ const ProductCarousal = ({ images }) => {
               }}
             >
               <div className="image">
-                <a href={`#popup-${index}`} className="has-popup">
+                <div className="has-popup">
                   <img
                     src={product?.image}
                     // className="p-in-image-slide"
@@ -71,7 +73,7 @@ const ProductCarousal = ({ images }) => {
                       }`}
                     alt={product?.name}
                   />
-                </a>
+                </div>
               </div>
               <div className="content-box">
                 <a href={`#popup-${index}`} className="name has-popup">

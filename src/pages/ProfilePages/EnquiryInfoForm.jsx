@@ -89,9 +89,9 @@ export default function EnquiryInfoForm({ profileUserId, visitorInfo }) {
 
                     <Formik
                         initialValues={{
-                            name: '',
-                            email: '',
-                            mobile: '',
+                            name: visitorInfo.name,
+                            email: visitorInfo.email,
+                            mobile: visitorInfo.mobile,
                             tempratur_scale: '',
                             requirement_summary: '',
                             userId: ''
