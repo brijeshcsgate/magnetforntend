@@ -5,7 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-
+import './Phonecss.css'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import FormikTextField from '@/components/inputs/formik/FormikTextField';
@@ -19,7 +19,8 @@ import FormikTextArea from '@/components/inputs/formik/FormikTextArea';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
-
+import PhoneInput from 'react-phone-number-input'
+import { cn } from '@/utils';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -27,6 +28,9 @@ const validationSchema = Yup.object().shape({
     email: Yup.string()
         .email('Invalid email address')
         .required('Email is required'),
+        temperature_scale: Yup.string()
+        .required('Temperature scale is required'),
+        
     mobile: Yup.string()
         .min(8, 'Please fill valid mobile no.')
         .required('Contact number is required'),
@@ -130,12 +134,28 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
                                     />
                                 </div>
                                 <div>
-                                    <FormikTextField
+                                    {/* <FormikTextField
                                         label="Your Contact No."
                                         placeholder="+91 9999999999"
                                         name="mobile"
                                         isRequired
-                                    />
+                                    /> */}
+                                      <Label
+                                            className={cn('c-black mb-1')} // Adjusting label styling with cn
+                                        //   htmlFor={name} // Updated to use `name` as `htmlFor` to match input id
+                                        >
+                                            Your Contact No. <span style={{ color: 'red' }}>*</span>
+                                        </Label>
+                                        <PhoneInput
+                                            international
+                                            defaultCountry="RU"
+                                            value={values.mobile}
+                                            onChange={(e) => setFieldValue('mobile', e)}
+                                            className={cn(
+                                                'flex h-8 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-xs ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-primary-200 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ',
+                                            )}
+
+                                        />
                                 </div>
                                 <div>
                                     <FormikTextField
@@ -181,17 +201,35 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
 
                                     <div style={{ flex: '0 0 48%' }}>
-                                        <FormikTextField
+                                        {/* <FormikTextField
                                             label="Referrel Contact No."
                                             placeholder="+91 9999999999"
                                             name="ref_mobile"
                                             isRequired
+                                        /> */}
+
+
+                                        <Label
+                                            className={cn('c-black mb-1')} // Adjusting label styling with cn
+                                        //   htmlFor={name} // Updated to use `name` as `htmlFor` to match input id
+                                        >
+                                            Referrel Contact No. <span style={{ color: 'red' }}>*</span>
+                                        </Label>
+                                        <PhoneInput
+                                            international
+                                            defaultCountry="RU"
+                                            value={values.ref_mobile}
+                                            onChange={(e) => setFieldValue('ref_mobile', e)}
+                                            className={cn(
+                                                'flex h-8 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-xs ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-primary-200 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ',
+                                            )}
+
                                         />
                                     </div>
                                     <div style={{ flex: '0 0 48%' }}>
                                         <FormikTextField
                                             label="Temperature Scale"
-                                            placeholder="john@gmail.com"
+                                            placeholder="5"
                                             name="temperature_scale"
                                             isRequired
                                         />

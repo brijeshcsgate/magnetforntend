@@ -1,0 +1,13 @@
+.PhoneInput{
+    display: flex !important;
+    align-items: center;
+}
+.PhoneInputCountry{
+    display:flex !important;
+    flex-direction: row-reverse !important;
+}
+.PhoneInputCountrySelect{
+    width:20px !important;
+}
+.PhoneInputCountryIconImg{width: 20px !important;}
+.PhoneInputCountryIcon {display: flex !important; align-items: center;}

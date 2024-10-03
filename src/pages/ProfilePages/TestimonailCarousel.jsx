@@ -137,7 +137,7 @@ const TestimonialCarousel = ({ testimonials }) => {
              
                         <div className="item w-full">
                           <div className="content-box">
-                            <div className="reviews-item">
+                            <div className="reviews-item" style={{marginTop:'65px'}}>
                               <div className="image">
                                 <img src={profileDetails?.profileImg?profileDetails?.profileImg:img3} alt={profileDetails?.name} 
                                 />

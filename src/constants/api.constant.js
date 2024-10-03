@@ -134,6 +134,8 @@ export const APIS = {
 
   PROFILE_IDENT:'user/userListIdentifier',
 
+  VISTORS_REPORT:'user/getAllVistorsReport',
+ 
   INDUSTRY: 'industry',
 
   ADD_VISITOR: 'visitors',

@@ -2,12 +2,35 @@ import React, { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { resizeImage } from './resizeImage';
 import TextToggler from './TextToggler';
-import { Dialog, DialogContent, DialogTitle } from '@mui/material';
+import { Dialog, DialogContent, DialogTitle, Grid } from '@mui/material';
 import { Close } from '@mui/icons-material';
+import { green } from '@mui/material/colors';
 
 const OffersCarousel = ({ offers = [] }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [open, setOpen] = React.useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  // Function to determine device type based on width
+  const getDeviceType = () => {
+    if (width < 768) return 1;
+    if (width < 1024) return 2;
+    return 3;
+  };
+
   const handleClose = () => {
     setOpen(false); // Close dialog only when the Cancel button is clicked
 };
@@ -16,7 +39,7 @@ const OffersCarousel = ({ offers = [] }) => {
   };
 
   const handleNext = () => {
-    setStartIndex((prevIndex) => Math.min(offers.length - 3, prevIndex + 1));
+    setStartIndex((prevIndex) => Math.min(offers.length - getDeviceType(), prevIndex + 1));
   };
 
   const [count, setCount] = useState(true);
@@ -37,9 +60,14 @@ const OffersCarousel = ({ offers = [] }) => {
   };
   return (
     <div className="relative w-full  mx-auto">
-      <div className="flex overflow-hidden" style={{ marginLeft: '25px' }}>
-        {offers.slice(startIndex, startIndex + 3).map((offer, index) => (
-          <div key={startIndex + index} className="col col-m-12 col-t-6 col-d-4 p-2 transition-all duration-300 ease-in-out" >
+      {/* <div className="flex overflow-hidden" style={{ marginLeft: '25px' }}> */}
+      <Grid container spacing={2} className="overflow-hidden"style={{padding:'25px',paddingRight:'25px'}} >
+    
+        {offers.slice(startIndex, startIndex + getDeviceType()).map((offer, index) => (
+        
+        <Grid item xs={12} md={6} lg={4}>
+       
+       <div key={startIndex + index} className=" p-2 transition-all duration-300 ease-in-out" >
             <div
               key={index}
               className=" box-item f-mockup animated"
@@ -56,7 +84,7 @@ const OffersCarousel = ({ offers = [] }) => {
               onClick={()=>setOpen(true)}
             >
               <div className="image">
-                <a href={`#popup-${index}`} className="has-popup">
+                <div className="has-popup">
                   <img
                     src={offer?.image}
                     // className="p-in-image-slide"
@@ -64,30 +92,29 @@ const OffersCarousel = ({ offers = [] }) => {
                       }`}
                     alt={offer?.name}
                   />
-                </a>
+                </div>
               </div>
               <div className="content-box">
-                <a href={`#popup-${index}`} className="name has-popup">
+                <div className="name has-popup">
                   {offer?.name}
-                </a>
+                </div>
                 <p>{offer?.description}</p>
 
                 <div className="service-bts flex-row-g20">
-                  <a href={`#popup-${index}`} className="btn btn_animated has-popup">
-                    <span className="circle center_icon">
-                      Starts:
+                  {/* <div className="btn btn_animated has-popup"> */}
+                    <span className="circle center_icon" style={{color:'green'}}>
+                      <b>Starts:</b>
                       {offer?.startDate} {offer?.startTime}
                     </span>
-                  </a>
-                  <a
-                    href={`#popup-${index}`}
+                  {/* </div> */}
+                  {/* <div
                     className="btn extra contact-btn btn_animated has-popup"
-                  >
-                    <span className="circle center_icon">
-                      Ends:
+                  > */}
+                    <span className="circle center_icon" style={{color:'orange'}}>
+                      <b>Ends:</b>
                       {offer?.endDate} {offer?.endTime}
                     </span>
-                  </a>
+                  {/* </div> */}
                 </div>
               </div>
 
@@ -121,27 +148,23 @@ const OffersCarousel = ({ offers = [] }) => {
                 </div>
               </div>
               <div className="content-box">
-                <a className="name has-popup">
+                <div className="name has-popup">
                   {offer?.name}
-                </a>
+                </div>
                 <p>{offer?.description}</p>
 
                 <div className="service-bts flex-row-g20">
-                  <a  className="btn btn_animated has-popup">
-                    <span className="circle center_icon">
-                      Starts:
+                  {/* <a  className="btn btn_animated has-popup"> */}
+                  <span className="circle center_icon" style={{color:'green'}}>
+                      <b>Starts:</b>
                       {offer?.startDate} {offer?.startTime}
                     </span>
-                  </a>
-                  <a
                     
-                    className="btn extra contact-btn btn_animated has-popup"
-                  >
-                    <span className="circle center_icon">
-                      Ends:
+                    <span className="circle center_icon" style={{color:'orange'}}>
+                      <b>Ends:</b>
                       {offer?.endDate} {offer?.endTime}
                     </span>
-                  </a>
+                 
                 </div>
               </div>
 
@@ -150,8 +173,10 @@ const OffersCarousel = ({ offers = [] }) => {
             </Dialog>
 
           </div>
+          </Grid>
         ))}
-      </div>
+        
+        </Grid>
       <button
         onClick={handlePrev}
         disabled={startIndex === 0}
@@ -163,7 +188,7 @@ const OffersCarousel = ({ offers = [] }) => {
 
       <button
         onClick={handleNext}
-        disabled={startIndex >= offers.length - 3}
+        disabled={startIndex >= offers.length - getDeviceType()}
         style={{ right: '-25px' }}
         className="absolute  top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
       >

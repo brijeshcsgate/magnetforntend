@@ -15,8 +15,13 @@ import useAppStore from '@/store';
 import useStore from './store/userStore';
 import { TitleOfPageProvider } from './components/Layout/commonLayout/TitleOfPageProvider';
 import ProfilepageUser from './pages/ProfilePages/ProfilepageUser';
-
+import ReactGA from "react-ga4";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import AnalyticsDashboard from './AnalyticsDashboard';
 const GOOGLE_MAP_KEY = import.meta.env.VITE_GOOGLE_MAP_KEY;
+// Initialize GA4
+ReactGA.initialize("G-BRYE3XKVN9");
 
 const App = () => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useAppStore();
@@ -24,6 +29,14 @@ const App = () => {
 
   const { id } = useParams(); // Access the id from URL
   // let profileId = id;
+  const location = useLocation();
+
+  useEffect(() => {
+    // Send pageview with a custom path
+    console.log('datat ga',{ hitType: "pageview", page: location.pathname + location.search })
+    ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
+  }, [location]);
+
   const { isLoading } = useQuery({
     queryKey: ['verifyToken'],
     queryFn: async () =>
@@ -82,6 +95,10 @@ const App = () => {
           element={<ProfilepageUser/>}
         /> */}
         <Route path='/profile/:id' element={<ProfilepageUser />} />
+        
+        <Route path='/dashboard' element={<AnalyticsDashboard />} />
+
+
     </Routes>
   );
 };

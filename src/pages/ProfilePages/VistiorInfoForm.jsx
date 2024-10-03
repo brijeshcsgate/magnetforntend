@@ -15,7 +15,10 @@ import { postApi } from '@/services/method';
 import { APIS } from '@/constants/api.constant';
 import axios from 'axios';
 import apiService from '@/lib/apiService';
+import { Label } from '@/components/ui/label';
 
+import PhoneInput from 'react-phone-number-input'
+import { cn } from '@/utils';
 
 
 const validationSchema = Yup.object().shape({
@@ -29,7 +32,7 @@ const validationSchema = Yup.object().shape({
         .required('Contact number is required'),
 
 });
-export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId ,setVisitorInfo}) {
+export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId, setVisitorInfo }) {
     const [open, setOpen] = React.useState(openP);
 
     const handleClickOpen = () => {
@@ -82,7 +85,7 @@ export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId 
 
                         onSubmit={(values) => handleSubmit(values)}
                     >
-                        {({ isSubmitting }) => (
+                        {({ isSubmitting,setFieldValue,values }) => (
                             <Form>
                                 <div>
                                     <FormikTextField
@@ -101,11 +104,28 @@ export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId 
                                     />
                                 </div>
                                 <div>
-                                    <FormikTextField
+                                    {/* <FormikTextField
                                         label="Your Contact No."
                                         placeholder="+91 9999999999"
                                         name="mobile"
                                         isRequired={visitorInfoType === 'Mandate' ? true : false}
+                                    /> */}
+
+                                    <Label
+                                        className={cn('c-black mb-1')} // Adjusting label styling with cn
+                                    //   htmlFor={name} // Updated to use `name` as `htmlFor` to match input id
+                                    >
+                                        Your Contact No. <span style={{ color: 'red' }}>*</span>
+                                    </Label>
+                                    <PhoneInput
+                                        international
+                                        defaultCountry="RU"
+                                        value={values.mobile}
+                                        onChange={(e) => setFieldValue('mobile', e)}
+                                        className={cn(
+                                            'flex h-8 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-xs ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-primary-200 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ',
+                                        )}
+
                                     />
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'end', marginTop: '25px', gap: '10px' }}>

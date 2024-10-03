@@ -102,8 +102,6 @@ const ProfilepageUser = () => {
   const [visitorInfoType, setVisitorInfoType] = useState('')
 
   const [visitorInfo, setVisitorInfo] = useState('')
-  const [enquiryInfoType, setEnquiryInfoType] = useState(false)
-  const [referrelInfoType, setReferrelInfoType] = useState(false)
   const [profileUserId, setProfileUserId] = useState('')
   const [handleSection, setHandleSection] = useState('')
   const [profileStatus, setProfileStatus] = useState(true)
@@ -113,22 +111,45 @@ const ProfilepageUser = () => {
     sectionRefs[sectionId].current.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollPosition = window.scrollY;
+
+  //     Object.entries(sectionRefs).forEach(([key, ref]) => {
+  //       const element = ref.current;
+  //       if (element.offsetTop <= scrollPosition && element.offsetTop + element.offsetHeight > scrollPosition) {
+  //         document.querySelector(`nav a[href="#${key}"]`).classList.add('text-blue-500');
+  //       } else {
+  //         document.querySelector(`nav a[href="#${key}"]`).classList.remove('text-blue-500');
+  //       }
+  //     });
+  //   };
+
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
   useEffect(() => {
     const handleScroll = () => {
+      const topOffset = document.getElementById("profileName").offsetTop;
       const scrollPosition = window.scrollY;
+      // console.log('scrollPosition',scrollPosition)
+      // if (scrollPosition >= topOffset) {
+      if (scrollPosition >= 288) {
+        setIsSticky(true);
 
-      Object.entries(sectionRefs).forEach(([key, ref]) => {
-        const element = ref.current;
-        if (element.offsetTop <= scrollPosition && element.offsetTop + element.offsetHeight > scrollPosition) {
-          document.querySelector(`nav a[href="#${key}"]`).classList.add('text-blue-500');
-        } else {
-          document.querySelector(`nav a[href="#${key}"]`).classList.remove('text-blue-500');
-        }
-      });
+        console.log("scrollPositiontrue", scrollPosition);
+      } else {
+        setIsSticky(false);
+
+        console.log("scrollPositionfalse", scrollPosition);
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
   useEffect(() => {
     const fetchProfile = async () => {
@@ -169,7 +190,7 @@ const ProfilepageUser = () => {
               </div>
             </div>
           </div>
-          {/* <VistiorInfoForm openP={visitorInfoType != 'Not Required' ? true : false} visitorInfoType={visitorInfoType} profileUserId={profileUserId} setVisitorInfo={setVisitorInfo} /> */}
+          <VistiorInfoForm openP={visitorInfoType != 'Not Required' ? true : false} visitorInfoType={visitorInfoType} profileUserId={profileUserId} setVisitorInfo={setVisitorInfo} />
 
           <div className="started-bg">
             <div
@@ -185,10 +206,10 @@ const ProfilepageUser = () => {
           {/* <!-- Header --> */}
           <header>
             <div className="top-menu">
-              
-              
-              
-              
+
+
+
+
               <DrawerComponent title="Open Drawer" items={items} scrollToSection={scrollToSection} sectionRefs={sectionRefs} handleSection={(e) => setHandleSection(e)} />
             </div>
           </header>
@@ -199,7 +220,7 @@ const ProfilepageUser = () => {
             <section className="section started" ref={sectionRefs.Home}>
               <div className="st-box">
                 <div className="st-bts">
-                  <a href="#popup-11" className="has-popup">
+                  <a className="has-popup">
                     {/* <img src={qr} alt="" /> */}
                     <img src={profileDetails?.paymentDetails?.image} style={resizeImage(150, 150)} alt="" />
 
@@ -251,8 +272,7 @@ const ProfilepageUser = () => {
                 </div>
                 <div className="st-soc">
                   <a
-                    target="blank"
-                    href={profileDetails?.facebookLink}
+
                     className="btn_animated"
                   >
                     <span className="circle center_icon">
@@ -462,9 +482,6 @@ const ProfilepageUser = () => {
                     position: "relative",
                   }}
                 >
-
-
-
                   <div className="row">
 
                     <ProductCarousal images={profileDetails?.products} />
@@ -576,12 +593,12 @@ const ProfilepageUser = () => {
 
                     style={{ display: "flex", justifyContent: "center" }}
                   >
-                    <div className="owl-stage-outer wd-100"
+                    <div className="wd-100"
 
                     >
 
 
-                        <TestimonailCarousel testimonials={profileDetails.testimonials} />
+                      <TestimonailCarousel testimonials={profileDetails.testimonials} />
                       {/* </div> */}
                     </div>
 

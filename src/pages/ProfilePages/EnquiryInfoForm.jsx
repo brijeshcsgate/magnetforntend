@@ -20,6 +20,8 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
 
+import PhoneInput from 'react-phone-number-input'
+import { cn } from '@/utils';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -27,6 +29,9 @@ const validationSchema = Yup.object().shape({
     email: Yup.string()
         .email('Invalid email address')
         .required('Email is required'),
+    tempratur_scale: Yup.string()
+        .required('Name is required'),
+
     mobile: Yup.string()
         .min(8, 'Please fill valid mobile no.')
         .required('Contact number is required'),
@@ -92,7 +97,7 @@ export default function EnquiryInfoForm({ profileUserId, visitorInfo }) {
                             name: visitorInfo.name,
                             email: visitorInfo.email,
                             mobile: visitorInfo.mobile,
-                            tempratur_scale: '',
+                            tempratur_scale: '4',
                             requirement_summary: '',
                             userId: ''
                         }}
@@ -118,15 +123,41 @@ export default function EnquiryInfoForm({ profileUserId, visitorInfo }) {
                                         isRequired
                                     />
                                 </div>
-                                <div>
+                                <div style={{ flex: '0 0 48%' }}>
                                     <FormikTextField
+                                        label="Temperature Scale"
+                                        placeholder="5"
+                                        name="temperature_scale"
+                                        isRequired
+                                    />
+
+                                </div>
+                                <div>
+                                    {/* <FormikTextField
                                         label="Your Contact No."
                                         placeholder="+91 9999999999"
                                         name="mobile"
                                         isRequired
+                                    /> */}
+                                    <Label
+                                        className={cn('c-black mb-1')} // Adjusting label styling with cn
+                                    //   htmlFor={name} // Updated to use `name` as `htmlFor` to match input id
+                                    >
+                                        Your Contact No. <span style={{ color: 'red' }}>*</span>
+                                    </Label>
+                                    <PhoneInput
+                                        international
+                                        defaultCountry="RU"
+                                        value={values.mobile}
+                                        onChange={(e) => setFieldValue('mobile', e)}
+                                        className={cn(
+                                            'flex h-8 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-xs ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-primary-200 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ',
+                                        )}
+
                                     />
+
                                 </div>
-                               
+
                                 <div>
 
                                     <div className="to-input-field">

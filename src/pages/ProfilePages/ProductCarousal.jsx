@@ -4,18 +4,39 @@ import { resizeImage } from './resizeImage';
 import TextToggler from './TextToggler';
 
 import "../ProfilePageCss/custom.css";
-import { Dialog, DialogContent, DialogTitle } from '@mui/material';
+import { Dialog, DialogContent, DialogTitle, Grid } from '@mui/material';
 import { Close } from '@mui/icons-material';
 
 const ProductCarousal = ({ images }) => {
   const [startIndex, setStartIndex] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  // Function to determine device type based on width
+  const getDeviceType = () => {
+    if (width < 768) return 1;
+    if (width < 1024) return 2;
+    return 3;
+  };
 
   const handlePrev = () => {
     setStartIndex((prevIndex) => Math.max(0, prevIndex - 1));
   };
 
   const handleNext = () => {
-    setStartIndex((prevIndex) => Math.min(images.length - 3, prevIndex + 1));
+    setStartIndex((prevIndex) => Math.min(images.length - getDeviceType(), prevIndex + 1));
   };
   const [count, setCount] = useState(true);
   
@@ -44,11 +65,14 @@ const ProductCarousal = ({ images }) => {
 
   return (
     <div className="relative w-full  mx-auto">
-      <div className="flex overflow-hidden" style={{ marginLeft: '25px' }}>
-        {images.slice(startIndex, startIndex + 3).map((product, index) => (
+      {/* <div className="flex overflow-hidden" style={{ marginLeft: '25px' ,flexDirection:'row'}}> */}
+      <Grid container spacing={2} className="overflow-hidden"style={{padding:'25px',paddingRight:'25px'}} >
+        {images.slice(startIndex, startIndex + getDeviceType()).map((product, index) => (
         
-        
-        <div key={startIndex + index} className="col col-m-12 col-t-6 col-d-4 p-2 transition-all duration-300 ease-in-out ">
+        <Grid item xs={12} md={6} lg={4}>
+        <div key={startIndex + index} 
+        // className="col col-m-12 col-t-6 col-d-4 p-2 transition-all duration-300 ease-in-out "
+        >
           
             <div
               key={index}
@@ -76,9 +100,9 @@ const ProductCarousal = ({ images }) => {
                 </div>
               </div>
               <div className="content-box">
-                <a href={`#popup-${index}`} className="name has-popup">
+                <div className="name has-popup">
                   {product?.name}
-                </a>
+                </div>
                 <p>{product?.description}</p>
                 <div className="pricing">
                   <i
@@ -90,10 +114,10 @@ const ProductCarousal = ({ images }) => {
                     className="fa fa-inr"
                     aria-hidden="true"
                   ></i>
-                  <a href="Javascript:void(0)" className="">
+                  <div className="">
                     {' '}
                     {product?.price}
-                  </a>
+                  </div>
                   <br />
                   <span className="mrp">M.R.P.: </span>
                   <i
@@ -107,9 +131,9 @@ const ProductCarousal = ({ images }) => {
                   ></i>
                   <del> {product?.offerPrice}8888--Pend</del>
                 </div>
-                <a href={product?.websiteLink} className="product-link">
+                <div className="product-link">
                   {product?.websiteLink}--web link Pend
-                </a>
+                </div>
                 <div className="service-bts flex-row-g20">
                   <div onClick={()=>setOpen(true)} className="btn btn_animated has-popup">
                     <span className="circle center_icon">
@@ -119,12 +143,11 @@ const ProductCarousal = ({ images }) => {
                   {/* <Button onClick={()=>setOpen(true)} className="btn btn_animated has-popup">
                     <span className="circle center_icon">View detail</span>
                   </Button> */}
-                  <a
-                    href={`#popup-${index}`}
+                  <div
                     className="btn extra contact-btn btn_animated has-popup"
                   >
                     <span className="circle center_icon">Enquiry</span>
-                  </a>
+                  </div>
                 </div>
               </div>
 
@@ -161,7 +184,7 @@ const ProductCarousal = ({ images }) => {
               }}
             >
               <div className="image">
-                <a href={`#popup-${index}`} className="has-popup">
+                <div className="has-popup">
                   <img
                     src={product?.image}
                     // className="p-in-image-slide"
@@ -169,12 +192,12 @@ const ProductCarousal = ({ images }) => {
                     //   }`}
                     alt={product?.name}
                   />
-                </a>
+                </div>
               </div>
               <div className="content-box">
-                <a href={`#popup-${index}`} className="name has-popup">
+                <div className="name has-popup">
                   {product?.name}
-                </a>
+                </div>
                 <p>{product?.description}</p>
                 <div className="pricing">
                   <i
@@ -186,10 +209,10 @@ const ProductCarousal = ({ images }) => {
                     className="fa fa-inr"
                     aria-hidden="true"
                   ></i>
-                  <a href="Javascript:void(0)" className="">
+                  <div className="">
                     {' '}
                     {product?.price}
-                  </a>
+                  </div>
                   <br />
                   <span className="mrp">M.R.P.: </span>
                   <i
@@ -203,17 +226,20 @@ const ProductCarousal = ({ images }) => {
                   ></i>
                   <del> {product?.offerPrice}8888--Pend</del>
                 </div>
-                <a href={product?.websiteLink} className="product-link">
+                <div className="product-link">
                   {product?.websiteLink}--web link Pend
-                </a>
+                </div>
               </div>
 
             </div>
                 </DialogContent>
             </Dialog>
           </div>
+          </Grid>
         ))}
-      </div>
+        
+        </Grid>
+      {/* </div> */}
       <button
         onClick={handlePrev}
         disabled={startIndex === 0}
@@ -224,7 +250,7 @@ const ProductCarousal = ({ images }) => {
       </button>
       <button
         onClick={handleNext}
-        disabled={startIndex >= images.length - 3}
+        disabled={startIndex >= images.length - getDeviceType()}
         style={{ right: '-25px' }}
         className="absolute  top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
       >
