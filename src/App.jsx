@@ -19,6 +19,7 @@ import ReactGA from "react-ga4";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import AnalyticsDashboard from './AnalyticsDashboard';
+import AnalyticsDisplay from './AnalyticsDisplay';
 const GOOGLE_MAP_KEY = import.meta.env.VITE_GOOGLE_MAP_KEY;
 // Initialize GA4
 ReactGA.initialize("G-BRYE3XKVN9");
@@ -89,17 +90,14 @@ const App = () => {
       {isAuthenticated
         ? renderRoutes(protectedRoutes, AdminLayout)
         : renderRoutes(publicRoutes, CommonLayout)}
-        {/* <Route
-          path='/profile'
-          // key={index}
-          element={<ProfilepageUser/>}
-        /> */}
+        
         <Route path='/profile/:id' element={<ProfilepageUser />} />
         
         <Route path='/dashboard' element={<AnalyticsDashboard />} />
 
 
     </Routes>
+    // <AnalyticsDisplay/>
   );
 };
 
