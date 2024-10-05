@@ -40,10 +40,10 @@ const validationSchema = Yup.object().shape({
 
 
 });
-export default function EnquiryInfoForm({ profileUserId, visitorInfo }) {
+export default function EnquiryInfoFormOnClick({ profileUserId, visitorInfo,openEf,  setOpenEf  }) {
     const [charCount, setCharCount] = React.useState(0);
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(openEf);
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -52,6 +52,7 @@ export default function EnquiryInfoForm({ profileUserId, visitorInfo }) {
         if (reason === 'backdropClick' || reason === 'escapeKeyDown') {
             return;
         }
+        setOpenEf(false)
         setOpen(false); // Close dialog only when the Cancel button is clicked
     };
     const handleSubmit = async (values) => {
@@ -68,21 +69,8 @@ export default function EnquiryInfoForm({ profileUserId, visitorInfo }) {
     return (
         <React.Fragment>
             
-            <Button className="btn extra btn_animated has-popup"
-                onClick={() => { setOpen(true) }}
-                
-            >
-                <span
-                 className="circle center_icon"
-                >
-                    <span
-                    // className="ink animate"
-                    ></span>
-                    Enquiry
-                </span>
-            </Button>
             <Dialog
-                open={open}
+                open={openEf}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"

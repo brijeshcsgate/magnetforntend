@@ -4,10 +4,14 @@ import { resizeImage } from './resizeImage';
 import TextToggler from './TextToggler';
 import { Dialog, DialogContent, DialogTitle, Grid } from '@mui/material';
 import { Close } from '@mui/icons-material';
+import EnquiryInfoForm from './EnquiryInfoForm';
+import EnquiryInfoFormOnClick from './EnquiryInfoFormOnClick';
 
-const ServicesCarousel = ({ images }) => {
+const ServicesCarousel = ({ images,profileUserId,visitorInfo,footer }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [open, setOpen] = React.useState(false);
+  
+  const [openEf, setOpenEf] = React.useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -79,15 +83,27 @@ const ServicesCarousel = ({ images }) => {
                       {item.name}
                     </div>
                     <TextToggler text={item.description} charLimit={20} isShowBtn={false} />
-                    <div className="service-bts flex-row-g20" >
-                      <button onClick={()=>setOpen(true)}className="btn btn_animated has-popup">
+                    <div className="service-bts flex-row-g20" style={{display:'flex', justifyContent:'space-between',width:'100%'}}>
+                  
+                  
+                      <button onClick={()=>setOpen(true)}className="btn btn_animated has-popup" style={{width:'50%'}}>
                         <span className="circle center_icon">View detail</span>
                       </button>
+                     
                       <div
-                        className="btn extra contact-btn btn_animated has-popup"
+                        className="btn extra contact-btn btn_animated has-popup"style={{width:'50%'}}
+                        onClick={()=>setOpenEf(true)}
                       >
-                        <span className="circle center_icon">Enquiry</span>
-                      </div>
+                        <span className="circle center_icon">
+                    
+                        <span
+                    className="ink animate"
+                    ></span>      Enquiry
+                           </span>
+                           {/* </div> */}
+              
+                    </div>
+                           <EnquiryInfoFormOnClick openEf={openEf}  setOpenEf={setOpenEf}  profileUserId={profileUserId} visitorInfo={visitorInfo} />
                     </div>
                   </div>
                 </div>

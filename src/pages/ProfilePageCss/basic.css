@@ -43,6 +43,10 @@ body {
 	position: relative;
 	overflow: hidden;
 	padding: 320px 0 0 0;
+	font-family: 'Roboto', helvetica !important;
+	/* font-size: 16px; */
+	color: #868686 !important;
+
 }
 
 @media (max-width: 720px) {

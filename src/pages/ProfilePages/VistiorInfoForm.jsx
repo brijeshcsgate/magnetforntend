@@ -34,6 +34,34 @@ const validationSchema = Yup.object().shape({
 });
 export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId, setVisitorInfo }) {
     const [open, setOpen] = React.useState(openP);
+    const [location, setLocation] = React.useState('');
+    const [startTime, setStartTime] = React.useState('');
+    const [isSend,setIsSend]=React.useState(visitorInfoType === 'Not Required'?true:false)
+
+    const getStartTime = () => {
+        const start = new Date();
+        const formattedStartTime = `${start.getHours()}:${start.getMinutes()}:${start.getSeconds()}`;
+        setStartTime(formattedStartTime);
+    };
+    const getUserLocation = async () => {
+        try {
+            const response = await axios.get('http://ip-api.com/json/');
+            const { country, regionName: state, city } = response.data;
+
+            // Set the location state
+            //   setLocation({ country, state, city });
+
+            setLocation(city + ", " + state + ", " + country);
+        } catch (err) {
+            setError('Error fetching location. Please try again later.');
+            console.error('Error fetching location:', err);
+        }
+    };
+    // useEffect to fetch location and start time when the component mounts
+    React.useEffect(() => {
+        getStartTime();  // Set the user's start time
+        getUserLocation(); // Fetch user's location
+    }, []);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -48,6 +76,8 @@ export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId,
     const handleSubmit = async (values) => {
         console.log('values', profileUserId);
         values.userId = profileUserId;
+        values.location = location;
+        values.view_duration = startTime;
         await apiService.post(`${APIS.ADD_VISITOR}`, values)
             .then((res) => {
                 setVisitorInfo(res.data)
@@ -56,7 +86,25 @@ export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId,
         setOpen(false);
 
     }
+if((visitorInfoType === 'Not Required')&&(isSend===true)){
+    const data={
+        name: 'john',
+        email: 'john@gmail.com',
+        mobile: '999999999',
+        userId: profileUserId,
+        view_duration: startTime,
+        location: location
+    }
+    getStartTime();  // Set the user's start time
+        getUserLocation();
+    apiService.post(`${APIS.ADD_VISITOR}`, data)
+    .then((res) => {
+        setVisitorInfo(res.data)
+        // toast.success('Data saved successfully');
+    })
+setIsSend(false);
 
+}
     return (
         <React.Fragment>
             <Dialog
@@ -78,14 +126,14 @@ export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId,
                             email: '',
                             mobile: '',
                             userId: '',
-                            view_duration: '10',
-                            location: 'lucknow'
+                            view_duration: '',
+                            location: ''
                         }}
                         validationSchema={validationSchema}
 
                         onSubmit={(values) => handleSubmit(values)}
                     >
-                        {({ isSubmitting,setFieldValue,values }) => (
+                        {({ isSubmitting, setFieldValue, values }) => (
                             <Form>
                                 <div>
                                     <FormikTextField

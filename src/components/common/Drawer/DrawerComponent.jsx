@@ -12,7 +12,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { AlignJustifyIcon } from 'lucide-react';
 
-const DrawerComponent = ({ title, items ,sectionRefs, handleSection,scrollToSection}) => {
+const DrawerComponent = ({ title, items ,sectionRefs, handleSection,scrollToSection, serviceStatus, productStatus,  testimonialStatus, offerStatus, imageGalleryStatus ,videoGalleryStatus, linkStatus, bankAccountStatus, ePaymentStatus}) => {
   const [open, setOpen] = React.useState(false);
 const [activeSection,setActiveSection]=React.useState('Home')
   const toggleDrawer = (newOpen) => () => {

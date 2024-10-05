@@ -107,33 +107,14 @@ const ProfilepageUser = () => {
   const [profileStatus, setProfileStatus] = useState(true)
   const { id } = useParams(); // Access the id from URL
   let profileId = id;
+  
   const scrollToSection = (sectionId) => {
     sectionRefs[sectionId].current.scrollIntoView({ behavior: 'smooth' });
   };
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollPosition = window.scrollY;
-
-  //     Object.entries(sectionRefs).forEach(([key, ref]) => {
-  //       const element = ref.current;
-  //       if (element.offsetTop <= scrollPosition && element.offsetTop + element.offsetHeight > scrollPosition) {
-  //         document.querySelector(`nav a[href="#${key}"]`).classList.add('text-blue-500');
-  //       } else {
-  //         document.querySelector(`nav a[href="#${key}"]`).classList.remove('text-blue-500');
-  //       }
-  //     });
-  //   };
-
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => window.removeEventListener('scroll', handleScroll);
-  // }, []);
   useEffect(() => {
     const handleScroll = () => {
       const topOffset = document.getElementById("profileName").offsetTop;
       const scrollPosition = window.scrollY;
-      // console.log('scrollPosition',scrollPosition)
-      // if (scrollPosition >= topOffset) {
       if (scrollPosition >= 288) {
         setIsSticky(true);
 
@@ -198,7 +179,6 @@ const ProfilepageUser = () => {
               style={{ backgroundImage: `url(${profileDetails?.coverImage})` }}
             ></div>
           </div>
-          {/* profileDetails?.coverImage */}
           {/* Header */}
           <header>
           </header>
@@ -210,7 +190,7 @@ const ProfilepageUser = () => {
 
 
 
-              <DrawerComponent title="Open Drawer" items={items} scrollToSection={scrollToSection} sectionRefs={sectionRefs} handleSection={(e) => setHandleSection(e)} />
+              <DrawerComponent title="Open Drawer" items={items} scrollToSection={profileDetails?.scrollToSection} sectionRefs={profileDetails?.sectionRefs} handleSection={(e) => setHandleSection(e)} serviceStatus={profileDetails?.serviceStatus} productStatus={profileDetails?.productStatus} testimonialStatus={profileDetails?.testimonialStatus} offerStatus={profileDetails?.offerStatus} imageGalleryStatus={profileDetails?.imageGalleryStatus} videoGalleryStatus={profileDetails?.videoGalleryStatus} linkStatus={profileDetails?.linkStatus} bankAccountStatus={profileDetails?.bankAccountStatus} ePaymentStatus={profileDetails?.ePaymentStatus} />
             </div>
           </header>
           {/* <!-- Container --> */}
@@ -221,7 +201,6 @@ const ProfilepageUser = () => {
               <div className="st-box">
                 <div className="st-bts">
                   <a className="has-popup">
-                    {/* <img src={qr} alt="" /> */}
                     <img src={profileDetails?.paymentDetails?.image} style={resizeImage(150, 150)} alt="" />
 
                   </a>
@@ -244,7 +223,6 @@ const ProfilepageUser = () => {
                 </div>
                 <div className="center_icon">
                   <img
-                    // src={liclogo} 
                     style={resizeImage(80, 41)}
                     src={profileDetails?.orgLogo}
                     className="liclogo" />
@@ -397,7 +375,6 @@ const ProfilepageUser = () => {
                             <strong>
                               <span>Mobile No:</span>
                             </strong>
-                            {/* (+91) 8126 139 074 */}
                             (+{profileDetails?.countryCode}) {profileDetails?.mobile}
 
                           </li>
@@ -405,14 +382,12 @@ const ProfilepageUser = () => {
                             <strong>
                               <span>WhatsApp No:</span>
                             </strong>{" "}
-                            {/* (+91) 8126 139 074 */}
                             (+{profileDetails?.whatsappNumberCountryCode}) {profileDetails?.whatsappNumber}
                           </li>
                           <li>
                             <strong>
                               <span>Email address:</span>
                             </strong>{" "}
-                            {/* gyanedra.s@troology.com */}
                             {profileDetails?.email}
                           </li>
                           <li>
@@ -455,287 +430,280 @@ const ProfilepageUser = () => {
               </section>
 
               {/* <!-- Services --> */}
-              <section className="section works" id="works-section" ref={sectionRefs.Services}>
-                <div className="title">Services</div>
+              {(profileDetails?.serviceStatus === true) && (profileDetails?.services?.length > 0) ?
+                <section className="section works" id="works-section" ref={sectionRefs.Services}>
+                  <div className="title">Services</div>
 
-                <div
-                  className="row box-items"
-                  style={{
-                    position: "relative",
-                    // height: '1879.14px'
-                  }}
-                >
-                  {/* ------------------3333 */}
+                  <div
+                    className="row box-items"
+                    style={{
+                      position: "relative",
+                    }}
+                  >
 
-                  <ServicesCarousel images={profileDetails.services} />
-                </div>
-                <div className="clear"></div>
-              </section>
-
-              {/* <!-- Products --> */}
-              <section className="section works" id="Products-section" ref={sectionRefs.Products}>
-                <div className="title">Products</div>
-
-                <div
-                  className="row box-items"
-                  style={{
-                    position: "relative",
-                  }}
-                >
-                  <div className="row">
-
-                    <ProductCarousal images={profileDetails?.products} />
+                    <ServicesCarousel images={profileDetails.services} footer={true} profileUserId={profileUserId} visitorInfo={visitorInfo} />
                   </div>
+                  <div className="clear"></div>
+                </section> : <></>
+              }
+              {/* <!-- Products --> */}
+              {(profileDetails?.productStatus === true) && (profileDetails?.products?.length > 0) ?
+                <section className="section works" id="Products-section" ref={sectionRefs.Products}>
+                  <div className="title">Products</div>
 
+                  <div
+                    className="row box-items"
+                    style={{
+                      position: "relative",
+                    }}
+                  >
+                    <div className="row">
 
-
-
-                </div>
-                <div className="clear"></div>
-              </section>
+                      <ProductCarousal images={profileDetails?.products} footer={true} profileUserId={profileUserId} visitorInfo={visitorInfo} />
+                    </div>
+                  </div>
+                  <div className="clear"></div>
+                </section> : <></>}
 
               {/* <!-- Offers --> */}
-              <section className="section works" id="Offers-section" ref={sectionRefs.Offers}>
-                <div className="title">Offers</div>
-                {/* <h4 className="Offers-content">Coming Soon</h4> */}
+              {(profileDetails?.offerStatus === true) && (profileDetails?.offers?.length > 0) ?
+                <section className="section works" id="Offers-section" ref={sectionRefs.Offers}>
+                  <div className="title">Offers</div>
 
-                <div
-                  className="row box-items"
-                  style={{
-                    position: "relative",
-                  }}
-                >
+                  <div
+                    className="row box-items"
+                    style={{
+                      position: "relative",
+                    }}
+                  >
 
 
 
-                  <div className="row">
-                    <OffersCarousel offers={profileDetails?.offers} />
+                    <div className="row">
+                      <OffersCarousel offers={profileDetails?.offers} />
+                    </div>
+
+
+
+
                   </div>
-
-
-
-
-                </div>
-                <div className="clear"></div>
-              </section>
-
+                  <div className="clear"></div>
+                </section> : <></>
+              }
               {/* <!-- Gallery --> */}
               <section className="section works" id="Gallery-section" ref={sectionRefs.Gallery}>
-                <div className="title">Image Gallery</div>
-                <div
-                  className="row box-items"
-                  style={{
-                    position: "relative",
-                  }}
-                >
+                {(profileDetails?.imageGalleryStatus === true) && (profileDetails?.imageGalleries?.length > 0) ?
+                  <>
+                    <div className="title">Image Gallery</div>
+                    <div
+                      className="row box-items"
+                      style={{
+                        position: "relative",
+                      }}
+                    >
 
+                      <ImageCarousel images={profileDetails?.imageGalleries} />
+                    </div>
+                  </> : <></>}
 
-                  <ImageCarousel images={profileDetails?.imageGalleries} />
-                </div>
 
                 {/* <!-- ---------video Gallery----------- --> */}
 
-                <div className="title">Video Gallery</div>
-                <div
-                  className="row box-items"
-                  style={{
-                    position: "relative",
-                  }}
-                >
-                  <VideosCarousel videos={profileDetails?.videoGalleries} />
-                </div>
-
-                {/* <!-- ---------Imp links----------- --> */}
-                <div className="title">Important Links</div>
-                <div
-                  className="row box-items"
-                  style={{
-                    position: "relative",
-                    height: "30px",
-                  }}
-                >
-
-                  {profileDetails?.documentsLinks?.map((link, index) => (
-                    <div key={index} className="col col-m-12 col-t-6 col-d-4">
-                      <div className="imp-link">
-                        <div className="center-align-contents">
-                          <img src={link?.fileType === ppt ? link?.fileType : word} alt={link?.name} />
-                          <a href="javascript:void(0)" target="_blank">
-                            {link?.name}
-                          </a>
-                        </div>
-                      </div>
+                {(profileDetails?.videoGalleryStatus === true) && (profileDetails?.videoGalleries?.length > 0) ?
+                  <>
+                    <div className="title">Video Gallery</div>
+                    <div
+                      className="row box-items"
+                      style={{
+                        position: "relative",
+                      }}
+                    >
+                      <VideosCarousel videos={profileDetails?.videoGalleries} />
                     </div>
-                  ))}
-                </div>
+                  </> : <></>}
+                {/* <!-- ---------Imp links----------- --> */}
+                {(profileDetails?.linkStatus === true && (profileDetails?.documentsLinks?.length > 0)) ?
+                  <>
+                    <div className="title">Important Links</div>
+                    <div
+                      className="row box-items"
+                      style={{
+                        position: "relative",
+                        height: "30px",
+                      }}
+                    >
+
+                      {profileDetails?.documentsLinks?.map((link, index) => (
+                        <div key={index} className="col col-m-12 col-t-6 col-d-4">
+                          <div className="imp-link">
+                            <div className="center-align-contents">
+                              <img src={link?.fileType === ppt ? link?.fileType : word} alt={link?.name} />
+                              <a href="javascript:void(0)" target="_blank">
+                                {link?.name}
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </> : <></>}
                 <div className="clear"></div>
               </section>
 
               {/* <!-- Section Testimonials --> */}
-              <section className="section clients" id="clients-section" ref={sectionRefs.Testimonials}>
-                <div className="title">Testimonials</div>
-                <div
-                  className="reviews-carousel animated"
-                  data-sr-id="13"
-                  style={{
-                    visibility: "visible",
-                    WebkitTransform: "translateY(0) scale(1)",
-                    transform: "translateY(0) scale(1)",
-                    opacity: "1",
-                    WebkitTransition:
-                      "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, -webkit-transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s",
-                    transition:
-                      "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s",
-                  }}
-                >
+
+              {(profileDetails?.testimonialStatus === true) && (profileDetails?.testimonials?.length > 0) ?
+                <section className="section clients" id="clients-section" ref={sectionRefs.Testimonials}>
+                  <div className="title">Testimonials</div>
                   <div
-                    className="owl-carousel owl-loaded owl-drag"
-
-                    style={{ display: "flex", justifyContent: "center" }}
+                    className="reviews-carousel animated"
+                    data-sr-id="13"
+                    style={{
+                      visibility: "visible",
+                      WebkitTransform: "translateY(0) scale(1)",
+                      transform: "translateY(0) scale(1)",
+                      opacity: "1",
+                      WebkitTransition:
+                        "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, -webkit-transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s",
+                      transition:
+                        "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s",
+                    }}
                   >
-                    <div className="wd-100"
+                    <div
+                      className="owl-carousel owl-loaded owl-drag"
 
+                      style={{ display: "flex", justifyContent: "center" }}
                     >
+                      <div className="wd-100"
+
+                      >
 
 
-                      <TestimonailCarousel testimonials={profileDetails.testimonials} />
-                      {/* </div> */}
+                        <TestimonailCarousel testimonials={profileDetails.testimonials} />
+                      </div>
+
                     </div>
-
                   </div>
-                </div>
-              </section>
+                </section> : <></>}
 
               {/* <!-- Section Contacts --> */}
-              <section className="section contacts" id="payments-section" ref={sectionRefs.Payments}>
-                <div className="title">Payments</div>
-                <div className="row">
-                  <div className="col col-m-12 col-t-6 col-d-6">
-                    <div
-                      className="content-box animated"
-                      data-sr-id="14"
-                      style={{
-                        visibility: "visible",
-                        transform: "translateY(0) scale(1)",
-                        opacity: 1,
-                        WebkitTransform: "translateY(0) scale(1)",
-                        WebkitOpacity: 1,
-                        transition:
-                          "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s",
-                      }}
-                    >
-                      <div className="info-list">
-                        <ul>
-                          <li>
-                            <strong>
-                              <span>Bank Name:</span>
-                            </strong>{" "}
-                            {/* Bank of Maharashtra */}
-                            {profileDetails?.bankAccountDetails?.bankName}
-                          </li>
-                          <li>
-                            <strong>
-                              <span>Account Name:</span>
-                            </strong>{" "}
-                            {profileDetails?.bankAccountDetails?.accountName}
-                          </li>
-                          <li>
-                            <strong>
-                              <span>IFSC Code:</span>
-                            </strong>
-                            {profileDetails?.bankAccountDetails?.ifsc}
+              {(profileDetails?.bankAccountStatus === true) || (profileDetails?.bankAccountDetails?.length > 0) || (profileDetails?.ePaymentStatus === true) || (profileDetails?.paymentDetails?.length > 0) ?
+                <section className="section contacts" id="payments-section" ref={sectionRefs.Payments}>
+                  <div className="title">Payments</div>
 
-                          </li>
-                          <li>
-                            <strong>
-                              <span>PAN Card No:</span>
-                            </strong>
+                  <div className="row">
+                    {(profileDetails?.bankAccountStatus === true) && ([profileDetails?.bankAccountDetails].length > 0) ?
+                      <div className="col col-m-12 col-t-6 col-d-6">
+                        <div
+                          className="content-box animated"
+                          data-sr-id="14"
+                          style={{
+                            visibility: "visible",
+                            transform: "translateY(0) scale(1)",
+                            opacity: 1,
+                            WebkitTransform: "translateY(0) scale(1)",
+                            WebkitOpacity: 1,
+                            transition:
+                              "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s",
+                          }}
+                        >
+                          <div className="info-list">
+                            <ul>
+                              <li>
+                                <strong>
+                                  <span>Bank Name:</span>
+                                </strong>{" "}
+                                {profileDetails?.bankAccountDetails?.bankName}
+                              </li>
+                              <li>
+                                <strong>
+                                  <span>Account Name:</span>
+                                </strong>{" "}
+                                {profileDetails?.bankAccountDetails?.accountName}
+                              </li>
+                              <li>
+                                <strong>
+                                  <span>IFSC Code:</span>
+                                </strong>
+                                {profileDetails?.bankAccountDetails?.ifsc}
 
-                            {profileDetails?.bankAccountDetails?.pan}
-                          </li>
-                          <li>
-                            <strong>
-                              <span>Account Type:</span>
-                            </strong>{" "}
-                            {profileDetails?.bankAccountDetails?.ifsc}--pend
-                          </li>
-                          <li>
-                            <strong>
-                              <span>Account No:</span>
-                            </strong>
+                              </li>
+                              <li>
+                                <strong>
+                                  <span>PAN Card No:</span>
+                                </strong>
 
-                            {profileDetails?.bankAccountDetails?.accountNumber}
-                          </li>
-                          <li>
-                            <strong>
-                              <span>GST No.:</span>
-                            </strong>
-                            {profileDetails?.bankAccountDetails?.gst}
-                          </li>
-                          <li>
-                            <strong>
-                              <span>Remark:</span>
-                            </strong>
+                                {profileDetails?.bankAccountDetails?.pan}
+                              </li>
+                              <li>
+                                <strong>
+                                  <span>Account Type:</span>
+                                </strong>{" "}
+                                {profileDetails?.bankAccountDetails?.ifsc}--pend
+                              </li>
+                              <li>
+                                <strong>
+                                  <span>Account No:</span>
+                                </strong>
 
-                            {profileDetails?.bankAccountDetails?.remark}
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+                                {profileDetails?.bankAccountDetails?.accountNumber}
+                              </li>
+                              <li>
+                                <strong>
+                                  <span>GST No.:</span>
+                                </strong>
+                                {profileDetails?.bankAccountDetails?.gst}
+                              </li>
+                              <li>
+                                <strong>
+                                  <span>Remark:</span>
+                                </strong>
+
+                                {profileDetails?.bankAccountDetails?.remark}
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div> : <></>}
+                    {(profileDetails?.ePaymentStatus === true) && ([profileDetails?.paymentDetails].length > 0) ?
+                      <div className="col col-m-12 col-t-6 col-d-6">
+                        <div
+                          className="content-box animated upi-img"
+                          data-sr-id="15"
+                          style={{
+                            visibility: "visible",
+                            transform: "translateY(0) scale(1)",
+                            opacity: 1,
+                            WebkitTransform: "translateY(0) scale(1)",
+                            WebkitOpacity: 1,
+                            transition:
+                              "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s",
+                            WebkitTransition:
+                              "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, -webkit-transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s",
+                          }}
+                        >
+
+                          <h5>UPI Image</h5>
+                          <img src={profileDetails?.paymentDetails?.image} style={resizeImage(150, 150)} alt="" />
+                          <p>Upi ID: {profileDetails?.paymentDetails?.upiId}</p>
+
+                          <p>Payment Gateway Link:
+                            <a href={profileDetails?.paymentDetails?.paymentGatewayLink} target="_blank"> Click here to open
+                            </a></p>
+
+                        </div>
+                      </div> : <></>}
                   </div>
-                  <div className="col col-m-12 col-t-6 col-d-6">
-                    <div
-                      className="content-box animated upi-img"
-                      data-sr-id="15"
-                      style={{
-                        visibility: "visible",
-                        transform: "translateY(0) scale(1)",
-                        opacity: 1,
-                        WebkitTransform: "translateY(0) scale(1)",
-                        WebkitOpacity: 1,
-                        transition:
-                          "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s",
-                        WebkitTransition:
-                          "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, -webkit-transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s",
-                      }}
-                    >
-                      <h5>UPI Image</h5>
-                      <img src={profileDetails?.paymentDetails?.image} style={resizeImage(150, 150)} alt="" />
-                      <p>Upi ID: {profileDetails?.paymentDetails?.upiId}</p>
-                      <p>Payment Gateway Link: {profileDetails?.paymentDetails?.paymentGatewayLink}</p>
-                    </div>
-                  </div>
-                </div>
-              </section>
+                </section> : <></>
+              }
             </div>
             {/* footer */}
           </div>
           <footer className="footerSec">
             <div className="bts">
-              {/* <Button className="btn extra btn_animated has-popup"
-          onClick={()=>{setReferrelInfoType(true)}}
-          >
-            <span className="circle center_icon">
-              <span
-                className="ink animate"
-              ></span>
-              Refer Business
-            </span>
-          </Button> */}
+
               <ReferrelInfoForm footer={true} profileUserId={profileUserId} visitorInfo={visitorInfo} />
-              {/* 
-          <Button
-            className="btn extra contact-btn btn_animated"
-            
-            onClick={()=>{setEnquiryInfoType(true)}}
-          >
-            <span className="circle center_icon">
-              <span
-                className="ink animate"
-              ></span>
-              Enquiry
-            </span>
-          </Button> */}
+
               <EnquiryInfoForm footer={true} profileUserId={profileUserId} visitorInfo={visitorInfo} />
 
               <Button

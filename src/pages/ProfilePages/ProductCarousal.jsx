@@ -6,11 +6,14 @@ import TextToggler from './TextToggler';
 import "../ProfilePageCss/custom.css";
 import { Dialog, DialogContent, DialogTitle, Grid } from '@mui/material';
 import { Close } from '@mui/icons-material';
+import EnquiryInfoForm from './EnquiryInfoForm';
+import EnquiryInfoFormOnClick from './EnquiryInfoFormOnClick';
 
-const ProductCarousal = ({ images }) => {
+const ProductCarousal = ({ images ,profileUserId,visitorInfo,footer }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [width, setWidth] = useState(window.innerWidth);
 
+  const [openEf, setOpenEf] = React.useState(false);
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -134,8 +137,8 @@ const ProductCarousal = ({ images }) => {
                 <div className="product-link">
                   {product?.websiteLink}--web link Pend
                 </div>
-                <div className="service-bts flex-row-g20">
-                  <div onClick={()=>setOpen(true)} className="btn btn_animated has-popup">
+                <div className="service-bts flex-row-g20" style={{display:'flex', justifyContent:'space-between', width:'100%'}}>
+                  <div onClick={()=>setOpen(true)} className="btn btn_animated has-popup" style={{width:'50%'}}>
                     <span className="circle center_icon">
                       View detail
                       </span>
@@ -144,9 +147,17 @@ const ProductCarousal = ({ images }) => {
                     <span className="circle center_icon">View detail</span>
                   </Button> */}
                   <div
-                    className="btn extra contact-btn btn_animated has-popup"
+                    className="btn extra contact-btn btn_animated has-popup"style={{width:'50%'}}
+                    onClick={()=>setOpenEf(true)}
                   >
-                    <span className="circle center_icon">Enquiry</span>
+                    <span 
+                    className="circle center_icon"
+                    >
+                      Enquiry
+                    </span>
+                    <EnquiryInfoFormOnClick openEf={openEf}  setOpenEf={setOpenEf}  profileUserId={profileUserId} visitorInfo={visitorInfo} />
+               
+                    {/* <EnquiryInfoForm footer={true} profileUserId={profileUserId} visitorInfo={visitorInfo} /> */}
                   </div>
                 </div>
               </div>

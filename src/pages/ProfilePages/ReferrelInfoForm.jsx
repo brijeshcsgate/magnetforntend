@@ -76,13 +76,20 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
         <React.Fragment>
             <Button className="btn extra btn_animated has-popup"
                 onClick={() => { setOpen(true) }}
+                // sx={{
+                //     textTransform: 'none', // Disable default uppercase
+                //     borderRadius: 0,       // Set border radius to 0px
+                //     '&::first-letter': {
+                //       textTransform: 'capitalize', // Capitalize only the first letter
+                //     },
+                //   }} 
+                //   .capitalize {
+                //     text-transform: capitalize;
+                //   }
             >
                 <span
-                //  className="circle center_icon"
+                 className="circle center_icon"
                 >
-                    <span
-                    // className="ink animate"
-                    ></span>
                     Refer Business
                 </span>
             </Button>
