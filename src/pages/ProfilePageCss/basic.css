@@ -64,7 +64,9 @@ body {
 .clear {
 	clear: both;
 }
-
+.margin-bottom{
+	margin-bottom:40px !important;
+}
 .mobile {
 	display: none;
 }

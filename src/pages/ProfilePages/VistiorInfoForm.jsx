@@ -36,7 +36,7 @@ export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId,
     const [open, setOpen] = React.useState(openP);
     const [location, setLocation] = React.useState('');
     const [startTime, setStartTime] = React.useState('');
-    const [isSend,setIsSend]=React.useState(visitorInfoType === 'Not Required'?true:false)
+    const [isSend, setIsSend] = React.useState(visitorInfoType === 'Not Required' ? true : false)
 
     const getStartTime = () => {
         const start = new Date();
@@ -66,11 +66,35 @@ export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId,
     const handleClickOpen = () => {
         setOpen(true);
     };
+
+    
+    const  optionalVisitor=()=>{
+        const data = {
+            name: 'john',
+            email: 'john@gmail.com',
+            mobile: '+91 999999999',
+            userId: profileUserId,
+            view_duration: startTime,
+            location: location
+        }
+        if(location){
+        getStartTime();  // Set the user's start time
+        getUserLocation();
+        apiService.post(`${APIS.ADD_VISITOR}`, data)
+            .then((res) => {
+                setVisitorInfo(res.data)
+                // toast.success('Data saved successfully');
+            })
+        setIsSend(false);
+        }
+
+    }
     const handleClose = (event, reason) => {
         // Prevent closing if the user clicked outside (backdropClick) or pressed ESC (escapeKeyDown)
         if (reason === 'backdropClick' || reason === 'escapeKeyDown') {
             return;
         }
+        optionalVisitor()
         setOpen(false); // Close dialog only when the Cancel button is clicked
     };
     const handleSubmit = async (values) => {
@@ -86,25 +110,27 @@ export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId,
         setOpen(false);
 
     }
-if((visitorInfoType === 'Not Required')&&(isSend===true)){
-    const data={
-        name: 'john',
-        email: 'john@gmail.com',
-        mobile: '999999999',
-        userId: profileUserId,
-        view_duration: startTime,
-        location: location
-    }
-    getStartTime();  // Set the user's start time
+    if ((visitorInfoType === 'Not Required') && (isSend === true)) {
+        const data = {
+            name: 'john',
+            email: 'john@gmail.com',
+            mobile: '+91 999999999',
+            userId: profileUserId,
+            view_duration: startTime,
+            location: location
+        }
+        if(location){
+        getStartTime();  // Set the user's start time
         getUserLocation();
-    apiService.post(`${APIS.ADD_VISITOR}`, data)
-    .then((res) => {
-        setVisitorInfo(res.data)
-        // toast.success('Data saved successfully');
-    })
-setIsSend(false);
+        apiService.post(`${APIS.ADD_VISITOR}`, data)
+            .then((res) => {
+                setVisitorInfo(res.data)
+                // toast.success('Data saved successfully');
+            })
+        setIsSend(false);
+        }
+    }
 
-}
     return (
         <React.Fragment>
             <Dialog

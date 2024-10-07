@@ -390,7 +390,7 @@ const ProfilepageUser = () => {
                             </strong>{" "}
                             {profileDetails?.email}
                           </li>
-                          <li>
+                          {/* <li>
                             <strong>
                               <span>Website:</span>
                             </strong>{" "}
@@ -401,7 +401,7 @@ const ProfilepageUser = () => {
                               <span>Telegram:</span>
                             </strong>
                             @gyangps--?
-                          </li>
+                          </li> */}
                           <li>
                             <strong>
                               <span>Address:</span>
@@ -588,7 +588,7 @@ const ProfilepageUser = () => {
 
               {/* <!-- Section Contacts --> */}
               {(profileDetails?.bankAccountStatus === true) || (profileDetails?.bankAccountDetails?.length > 0) || (profileDetails?.ePaymentStatus === true) || (profileDetails?.paymentDetails?.length > 0) ?
-                <section className="section contacts" id="payments-section" ref={sectionRefs.Payments}>
+                <section className="section contacts margin-bottom" id="payments-section" ref={sectionRefs.Payments} >
                   <div className="title">Payments</div>
 
                   <div className="row">
@@ -635,12 +635,12 @@ const ProfilepageUser = () => {
 
                                 {profileDetails?.bankAccountDetails?.pan}
                               </li>
-                              <li>
+                              {/* <li>
                                 <strong>
                                   <span>Account Type:</span>
                                 </strong>{" "}
                                 {profileDetails?.bankAccountDetails?.ifsc}--pend
-                              </li>
+                              </li> */}
                               <li>
                                 <strong>
                                   <span>Account No:</span>
@@ -688,8 +688,15 @@ const ProfilepageUser = () => {
                           <p>Upi ID: {profileDetails?.paymentDetails?.upiId}</p>
 
                           <p>Payment Gateway Link:
-                            <a href={profileDetails?.paymentDetails?.paymentGatewayLink} target="_blank"> Click here to open
-                            </a></p>
+                            {/* <a href={profileDetails?.paymentDetails?.paymentGatewayLink} target="_blank"> Click here to open
+                            </a> */}
+                            &nbsp;&nbsp;
+                            <Button variant="contained" size='small' color="success" onClick={(e)=>{window.open(profileDetails?.paymentDetails?.paymentGatewayLink, '_blank')}}>
+      Click Here
+    </Button>
+                            
+                            </p>
+                            
 
                         </div>
                       </div> : <></>}

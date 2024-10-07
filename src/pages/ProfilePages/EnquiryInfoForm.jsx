@@ -20,7 +20,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
 
-import PhoneInput from 'react-phone-number-input'
+import PhoneInput, { parsePhoneNumber } from 'react-phone-number-input'
 import { cn } from '@/utils';
 
 const validationSchema = Yup.object().shape({
@@ -55,7 +55,7 @@ export default function EnquiryInfoForm({ profileUserId, visitorInfo }) {
         setOpen(false); // Close dialog only when the Cancel button is clicked
     };
     const handleSubmit = async (values) => {
-        console.log('values', profileUserId);
+        console.log('values', values);
         values.userId = profileUserId;
         await apiService.post(`${APIS.ADD_ENQUIRY}`, values)
             .then((res) => {
@@ -151,7 +151,24 @@ export default function EnquiryInfoForm({ profileUserId, visitorInfo }) {
                                         international
                                         defaultCountry="RU"
                                         value={values.mobile}
-                                        onChange={(e) => setFieldValue('mobile', e)}
+                                        // onChange={(e) => setFieldValue('mobile', e)}
+                                        
+                                     onChange={(value) => {
+                                          setFieldValue('mobile', value);
+                                    
+                                          // Inline parsing of phone number
+                                        //   if (value) {
+                                        //     const phoneNumber = parsePhoneNumber(value);
+                                        //     if (phoneNumber) {
+                                        //       // Inline extraction of country code and national number
+                                        //       setFieldValue('countryCode', phoneNumber.countryCallingCode);
+                                        //     //   setFieldValue('mobile', phoneNumber.nationalNumber);
+                                    
+                                        //     //   console.log('Country Code:', phoneNumber.countryCallingCode);
+                                        //       console.log('Phone Number:', valuse.mobile);
+                                        //     }
+                                        //   }
+                                        }}
                                         className={cn(
                                             'flex h-8 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-xs ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-primary-200 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ',
                                         )}
