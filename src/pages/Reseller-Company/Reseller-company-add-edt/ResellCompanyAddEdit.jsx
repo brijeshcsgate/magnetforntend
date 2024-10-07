@@ -127,7 +127,6 @@ const [industries, setIndustries] = useState([]);
 useEffect(() => {
   axios.get(`${BASE_URL_WAPI}/industry`)
     .then(response => {
-      console.log(response.data.data)
       setIndustries(response.data.data);
     })
     .catch(error => {

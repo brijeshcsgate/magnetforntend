@@ -118,11 +118,9 @@ const ProfilepageUser = () => {
       if (scrollPosition >= 288) {
         setIsSticky(true);
 
-        console.log("scrollPositiontrue", scrollPosition);
       } else {
         setIsSticky(false);
 
-        console.log("scrollPositionfalse", scrollPosition);
       }
     };
 
@@ -138,7 +136,6 @@ const ProfilepageUser = () => {
         // const response = await apiService.get(`${APIS.GET_ENQUIRY}/${id}`);
         const response = await apiService.get(`${APIS.PROFILE_IDENT}/${id}`);
         setProfileStatus(response?.data?.profileStatus)
-        console.log('response', response.data._id)
         setProfileUserId(response.data._id)
         setProfileDetails(response.data);
         setProfiles(response.data.testimonials);
@@ -716,9 +713,9 @@ const ProfilepageUser = () => {
               <Button
                 className="btn extra contact-btn btn_animated"
               >
-                <span className="circle center_icon">
+                <span className="circle center_icon line-height">
                   <span
-                    className="ink animate"
+                    className="ink animate "
                   ></span>
                   Save My Contact
                 </span>

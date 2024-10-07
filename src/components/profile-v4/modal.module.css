@@ -1,0 +1,116 @@
+
+.select {
+    margin: 1rem 0;
+}
+
+.siteForm .siteInput{
+    width: 100%;
+    height: 45px;
+    border: 0;
+    color: #000;
+    border-bottom: solid 1px #dfdfdf;
+    font-size: 13px;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    outline: 0;
+}
+
+.siteForm .siteArea{
+    width: 100%;
+    border: 0;
+    border-bottom: solid 1px #dfdfdf;
+    font-size: 13px;
+    padding: 20px 0 0 10px;
+    min-height: 100px;
+    margin-bottom: 15px;
+}
+
+.siteForm .siteArea{
+    width: 100%;
+    border: 0;
+    border-bottom: solid 1px #dfdfdf;
+    font-size: 13px;
+    padding: 20px 0 0 10px;
+    min-height: 100px;
+    margin-bottom: 15px;
+}
+
+.siteBtn {
+    width: 182px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 0;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    padding: 1px 29px;
+    line-height: 35px;
+    background-color: #425CBB;
+    color: white;
+}
+
+.siteBtn:hover{
+    transition: all ease 0.3s;   
+ }
+
+.rate {    
+    height: 46px;
+    float: left;
+    margin-left: 1rem;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float: right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.referral {
+    margin-left: 1rem;
+}
+
+.modalDescription {
+    width: 700px;
+    margin: 2rem auto;
+    border-radius: 0;
+}
+
+.top_15{
+    margin-top: 15px;
+}
+
+.bottom_30{
+    margin-bottom: 30px;
+}
+@media screen and (max-width:768px) {
+    .modalDescription {
+        width: 100%;
+        margin: 2rem auto;
+        border-radius: 0;
+        padding: 5px;
+    }
+}

@@ -1,0 +1,25 @@
+/* fade-transition.css */
+@keyframes fadeInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .fade-transition-container {
+    position: relative;
+    .content-section {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      width: 100%;
+      animation: fadeInFromLeft 0.5s ease;
+      animation-fill-mode: forwards;
+    }
+  }
+  

@@ -34,7 +34,6 @@ async function fetchAnalyticsData() {
       },
     ],
   });
-console.log('response',response)
   return response.rows.map(row => ({
     date: row.dimensionValues[0].value,
     pageViews: parseInt(row.metricValues[0].value),

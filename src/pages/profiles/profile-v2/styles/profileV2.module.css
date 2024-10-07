@@ -1,0 +1,853 @@
+:root {
+    --text-color: purple;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.headerContainer {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    object-fit: cover;
+}
+
+.profile_container {
+    width: 100%;
+}
+
+.menu {
+    background-color: var(--text);
+    /* width: 85%; */
+}
+
+.headerOverlay {
+    height: auto;
+    background: linear-gradient(54deg, rgba(74, 76, 179, .95) 34%, hsla(0, 34%, 71%, .95));
+    width: 100%;
+
+}
+
+.paymentOverlay {
+    height: auto;
+    background: linear-gradient(54deg, rgba(74, 76, 179, .95) 34%, hsla(0, 34%, 71%, .95));
+    width: 100%;
+}
+
+.details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 5rem;
+    width: 90%;
+}
+
+.profileImg {
+    width: 30%;
+    border-radius: 10px;
+
+}
+
+.profileDetails {
+    width: 70%;
+    margin: auto;
+
+}
+
+.profileImg img {
+    object-fit: cover;
+    width: 290px;
+    height: 270px;
+    border-radius: 10px;
+
+}
+
+.contactButton {
+    display: flex;
+    gap: 1rem;
+
+}
+
+.contactButton button {
+    color: white;
+    background-color: #6d56c10e;
+    font-weight: 600;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 4px 5px;
+    font-size: min(0.8rem, 12vw); 
+    max-width: 100vw;;
+
+}
+
+.contactButton button:hover {
+    cursor: pointer;
+    background-color: #fff;
+    color: #6d56c1;
+}
+
+
+/* Aboute section */
+.aboutContainer {
+    width: 80%;
+    margin: auto;
+    padding-top: 3rem;
+}
+
+/* Contact Me section styles */
+
+.contactmeContainer {
+    width: 80%;
+    margin: auto;
+    padding-top: 4rem;
+
+}
+
+.contactBoxs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.contactBoxs>div {
+    width: 25%;
+    height: 100%;
+}
+
+.contactBoxs>div>div p {
+    text-decoration: none;
+    color: #8e6bc1;
+}
+
+.contactmeIcon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contactBoxs>div>div p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Services Sections */
+
+.serviceContainer {
+    width: 80%;
+    margin: auto;
+    padding-top: 4rem;
+
+}
+
+.singleServiceContainer {
+    display: flex;
+    border: 1px solid lightgray;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.singleServiceContainer:hover {
+    cursor: pointer;
+    box-shadow: rgba(43, 40, 40, 0.2) 0px 2px 8px 0px;
+}
+
+.singleServiceImage {
+    width: 38%;
+    height: 100%;
+
+}
+
+.singleServiceDetails {
+    width: 62%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.singleServiceImage img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.singleServiceButtons button {
+    border: none;
+    gap: 1rem;
+    padding: 5px;
+    box-shadow: rgba(70, 69, 69, 0.2) 0px 2px 8px 0px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.singleServiceButtons {
+    display: flex;
+    gap: 1rem;
+
+    margin-top: 9px;
+}
+
+
+/* Product styles */
+
+.productContainer {
+    width: 80%;
+    margin: auto;
+    padding-top: 4rem;
+
+}
+
+.singleProductContainer {
+    display: flex;
+    border: 1px solid lightgray;
+    height: 350px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.singleProductImage {
+    width: 38%;
+    height: 100%;
+    /* border: 1px solid rgb(241, 12, 12); */
+
+}
+
+.carouselItem {
+    height: 100%;
+}
+
+.ProductCarouselInner {
+    height: 100%;
+    width: 100%;
+}
+
+.singleProductDetails {
+    width: 62%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.singleProductImage img {
+    width: 100%;
+    border-radius: 10px 0px 0px 10px;
+    height: 100%;
+}
+
+.singleProductButtons button {
+    border: none;
+    gap: 1rem;
+    padding: 5px;
+    box-shadow: rgba(70, 69, 69, 0.2) 0px 2px 8px 0px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.singleProductButtons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 9px;
+}
+
+.singleProductContainer:hover {
+    cursor: pointer;
+    box-shadow: rgba(43, 40, 40, 0.2) 0px 2px 8px 0px;
+}
+
+/* Offers section styles */
+
+.OffersContainer {
+    height: auto;
+    width: 80%;
+    margin: auto;
+    padding-top: 5rem;
+
+}
+
+/* Image Gallery section */
+
+.imageGalleryContainer {
+    height: auto;
+    width: 80%;
+    margin: auto;
+    padding-top: 5rem;
+
+
+}
+
+.singleImageGalleryContainer {
+    border: 1px solid lightgray;
+}
+
+.imageGalleryCards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    justify-content: left;
+    gap: 1rem;
+    margin-top: 1.5rem;
+
+}
+
+.singleImageGalleryImg {
+    width: 100%;
+    height: 75%;
+    border: 1px solid lightgray;
+}
+
+.singleImageGalleryImg img {
+    width: 100%;
+    height: 100%;
+}
+
+.singleImageGalleryText {
+    width: 100%;
+    margin-top: 1rem;
+    padding-left: 1rem;
+    color: gray;
+}
+
+/* Video Gallery section styles */
+.videoGalleryContainer {
+    height: auto;
+    width: 80%;
+    margin: auto;
+    padding-top: 5rem;
+
+}
+
+.videoGalleryCards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    justify-content: left;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.singleVideoGalleryImg {
+    width: 100%;
+    height: 75%;
+    border: 1px solid lightgray;
+}
+
+.SingleVideoGalleryContainer {
+    border: 1px solid lightgray;
+    border-radius: 6px;
+
+}
+
+.singleVideoGalleryText {
+    width: 100%;
+    padding-left: 1rem;
+    color: gray;
+}
+
+/* Important Link section styles */
+
+.linkContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 2rem;
+    padding-bottom: 2rem;
+}
+
+.linkContainer {
+    padding-top: 2rem;
+}
+
+.singleLink {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Testimonials section styles */
+.testimonialsContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    object-fit: cover;
+
+}
+
+.carousels {
+    width: 80%;
+    height: 70%;
+    margin: auto;
+    position: relative;
+    padding: 4rem;
+
+}
+
+.singleTestimonialContainer {
+    width: 100%;
+    margin: auto;
+
+}
+
+.carouselInner {
+    width: 75%;
+    margin: auto;
+
+
+}
+
+.carousels>button {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+/* Payment section styles */
+.paymentContainer {
+    width: 80%;
+    margin: 2rem auto 4rem auto;
+}
+
+.paymentBoxs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.paymentBoxs>div {
+    width: 25%;
+    height: 100%;
+}
+
+.paymentBoxs>div>div p {
+    text-decoration: none;
+    color: #8e6bc1;
+}
+
+.paymentBoxs>div>div p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Footer section style */
+
+.footerContainer {
+    background-color: #6d56c1;
+    width: 100%;
+    height: 11vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0px;
+    z-index: 999;
+
+}
+
+.footersButton {
+    display: flex;
+    gap: 2rem;
+}
+
+.footersButton button {
+    border: 1px solid white;
+    background-color: white;
+    padding: 0.3rem;
+    color: var(--text-color);
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: min(0.8rem, 12vw); 
+    max-width: 100vw;;
+}
+
+.footersButton button:hover {
+    border: 1px solid #fff;
+    cursor: pointer;
+    background-color: #6d56c1;
+    color: white;
+}
+
+.socialIcon {
+    display: flex;
+    gap: 2rem;
+    color: lightgray;
+}
+@media screen and (min-width: 991px) and (max-width:1290px) {
+    
+    .profileImg{
+        width: 30%;
+    }
+    .profileImg img{
+        width: 100%;
+    }
+    .profileDetails {
+        width: 68%;
+
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 990px) {
+    .profileImg {
+        display: none;
+    }
+
+    .profileDetails {
+        width: 100%;
+        margin-left: -2rem;
+    }
+}
+
+@media screen and (max-width:768px) {
+
+
+
+    .aboutContainer {
+        width: 70%;
+    }
+
+    .contactmeContainer {
+        width: 70%;
+    }
+
+    .paymentContainer {
+        margin: 2rem auto 3rem auto;
+    }
+
+    .details {
+        display: block;
+        width: 100%;
+        margin: auto;
+        padding: 5rem 7rem;
+
+    }
+    
+    .profileDetails {
+        width: 100%;
+        margin-top: 1rem;
+
+    }
+
+    .profileImg {
+        margin: 2rem 0px;
+        width: 100%;
+        border-radius: 1rem;
+    }
+
+    .profileImg img {
+        object-fit: cover;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .productContainer{
+        width: 70%;
+    }
+    .imageGalleryContainer {
+        margin-top: 2rem;
+        width: 70%;
+
+    }
+
+    .imageGalleryCards {
+        width: 100%;
+        height: 100%;
+        display: block;
+        justify-content: center;
+        border-radius: 5px;
+
+
+    }
+
+    .singleImageGalleryContainer {
+        display: block;
+        border: 1px solid lightgray;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        gap: 2rem;
+        margin-top: 1rem;
+        width: 100%;
+    }
+
+    .imageVideoGalleryImg {
+        width: 100%;
+        border: 1px solid rgb(95, 48, 224);
+
+    }
+
+    .imageVideoGalleryContainer {
+        width: 100%;
+        height: 100%;
+        margin-top: 1.5rem;
+    }
+
+    .videoGalleryContainer {
+        margin-top: 2rem;
+        width: 70%;
+    }
+
+    .videoGalleryCards {
+        width: 100%;
+        height: 100%;
+        display: block;
+        justify-content: center;
+        border-radius: 5px;
+
+    }
+
+    .singleVideoGalleryImg {
+        width: 100%;
+        border: 1px solid rgb(95, 48, 224);
+
+    }
+
+    .SingleVideoGalleryContainer {
+        width: 100%;
+        height: 100%;
+        margin-top: 1.5rem;
+    }
+
+    .paymentBoxs {
+        display: block;
+        justify-content: center;
+
+
+    }
+
+    .paymentBoxs>div {
+        width: 100%;
+        font-size: 1.2rem;
+    }
+
+    .contactmeContainer {
+        height: auto;
+    }
+
+    .contactBoxs {
+        display: block;
+        width: 100%;
+    }
+
+    .contactBoxs>div {
+        width: 100%;
+    }
+
+    .contactBoxs p {
+        padding-left: 1.5rem;
+    }
+
+    .contactmeIcon {
+        display: flex;
+
+    }
+
+    .productContainer {
+        width: 70%;
+    }
+
+    .serviceContainer {
+        width: 70%;
+    }
+
+    .singleServiceContainer {
+        display: block;
+        border: 1px solid lightgray;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .singleServiceDetails {
+        width: 100%;
+        padding: 1rem;
+
+    }
+
+    .singleServiceImage {
+        width: 100%;
+        height: 100%;
+    }
+
+    .singleServiceImage img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    .singleProductContainer {
+        display: block;
+        border: 1px solid lightgray;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        gap: 2rem;
+        margin-top: 1rem;
+    }
+
+    .singleProductImage {
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .singleProductDetails {
+        border: 1px solid lightgray;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .singleProductImage img {
+        width: 100%;
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    .carouselInner {
+        width: 100%;
+    }
+
+    .singleImageGalleryContainer {
+        display: block;
+        border: 1px solid lightgray;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .OffersContainer {
+        width: 70%;
+    }
+
+    .linkContainer {
+        display: block;
+        width: 70%;
+    }
+
+    .singleLink {
+        margin-top: 1rem;
+    }
+
+    .singleTestimonialContainer {
+        width: 90%;
+    }
+
+    .socialIcon {
+        display: none;
+    }
+
+    .paymentContainer {
+        width: 70%;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    
+    .headerContainer {
+        width: 100%;
+        height: 40rem;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        object-fit: cover;
+    }
+
+    .details {
+        display: block;
+        padding: 5rem 0px;
+    }
+
+    .productContainer{
+        width: 90%;
+    }
+    .singleProductContainer {
+        display: block;
+    }
+
+    .headerContainer {
+        height: auto;
+
+
+    }
+
+    .profileDetails {
+        width: 90%;
+        margin: 1rem auto;
+
+    }
+
+    .profileImg {
+        width: 90%;
+        height: auto;
+        margin: auto;
+        border-radius: 10px;
+
+    }
+
+    .profileImg img {
+        width: 100%;
+        border-radius: 10px;
+
+
+    }
+
+    .aboutContainer {
+        width: 90%;
+    }
+
+    .contactmeContainer {
+        width: 90%;
+    }
+
+    .OffersContainer {
+        width: 90%;
+    }
+
+    .serviceContainer {
+        width: 90%;
+    }
+
+    /* image gallery mobile view */
+    .imageGalleryContainer {
+        width: 90%;
+    }
+
+    .singleTestimonialContainer {
+        width: 100%;
+        margin: auto;
+
+    }
+
+    .videoGalleryContainer {
+        width: 90%;
+    }
+
+    .carouselInner {
+        width: 100%;
+        margin: auto;
+
+    }
+
+    .carousels {
+        width: 90%;
+    }
+
+}

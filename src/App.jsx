@@ -18,6 +18,9 @@ import ProfilepageUser from './pages/ProfilePages/ProfilepageUser';
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Profilev2Main from './pages/profiles/profile-v2/Profilev2Main';
+import ProfileV4Main from './pages/profiles/profile-v4/ProfileV4Main';
+import ProfileV1Main from './pages/profiles/profile-v1/ProfileV1Main';
 // import AnalyticsDashboard from './AnalyticsDashboard';
 // import AnalyticsDisplay from './AnalyticsDisplay';
 const GOOGLE_MAP_KEY = import.meta.env.VITE_GOOGLE_MAP_KEY;
@@ -33,8 +36,6 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Send pageview with a custom path
-    console.log('datat ga',{ hitType: "pageview", page: location.pathname + location.search })
     ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
   }, [location]);
 
@@ -44,7 +45,6 @@ const App = () => {
       await apiService.get('v1/auth/verifyToken').then((res) => {
         // if (res.code === 200) {
           setIsAuthenticated(true);
-          console.log('ussss>>', res.data?.user?.roleId?.permissions);
           setUser(res.data?.user);
           setPermissions(res.data?.user?.roleId?.permissions);
         // } else {
@@ -92,7 +92,10 @@ const App = () => {
         : renderRoutes(publicRoutes, CommonLayout)}
         
         <Route path='/profile/:id' element={<ProfilepageUser />} />
-        
+        <Route  path='/profiles/v2' element={<Profilev2Main/>} />
+      <Route  path='/profiles/v4' element={<ProfileV4Main/>} />
+      <Route  path='/profiles' element={<ProfileV1Main/>} />
+   
         {/* <Route path='/dashboard' element={<AnalyticsDashboard />} /> */}
 
 

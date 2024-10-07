@@ -1,0 +1,154 @@
+@import url("../../../../root-styles/colors.css");
+
+
+.CustomNavbar {
+    display: flex;
+    color: var(--text);
+    height: 12vh;
+}
+
+.CustomNavbar ul {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    padding-left: 4.8rem;
+    
+}
+.navbarChild{
+    text-align: left;
+    display: flex;
+    width: 100%;
+    margin: auto;
+}
+.responsiveNav li div:hover{
+    cursor: pointer;
+}
+.responsiveNav{
+    display: flex;
+}
+.scrollNavbar {
+    display: none;
+}
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    gap: 1rem;
+
+}
+.imgCircle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid lightgray;
+}
+.fixed {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    color: #fff;
+    font-family: 'PT Sans', sans-serif;
+    transition: all 0.4s ease;
+    z-index: 999;
+    height: 4rem;
+}
+.profileShowOnDefault {
+    display: none;
+
+}
+
+
+
+/* QR section styles */
+.qrP{
+    color:#ada0da ;
+}
+.qrP:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 990px) {
+    .profileShowOnDefault {
+        display: flex;
+        width: 83%;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto;
+    
+    }
+    .profileShowOnResponsive{
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+    }
+    .profile{
+        display: none;
+    }
+    .scrollNavbar {
+        display: flex;
+    }
+    .ulSectionOnClickHumberger{
+        background-color: #161515cf;
+    }
+    .CustomNavbar ul {
+        padding-left: 0px;
+    }
+
+}
+
+@media screen and (max-width:768px) {
+   
+
+    .ulSectionOnClickHumberger{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .responsiveNav {
+        background-color: #161515cf;
+        border-radius: 2px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .responsiveNav li {
+        color: white;
+
+    }
+
+    .link {
+        color: white;
+    }
+
+    .responsiveNav li:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .profileShowOnDefault {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .profileShowOnResponsive {
+        visibility: visible;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .profile{
+        display: none;
+    }
+    .CustomNavbar ul {
+        padding-left: 0px;
+    }
+}
+@media screen and (max-width:425px) {
+    .navbarChild{
+        padding: 0px 1.2rem;
+    }
+}

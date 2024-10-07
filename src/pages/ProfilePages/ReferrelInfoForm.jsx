@@ -62,7 +62,6 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
         setOpen(false); // Close dialog only when the Cancel button is clicked
     };
     const handleSubmit = async (values) => {
-        console.log('values', profileUserId);
         values.userId = profileUserId;
         await apiService.post(`${APIS.ADD_REFERREL}`, values)
             .then((res) => {
@@ -88,7 +87,7 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
                 //   }
             >
                 <span
-                 className="circle center_icon"
+                 className="circle center_icon line-height"
                 >
                     Refer Business
                 </span>

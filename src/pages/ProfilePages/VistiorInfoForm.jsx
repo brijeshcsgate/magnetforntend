@@ -98,7 +98,6 @@ export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId,
         setOpen(false); // Close dialog only when the Cancel button is clicked
     };
     const handleSubmit = async (values) => {
-        console.log('values', profileUserId);
         values.userId = profileUserId;
         values.location = location;
         values.view_duration = startTime;

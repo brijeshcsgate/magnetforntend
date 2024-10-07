@@ -273,7 +273,6 @@ const CustomSelectById = ({
         ...filters,
       },
     });
-console.log('response',response)
     if (isInitialFetch && defaultValue && response.data.length > 0) {
       setSelectedValue(response.data);
       setInitialFetchDone(true);
@@ -305,7 +304,6 @@ console.log('response',response)
       flag: item.flag, // Assuming the flag can be represented as a short code or a URL
     }));
   }, [data]);
-console.log('options',options)
   useEffect(() => {
     if (useFormik && Array.isArray(values[name])) {
       setSelectedValue(values[name]);

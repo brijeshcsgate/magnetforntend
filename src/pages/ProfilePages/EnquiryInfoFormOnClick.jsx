@@ -56,7 +56,6 @@ export default function EnquiryInfoFormOnClick({ profileUserId, visitorInfo,open
         setOpen(false); // Close dialog only when the Cancel button is clicked
     };
     const handleSubmit = async (values) => {
-        console.log('values', profileUserId);
         values.userId = profileUserId;
         await apiService.post(`${APIS.ADD_ENQUIRY}`, values)
             .then((res) => {

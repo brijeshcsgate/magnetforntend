@@ -112,9 +112,6 @@ export default function ResellCompany() {
             userType: item.userType, // Map the existing fields
           }))
         );
-        // { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-        // setRows({ id:response.result._id , name: response.result.name})
-        console.log('response.result', response.result)
         setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);

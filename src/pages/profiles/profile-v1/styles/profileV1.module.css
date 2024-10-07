@@ -1,0 +1,618 @@
+* {
+  padding: 0%;
+  margin: 0%;
+}
+
+#MainBgColor {
+  background-color: #b2d5b3;
+}
+.profileV1Cont {
+  width: 100%;
+  background-color: #b2d5b3;
+  height: 100vh;
+}
+.contentTitles {
+  margin: 0 0 15px 0;
+  padding: 0 0 5px 10px;
+  position: relative;
+  font-size: 17px;
+  color: #171717;
+  line-height: 21px;
+  font-weight: 500;
+}
+.contentTitles::before {
+
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background: -moz-linear-gradient(
+    -45deg,
+    rgba(120, 204, 109, 0.4) 0%,
+    rgba(120, 204, 109, 0.01) 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    rgba(120, 204, 109, 0.4) 0%,
+    rgba(120, 204, 109, 0.01) 100%
+  );
+  background: linear-gradient(
+    135deg,
+    rgba(120, 204, 109, 0.4) 0%,
+    rgba(120, 204, 109, 0.01) 100%
+  );
+  z-index: 0;
+  border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -khtml-border-radius: 30px;
+}
+.contentTitles .firstWord {
+  color: #78cc6d;
+}
+.main {
+  width: 1180px;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.parentOverLayIcon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+
+.showOverLayIcon {
+  opacity: 0;
+  background-color: #08ff1411;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  position: absolute;
+  z-index: 998;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.showOverLayIcon:hover {
+  opacity: 1;
+}
+.profileAndMenuSection {
+  background-color: #b2d5b3;
+  width: 49%;
+}
+.profileAndMenu {
+  width: 590px;
+  display: flex;
+  justify-content: center;
+}
+.profile {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.profileQr {
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  background-color: #0a4492;
+  padding: 4px;
+  border-radius: 3px;
+}
+
+.profileQr > img {
+  width: 35px;
+  height: 35px;
+}
+
+.downloadBtn {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  border-radius: 7px;
+}
+
+.downloadBtn > button {
+  border-radius: 7px;
+  background-color: #0a4492;
+  color: white;
+  border: none;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+.downloadBtn > button:hover {
+  cursor: pointer;
+  color: #adc7e9;
+}
+.profile::before {
+  /* width: 100%;
+    height: 5rem; */
+  background-color: rgb(22, 224, 39);
+  content: "";
+  position: absolute;
+  top: 17rem;
+  left: -8%;
+  width: 700px;
+  height: 200px;
+  background: #ffffff;
+  transform: rotate(12deg);
+  -webkit-transform: rotate(14deg);
+}
+
+.profile::after {
+  /* width: 100%;
+    height: 5rem; */
+  background-color: rgb(22, 224, 39);
+  content: "";
+  position: absolute;
+  top: 17rem;
+  right: -8%;
+  width: 700px;
+  height: 200px;
+  background: #ffffff;
+  transform: rotate(12deg);
+  -webkit-transform: rotate(-14deg);
+}
+
+.profileContainer {
+  width: 500px;
+  height: 100vh;
+  background-color: white;
+}
+
+.profileParent {
+  position: relative;
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.profileText {
+  width: 100%;
+}
+
+.profileTextDetails {
+  height: 250px;
+  position: relative;
+  z-index: 989;
+}
+
+.profileTextDetails > div {
+  width: 90%;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.profileImgDiv {
+  position: relative;
+  z-index: 999;
+  margin: 11rem 0px 0px 0rem;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: -10px 10px 10px -5px rgba(9, 224, 38, 0.5);
+}
+
+.profileImgDiv img {
+  border-radius: 50%;
+}
+
+.profileDes {
+  font-size: 0.7rem;
+  color: #171717;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.profileName {
+  margin: 0 0 10px 0;
+  font-size: 32px;
+  color: #171717;
+  line-height: 32px;
+  font-weight: 400;
+}
+
+.profileCompany {
+  font-weight: 500;
+  font-size: 16px;
+  margin: 0 0 10px 0;
+  line-height: 14px;
+}
+
+.profileLogo img {
+  width: 25%;
+  border: 1px solid;
+}
+
+.profileReferAndEnquiry {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.profileReferAndEnquiry>div:hover{
+  cursor: pointer;
+}
+
+.profileReferAndEnquiry > div {
+  width: 50%;
+  padding: 10px;
+  display: flex;
+  border: 1px solid rgb(184, 182, 182);
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  gap: 1rem;
+}
+
+/* Menu Sections styles */
+
+.menuContainer {
+  border-radius: 5px;
+  background-color: #b2d5b3;
+  margin-right: 0.5rem;
+}
+.manuItems {
+  background-color: white;
+  text-align: center;
+  position: relative;
+}
+.manuItems ul {
+  position: relative;
+  padding: 0px;
+}
+.manuItems ul li {
+  list-style: none;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  padding: 12px 3px 14px 3px;
+}
+
+/* .manuItems ul li:before {
+  content: "";
+  position: absolute;
+  z-index: 999;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: radial-gradient(
+    ellipse at right,
+    rgba(34, 98, 235, 0.7) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+} */
+
+/* Content section styles */
+
+.AllContentContainerContext{
+  position: relative;
+  padding: 1rem;
+}
+.aboutAndContactMe {
+  padding: 1rem;
+}
+.locationBox{
+  height: 100%;
+  width: 100%;
+}
+.contactmeIcon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: gray;
+}
+.contentContainer {
+  background-color: #ffffff;
+  width: 50%;
+  overflow: auto;
+  padding-left: 1rem;
+  margin-left: 10px;
+}
+
+.allContentResponsive {
+  display: none;
+}
+
+.galleryContainer {
+  border-radius: 8px;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.videoGallerySection {
+  margin-top: 2rem;
+}
+
+.cardContainer {
+  padding: 1rem;
+}
+
+.contactBoxs {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.contactmeContainer{
+  margin-top: 4rem;
+}
+.bankAccountAndUPIImg{
+  padding: 1rem;
+}
+.paymentBoxs{
+  display: flex;
+  justify-content: space-between;
+}
+.paymentBoxs>div:nth-child(2){
+  padding: 0px 10px;
+  width: 50%;
+}
+.ImportantSection{
+  margin-top: 2rem;
+}
+.singleLink{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 1rem 0rem;
+}
+.singleLink:hover{
+  cursor: pointer;
+}
+@media screen and (max-width: 1024px) {
+  .AllContentContainerContext {
+    display: none;
+  }
+  .allContentResponsive {
+    display: block;
+    width: 65%;
+    margin: auto;
+  }
+  .profileV1Cont {
+    width: 100%;
+    background-color: #b2d5b3;
+    height: auto;
+  }
+  .profileContainer {
+    width: 100%;
+    height: auto;
+    background-color: #ffffff;
+  }
+  .manuItems ul {
+    margin: 0px;
+  }
+  .main {
+    display: block;
+    position: static;
+    width: 100%;
+    left: 0%;
+    transform: translate(0%);
+  }
+  .profileParent {
+    display: block;
+    width: 100%;
+    margin: auto;
+    background-color: #ffffff;
+    border: 1px solid rgb(136, 134, 134);
+  }
+  .profileAndMenuSection {
+    background-color: #b2d5b3;
+    width: 100%;
+    height: auto;
+  }
+  .profileAndMenu {
+    display: block;
+    width: 60%;
+    margin: auto;
+  }
+  .manuItems {
+    width: 100%;
+  }
+  .manuItems ul {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .menuContainer {
+    width: 100%;
+  }
+  .contentContainer {
+    background-color: #b2d5b3;
+    margin-top: 2rem;
+    /* width: 540px; */
+    width: 100%;
+    padding: 1rem;
+    margin-left: 0px;
+  }
+
+  .serviceContainer {
+    border-radius: 8px;
+    padding: 10px;
+  }
+  .productContainer {
+    border-radius: 8px;
+    padding: 10px;
+  }
+  .resAbout {
+    background-color: #ffffff;
+    margin-top: 2rem;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  .resService {
+    margin-top: 2rem;
+    border-radius: 8px;
+  }
+  .resTestimonials {
+    background-color: #ffffff;
+    margin-top: 2rem;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  .resProducts {
+    background-color: #ffffff;
+    margin-top: 2rem;
+    border-radius: 8px;
+  }
+  .resOffers {
+    padding: 10px;
+    background-color: #ffffff;
+    margin-top: 2rem;
+    border-radius: 8px;
+  }
+  .resPayments {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-top: 2rem;
+    border-radius: 8px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .profile::before {
+    content: "";
+    position: absolute;
+    top: 13rem;
+    left: -20%;
+    width: 700px;
+    height: 175px;
+    background: #ffffff;
+    transform: rotate(12deg);
+    -webkit-transform: rotate(14deg);
+  }
+  .profile::after {
+    content: "";
+    position: absolute;
+    top: 13rem;
+    right: -20%;
+    width: 700px;
+    height: 200px;
+    background: #ffffff;
+    transform: rotate(12deg);
+    -webkit-transform: rotate(-14deg);
+  }
+  .productNavHideOnMobile {
+    display: none;
+  }
+  .testimonialsNavHideOnMobile {
+    display: none;
+  }
+  .profileImgDiv {
+    margin: 6rem 0px 0px 0rem;
+  }
+
+  .profileAndMenu {
+    width: 400px;
+  }
+  .allContentResponsive {
+    width: 400px;
+  }
+  .contactBoxs {
+    display: block;
+
+  }
+  .paymentBoxs{
+    display: block;
+  }
+  .paymentBoxs>div:nth-child(1){
+    width: 100%;
+  }
+  .paymentBoxs>div:nth-child(2){
+    width: 100%;
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 426px) {
+  .profileImgDiv {
+    margin: 9rem 0px 0px 0rem;
+  }
+  .manuItems ul {
+    width: 100%;
+    padding: 0px 5px;
+  }
+  .profileContainer {
+    width: 100%;
+    background-color: #b2d5b3;
+  }
+  .profile {
+    height: 200px;
+  }
+  .profileParent {
+    width: 90%;
+  }
+  .profileAndMenuSection {
+    width: 100%;
+  }
+
+  .profileAndMenu {
+    width: 100%;
+  }
+  .profileImgDiv {
+    position: relative;
+    z-index: 999;
+    margin: 6rem 0px 0px 1rem;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: -10px 10px 10px -5px rgba(9, 224, 38, 0.5);
+  }
+  .menuContainer {
+    width: 100%;
+    margin: 0px;
+  }
+  .main {
+    display: block;
+    position: static;
+    width: 100%;
+    background-color: #b2d5b3;
+    height: auto;
+    left: 0px;
+    transform: translate(0);
+    padding: 0px;
+  }
+  .contentContainer {
+    width: 100%;
+    padding: 0rem 1rem;
+  }
+  .allContentResponsive {
+    width: 100%;
+  }
+  .productNavHideOnMobile {
+    display: none;
+  }
+  .testimonialsNavHideOnMobile {
+    display: none;
+  }
+  .profile::before {
+    content: "";
+    position: absolute;
+    top: 13rem;
+    left: -30%;
+    width: 700px;
+    height: 175px;
+    background: #ffffff;
+    transform: rotate(12deg);
+    -webkit-transform: rotate(14deg);
+  }
+  .profile::after {
+    content: "";
+    position: absolute;
+    top: 13rem;
+    right: -30%;
+    width: 700px;
+    height: 200px;
+    background: #ffffff;
+    transform: rotate(12deg);
+    -webkit-transform: rotate(-14deg);
+  }
+}
