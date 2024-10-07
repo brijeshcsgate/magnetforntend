@@ -66,7 +66,7 @@ const NavbarV2 = () => {
                 width={`100%`}
                 height={`100%`}
                 style={{ borderRadius: "50%" }}
-                src={`${process.env.PUBLIC_URL + "/img/profile.jpg"}`}
+                src={`${"/img/profile.jpg"}`}
                 alt=""
               />
             </div>
@@ -159,7 +159,7 @@ const NavbarV2 = () => {
                 width={`100%`}
                 height={`100%`}
                 style={{ borderRadius: "50%" }}
-                src={`${process.env.PUBLIC_URL + "/img/profile.jpg"}`}
+                src={`${"/img/profile.jpg"}`}
                 alt=""
               />
             </div>

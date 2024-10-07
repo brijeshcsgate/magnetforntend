@@ -11,7 +11,7 @@ const SingleService = ({ item }) => {
     <>
       <div className={styles.singleServiceContainer}>
         <div className={styles.singleServiceImage}>
-          <img src={`${process.env.PUBLIC_URL + "/img/1.png"}`} alt="" />
+          <img src={`${"/img/1.png"}`} alt="" />
         </div>
         <div className={styles.singleServiceDetails}>
           <div>

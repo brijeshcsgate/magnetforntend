@@ -33,7 +33,7 @@ const Gallery = () => {
                 <span className={styles.parentOverLayIcon}>
                   <Card.Img
                     variant="top"
-                    src={process.env.PUBLIC_URL + "/imgV4/product.jpg"}
+                    src={"/imgV4/product.jpg"}
                   />
                   <span className={styles.showOverLayIcon}>
                     <TfiGallery
@@ -69,7 +69,7 @@ const Gallery = () => {
                 <span className={styles.parentOverLayIcon}>
                   <Card.Img
                     variant="top"
-                    src={process.env.PUBLIC_URL + "/imgV4/product.jpg"}
+                    src={"/imgV4/product.jpg"}
                   />
                   <span className={styles.showOverLayIcon}>
                     <TfiGallery

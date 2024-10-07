@@ -64,7 +64,7 @@ const Service = () => {
                   <Card.Img
                     variant="top"
                     height={`170px`}
-                    src={process.env.PUBLIC_URL + "/img/cover.jpg"}
+                    src={"/img/cover.jpg"}
                   />
                   <span className={styles.showOverLayIcon}>
                     <TfiGallery

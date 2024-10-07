@@ -17,10 +17,10 @@ const QrModal = () => {
                 height: "100px",
                 width: "100px",
                 borderRadius: "50%",
-              }} src={`${process.env.PUBLIC_URL + "/img/ashish.jpeg"}`} alt="qr" />
+              }} src={`${"/img/ashish.jpeg"}`} alt="qr" />
               <h3 className="text-secondary">{`Ashish`}</h3>
               <p className="text-secondary">{`Full-stack developer`}</p>
-              <img src={`${process.env.PUBLIC_URL + "/img/qr.png"}`} alt="qr" />
+              <img src={`${"/img/qr.png"}`} alt="qr" />
               <p className='qrP'>{`Share my code`}</p>
               <p className='qrP'>{`Save my code`}</p>
             </div>

@@ -13,7 +13,7 @@ const Header = () => {
         <div className={styles.headerOverlay}>
 
           <div className={`${styles.details}`}>
-            <div className={`${styles.profileImg}`}><img width={`100%`} height={`100%`} src={`${process.env.PUBLIC_URL + "/img/profile.jpg"}`} alt="" /></div>
+            <div className={`${styles.profileImg}`}><img width={`100%`} height={`100%`} src={`${"/img/profile.jpg"}`} alt="" /></div>
             <div className={`${styles.profileDetails}`}>
               <div style={{ fontFamily: "Roboto Mono,monospace", fontStyle: "italic" }}>{`
                  It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.`}</div>
@@ -23,8 +23,8 @@ const Header = () => {
               </div>
               <div style={{ fontFamily: "Roboto Mono,monospace" }}>{`Life Insurance Corporation of India`}</div>
               <div>
-                <img height={"50px"} src={`${process.env.PUBLIC_URL + "/img/liclogo.png"}`} alt="" />
-                <img data-bs-toggle="modal" data-bs-target="#qrModal" className='m-3' height={"50px"} src={`${process.env.PUBLIC_URL + "/img/qr.png"}`} alt="" />
+                <img height={"50px"} src={`${"/img/liclogo.png"}`} alt="" />
+                <img data-bs-toggle="modal" data-bs-target="#qrModal" className='m-3' height={"50px"} src={`${"/img/qr.png"}`} alt="" />
               </div>
               <div className={`${styles.contactButton}`}>
                 <button>Refer Business</button>

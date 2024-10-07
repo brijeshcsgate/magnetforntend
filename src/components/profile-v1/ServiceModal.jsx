@@ -45,7 +45,7 @@ const ServiceModal = (isOpenModal) => {
                   <img
                     width={`100%`}
                     className={`card `}
-                    src={process.env.PUBLIC_URL + "/img/cover.jpg"}
+                    src={"/img/cover.jpg"}
                     alt=""
                   />
                 </div>
@@ -53,7 +53,7 @@ const ServiceModal = (isOpenModal) => {
                   <img
                     width={`100%`}
                     className={`card `}
-                    src={process.env.PUBLIC_URL + "/img/cover.jpg"}
+                    src={"/img/cover.jpg"}
                     alt=""
                   />
                 </div>
@@ -61,7 +61,7 @@ const ServiceModal = (isOpenModal) => {
                   <img
                     width={`100%`}
                     className={`card `}
-                    src={process.env.PUBLIC_URL + "/img/cover.jpg"}
+                    src={"/img/cover.jpg"}
                     alt=""
                   />
                 </div>
@@ -69,7 +69,7 @@ const ServiceModal = (isOpenModal) => {
                   <img
                     width={`100%`}
                     className={`card `}
-                    src={process.env.PUBLIC_URL + "/img/cover.jpg"}
+                    src={"/img/cover.jpg"}
                     alt=""
                   />
                 </div>

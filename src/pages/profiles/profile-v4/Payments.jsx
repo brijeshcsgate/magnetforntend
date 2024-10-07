@@ -25,7 +25,7 @@ const Payments = () => {
             <h5>UPI Image</h5>
           </div>
           <br />
-          <Image src={process.env.PUBLIC_URL + "/imgV4/qr.png"} fluid />
+          <Image src={"/imgV4/qr.png"} fluid />
         </Col>
       </div>
     </Container>

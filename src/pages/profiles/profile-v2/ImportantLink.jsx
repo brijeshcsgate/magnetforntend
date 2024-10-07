@@ -9,14 +9,14 @@ const ImportantLink = () => {
       <h2 className="text-secondary">Important Link</h2>
       <div className={styles.linkContainer}>
         <div className={styles.singleLink}>
-          <img src={`${process.env.PUBLIC_URL + "/img/word.png"}`} alt="word" />
+          <img src={`${"/img/word.png"}`} alt="word" />
           <div style={{ color: `${choosenColor ? choosenColor : "#6d56c1"}` }}>
             Link Name 1
           </div>
         </div>
         <div className={styles.singleLink}>
           <img
-            src={`${process.env.PUBLIC_URL + "/img/excel.png"}`}
+            src={`${"/img/excel.png"}`}
             alt="word"
           />
           <div style={{ color: `${choosenColor ? choosenColor : "#6d56c1"}` }}>
@@ -25,7 +25,7 @@ const ImportantLink = () => {
         </div>
         <div className={styles.singleLink}>
           <img
-            src={`${process.env.PUBLIC_URL + "/img/powerpoint.png"}`}
+            src={`${"/img/powerpoint.png"}`}
             alt="word"
           />
           <div style={{ color: `${choosenColor ? choosenColor : "#6d56c1"}` }}>
@@ -33,20 +33,20 @@ const ImportantLink = () => {
           </div>
         </div>
         <div className={styles.singleLink}>
-          <img src={`${process.env.PUBLIC_URL + "/img/pdf.png"}`} alt="word" />
+          <img src={`${"/img/pdf.png"}`} alt="word" />
           <div style={{ color: `${choosenColor ? choosenColor : "#6d56c1"}` }}>
             Link Name 4
           </div>
         </div>
         <div className={styles.singleLink}>
-          <img src={`${process.env.PUBLIC_URL + "/img/csv.png"}`} alt="word" />
+          <img src={`${"/img/csv.png"}`} alt="word" />
           <div style={{ color: `${choosenColor ? choosenColor : "#6d56c1"}` }}>
             Link Name 5
           </div>
         </div>
         <div className={styles.singleLink}>
           <img
-            src={`${process.env.PUBLIC_URL + "/img/link_ico.png"}`}
+            src={`${"/img/link_ico.png"}`}
             alt="word"
           />
           <div style={{ color: `${choosenColor ? choosenColor : "#6d56c1"}` }}>

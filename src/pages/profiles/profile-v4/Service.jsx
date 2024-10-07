@@ -4,7 +4,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { Button } from 'react-bootstrap';
 import styles from "./styles/profileV4.module.css"
-import { ContextAPI } from '../../../contextAPI/ContextProfileV2';
+import { ContextAPI } from '@/contextAPI/ContextProfileV2';
+// import { ContextAPI } from '../../../contextAPI/ContextProfileV2';
 
 const Service = () => {
 const {serviceInfo,setServiceInfo}=useContext(ContextAPI)
@@ -22,7 +23,7 @@ const {serviceInfo,setServiceInfo}=useContext(ContextAPI)
         {Array.from({ length: 4 }).map((_, idx) => (
           <Col key={idx}>
             <Card style={{ margin: "10px" }}>
-              <Card.Img variant="top" src={process.env.PUBLIC_URL + "/imgV4/1.png"} />
+              <Card.Img variant="top" src={"/imgV4/1.png"} />
               <Card.Body>
                 <Card.Title>Card title</Card.Title>
                 <Card.Text style={{ fontSize: "13px", color: "gray" }}>

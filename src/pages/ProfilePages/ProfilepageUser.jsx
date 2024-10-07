@@ -35,6 +35,7 @@ import EnquiryInfoForm from "./EnquiryInfoForm";
 import ReferrelInfoForm from "./ReferrelInfoForm";
 import { Button } from "@mui/material";
 import NoAccessibleProfile from "../NoAccessibleProfile/NoAccessibleProfile";
+import { Helmet } from "react-helmet";
 
 const ProfilepageUser = () => {
 
@@ -107,7 +108,7 @@ const ProfilepageUser = () => {
   const [profileStatus, setProfileStatus] = useState(true)
   const { id } = useParams(); // Access the id from URL
   let profileId = id;
-  
+
   const scrollToSection = (sectionId) => {
     sectionRefs[sectionId].current.scrollIntoView({ behavior: 'smooth' });
   };
@@ -155,6 +156,13 @@ const ProfilepageUser = () => {
 
   return (
     <>
+    <Helmet>
+        <meta property="og:title" content={profileDetails.name} />
+        <meta property="og:description" content={profileDetails.description} />
+        <meta property="og:image" content={profileDetails?.profileImage} />
+        <meta property="og:url" content={'https://magnetnew.evalue8.info/profile/vishu456'} />
+        <meta property="og:type" content="profile" />
+      </Helmet>
       {profileStatus === true ?
         <div className="page" id="home-section">
           {/* Preloader */}
@@ -192,14 +200,15 @@ const ProfilepageUser = () => {
           </header>
           {/* <!-- Container --> */}
 
-          <div className="container" >
+          <div className="container margin-bottom" >
             {/* <!-- Started --> */}
             <section className="section started" ref={sectionRefs.Home}>
               <div className="st-box">
                 <div className="st-bts">
                   <a className="has-popup">
-                    <img src={profileDetails?.paymentDetails?.image} style={resizeImage(150, 150)} alt="" />
-
+                    {profileDetails?.paymentDetails?.image ?
+                      <img src={profileDetails?.paymentDetails?.image} style={resizeImage(150, 150)} alt="" />
+                      : <></>}
                   </a>
                 </div>
                 <div
@@ -585,7 +594,7 @@ const ProfilepageUser = () => {
 
               {/* <!-- Section Contacts --> */}
               {(profileDetails?.bankAccountStatus === true) || (profileDetails?.bankAccountDetails?.length > 0) || (profileDetails?.ePaymentStatus === true) || (profileDetails?.paymentDetails?.length > 0) ?
-                <section className="section contacts margin-bottom" id="payments-section" ref={sectionRefs.Payments} >
+                <section className="section contacts " id="payments-section" ref={sectionRefs.Payments} >
                   <div className="title">Payments</div>
 
                   <div className="row">
@@ -688,12 +697,12 @@ const ProfilepageUser = () => {
                             {/* <a href={profileDetails?.paymentDetails?.paymentGatewayLink} target="_blank"> Click here to open
                             </a> */}
                             &nbsp;&nbsp;
-                            <Button variant="contained" size='small' color="success" onClick={(e)=>{window.open(profileDetails?.paymentDetails?.paymentGatewayLink, '_blank')}}>
-      Click Here
-    </Button>
-                            
-                            </p>
-                            
+                            <Button variant="contained" size='small' color="success" onClick={(e) => { window.open(profileDetails?.paymentDetails?.paymentGatewayLink, '_blank') }}>
+                              Click Here
+                            </Button>
+
+                          </p>
+
 
                         </div>
                       </div> : <></>}

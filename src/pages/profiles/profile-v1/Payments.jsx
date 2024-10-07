@@ -116,7 +116,7 @@ const Payments = () => {
       </div>
       <div>
         <div>
-          <img src={`${process.env.PUBLIC_URL + "/img/qr.png"}`} alt="" />
+          <img src={`${"/img/qr.png"}`} alt="" />
         </div>
       </div>
     </div>

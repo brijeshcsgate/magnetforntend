@@ -26,7 +26,7 @@ const SingleProduct = ({ item }) => {
             <div className={`${styles.carouselItem} carousel-item active`}>
               <img
                 className={`${styles.productImg} d-block w-100 h-100`}
-                src={`${process.env.PUBLIC_URL + "/img/1.png"}`}
+                src={`${"/img/1.png"}`}
                 alt=""
               />
             </div>

@@ -4,7 +4,7 @@ const SingleTestimonial = () => {
         <div >
             <div style={{ display: "flex", gap: '2rem' }}>
                 <div style={{ with: "50px", height: "50px", borderRadius: "50%" }}>
-                    <img style={{ borderRadius: "50%" }} width="100%" height="100%" src={process.env.PUBLIC_URL + '/imgV4/profile-img.jpg'} alt="Shahista-profile" />
+                    <img style={{ borderRadius: "50%" }} width="100%" height="100%" src={'/imgV4/profile-img.jpg'} alt="Shahista-profile" />
                 </div>
                 <div>
                     <h5>{`SHAHISTA NAAZ`}</h5>

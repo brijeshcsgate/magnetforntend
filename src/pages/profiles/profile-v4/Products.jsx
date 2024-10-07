@@ -21,13 +21,13 @@ const Products = () => {
             <Card>
               <Carousel indicatorLabels={null} indicators={null} draggable={1} nextIcon={null} nextLabel={null} prevIcon={null} prevLabel={null}>
                 <Carousel.Item>
-                  <Card.Img variant="top" src={process.env.PUBLIC_URL + "/imgV4/2.jpg"} />
+                  <Card.Img variant="top" src={"/imgV4/2.jpg"} />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <Card.Img variant="top" src={process.env.PUBLIC_URL + "/imgV4/1.png"} />
+                  <Card.Img variant="top" src={"/imgV4/1.png"} />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <Card.Img variant="top" src={process.env.PUBLIC_URL + "/imgV4/2.jpg"} />
+                  <Card.Img variant="top" src={"/imgV4/2.jpg"} />
                 </Carousel.Item>
               </Carousel>
               <Card.Body>

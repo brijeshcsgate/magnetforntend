@@ -8,7 +8,7 @@ const VideoGallery = () => {
         {Array.from({ length: 4 }).map((_, idx) => (
           <Col key={idx}>
             <Card>
-              <Card.Img variant="top" src={process.env.PUBLIC_URL + "/imgV4/product.jpg"} />
+              <Card.Img variant="top" src={"/imgV4/product.jpg"} />
               <Card.Body>
                 <Card.Title>Video {idx+1}</Card.Title>
               </Card.Body>

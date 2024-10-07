@@ -21,7 +21,7 @@ const Profile = () => {
           data-bs-toggle="modal"
           data-bs-target="#qrModal"
         >
-          <img src={`${process.env.PUBLIC_URL + "/img/qr.png"}`} alt="" />
+          <img src={`${"/img/qr.png"}`} alt="" />
         </div>
         <div className={styles.downloadBtn}>
           <button>
@@ -34,7 +34,7 @@ const Profile = () => {
           <img
             width={`100%`}
             height={`100%`}
-            src={`${process.env.PUBLIC_URL + "/img/ashish.jpeg"}`}
+            src={`${"/img/ashish.jpeg"}`}
             alt=""
           />
         </div>
@@ -54,7 +54,7 @@ const Profile = () => {
           </div>
           <div className={styles.profileLogo}>
             <img
-              src={`${process.env.PUBLIC_URL + "/img/liclogo.png"}`}
+              src={`${"/img/liclogo.png"}`}
               alt=""
             />
           </div>

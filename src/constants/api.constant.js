@@ -133,6 +133,7 @@ export const APIS = {
   PROFILE_1: 'user/userList',
 
   PROFILE_IDENT:'user/userListIdentifier',
+  PROFILE_IDENT2:'user/magnet',
 
   VISTORS_REPORT:'user/getAllVistorsReport',
  

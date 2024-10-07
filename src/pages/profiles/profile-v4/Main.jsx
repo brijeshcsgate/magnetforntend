@@ -14,10 +14,10 @@ const Main = () => {
         < >
 
             <div className=''>
-                <div className={`${selectedTb === "about" ? styles.showContent : styles.hideContent}`}>
+                <div className={`${selectedTb === "about" ? styles?.showContent : styles?.hideContent}`}>
                     <About />
                 </div>
-                <div className={`${selectedTb === "services" ? styles.showContent : styles.hideContent}`}>
+                <div className={`${selectedTb === "services" ? styles?.showContent : styles.hideContent}`}>
                     <Service />
                 </div>
                 <div className={`${selectedTb === "products" ? styles.showContent : styles.hideContent}`}>

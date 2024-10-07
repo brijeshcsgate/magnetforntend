@@ -2,7 +2,8 @@ import React, { useContext } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { ContextAPI } from '../../contextAPI/ContextProfileV2';
+import { ContextAPI } from '@/contextAPI/ContextProfileV2';
+// import { ContextAPI } from '../../contextAPI/ContextProfileV2';
 const ServiceModal = (isOpenModal) => {
 
   const {serviceInfo}=useContext(ContextAPI)
@@ -26,16 +27,16 @@ const ServiceModal = (isOpenModal) => {
             <div className="modal-body">
               <Slider {...settings} arrows={null} dots={null}>
                 <div>
-                  <img width={`100%`} className={`card `} src={`${process.env.PUBLIC_URL + "/img/1.png"}`} alt="" />
+                  <img width={`100%`} className={`card `} src={`${"/img/1.png"}`} alt="" />
                 </div>
                 <div>
-                  <img width={`100%`} className={`card `} src={`${process.env.PUBLIC_URL + "/img/1.png"}`} alt="" />
+                  <img width={`100%`} className={`card `} src={`${"/img/1.png"}`} alt="" />
                 </div>
                 <div>
-                  <img width={`100%`} className={`card `} src={`${process.env.PUBLIC_URL + "/img/1.png"}`} alt="" />
+                  <img width={`100%`} className={`card `} src={`${"/img/1.png"}`} alt="" />
                 </div>
                 <div>
-                  <img width={`100%`} className={`card `} src={`${process.env.PUBLIC_URL + "/img/1.png"}`} alt="" />
+                  <img width={`100%`} className={`card `} src={`${"/img/1.png"}`} alt="" />
                 </div>
               </Slider>
             </div>

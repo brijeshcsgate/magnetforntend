@@ -21,14 +21,14 @@ const NavbarV4 = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white p-0 rounded">
       <div className="container-fluid p-0">
-        <div className={styles.profileAndHamburger}>
-          <div className={styles.profileOnRes}>
+        <div className={styles?.profileAndHamburger}>
+          <div className={styles?.profileOnRes}>
             <div style={{ with: "40px", height: "40px", borderRadius: "50%" }}>
               <img
                 style={{ borderRadius: "50%" }}
                 width="100%"
                 height="100%"
-                src={process.env.PUBLIC_URL + "/imgV4/profile-img.jpg"}
+                src={"/imgV4/profile-img.jpg"}
                 alt="Shahista-profile"
               />
             </div>
@@ -43,7 +43,7 @@ const NavbarV4 = () => {
               data-bs-toggle="modal"
               data-bs-target="#qrModal"
               height={"40px"}
-              src={`${process.env.PUBLIC_URL + "/img/qr.png"}`}
+              src={`${"/img/qr.png"}`}
               alt=""
             />
             <button
@@ -154,7 +154,7 @@ const NavbarV4 = () => {
             data-bs-toggle="modal"
             data-bs-target="#qrModal"
             height={"50px"}
-            src={`${process.env.PUBLIC_URL + "/img/qr.png"}`}
+            src={`${"/img/qr.png"}`}
             alt=""
           />
         </div>

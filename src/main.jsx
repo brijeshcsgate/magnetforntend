@@ -9,6 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const queryClient = new QueryClient();
 import { disableRightClick } from '@/utils/disableRightClick.js';
+import { ContextAPIProvider } from './contextAPI/ContextProfileV2.jsx';
 
 const toastConfig = {
   position: 'bottom-right',
@@ -25,6 +26,8 @@ const toastConfig = {
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
+    
+    <ContextAPIProvider>
       <QueryClientProvider client={queryClient}>
         <div onContextMenu={disableRightClick}>
           <App />
@@ -32,6 +35,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Toaster richColors theme="light" />
         <ToastContainer {...toastConfig} />
       </QueryClientProvider>
+      
+      </ContextAPIProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -13,7 +13,7 @@ const SideBarProfile = () => {
             <p className="fs-13">Front-end-Developer</p>
           </div>
           <div>
-            <img src={process.env.PUBLIC_URL + '/imgV4/profile-img.jpg'} alt="Shahista-profile" width={"100%"} />
+            <img src={'/imgV4/profile-img.jpg'} alt="Shahista-profile" width={"100%"} />
           </div>
           <div>
             <p className={`${style.intro}`}>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
@@ -22,7 +22,7 @@ const SideBarProfile = () => {
         <div>
           <div>
             <h6 className={`${style.h6}`}>Life Insurance Corporation of India</h6>
-            <img src={process.env.PUBLIC_URL + '/imgV4/liclogo.png'} alt="Shahista-profile" className={`${style.licImg}`} />
+            <img src={'/imgV4/liclogo.png'} alt="Shahista-profile" className={`${style.licImg}`} />
             <div>
               <button className={`${style.button}`} data-bs-toggle="modal" data-bs-target="#formModal"><span className={`${style.buttonText}`}>Refer Business </span> <span className={`${style.iconsSpan}`}><FiExternalLink className={`${style.icons}`} /></span></button>
               <button className={`${style.button}`}><span className={`${style.buttonText}`}>Enquiry </span> <span className={`${style.iconsSpan}`}><BiSearchAlt2 className={`${style.icons}`} /></span></button>
