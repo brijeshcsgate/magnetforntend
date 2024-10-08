@@ -132,10 +132,10 @@ const ProductCarousal = ({ images ,profileUserId,visitorInfo,footer }) => {
                     className="fa fa-inr"
                     aria-hidden="true"
                   ></i>
-                  <del> {product?.offerPrice}8888--Pend</del>
+                  <del> {product?.offerPrice}</del>
                 </div>
                 <div className="product-link">
-                  {product?.websiteLink}--web link Pend
+                  {product?.websiteLink}
                 </div>
                 <div className="service-bts flex-row-g20" style={{display:'flex', justifyContent:'space-between', width:'100%'}}>
                   <div onClick={()=>setOpen(true)} className="btn btn_animated has-popup" style={{width:'50%'}}>

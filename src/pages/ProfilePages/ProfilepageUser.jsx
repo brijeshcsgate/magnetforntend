@@ -36,6 +36,7 @@ import ReferrelInfoForm from "./ReferrelInfoForm";
 import { Button } from "@mui/material";
 import NoAccessibleProfile from "../NoAccessibleProfile/NoAccessibleProfile";
 import { Helmet } from "react-helmet";
+import VCardGenerator from "@/components/VCardGenerator/VCardGenerator";
 
 const ProfilepageUser = () => {
 
@@ -63,6 +64,26 @@ const ProfilepageUser = () => {
   };
 
   const [profiles, setProfiles] = useState([]);
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  // Function to determine device type based on width
+  const getDeviceType = () => {
+    if (width < 768) return 120;
+    if (width < 1024) return 170;
+    return 280;
+  };
 
   // Auto-increment count to cycle through profiles
   useEffect(() => {
@@ -116,7 +137,7 @@ const ProfilepageUser = () => {
     const handleScroll = () => {
       const topOffset = document.getElementById("profileName").offsetTop;
       const scrollPosition = window.scrollY;
-      if (scrollPosition >= 288) {
+      if (scrollPosition > getDeviceType()) {
         setIsSticky(true);
 
       } else {
@@ -141,6 +162,7 @@ const ProfilepageUser = () => {
         setProfileDetails(response.data);
         setProfiles(response.data.testimonials);
         setVisitorInfoType(response.data.vistor_info_type)
+
       } catch (err) {
         setError(err.response?.data?.error || "Error fetching profile");
       } finally {
@@ -153,16 +175,9 @@ const ProfilepageUser = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-
+  
   return (
     <>
-    <Helmet>
-        <meta property="og:title" content={profileDetails.name} />
-        <meta property="og:description" content={profileDetails.description} />
-        <meta property="og:image" content={profileDetails?.profileImage} />
-        <meta property="og:url" content={'https://magnetnew.evalue8.info/profile/vishu456'} />
-        <meta property="og:type" content="profile" />
-      </Helmet>
       {profileStatus === true ?
         <div className="page" id="home-section">
           {/* Preloader */}
@@ -234,7 +249,7 @@ const ProfilepageUser = () => {
                     className="liclogo" />
                 </div>
                 <br />
-                <div className="bts">
+                {/* <div className="bts">
                   <ReferrelInfoForm footer={false} profileUserId={profileUserId} visitorInfo={visitorInfo} />
                   <EnquiryInfoForm footer={false} profileUserId={profileUserId} visitorInfo={visitorInfo} />
                   <Button
@@ -253,7 +268,7 @@ const ProfilepageUser = () => {
                       Save My Contact
                     </span>
                   </Button>
-                </div>
+                </div> */}
                 <div className="st-soc">
                   <a
 
@@ -719,16 +734,22 @@ const ProfilepageUser = () => {
 
               <EnquiryInfoForm footer={true} profileUserId={profileUserId} visitorInfo={visitorInfo} />
 
-              <Button
+              {/* <Button
                 className="btn extra contact-btn btn_animated"
               >
                 <span className="circle center_icon line-height">
                   <span
                     className="ink animate "
                   ></span>
-                  Save My Contact
+                  Save Contact
                 </span>
-              </Button>
+              </Button> */}
+
+
+
+                 <VCardGenerator name={profileDetails?.name} whatsappNumber={+"+"+profileDetails?.whatsappNumberCountryCode+" "+ profileDetails?.whatsappNumber} email={profileDetails?.email} companyName={profileDetails?.orgName} designation={profileDetails?.jobRoleName} mobile=
+                            {+'+'+profileDetails?.countryCode+' '+ profileDetails?.mobile} />
+                           
             </div>
           </footer>
 

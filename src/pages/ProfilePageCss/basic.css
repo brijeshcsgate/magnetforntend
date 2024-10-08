@@ -70,7 +70,10 @@ body {
 .mobile {
 	display: none;
 }
-
+.container {
+	max-width: 100% !important;
+	/* max-width: 1100px; */
+}
 @media (max-width: 720px) {
 	.mobile {
 	display: block;
@@ -113,6 +116,7 @@ body {
 	.wrapper {
 	margin: 0 20px;
 	}
+	
 
 }
 
