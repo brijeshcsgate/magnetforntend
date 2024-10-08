@@ -13,7 +13,8 @@ const ServicesCarousel = ({ images,profileUserId,visitorInfo,footer }) => {
   
   const [openEf, setOpenEf] = React.useState(false);
   const [width, setWidth] = useState(window.innerWidth);
-
+  const [selectedItem, setSelectedItem] = useState(null); // Track the selected item for details
+  
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -26,7 +27,15 @@ const ServicesCarousel = ({ images,profileUserId,visitorInfo,footer }) => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  const handleOpen = (item) => {
+    setSelectedItem(item); // Set the clicked item
+    setOpen(true); // Open the dialog
+  };
 
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedItem(null); // Reset the selected item when dialog is closed
+  };
   // Function to determine device type based on width
   const getDeviceType = () => {
     if (width < 768) return 1;
@@ -34,9 +43,9 @@ const ServicesCarousel = ({ images,profileUserId,visitorInfo,footer }) => {
     return 3;
   };
 
-  const handleClose = () => {
-    setOpen(false); // Close dialog only when the Cancel button is clicked
-};
+//   const handleClose = () => {
+//     setOpen(false); // Close dialog only when the Cancel button is clicked
+// };
   const handlePrev = () => {
     setStartIndex((prevIndex) => Math.max(0, prevIndex - 1));
   };
@@ -86,7 +95,7 @@ const ServicesCarousel = ({ images,profileUserId,visitorInfo,footer }) => {
                     <div className="service-bts flex-row-g20" style={{display:'flex', justifyContent:'space-between',width:'100%'}}>
                   
                   
-                      <button onClick={()=>setOpen(true)}className="btn btn_animated has-popup" style={{width:'50%'}}>
+                      <button onClick={() => handleOpen(item)}className="btn btn_animated has-popup" style={{width:'50%'}}>
                         <span className="circle center_icon">View detail</span>
                       </button>
                      
@@ -123,11 +132,12 @@ const ServicesCarousel = ({ images,profileUserId,visitorInfo,footer }) => {
                     <span></span><span onClick={handleClose}><Close /></span>
                 </DialogTitle>
                 <DialogContent>
+                {selectedItem && ( 
                 <div
-                  key={item.id}
+                  key={selectedItem.id}
                   // col col-m-12 col-t-6 col-d-4
                   className=" box-item f-mockup animated  transition-all duration-300 ease-in-out" 
-                  data-sr-id={item.id}
+                  // data-sr-id={selectedItem.id}
                   style={{
                     visibility: "visible",
                     opacity: "1",
@@ -140,17 +150,17 @@ const ServicesCarousel = ({ images,profileUserId,visitorInfo,footer }) => {
                 >
                   <div className="image">
                     <div className="has-popup">
-                      <img src={item.image} alt={item.name} style={resizeImage(342, 228)} />
+                      <img src={selectedItem.image} alt={selectedItem.name} style={resizeImage(342, 228)} />
                     </div>
                   </div>
                   <div className="content-box">
                     <div className="name has-popup">
-                      {item.name}
+                      {selectedItem.name}
                     </div>
-                    <TextToggler text={item.description} charLimit={200} isShowBtn={false} />
+                    <TextToggler text={selectedItem.description} charLimit={200} isShowBtn={false} />
                    
                   </div>
-                </div>
+                </div>)}
 
                 </DialogContent>
             </Dialog>
