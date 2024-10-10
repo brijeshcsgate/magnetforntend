@@ -127,23 +127,25 @@ const TestimonialCarousel = ({ testimonials }) => {
   >
 
     <div className="relative w-full max-w-2xl mx-auto">
-      <div className="overflow-hidden w-full">
+      <div className="overflow-hidden w-full  wd-100">
         <div 
           className={` slideshow-container ${isTransitioning ? 'transitioning' : ''}`}
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {testimonials.map((profileDetails, index) => (
-            <div key={index} className="slide">
+            <div key={index}
+             className="slide"
+             >
              
                         <div className="item w-full">
-                          <div className="content-box">
+                          <div className="content-box pt-3">
                             <div className="reviews-item" style={{marginTop:'65px'}}>
-                              <div className="image">
+                              {/* <div className="image">
                                 <img src={profileDetails?.profileImg?profileDetails?.profileImg:img3} alt={profileDetails?.name} 
                                 />
-                              </div>
-                              <div className="name">
-                                — {profileDetails?.name}, {profileDetails?.profession}--pend
+                              </div> */}
+                              <div className="name ">
+                                — {profileDetails?.name}, {profileDetails?.profession}
                               </div>
                               <p className="wd-100">
                                 {profileDetails?.description}
@@ -158,17 +160,21 @@ const TestimonialCarousel = ({ testimonials }) => {
       </div>
       <button
         onClick={goToPrevSlide}
+        style={{ left: '-65px' }}
         className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out z-10"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={goToNextSlide}
+        style={{ right: '-65px' }}
         className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out z-10"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
-    </div>
+   
+     </div>
+     
     </div>
   );
 };

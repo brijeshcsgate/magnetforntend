@@ -8,12 +8,22 @@ import { Dialog, DialogContent, DialogTitle, Grid } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import EnquiryInfoForm from './EnquiryInfoForm';
 import EnquiryInfoFormOnClick from './EnquiryInfoFormOnClick';
+import ImageSliderBulk from './ImageSliderBulk';
 
 const ProductCarousal = ({ images ,profileUserId,visitorInfo,footer }) => {
   const [startIndex, setStartIndex] = useState(0);
+  // console.log('images',images)
   const [width, setWidth] = useState(window.innerWidth);
-
+const [countImage,setCountImage]=useState(0)
   const [openEf, setOpenEf] = React.useState(false);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+
+     setCountImage(countImage+1)
+    }, 3000); // change image every 3 seconds
+    return () => clearInterval(intervalId);
+  }, [countImage]);
+  
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -93,20 +103,29 @@ const ProductCarousal = ({ images ,profileUserId,visitorInfo,footer }) => {
             >
               <div className="image">
                 <div className="has-popup">
-                  <img
+                  {/* <img
                     src={product?.image}
                     // className="p-in-image-slide"
                     className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"
                       }`}
                     alt={product?.name}
-                  />
+                  /> */}
+                  {/* {product?.image.map((image, index) => (
+        <img
+          key={index}
+          src={image[index]}
+          alt={image.alt}
+          className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"}`}
+        />
+      ))} */}
+       <ImageSliderBulk images={product?.image} autoChangeInterval={2000} />
                 </div>
               </div>
               <div className="content-box">
                 <div className="name has-popup">
                   {product?.name}
                 </div>
-                <p>{product?.description}</p>
+                <p> <TextToggler text={product?.description} charLimit={20} isShowBtn={false} /></p>
                 <div className="pricing">
                   <i
                     style={{
@@ -196,20 +215,22 @@ const ProductCarousal = ({ images ,profileUserId,visitorInfo,footer }) => {
             >
               <div className="image">
                 <div className="has-popup">
-                  <img
+                  {/* <img
                     src={product?.image}
-                    // className="p-in-image-slide"
-                    // className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"
-                    //   }`}
                     alt={product?.name}
-                  />
+                  /> */}
+                  <ImageSliderBulk images={product?.image} autoChangeInterval={3000} />
+       
                 </div>
               </div>
               <div className="content-box">
                 <div className="name has-popup">
                   {product?.name}
                 </div>
-                <p>{product?.description}</p>
+                <p>
+                <TextToggler text={product?.description} charLimit={200} isShowBtn={false} />
+                 
+                  </p>
                 <div className="pricing">
                   <i
                     style={{
@@ -220,10 +241,10 @@ const ProductCarousal = ({ images ,profileUserId,visitorInfo,footer }) => {
                     className="fa fa-inr"
                     aria-hidden="true"
                   ></i>
-                  <div className="">
+                  {/* <div className="">
                     {' '}
                     {product?.price}
-                  </div>
+                  </div> */}
                   <br />
                   <span className="mrp">M.R.P.: </span>
                   <i
@@ -235,11 +256,15 @@ const ProductCarousal = ({ images ,profileUserId,visitorInfo,footer }) => {
                     className="fa fa-inr"
                     aria-hidden="true"
                   ></i>
-                  <del> {product?.offerPrice}8888--Pend</del>
+                   {/* <del>  */}
+                    {product?.price}
+                    {/* </del> */}
+                
+                  {/* <del> {product?.offerPrice}8888--Pend</del> */}
                 </div>
-                <div className="product-link">
+                {/* <div className="product-link">
                   {product?.websiteLink}--web link Pend
-                </div>
+                </div> */}
               </div>
 
             </div>

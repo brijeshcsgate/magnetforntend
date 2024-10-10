@@ -22,7 +22,7 @@ import { APIS } from "@/constants/api.constant";
 import apiService, { axiosInstanceWapi } from "@/lib/apiService";
 import TextToggler from "./TextToggler";
 import { resizeImage } from "./resizeImage";
-import { BanknoteIcon, HandCoins, HandHelpingIcon, HomeIcon, ImagesIcon, InboxIcon, MailIcon, Pyramid, ShoppingBasketIcon, UserIcon } from "lucide-react";
+import { BanknoteIcon, HandCoins, HandHelpingIcon, HomeIcon, ImagesIcon, InboxIcon, LinkIcon, Mail, MailIcon, MessageCircleIcon, PhoneIcon, Pyramid, ShoppingBasketIcon, UserIcon } from "lucide-react";
 import DrawerComponent from "@/components/common/Drawer/DrawerComponent";
 import ImageCarousel from "./ImageCarousel";
 import ServicesCarousel from "./ServicesCarousel";
@@ -175,7 +175,7 @@ const ProfilepageUser = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-  
+
   return (
     <>
       {profileStatus === true ?
@@ -196,6 +196,7 @@ const ProfilepageUser = () => {
           <div className="started-bg">
             <div
               className="slide"
+
               style={{ backgroundImage: `url(${profileDetails?.coverImage})` }}
             ></div>
           </div>
@@ -218,7 +219,7 @@ const ProfilepageUser = () => {
           <div className="container margin-bottom" >
             {/* <!-- Started --> */}
             <section className="section started" ref={sectionRefs.Home}>
-              <div className="st-box">
+              <div className="st-box pt-4">
                 <div className="st-bts">
                   <a className="has-popup">
                     {profileDetails?.paymentDetails?.image ?
@@ -227,7 +228,7 @@ const ProfilepageUser = () => {
                   </a>
                 </div>
                 <div
-                  className={`st-image ${isSticky ? "sticky" : ""}`}
+                  className={`st-image  ${isSticky ? "sticky" : ""}`}
                   id="profileName"
                 >
                   <img src={profileDetails?.profileImage} alt="" />
@@ -249,71 +250,66 @@ const ProfilepageUser = () => {
                     className="liclogo" />
                 </div>
                 <br />
-                {/* <div className="bts">
-                  <ReferrelInfoForm footer={false} profileUserId={profileUserId} visitorInfo={visitorInfo} />
-                  <EnquiryInfoForm footer={false} profileUserId={profileUserId} visitorInfo={visitorInfo} />
-                  <Button
-                    className="btn extra contact-btn btn_animated"
-                  >
-                    <span className="circle center_icon">
-                      <span
-                        className="ink animate"
-                        style={{
-                          height: "167px",
-                          width: "167px",
-                          top: "-51.5px",
-                          left: "35.2188px",
-                        }}
-                      ></span>
-                      Save My Contact
-                    </span>
-                  </Button>
-                </div> */}
                 <div className="st-soc">
-                  <a
 
-                    className="btn_animated"
-                  >
-                    <span className="circle center_icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          fill="#304fff"
-                          d="M256 128C256 57.308 198.692 0 128 0S0 57.308 0 128c0 63.888 46.808 116.843 108 126.445V165H75.5v-37H108V99.8c0-32.08 19.11-49.8 48.348-49.8C170.352 50 185 52.5 185 52.5V84h-16.14C152.959 84 148 93.867 148 103.99V128h35.5l-5.675 37H148v89.445c61.192-9.602 108-62.556 108-126.445"
-                        />
-                        <path
-                          fill="#fff"
-                          d="m177.825 165l5.675-37H148v-24.01C148 93.866 152.959 84 168.86 84H185V52.5S170.352 50 156.347 50C127.11 50 108 67.72 108 99.8V128H75.5v37H108v89.445A129 129 0 0 0 128 256a129 129 0 0 0 20-1.555V165z"
-                        />
-                      </svg>
-                    </span>
-                  </a>
-                  <a
-                    target="blank"
-                    href="https://github.com/"
-                    className="btn_animated"
-                  >
-                    <span className="circle center_icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 15 15"
-                      >
-                        <path
-                          fill="#fff"
-                          fill-rule="evenodd"
-                          d="M7.5.25a7.25 7.25 0 0 0-2.292 14.13c.363.066.495-.158.495-.35c0-.172-.006-.628-.01-1.233c-2.016.438-2.442-.972-2.442-.972c-.33-.838-.805-1.06-.805-1.06c-.658-.45.05-.441.05-.441c.728.051 1.11.747 1.11.747c.647 1.108 1.697.788 2.11.602c.066-.468.254-.788.46-.969c-1.61-.183-3.302-.805-3.302-3.583a2.8 2.8 0 0 1 .747-1.945c-.075-.184-.324-.92.07-1.92c0 0 .61-.194 1.994.744A7 7 0 0 1 7.5 3.756A7 7 0 0 1 9.315 4c1.384-.938 1.992-.743 1.992-.743c.396.998.147 1.735.072 1.919c.465.507.745 1.153.745 1.945c0 2.785-1.695 3.398-3.31 3.577c.26.224.492.667.492 1.343c0 .97-.009 1.751-.009 1.989c0 .194.131.42.499.349A7.25 7.25 0 0 0 7.499.25"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </span>
-                  </a>
-                  <a
+                  {profileDetails?.facebookLink ?
+                    <a
+                      target="blank"
+                      href={profileDetails?.facebookLink}
+                      className="btn_animated"
+                    >
+                      <span className="circle center_icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="#fff" fill-rule="evenodd" d="M8.5 13.478a5.5 5.5 0 1 0-1.5-.069V9.75H5.75a.75.75 0 0 1 0-1.5H7V7.24c0-.884.262-1.568.722-2.032S8.843 4.5 9.644 4.5c.273 0 .612.04.948.213a.75.75 0 0 1-.685 1.334A.6.6 0 0 0 9.644 6c-.493 0-.737.144-.857.265c-.12.12-.287.39-.287.975v1.01h1.25a.75.75 0 0 1 0 1.5H8.5zM8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14" clip-rule="evenodd" /></svg>
+                      </span>
+                    </a> : <></>}
+
+                  {/* facebook */}
+                  {profileDetails?.instaLink ?
+                    <a
+                      target="blank"
+                      href={profileDetails?.instaLink}
+                      className="btn_animated"
+                    >
+                      <span className="circle center_icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="#fff"><path fill-rule="evenodd" d="M12 7a5 5 0 1 0 0 10a5 5 0 0 0 0-10m-3 5a3 3 0 1 0 6 0a3 3 0 0 0-6 0" clip-rule="evenodd" /><path d="M18 5a1 1 0 1 0 0 2a1 1 0 0 0 0-2" /><path fill-rule="evenodd" d="M5 1a4 4 0 0 0-4 4v14a4 4 0 0 0 4 4h14a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4zm14 2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2" clip-rule="evenodd" /></g></svg>
+                      </span>
+                    </a> : <></>}
+                  {/* twiter */}
+                  {profileDetails?.twitterLink ?
+                    <a
+                      target="blank"
+                      href={profileDetails?.twitterLink}
+                      className="btn_animated"
+                    >
+                      <span className="circle center_icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 18.5C3.765 19.521 5.814 20 8 20c6.48 0 11.762-5.137 11.992-11.562L22 4.5l-3.354.5A4 4 0 0 0 16 4c-2.572 0-4.5 2.517-3.88 4.98c-3.552.23-6.771-1.959-8.633-4.875c-1.236 4.197-.09 9.251 3.013 12.366c0 1.176-3 1.878-4.5 2.029" color="#fff" /></svg>
+                      </span>
+                    </a> : <></>}
+                  {/* insta */}
+
+
+
+                  {profileDetails?.linkedInLink ?
+                    <a
+                      target="blank"
+                      href={profileDetails?.linkedInLink}
+                      className="btn_animated"
+                    >
+                      <span className="circle center_icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="-2 -2 24 24"><g fill="#fff"><path d="M15 11.13v3.697h-2.143v-3.45c0-.866-.31-1.457-1.086-1.457c-.592 0-.945.398-1.1.784c-.056.138-.071.33-.071.522v3.601H8.456s.029-5.842 0-6.447H10.6v.913l-.014.021h.014v-.02c.285-.44.793-1.066 1.932-1.066c1.41 0 2.468.922 2.468 2.902M6.213 5.271C5.48 5.271 5 5.753 5 6.385c0 .62.466 1.115 1.185 1.115h.014c.748 0 1.213-.496 1.213-1.115c-.014-.632-.465-1.114-1.199-1.114m-1.086 9.556h2.144V8.38H5.127z" /><path d="M4 2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0-2h12a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4" /></g></svg> </span>
+                    </a> : <></>}
+                  {/* youtube */}
+                  {profileDetails?.youtubeLink ?
+                    <a
+                      target="blank"
+                      href={profileDetails?.youtubeLink}
+                      className="btn_animated"
+                    >
+                      <span className="circle center_icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024"><path fill="#fff" d="M960 509.2c0-2.2 0-4.7-.1-7.6c-.1-8.1-.3-17.2-.5-26.9c-.8-27.9-2.2-55.7-4.4-81.9c-3-36.1-7.4-66.2-13.4-88.8a139.52 139.52 0 0 0-98.3-98.5c-28.3-7.6-83.7-12.3-161.7-15.2c-37.1-1.4-76.8-2.3-116.5-2.8c-13.9-.2-26.8-.3-38.4-.4h-29.4c-11.6.1-24.5.2-38.4.4c-39.7.5-79.4 1.4-116.5 2.8c-78 3-133.5 7.7-161.7 15.2A139.35 139.35 0 0 0 82.4 304C76.3 326.6 72 356.7 69 392.8c-2.2 26.2-3.6 54-4.4 81.9c-.3 9.7-.4 18.8-.5 26.9c0 2.9-.1 5.4-.1 7.6v5.6c0 2.2 0 4.7.1 7.6c.1 8.1.3 17.2.5 26.9c.8 27.9 2.2 55.7 4.4 81.9c3 36.1 7.4 66.2 13.4 88.8c12.8 47.9 50.4 85.7 98.3 98.5c28.2 7.6 83.7 12.3 161.7 15.2c37.1 1.4 76.8 2.3 116.5 2.8c13.9.2 26.8.3 38.4.4h29.4c11.6-.1 24.5-.2 38.4-.4c39.7-.5 79.4-1.4 116.5-2.8c78-3 133.5-7.7 161.7-15.2c47.9-12.8 85.5-50.5 98.3-98.5c6.1-22.6 10.4-52.7 13.4-88.8c2.2-26.2 3.6-54 4.4-81.9c.3-9.7.4-18.8.5-26.9c0-2.9.1-5.4.1-7.6zm-72 5.2c0 2.1 0 4.4-.1 7.1c-.1 7.8-.3 16.4-.5 25.7c-.7 26.6-2.1 53.2-4.2 77.9c-2.7 32.2-6.5 58.6-11.2 76.3c-6.2 23.1-24.4 41.4-47.4 47.5c-21 5.6-73.9 10.1-145.8 12.8c-36.4 1.4-75.6 2.3-114.7 2.8c-13.7.2-26.4.3-37.8.3h-28.6l-37.8-.3c-39.1-.5-78.2-1.4-114.7-2.8c-71.9-2.8-124.9-7.2-145.8-12.8c-23-6.2-41.2-24.4-47.4-47.5c-4.7-17.7-8.5-44.1-11.2-76.3c-2.1-24.7-3.4-51.3-4.2-77.9c-.3-9.3-.4-18-.5-25.7c0-2.7-.1-5.1-.1-7.1v-4.8c0-2.1 0-4.4.1-7.1c.1-7.8.3-16.4.5-25.7c.7-26.6 2.1-53.2 4.2-77.9c2.7-32.2 6.5-58.6 11.2-76.3c6.2-23.1 24.4-41.4 47.4-47.5c21-5.6 73.9-10.1 145.8-12.8c36.4-1.4 75.6-2.3 114.7-2.8c13.7-.2 26.4-.3 37.8-.3h28.6l37.8.3c39.1.5 78.2 1.4 114.7 2.8c71.9 2.8 124.9 7.2 145.8 12.8c23 6.2 41.2 24.4 47.4 47.5c4.7 17.7 8.5 44.1 11.2 76.3c2.1 24.7 3.4 51.3 4.2 77.9c.3 9.3.4 18 .5 25.7c0 2.7.1 5.1.1 7.1zM423 646l232-135l-232-133z" /></svg>
+                      </span>
+                    </a> : <></>}
+                  {/* <a
                     target="blank"
                     href={profileDetails?.twitterLink}
                     className="btn_animated"
@@ -378,7 +374,7 @@ const ProfilepageUser = () => {
                         />
                       </svg>
                     </span>
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </section>
@@ -396,20 +392,36 @@ const ProfilepageUser = () => {
                             <strong>
                               <span>Mobile No:</span>
                             </strong>
-                            (+{profileDetails?.countryCode}) {profileDetails?.mobile}
+                            <a href={`tel:+${profileDetails?.countryCode}) ${profileDetails?.mobile}`} target="_blank">
+                              <span style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}> <span>
+                                (+{profileDetails?.countryCode}) {profileDetails?.mobile}</span>
+                                <PhoneIcon size={20} />
+                              </span></a>
 
                           </li>
                           <li>
                             <strong>
                               <span>WhatsApp No:</span>
                             </strong>{" "}
-                            (+{profileDetails?.whatsappNumberCountryCode}) {profileDetails?.whatsappNumber}
+                            <a href={`https://wa.me/${profileDetails?.whatsappNumber}`} target="_blank">
+                              <span style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}> <span>
+
+                                (+{profileDetails?.whatsappNumberCountryCode}) {profileDetails?.whatsappNumber}</span>
+                                <MessageCircleIcon size={20} />
+                              </span></a>
                           </li>
                           <li>
                             <strong>
+
                               <span>Email address:</span>
                             </strong>{" "}
-                            {profileDetails?.email}
+                            <a href={`mailto:${profileDetails?.email}`} target="_blank">
+                              <span style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}> <span>
+
+                                {profileDetails?.email}</span>
+                                <Mail size={20} />
+                              </span></a>
+
                           </li>
                           {/* <li>
                             <strong>
@@ -558,10 +570,15 @@ const ProfilepageUser = () => {
                         <div key={index} className="col col-m-12 col-t-6 col-d-4">
                           <div className="imp-link">
                             <div className="center-align-contents">
-                              <img src={link?.fileType === ppt ? link?.fileType : word} alt={link?.name} />
-                              <a href="javascript:void(0)" target="_blank">
+                              <LinkIcon />
+                              {/* <img src={link?.fileType === ppt ? link?.fileType : word} alt={link?.name} /> */}
+                              <a
+                                href={link?.fileType?.startsWith('http') ? link.fileType : `https://${link.fileType}`}
+                                className="pl-2"
+                              >
                                 {link?.name}
                               </a>
+
                             </div>
                           </div>
                         </div>
@@ -747,9 +764,9 @@ const ProfilepageUser = () => {
 
 
 
-                 <VCardGenerator name={profileDetails?.name} whatsappNumber={+"+"+profileDetails?.whatsappNumberCountryCode+" "+ profileDetails?.whatsappNumber} email={profileDetails?.email} companyName={profileDetails?.orgName} designation={profileDetails?.jobRoleName} mobile=
-                            {+'+'+profileDetails?.countryCode+' '+ profileDetails?.mobile} />
-                           
+              <VCardGenerator name={profileDetails?.name} whatsappNumber={+"+" + profileDetails?.whatsappNumberCountryCode + " " + profileDetails?.whatsappNumber} email={profileDetails?.email} companyName={profileDetails?.orgName} designation={profileDetails?.jobRoleName} mobile=
+                {+'+' + profileDetails?.countryCode + ' ' + profileDetails?.mobile} />
+
             </div>
           </footer>
 
