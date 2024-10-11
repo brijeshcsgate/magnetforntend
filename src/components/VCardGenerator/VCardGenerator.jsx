@@ -32,32 +32,18 @@ END:VCARD
     };
 
     return (
-        <div>
-            {/* <div>
-        <label>Name: </label>
-        <input value={name} onChange={(e) => setName(e.target.value)} />
-      </div>
-      <div>
-        <label>Phone: </label>
-        <input value={phone} onChange={(e) => setPhone(e.target.value)} />
-      </div>
-      <div>
-        <label>Email: </label>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} />
-      </div> */}
-            {/* <button onClick={generateVCard}>Download vCard</button> */}
 
-            <Button onClick={generateVCard}
+            <button onClick={generateVCard}
                 className="btn extra contact-btn btn_animated"
             >
                 <span className="circle center_icon line-height">
                     <span
-                        className="ink animate "
+                        // className="ink animate "
                     ></span>
                     Save Contact
                 </span>
-            </Button>
-        </div>
+            </button>
+       
     );
 };
 

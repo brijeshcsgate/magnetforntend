@@ -228,10 +228,11 @@ const ProfilepageUser = () => {
                   </a>
                 </div>
                 <div
-                  className={`st-image  ${isSticky ? "sticky" : ""}`}
+                  className={`st-image img-alin-cent ${isSticky ? "sticky" : ""}`}
                   id="profileName"
                 >
-                  <img src={profileDetails?.profileImage} alt="" />
+                  <img src={profileDetails?.profileImage} alt="" style={{objectFit:'cover'}} />
+                 
                   <div className="st-title">{profileDetails?.name}</div>
                 </div>
                 <div className="profile-quote">
@@ -388,35 +389,35 @@ const ProfilepageUser = () => {
                       <div className="info-list">
                         <div className="contact-title">Contact Us</div>
                         <ul>
-                          <li>
+                          <li className="text-responsive">
                             <strong>
                               <span>Mobile No:</span>
                             </strong>
-                            <a href={`tel:+${profileDetails?.countryCode}) ${profileDetails?.mobile}`} target="_blank">
-                              <span style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}> <span>
+                            <a href={`tel:+${profileDetails?.countryCode}) ${profileDetails?.mobile}`} className="hover-text "target="_blank">
+                              <span style={{ display: 'flex', flexDirection: 'row', gap: '10px' }} > <span>
                                 (+{profileDetails?.countryCode}) {profileDetails?.mobile}</span>
                                 <PhoneIcon size={20} />
                               </span></a>
 
                           </li>
-                          <li>
+                          <li className="text-responsive">
                             <strong>
                               <span>WhatsApp No:</span>
                             </strong>{" "}
-                            <a href={`https://wa.me/${profileDetails?.whatsappNumber}`} target="_blank">
+                            <a href={`https://wa.me/${profileDetails?.whatsappNumber}`} target="_blank" className="hover-text ">
                               <span style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}> <span>
 
                                 (+{profileDetails?.whatsappNumberCountryCode}) {profileDetails?.whatsappNumber}</span>
                                 <MessageCircleIcon size={20} />
                               </span></a>
                           </li>
-                          <li>
+                          <li className="text-responsive">
                             <strong>
 
                               <span>Email address:</span>
                             </strong>{" "}
-                            <a href={`mailto:${profileDetails?.email}`} target="_blank">
-                              <span style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}> <span>
+                            <a href={`mailto:${profileDetails?.email}`} target="_blank" className="hover-text ">
+                              <span style={{ display: 'flex', flexDirection: 'row', gap: '10px' }} > <span>
 
                                 {profileDetails?.email}</span>
                                 <Mail size={20} />
@@ -435,7 +436,7 @@ const ProfilepageUser = () => {
                             </strong>
                             @gyangps--?
                           </li> */}
-                          <li>
+                          <li className="text-responsive">
                             <strong>
                               <span>Address:</span>
                             </strong>
@@ -524,7 +525,7 @@ const ProfilepageUser = () => {
                 </section> : <></>
               }
               {/* <!-- Gallery --> */}
-              <section className="section works" id="Gallery-section" ref={sectionRefs.Gallery}>
+              <section className="section works mb50-pb-50" id="Gallery-section" ref={sectionRefs.Gallery}>
                 {(profileDetails?.imageGalleryStatus === true) && (profileDetails?.imageGalleries?.length > 0) ?
                   <>
                     <div className="title">Image Gallery</div>

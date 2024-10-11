@@ -61,13 +61,13 @@ const OffersCarousel = ({ offers = [] }) => {
   return (
     <div className="relative w-full  mx-auto">
       {/* <div className="flex overflow-hidden" style={{ marginLeft: '25px' }}> */}
-      <Grid container spacing={2} className="overflow-hidden"style={{padding:'25px',paddingRight:'25px'}} >
+      <Grid container spacing={2} className="overflow-hidden"style={{paddingTop:'25px',paddingBottom:'25px',paddingLeft:'10px',paddingRight:'10px'}} >
     
         {offers.slice(startIndex, startIndex + getDeviceType()).map((offer, index) => (
         
         <Grid item xs={12} md={6} lg={4}>
        
-       <div key={startIndex + index} className=" p-2 transition-all duration-300 ease-in-out" >
+       <div key={startIndex + index} className="  transition-all duration-300 ease-in-out" >
             <div
               key={index}
               className=" box-item f-mockup animated"
@@ -87,6 +87,7 @@ const OffersCarousel = ({ offers = [] }) => {
                 <div className="has-popup">
                   <img
                     src={offer?.image}
+                    style={resizeImage(346, 384)}
                     // className="p-in-image-slide"
                     className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"
                       }`}
@@ -98,21 +99,21 @@ const OffersCarousel = ({ offers = [] }) => {
                 <div className="name has-popup">
                   {offer?.name}
                 </div>
-                <p>{offer?.description}</p>
+                <p><TextToggler text={offer?.description} charLimit={20} isShowBtn={false} /></p>
 
-                <div className="service-bts flex-row-g20">
+                <div className="service-bts flex-row-g15 flex-col">
                   {/* <div className="btn btn_animated has-popup"> */}
-                    <span className="circle center_icon" style={{color:'green'}}>
+                    <span className="circle center_icon" style={{color:''}}>
                       <b>Starts:</b>
-                      {offer?.startDate} {offer?.startTime}
+                     {offer?.startDate} {offer?.startTime}
                     </span>
                   {/* </div> */}
                   {/* <div
                     className="btn extra contact-btn btn_animated has-popup"
                   > */}
-                    <span className="circle center_icon" style={{color:'orange'}}>
-                      <b>Ends:</b>
-                      {offer?.endDate} {offer?.endTime}
+                    <span className="circle center_icon" style={{color:''}}>
+                        <b>Ends:</b>
+                     {offer?.endDate} {offer?.endTime}
                     </span>
                   {/* </div> */}
                 </div>

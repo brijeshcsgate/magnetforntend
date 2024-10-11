@@ -8,6 +8,7 @@
 }
 .PhoneInputCountrySelect{
     width:20px !important;
+    background-color: transparent !important;
 }
 .PhoneInputCountryIconImg{width: 20px !important;}
 .PhoneInputCountryIcon {display: flex !important; align-items: center;}

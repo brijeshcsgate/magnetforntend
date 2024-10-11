@@ -38,6 +38,58 @@ body {
 	letter-spacing: 0.01em;
 	font-weight: 300;
 } */
+.hover-text {
+	/* color: black;  */
+	/* transition: color 0.3s ease;  */
+  }
+  .flex-col{
+	display:flex !important;
+	flex-direction: column !important;
+	align-items: start;
+  }
+  .mb50-pb-50{
+	padding-bottom: 20px !important;
+	/* margin-bottom: 50px !important; */
+  }
+  .hover-text:hover {
+	color: grey; 
+  }
+  .m-slider-width{
+	width:94%;
+  }
+  .text-responsive {
+	/* font-size: 16px;  */
+	display: flex;
+  }
+  .img-alin-cent{
+	align-items: center !important;
+  }
+  /* Small devices (phones, portrait tablets) */
+  @media (max-width: 767px) {
+	.text-responsive {
+		display: flex !important;
+		flex-direction: column !important;
+	}
+	
+	.m-slider-width{
+		width:94%;
+	  }
+  }
+  
+  /* Medium devices (landscape tablets, small laptops) */
+  @media (min-width: 768px) and (max-width: 1024px) {
+	/* .text-responsive {
+	  font-size: 14px; 
+	} */
+  }
+  
+  /* Large devices (desktops, large laptops) */
+  @media (min-width: 1025px) {
+	/* .text-responsive {
+	  font-size: 18px; 
+	} */
+  }
+  
 .line-height{line-height: 1 !important;}
 .page {
 	position: relative;
@@ -65,20 +117,32 @@ body {
 	clear: both;
 }
 .margin-bottom{
-	margin-bottom:40px !important;
+	margin-bottom:100px !important;
 }
 .mobile {
 	display: none;
+}
+.l-shift{
+	left:-60px !important;
+}
+.r-shift{
+	right:-60px !important;
 }
 .container {
 	max-width: 100% !important;
 	/* max-width: 1100px; */
 }
+
 @media (max-width: 720px) {
 	.mobile {
 	display: block;
 	}
-
+	.l-shift{
+		left:-55px !important;
+	}
+	.r-shift{
+		right:-55px !important;
+	}
 }
 
 .desctop {
@@ -122,16 +186,23 @@ body {
 
 @media (max-width: 420px) {
 	.wrapper {
-	margin: 0 10px;
+	margin: 0 3px;
 	}
-
+	.l-shift{
+		/* left:-35px !important; */
+		display:none;
+	}
+	.r-shift{
+		display:none;
+		/* left:-35px !important; */
+	}
 }
 
 /* 3. Columns */
 .row {
 	position: relative;
 	margin: 0 -10px;
-	padding: 0 0 30px 0;
+	padding: 0 0 10px 0;
 }
 
 .row:last-child {
@@ -839,8 +910,8 @@ blockquote {
 }
 
 .animate {
-	-webkit-animation: ripple 0.6s linear;
-	animation: ripple 0.6s linear;
+	/* -webkit-animation: ripple 0.6s linear;
+	animation: ripple 0.6s linear; */
 }
 
 @keyframes ripple {

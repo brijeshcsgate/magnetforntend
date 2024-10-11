@@ -79,7 +79,7 @@ const [countImage,setCountImage]=useState(0)
   return (
     <div className="relative w-full  mx-auto">
       {/* <div className="flex overflow-hidden" style={{ marginLeft: '25px' ,flexDirection:'row'}}> */}
-      <Grid container spacing={2} className="overflow-hidden"style={{padding:'25px',paddingRight:'25px'}} >
+      <Grid container spacing={2} className="overflow-hidden ml-5"style={{paddingTop:'25px',paddingBottom:'25px',paddingLeft:'15px',paddingRight:'10px'}} >
         {images.slice(startIndex, startIndex + getDeviceType()).map((product, index) => (
         
         <Grid item xs={12} md={6} lg={4}>
@@ -89,7 +89,7 @@ const [countImage,setCountImage]=useState(0)
           
             <div
               key={index}
-              className=" box-item f-mockup animated "
+              className=" box-item f-mockup animated  ml-4"
               data-sr-id="4"
               style={{
                 visibility: 'visible',
@@ -97,7 +97,7 @@ const [countImage,setCountImage]=useState(0)
                 opacity: '1',
                 transition:
                   'all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)',
-                left: '0%',
+                left: '2%',
                 top: '0px',
               }}
             >
@@ -123,7 +123,7 @@ const [countImage,setCountImage]=useState(0)
               </div>
               <div className="content-box">
                 <div className="name has-popup">
-                  {product?.name}
+                <strong>  <TextToggler text={product?.name} charLimit={20} isShowBtn={false} /></strong>
                 </div>
                 <p> <TextToggler text={product?.description} charLimit={20} isShowBtn={false} /></p>
                 <div className="pricing">
@@ -136,13 +136,13 @@ const [countImage,setCountImage]=useState(0)
                     className="fa fa-inr"
                     aria-hidden="true"
                   ></i>
-                  <div className="">
+                  {/* <div className="">
                     {' '}
                     {product?.price}
-                  </div>
-                  <br />
-                  <span className="mrp">M.R.P.: </span>
-                  <i
+                  </div> */}
+                  {/* <br /> */}
+                  <span className="mrp"><strong>M.R.P.:</strong> </span>
+                  {/* <i
                     style={{
                       fontSize: '10px',
                       position: 'relative',
@@ -150,12 +150,11 @@ const [countImage,setCountImage]=useState(0)
                     }}
                     className="fa fa-inr"
                     aria-hidden="true"
-                  ></i>
-                  <del> {product?.offerPrice}</del>
-                </div>
-                <div className="product-link">
+                  ></i> */}
+                 {product?.price}               </div>
+                {/* <div className="product-link">
                   {product?.websiteLink}
-                </div>
+                </div> */}
                 <div className="service-bts flex-row-g20" style={{display:'flex', justifyContent:'space-between', width:'100%'}}>
                   <div onClick={()=>setOpen(true)} className="btn btn_animated has-popup" style={{width:'50%'}}>
                     <span className="circle center_icon">
@@ -209,7 +208,7 @@ const [countImage,setCountImage]=useState(0)
                 opacity: '1',
                 transition:
                   'all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)',
-                left: '0%',
+                left: '2%',
                 top: '0px',
               }}
             >
@@ -225,10 +224,11 @@ const [countImage,setCountImage]=useState(0)
               </div>
               <div className="content-box">
                 <div className="name has-popup">
-                  {product?.name}
+               <strong>   {product?.name}</strong>
                 </div>
                 <p>
-                <TextToggler text={product?.description} charLimit={200} isShowBtn={false} />
+                {product?.description}
+                {/* <TextToggler text={product?.description} charLimit={200} isShowBtn={false} /> */}
                  
                   </p>
                 <div className="pricing">
@@ -245,8 +245,8 @@ const [countImage,setCountImage]=useState(0)
                     {' '}
                     {product?.price}
                   </div> */}
-                  <br />
-                  <span className="mrp">M.R.P.: </span>
+                  {/* <br /> */}
+                  <span className="mrp"> <strong>M.R.P.:</strong> </span>
                   <i
                     style={{
                       fontSize: '10px',
@@ -279,7 +279,7 @@ const [countImage,setCountImage]=useState(0)
       <button
         onClick={handlePrev}
         disabled={startIndex === 0}
-        style={{ left: '-25px' }}
+        style={{ left: '-15px' }}
         className="absolute  top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
       >
         <ChevronLeft className="w-6 h-6" />
@@ -287,7 +287,7 @@ const [countImage,setCountImage]=useState(0)
       <button
         onClick={handleNext}
         disabled={startIndex >= images.length - getDeviceType()}
-        style={{ right: '-25px' }}
+        style={{ right: '-32px' }}
         className="absolute  top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
       >
         <ChevronRight className="w-6 h-6" />

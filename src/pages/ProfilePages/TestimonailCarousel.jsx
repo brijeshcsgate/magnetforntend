@@ -160,15 +160,15 @@ const TestimonialCarousel = ({ testimonials }) => {
       </div>
       <button
         onClick={goToPrevSlide}
-        style={{ left: '-65px' }}
-        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out z-10"
+        // style={{ left: '-45px' }}
+        className="absolute l-shift left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out z-10"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={goToNextSlide}
-        style={{ right: '-65px' }}
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out z-10"
+        // style={{ right: '-45px' }}
+        className="absolute r-shift right-2 top-1/2 transform -translate-y-1/2 bg-white rounded-full bg-opacity-50 p-2  shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out z-10"
       >
         <ChevronRight className="w-6 h-6" />
       </button>

@@ -226,7 +226,7 @@ header .menu-btn span:after {
 
 /* 3. Section */
 .section {
-	padding: 50px 0;
+	padding: 35px 0;
 	position: relative;
 }
 
@@ -612,7 +612,16 @@ header .menu-btn span:after {
 	-webkit-border-radius: 2px;
 	-khtml-border-radius: 2px;
 }
-
+.info-list ul div strong span {
+	padding: 2px 5px;
+	background: #304fff;
+	color: #fefefe;
+	font-weight: 400;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-khtml-border-radius: 2px;
+}
 /* 6. Skills */
 @media (max-width: 720px) {
 	.section.skills .col:first-child {
@@ -970,7 +979,7 @@ header .menu-btn span:after {
 
 /* 9. Portfolio */
 .section.works {
-	padding: 50px 0 5px 0;
+	padding: 30px 0 0px 0;
 }
 
 .section.works .row .col {

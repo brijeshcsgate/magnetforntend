@@ -205,7 +205,7 @@ export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId,
 
                                     {visitorInfoType === 'Mandate' ? <></> :
                                         <Button variant="outlined" size="small" onClick={handleClose}>Cancel</Button>
-                                    } <Button variant="contained" size="small" type="submit" autoFocus>
+                                    } <Button variant="contained" size="small" type="submit">
                                         Submit
                                     </Button>
                                 </div>

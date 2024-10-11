@@ -9,7 +9,7 @@ import './Phonecss.css'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import FormikTextField from '@/components/inputs/formik/FormikTextField';
-import { ButtonGroup } from '@mui/material';
+import { Box, ButtonGroup,Slider } from '@mui/material';
 import { toast } from 'sonner';
 import { postApi } from '@/services/method';
 import { APIS } from '@/constants/api.constant';
@@ -21,16 +21,44 @@ import { Textarea } from '@/components/ui/textarea';
 
 import PhoneInput from 'react-phone-number-input'
 import { cn } from '@/utils';
+const marks = [
 
+    {
+        value: 1,
+        label: '1',
+    },
+    {
+        value: 2,
+        label: '2',
+    },
+    {
+        value: 3,
+        label: '3',
+    },
+    {
+        value: 4,
+        label: '4',
+    },
+
+    {
+        value: 5,
+        label: '5',
+    },
+];
+
+
+function valuetext(value) {
+    return `${value}`;
+}
 const validationSchema = Yup.object().shape({
     name: Yup.string()
         .required('Name is required'),
     email: Yup.string()
         .email('Invalid email address')
         .required('Email is required'),
-        temperature_scale: Yup.string()
+    temperature_scale: Yup.number()
         .required('Temperature scale is required'),
-        
+
     mobile: Yup.string()
         .min(8, 'Please fill valid mobile no.')
         .required('Contact number is required'),
@@ -63,6 +91,7 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
     };
     const handleSubmit = async (values) => {
         values.userId = profileUserId;
+        values.temperature_scale = values.temperature_scale;
         await apiService.post(`${APIS.ADD_REFERREL}`, values)
             .then((res) => {
                 toast.success('Data saved successfully');
@@ -73,25 +102,16 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
 
     return (
         <React.Fragment>
-            <Button className="btn extra btn_animated has-popup"
+            <button className="btn extra btn_animated has-popup"
                 onClick={() => { setOpen(true) }}
-                // sx={{
-                //     textTransform: 'none', // Disable default uppercase
-                //     borderRadius: 0,       // Set border radius to 0px
-                //     '&::first-letter': {
-                //       textTransform: 'capitalize', // Capitalize only the first letter
-                //     },
-                //   }} 
-                //   .capitalize {
-                //     text-transform: capitalize;
-                //   }
+
             >
                 <span
-                 className="circle center_icon line-height"
+                    className="circle center_icon line-height"
                 >
                     Refer Business
                 </span>
-            </Button>
+            </button>
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -146,22 +166,22 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
                                         name="mobile"
                                         isRequired
                                     /> */}
-                                      <Label
-                                            className={cn('c-black mb-1')} // Adjusting label styling with cn
-                                        //   htmlFor={name} // Updated to use `name` as `htmlFor` to match input id
-                                        >
-                                            Your Contact No. <span style={{ color: 'red' }}>*</span>
-                                        </Label>
-                                        <PhoneInput
-                                            international
-                                            defaultCountry="RU"
-                                            value={values.mobile}
-                                            onChange={(e) => setFieldValue('mobile', e)}
-                                            className={cn(
-                                                'flex h-8 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-xs ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-primary-200 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ',
-                                            )}
+                                    <Label
+                                        className={cn('c-black mb-1')} // Adjusting label styling with cn
+                                    //   htmlFor={name} // Updated to use `name` as `htmlFor` to match input id
+                                    >
+                                        Your Contact No. <span style={{ color: 'red' }}>*</span>
+                                    </Label>
+                                    <PhoneInput
+                                        international
+                                        defaultCountry="RU"
+                                        value={values.mobile}
+                                        onChange={(e) => setFieldValue('mobile', e)}
+                                        className={cn(
+                                            'flex h-8 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-xs ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-primary-200 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ',
+                                        )}
 
-                                        />
+                                    />
                                 </div>
                                 <div>
                                     <FormikTextField
@@ -204,7 +224,7 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
                                         isRequired
                                     />
                                 </div> */}
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between',flexDirection:'column' }}>
 
                                     <div style={{ flex: '0 0 48%' }}>
                                         {/* <FormikTextField
@@ -233,12 +253,35 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
                                         />
                                     </div>
                                     <div style={{ flex: '0 0 48%' }}>
-                                        <FormikTextField
+                                        {/* <FormikTextField
                                             label="Temperature Scale"
                                             placeholder="5"
                                             name="temperature_scale"
                                             isRequired
-                                        />
+                                        /> */}
+                                        <Label
+                                            className={cn('c-black mb-1')} // Adjusting label styling with cn
+                                        //   htmlFor={name} // Updated to use `name` as `htmlFor` to match input id
+                                        >
+                                            Temperature Scale
+                                            {/* <span style={{ color: 'red' }}>*</span> */}
+                                        </Label>
+                                        <Box className='m-slider-width'>
+                                            <Field
+                                                name="temperature_scale"
+                                                component={FormikSlider}
+                                                aria-label="Custom marks"
+                                                //   step={5}
+                                                //   marks={marks}
+                                                //   min={1}
+                                                //   max={5}
+                                                getAriaValueText={valuetext}
+                                                className="ml-4"
+                                            />
+                                            {/* {touched.tempratur_scale && errors.tempratur_scale ? (
+              <div style={{ color: 'red' }}>{errors.tempratur_scale}</div>
+            ) : null} */}
+                                        </Box>
 
                                     </div>
                                 </div>
@@ -294,3 +337,23 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
         </React.Fragment>
     );
 }
+
+
+
+// Slider field for Formik
+const FormikSlider = ({ field, form, ...props }) => {
+
+    return (
+        <Slider
+            {...field}
+            {...props}
+            value={typeof field.value === 'number' ? field.value : 1}
+            marks={marks}
+            step={1}
+            min={1}
+            max={5}
+            onChange={(event, value) => form.setFieldValue(field.name, value)}
+            valueLabelDisplay="auto"
+        />
+    );
+};

@@ -109,6 +109,13 @@ a.btn.extra, .btn.extra {
     font-weight: 500;
     /* font-size: 1rem; */
 }
+.info-list ul div strong span {
+  padding: 0;
+  background: none;
+  color: #304fff;
+  font-weight: 500;
+  /* font-size: 1rem; */
+}
 .info-list ul li strong {
     width: 123px;
 }

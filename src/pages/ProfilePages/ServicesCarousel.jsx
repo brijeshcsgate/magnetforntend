@@ -57,7 +57,7 @@ const ServicesCarousel = ({ images,profileUserId,visitorInfo,footer }) => {
   return (
     <div className="relative w-full  mx-auto">
       {/* <div className="flex overflow-hidden" style={{marginLeft:'25px'}}> */}
-      <Grid container spacing={2} className="overflow-hidden" style={{padding:'25px',paddingRight:'25px'}}>
+      <Grid container spacing={2} className="overflow-hidden" style={{paddingTop:'25px',paddingBottom:'25px',paddingLeft:'10px',paddingRight:'10px'}}>
       
         {images.slice(startIndex, startIndex + getDeviceType()).map((item, index) => (
              <Grid item xs={12} md={6} lg={4}>
@@ -89,8 +89,9 @@ const ServicesCarousel = ({ images,profileUserId,visitorInfo,footer }) => {
                   </div>
                   <div className="content-box">
                     <div className="name has-popup">
-                      {item.name}
+                    <strong> {item.name}</strong>
                     </div>
+                    <br/>
                     <TextToggler text={item.description} charLimit={20} isShowBtn={false} />
                     <div className="service-bts flex-row-g20" style={{display:'flex', justifyContent:'space-between',width:'100%'}}>
                   
@@ -155,9 +156,13 @@ const ServicesCarousel = ({ images,profileUserId,visitorInfo,footer }) => {
                   </div>
                   <div className="content-box">
                     <div className="name has-popup">
-                      {selectedItem.name}
+                    <strong>{selectedItem.name}</strong>
                     </div>
-                    <TextToggler text={selectedItem.description} charLimit={200} isShowBtn={false} />
+                    {/* <br/> */}
+                    <div>
+                    {selectedItem.description}
+                    </div>
+                    {/* <TextToggler text={selectedItem.description} charLimit={200} isShowBtn={false} /> */}
                    
                   </div>
                 </div>)}
