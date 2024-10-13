@@ -1,15 +1,15 @@
 import React from 'react'
 import styles from "./styles/profileV2.module.css"
-const SingleImageGallery = () => {
+const SingleImageGallery = ({item}) => {
     return (
         <div className={styles.singleImageGalleryContainer}>
             <div className={styles.singleImageGalleryImg}>
               
-                <img className="d-block w-100" src={`${"/img/2.jpg"}`} alt="" />
+                <img className="d-block w-100" src={item?.image} alt="" />
             </div>
 
             <div className={styles.singleImageGalleryText}>
-                <h2 className='fs-5'>{`Magnet`}</h2>
+                <h2 className='fs-5'>{item?.name}</h2>
             </div>
         </div>
     )

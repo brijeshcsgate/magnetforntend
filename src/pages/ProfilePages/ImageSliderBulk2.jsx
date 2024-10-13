@@ -2,17 +2,17 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { resizeImage } from './resizeImage';
 
-const ImageSliderBulk = ({ images, autoChangeInterval = 3000 }) => {
+const ImageSliderBulk2 = ({ images, autoChangeInterval = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
 
   const goToNext = useCallback(() => {
     setFadeIn(false); // Start fade out
     setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images?.length);
       setFadeIn(true); // Start fade in
     }, 500); // Half of the transition duration
-  }, [images.length]);
+  }, [images?.length]);
 
   useEffect(() => {
     const changeInterval = setInterval(goToNext, autoChangeInterval);
@@ -32,7 +32,7 @@ const ImageSliderBulk = ({ images, autoChangeInterval = 3000 }) => {
           src={images[currentIndex]} 
           alt={`Image ${currentIndex + 1}`}
           className="w-full h-full object-cover"
-          // style={resizeImage(300, 300)}
+          style={resizeImage(380, 290)}
         />
       </div>
       
@@ -51,4 +51,4 @@ const ImageSliderBulk = ({ images, autoChangeInterval = 3000 }) => {
   );
 };
 
-export default ImageSliderBulk;
+export default ImageSliderBulk2;

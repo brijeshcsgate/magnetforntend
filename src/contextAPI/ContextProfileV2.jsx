@@ -17,15 +17,16 @@ export const ContextAPIProvider = ({ children }) => {
   // Profile v2
   const [isScrolled, setIsScrolled] = useState(false);
   const [serviceModalDataV2,setServiceModalDataV2]=useState([])
-  // const [productModalDataV2,setProductModalDataV2]=useState([])
+  const [productModalDataV2,setProductModalDataV2]=useState([])
   
+  console.log(productModalDataV2,'---------------------------2')
   // Profile v4
   const [selectedTb, setSelectedTab] = useState("services");
   return (
     <ContextAPI.Provider
       value={{
-        // productModalDataV2,
-        // setProductModalDataV2,
+        productModalDataV2,
+        setProductModalDataV2,
         serviceModalDataV2,
         setServiceModalDataV2,
         viewDetialsModalV1,

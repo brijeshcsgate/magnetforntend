@@ -2,7 +2,9 @@ import React, { useContext } from "react";
 import styles from "./styles/profileV2.module.css";
 import ServiceModal from "../../../components/profile-v2/ServiceModal";
 import { ContextAPI } from "../../../contextAPI/ContextProfileV2";
-const SingleService = ({ item }) => {
+import TextToggler from "@/pages/ProfilePages/TextToggler";
+import EnquiryForm from "@/components/EnquiryForm/EnquiryForm";
+const SingleService = ({ item,profileUserId, visitorInfo }) => {
   const { setServiceModalDataV2 } = useContext(ContextAPI);
   const handleSendServiceV1ModalData = (ele) => {
     setServiceModalDataV2(ele);
@@ -11,15 +13,15 @@ const SingleService = ({ item }) => {
     <>
       <div className={styles.singleServiceContainer}>
         <div className={styles.singleServiceImage}>
-          <img src={`${"/img/1.png"}`} alt="" />
+          <img src={item.image} alt={item.name} />
         </div>
         <div className={styles.singleServiceDetails}>
           <div>
             <div className={styles.singleServiceTitle}>
-              <h3 className="text-secondary">{item.title}</h3>
+              <h3 className="text-secondary">{item.name}</h3>
             </div>
             <div className={`${styles.singleServiceText} text-secondary`}>
-              {item.description}
+            <TextToggler text={item.description} charLimit={280} isShowBtn={false} />
             </div>
             <div className={styles.singleServiceButtons}>
               <button
@@ -31,7 +33,9 @@ const SingleService = ({ item }) => {
                 View Details
               </button>
 
-              <button className="text-secondary">Enquiry</button>
+              {/* <button className="text-secondary">Enquiry</button> */}
+              <EnquiryForm profileUserId={profileUserId} visitorInfo={visitorInfo} cl='text-secondary'/>
+           
             </div>
           </div>
         </div>

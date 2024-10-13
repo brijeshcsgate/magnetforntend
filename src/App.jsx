@@ -92,7 +92,7 @@ const App = () => {
         : renderRoutes(publicRoutes, CommonLayout)}
         
         <Route path='/profile/:id' element={<ProfilepageUser />} />
-        <Route  path='/profiles/v2' element={<Profilev2Main/>} />
+        <Route  path='/magnetv1/:id' element={<Profilev2Main/>} />
       <Route  path='/profiles/v4' element={<ProfileV4Main/>} />
       <Route  path='/profiles' element={<ProfileV1Main/>} />
    

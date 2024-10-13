@@ -26,7 +26,7 @@ const ServiceModal = (isOpenModal) => {
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
-                {"Life "}
+                {serviceModalDataV2.name}
               </h1>
               <button
                 type="button"
@@ -41,7 +41,7 @@ const ServiceModal = (isOpenModal) => {
                   <img
                     width={`100%`}
                     className={`card `}
-                    src={`${"/img/1.png"}`}
+                    src={serviceModalDataV2?.image}
                     alt=""
                   />
                 </div>

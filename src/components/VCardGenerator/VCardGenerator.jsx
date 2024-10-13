@@ -33,17 +33,17 @@ END:VCARD
 
     return (
 
-            <button onClick={generateVCard}
-                className="btn extra contact-btn btn_animated"
-            >
-                <span className="circle center_icon line-height">
-                    <span
-                        // className="ink animate "
-                    ></span>
-                    Save Contact
-                </span>
-            </button>
-       
+        <button onClick={generateVCard}
+            className="btn extra contact-btn btn_animated"
+        >
+            <span className="circle center_icon line-height">
+                <span
+                // className="ink animate "
+                ></span>
+                Save Contact
+            </span>
+        </button>
+
     );
 };
 

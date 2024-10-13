@@ -12,7 +12,7 @@ const TextToggler = ({ text, charLimit = 50 ,isShowBtn}) => {
   return (
     <div>
       {/* Show truncated text based on charLimit if not expanded */}
-      <p>{isExpanded ? text : `${text.slice(0, charLimit)}...`}</p>
+      <p>{isExpanded ? text : `${text?.slice(0, charLimit)}...`}</p>
       
       {/* Button to toggle between expanded and collapsed view */}
       {/* <button onClick={toggleText}>
