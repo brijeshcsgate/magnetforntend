@@ -1,5 +1,4 @@
-// import './App.css';
-// import './index.css';
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useQuery } from '@tanstack/react-query';
@@ -21,8 +20,9 @@ import { useLocation } from "react-router-dom";
 import Profilev2Main from './pages/profiles/profile-v2/Profilev2Main';
 import ProfileV4Main from './pages/profiles/profile-v4/ProfileV4Main';
 import ProfileV1Main from './pages/profiles/profile-v1/ProfileV1Main';
-// import AnalyticsDashboard from './AnalyticsDashboard';
-// import AnalyticsDisplay from './AnalyticsDisplay';
+import useSecurityDeterrents from './components/common/SecurityFeatures/useSecurityDeterrents';
+import { Toaster } from 'sonner';
+// import { Toaster } from 'sonner';
 const GOOGLE_MAP_KEY = import.meta.env.VITE_GOOGLE_MAP_KEY;
 // Initialize GA4
 ReactGA.initialize("G-BRYE3XKVN9");
@@ -30,9 +30,8 @@ ReactGA.initialize("G-BRYE3XKVN9");
 const App = () => {
   const { isAuthenticated, setIsAuthenticated, setUser } = useAppStore();
   const { permissions, setPermissions } = useStore();
-
+  // useSecurityDeterrents();
   const { id } = useParams(); // Access the id from URL
-  // let profileId = id;
   const location = useLocation();
 
   useEffect(() => {
@@ -86,7 +85,8 @@ const App = () => {
       ));
 
   return (
-    <Routes>
+    <><Toaster />    <Routes>
+       
       {isAuthenticated
         ? renderRoutes(protectedRoutes, AdminLayout)
         : renderRoutes(publicRoutes, CommonLayout)}
@@ -100,7 +100,9 @@ const App = () => {
 
 
     </Routes>
-    // <AnalyticsDisplay/>
+     {/* <AnalyticsDisplay/> */}
+    </>
+
   );
 };
 

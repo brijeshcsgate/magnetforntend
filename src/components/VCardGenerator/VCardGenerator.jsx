@@ -1,5 +1,7 @@
 import { Button } from '@mui/material';
+import { CheckCircleIcon, CheckIcon } from 'lucide-react';
 import React, { useState } from 'react';
+import { toast } from 'sonner';
 
 const VCardGenerator = ({ name, whatsappNumber, email, companyName, designation, mobile }) => {
     //   const [name, setName] = useState('');
@@ -27,6 +29,7 @@ END:VCARD
         link.href = url;
         link.download = 'contact.vcf';
         link.click();
+        toast.success(<span style={{color:'green', display:'flex',flexDirection:'row',justifyContent:'space-between'}}><CheckCircleIcon/> &nbsp;&nbsp;&nbsp;<span>VC file downloaded successfully</span></span>);
 
         window.URL.revokeObjectURL(url);
     };

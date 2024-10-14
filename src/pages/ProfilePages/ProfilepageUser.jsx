@@ -230,8 +230,8 @@ const ProfilepageUser = () => {
                   className={`st-image img-alin-cent ${isSticky ? "sticky" : ""}`}
                   id="profileName"
                 >
-                  <img src={profileDetails?.profileImage} alt="" style={{objectFit:'cover'}} />
-                 
+                  <img src={profileDetails?.profileImage} alt="" style={{ objectFit: 'cover' }} />
+
                   <div className="st-title">{profileDetails?.name}</div>
                 </div>
                 <div className="profile-quote">
@@ -326,7 +326,7 @@ const ProfilepageUser = () => {
                             <strong>
                               <span>Mobile No:</span>
                             </strong>
-                            <a href={`tel:+${profileDetails?.countryCode}) ${profileDetails?.mobile}`} className="hover-text "target="_blank">
+                            <a href={`tel:+${profileDetails?.countryCode}) ${profileDetails?.mobile}`} className="hover-text " target="_blank">
                               <span style={{ display: 'flex', flexDirection: 'row', gap: '10px' }} > <span>
                                 (+{profileDetails?.countryCode}) {profileDetails?.mobile}</span>
                                 <PhoneIcon size={20} />
@@ -386,7 +386,7 @@ const ProfilepageUser = () => {
                           {isExpanded ? profileDetails?.aboutUs : profileDetails?.aboutUs?.slice(0, 200)}...
                           {profileDetails?.aboutUs?.length >= 200 ?
                             <span onClick={toggleText} id="myBtn">
-                              {isExpanded ? "show Less" : "see More"}
+                              {isExpanded ? "show less" : "see more"}
                             </span> : <></>
                           }
                         </p>
@@ -559,12 +559,12 @@ const ProfilepageUser = () => {
                 </section> : <></>}
 
               {/* <!-- Section Contacts --> */}
-              {(profileDetails?.bankAccountStatus === true) || (profileDetails?.bankAccountDetails?.length > 0) || (profileDetails?.ePaymentStatus === true) || (profileDetails?.paymentDetails?.length > 0) ?
+              {(profileDetails?.bankAccountDetails?.bankName || profileDetails?.bankAccountDetails?.accountName || profileDetails?.bankAccountDetails?.ifsc) || ((profileDetails?.paymentDetails?.image) || (profileDetails?.paymentDetails?.upiId) || profileDetails?.paymentDetails?.paymentGatewayLink) ?
                 <section className="section contacts " id="payments-section" ref={sectionRefs.Payments} >
                   <div className="title">Payments</div>
 
                   <div className="row">
-                    {(profileDetails?.bankAccountStatus === true) && ([profileDetails?.bankAccountDetails].length > 0) ?
+                    {(profileDetails?.bankAccountStatus === true) && (profileDetails?.bankAccountDetails?.bankName || profileDetails?.bankAccountDetails?.accountName || profileDetails?.bankAccountDetails?.ifsc) ?
                       <div className="col col-m-12 col-t-6 col-d-6">
                         <div
                           className="content-box animated"
@@ -637,7 +637,7 @@ const ProfilepageUser = () => {
                           </div>
                         </div>
                       </div> : <></>}
-                    {(profileDetails?.ePaymentStatus === true) && ([profileDetails?.paymentDetails].length > 0) ?
+                    {(profileDetails?.ePaymentStatus === true) && ((profileDetails?.paymentDetails?.image) || (profileDetails?.paymentDetails?.upiId) || profileDetails?.paymentDetails?.paymentGatewayLink) ?
                       <div className="col col-m-12 col-t-6 col-d-6">
                         <div
                           className="content-box animated upi-img"
@@ -654,20 +654,20 @@ const ProfilepageUser = () => {
                               "all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, -webkit-transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s, opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1) 0s",
                           }}
                         >
-
-                          <h5>UPI Image</h5>
-                          <img src={profileDetails?.paymentDetails?.image} style={resizeImage(150, 150)} alt="" />
-                          <p>Upi ID: {profileDetails?.paymentDetails?.upiId}</p>
-
-                          <p>Payment Gateway Link:
-                            {/* <a href={profileDetails?.paymentDetails?.paymentGatewayLink} target="_blank"> Click here to open
+                          {profileDetails?.paymentDetails?.image ? <>
+                            <h5>UPI Image</h5>
+                            <img src={profileDetails?.paymentDetails?.image} style={resizeImage(150, 150)} alt="" /></> : <></>}
+                          {profileDetails?.paymentDetails?.upiId ? <p>Upi ID: {profileDetails?.paymentDetails?.upiId}</p> : <></>}
+                          {profileDetails?.paymentDetails?.paymentGatewayLink ?
+                            <p>Payment Gateway Link:
+                              {/* <a href={profileDetails?.paymentDetails?.paymentGatewayLink} target="_blank"> Click here to open
                             </a> */}
-                            &nbsp;&nbsp;
-                            <Button variant="contained" size='small' color="success" onClick={(e) => { window.open(profileDetails?.paymentDetails?.paymentGatewayLink, '_blank') }}>
-                              Click Here
-                            </Button>
+                              &nbsp;&nbsp;
+                              <Button variant="contained" size='small' color="success" onClick={(e) => { window.open(profileDetails?.paymentDetails?.paymentGatewayLink, '_blank') }}>
+                                Click Here
+                              </Button>
 
-                          </p>
+                            </p> : <></>}
 
 
                         </div>
@@ -685,16 +685,6 @@ const ProfilepageUser = () => {
 
               <EnquiryInfoForm footer={true} profileUserId={profileUserId} visitorInfo={visitorInfo} />
 
-              {/* <Button
-                className="btn extra contact-btn btn_animated"
-              >
-                <span className="circle center_icon line-height">
-                  <span
-                    className="ink animate "
-                  ></span>
-                  Save Contact
-                </span>
-              </Button> */}
 
 
 

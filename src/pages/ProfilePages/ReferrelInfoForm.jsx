@@ -91,7 +91,7 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
     };
     const handleSubmit = async (values) => {
         values.userId = profileUserId;
-        values.temperature_scale = values.temperature_scale;
+        values.tempratur_scale = values.temperature_scale;
         await apiService.post(`${APIS.ADD_REFERREL}`, values)
             .then((res) => {
                 toast.success('Data saved successfully');
