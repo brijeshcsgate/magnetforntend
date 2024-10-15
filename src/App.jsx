@@ -22,6 +22,7 @@ import ProfileV4Main from './pages/profiles/profile-v4/ProfileV4Main';
 import ProfileV1Main from './pages/profiles/profile-v1/ProfileV1Main';
 import useSecurityDeterrents from './components/common/SecurityFeatures/useSecurityDeterrents';
 import { Toaster } from 'sonner';
+import FBIndex from './pages/profiles/FacbookProfile/FBIndex';
 // import { Toaster } from 'sonner';
 const GOOGLE_MAP_KEY = import.meta.env.VITE_GOOGLE_MAP_KEY;
 // Initialize GA4
@@ -95,6 +96,7 @@ const App = () => {
         <Route  path='/magnetv1/:id' element={<Profilev2Main/>} />
       <Route  path='/profiles/v4' element={<ProfileV4Main/>} />
       <Route  path='/profiles' element={<ProfileV1Main/>} />
+      <Route  path='/magnetfb' element={<FBIndex/>} />
    
         {/* <Route path='/dashboard' element={<AnalyticsDashboard />} /> */}
 
