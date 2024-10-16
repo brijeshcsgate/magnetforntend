@@ -96,7 +96,7 @@ const App = () => {
         <Route  path='/magnetv1/:id' element={<Profilev2Main/>} />
       <Route  path='/profiles/v4' element={<ProfileV4Main/>} />
       <Route  path='/profiles' element={<ProfileV1Main/>} />
-      <Route  path='/magnetfb' element={<FBIndex/>} />
+      <Route  path='/magnetfb/:id' element={<FBIndex/>} />
    
         {/* <Route path='/dashboard' element={<AnalyticsDashboard />} /> */}
 

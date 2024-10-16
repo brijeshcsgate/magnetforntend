@@ -45,7 +45,7 @@ body {
   .flex-col{
 	display:flex !important;
 	flex-direction: column !important;
-	align-items: start;
+	/* align-items: start; */
   }
   .mb50-pb-50{
 	padding-bottom: 20px !important;
