@@ -26,11 +26,20 @@ const FBVideo = () => {
     ];
 
     return (
-        <div className="border border-gray-300 p-4">
+        <section className="mt-65" id="">
+        <div className="container mx-auto px-5">
+    
+        <div className=" pt-4 pb-4">
             <div className="container mx-auto">
-                <div className="text-center mb-4">
-                    <h2 className="text-2xl font-bold"><span>Video Gallery</span></h2>
-                </div>
+            <div className="row">
+          <div className="col-md-10 col-lg-8">
+            <div className="header-section">
+            <h2 className="text-3xl font-semibold">
+               Our <span className="text-blue-500">Videos</span>
+              </h2>
+            </div>
+          </div>
+        </div>
 
                 <Swiper className="mt-4" 
                 // navigation pagination
@@ -61,6 +70,8 @@ const FBVideo = () => {
                 </Swiper>
             </div>
         </div>
+        </div>
+        </section>
     );
 };
 

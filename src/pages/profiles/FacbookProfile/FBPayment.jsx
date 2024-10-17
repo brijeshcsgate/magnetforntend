@@ -2,31 +2,37 @@ import React from 'react';
 
 const FBPayment = ({profileImage}) => {
   return (
+    <section className="mt-9" id="">
+    <div className="container mx-auto px-5">
+
     <div className="container p-4">
-      <div className="container">
-        <section id="PAYMENT">
-          <div className="container">
-            {/* UPI Image and Account Info */}
-            <div className="bg-white p-4 shadow-md rounded-md">
-              <label htmlFor="upiImage" className="block text-gray-700 font-medium">UPI Image</label>
-              <div className="flex justify-center my-4">
-                <img src={profileImage} alt="QR Code" className="w-32 h-32 object-cover" />
-              </div>
-              <div className="text-center text-lg font-semibold">
-                <p>1234 1234 1234 1234</p>
-              </div>
-              <div className="text-center mt-4">
-                <label htmlFor="accountName" className="block text-gray-700 font-medium">ACCOUNT NAME</label>
-                <p className="text-lg font-semibold">BRIJESH YADAV</p>
+      <div className="">
+        
+            {/* Payment Title */}
+            <div className="row mt-8">
+              <div className=" ">
+                <div className="header-section">
+                <h2 className="text-3xl font-semibold">
+               Payment <span className="text-blue-500">Methods</span>
+              </h2>
+             </div>
               </div>
             </div>
 
-            {/* Payment Title */}
-            <div className="row mt-8">
-              <div className="col-md-10 col-lg-8 mx-auto text-center">
-                <div className="header-section">
-                  <h2 className="text-2xl font-bold"><span>PAYMENT</span></h2>
-                </div>
+        <section id="PAYMENT">
+          <div className="container">
+            {/* UPI Image and Account Info */}
+            <div className=" p-4 rounded-md paymentcard" >
+              <label htmlFor="upiImage" className="block text-gray-700 font-medium">UPI Image</label>
+              <div className="flex  my-2">
+                <img src={profileImage} alt="QR Code" className="w-32 h-32 object-cover" />
+              </div>
+              <div className=" text-lg font-semibold lt-sp">
+                <p>1234 1234 1234 1234</p>
+              </div>
+              <div className=" mt-4">
+                <label htmlFor="accountName" className="block text-gray-700 font-medium">ACCOUNT NAME</label>
+                <p className="text-lg font-semibold">BRIJESH YADAV</p>
               </div>
             </div>
 
@@ -70,12 +76,12 @@ const FBPayment = ({profileImage}) => {
                       <label className="font-medium text-gray-700 w-40">IFSC Code:</label>
                       <div className="ml-4 text-gray-900">PUNB0733600</div>
                     </div>
-                    <div className="mb-4 flex items-center">
-                      <label className="font-medium text-gray-700 w-40">Remark:</label>
+                    {/* <div className="mb-4 flex items-center" style={{width:'100%'}}>
+                      <label className="accountdetails font-medium text-gray-700 w-40" style={{width:'54%'}}>Remark:</label>
                       <div className="ml-4 text-gray-900">
                         Is it possible to reverse funds transferred to the wrong account..
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -84,6 +90,8 @@ const FBPayment = ({profileImage}) => {
         </section>
       </div>
     </div>
+    </div>
+    </section>
   );
 };
 

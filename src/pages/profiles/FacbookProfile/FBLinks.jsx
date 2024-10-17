@@ -15,21 +15,26 @@ const FBLinks = () => {
     ];
 
     return (
-        <section className="py-8">
-            <div className="imp_links">
-                <div className="mb-6 text-center">
-                    <h2 className="text-2xl font-bold"><span>Important Links</span></h2>
-                </div>
-
+        <section className="">
+            <div className="imp_links  mx-auto px-5">
+            <div className="row">
+          <div className="col-md-10 col-lg-8">
+            <div className="header-section pt-3 px-4">
+            <h2 className="text-3xl font-semibold">
+               Important <span className="text-blue-500">Links</span>
+              </h2>
+            </div>
+          </div>
+        </div>
                 <div className="space-y-6">
                     <div className="flex flex-col items-center">
                     <Grid container>
         
                         {linksGroup1.map((link, index) => (
-                              <Grid sx={12} md={6} lg={4}>
+                              <Grid sx={12} md={6} lg={3}>
          
-                            <div key={index} className="flex items-center">
-                                {/* <img src={link.img} alt={link.name} className="w-6 h-6 mr-2" /> */}
+                            <div key={index} className="flex items-center px-5">
+                                <img src={`${"/img/link_ico.png"}`} alt={link.name} className="w-6 h-6 mr-2" />
                                 <a href={link.url} className="text-lg hover:text-blue-500">{link.name}</a>
                             </div>
                             </Grid>

@@ -8,7 +8,7 @@ const FBAbout = () => {
   };
 
   return (
-    <div className="mainbody">
+    <div className="mainbody pb-2">
       <div id="prolink"></div>
       <div className="container p-4 pb-0 pt-0">
         <div className="container">

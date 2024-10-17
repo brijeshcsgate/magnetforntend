@@ -8,13 +8,16 @@ const FBImage = ({profileImage}) => {
   });
 
   return (
-    <div className="border-gallery">
-      <div className="container mx-auto px-4">
+    <section className="mt-9" id="">
+    <div className="container mx-auto px-5">
+
+    <div className="border-gallery ">
+      <div className=" mx-auto px-4">
         <div className="row">
           <div className="col-md-10 col-lg-8">
-            <div className="header-section">
-              <h2 className="title text-2xl font-semibold">
-                <span>Image gallery</span>
+            <div className="header-section pt-3">
+            <h2 className="text-3xl font-semibold">
+               Our <span className="text-blue-500">Images</span>
               </h2>
             </div>
           </div>
@@ -27,7 +30,7 @@ const FBImage = ({profileImage}) => {
             {images.map((image, index) => (
                 <Grid sx={12} md={8} lg={4}>
            
-           <div className="swiper-slide" key={index}>
+           <div className="swiper-slide pr-4 pb-2" key={index}>
                 <div
                   data-bs-toggle="modal"
                   data-bs-target="#myimg"
@@ -51,6 +54,7 @@ const FBImage = ({profileImage}) => {
         </div>
       </div>
     </div>
+    </div></section>
   );
 };
 

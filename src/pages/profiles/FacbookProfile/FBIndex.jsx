@@ -270,16 +270,27 @@ const FBIndex = () => {
 //     </div>
 // </div>
 <>
-<FBHeader profileImage={profileDetails?.profileImage}/>
+<FBHeader profileImage={profileDetails?.profileImage} name={profileDetails?.name} message={profileDetails?.message} jobRoleName={profileDetails?.jobRoleName} 
+            industryName={profileDetails?.industryName} orgLogo={profileDetails?.orgLogo} facebookLink={profileDetails?.facebookLink}
+            instaLink={profileDetails?.instaLink} twitterLink={profileDetails?.twitterLink} linkedInLink={profileDetails?.linkedInLink}
+            youtubeLink={profileDetails?.youtubeLink}
+            Qr={profileDetails?.paymentDetails?.image}
+            coverImage={profileDetails?.coverImage}
+            profileUserId={profileUserId} visitorInfo={visitorInfo} whatsappNumber={+"+" + profileDetails?.whatsappNumberCountryCode + " " + profileDetails?.whatsappNumber} email={profileDetails?.email} companyName={profileDetails?.orgName} designation={profileDetails?.jobRoleName} mobile=
+                {+'+' + profileDetails?.countryCode + ' ' + profileDetails?.mobile}
+              />
 <FBAbout/>
 <FBService/>
-<FBProduct/>
+<FBProduct profileImage={profileDetails?.profileImage}/>
 <FBImage profileImage={profileDetails?.profileImage}/>
 <FBVideo/>
 <FBLinks/>
 <FBTestimonial/>
 <FBPayment profileImage={profileDetails?.profileImage}/>
-<FBFooter/>
+
+<FBFooter profileUserId={profileUserId} visitorInfo={visitorInfo} name={profileDetails?.name} whatsappNumber={+"+" + profileDetails?.whatsappNumberCountryCode + " " + profileDetails?.whatsappNumber} email={profileDetails?.email} companyName={profileDetails?.orgName} designation={profileDetails?.jobRoleName} mobile=
+          {+'+' + profileDetails?.countryCode + ' ' + profileDetails?.mobile}
+/>
 {/* <FBAccessibility/> */}
 </>
   );

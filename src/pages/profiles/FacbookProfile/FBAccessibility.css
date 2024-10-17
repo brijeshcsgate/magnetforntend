@@ -1,0 +1,226 @@
+/* FBAccessibility.css
+
+.accessibility-widget {
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+  
+  .widget-header {
+    background-color: #1877f2;
+    color: #ffffff;
+    padding: 12px 16px;
+  }
+  
+  .widget-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .widget-content {
+    padding: 16px;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #e4e6eb;
+  }
+  
+  .feature-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+    font-size: 14px;
+    color: #050505;
+  }
+  
+  .feature-icon {
+    margin-right: 12px;
+    font-size: 20px;
+  }
+  
+  .toggle {
+    width: 36px;
+    height: 20px;
+    background-color: #ccd0d5;
+    border-radius: 10px;
+  }   */
+
+
+
+  /* FBAccessibility.css */
+
+.accessibility-widget {
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+  
+  .widget-header {
+    background-color: #1877f2;
+    color: #ffffff;
+    padding: 12px 16px;
+  }
+  
+  .widget-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .widget-content {
+    padding: 16px;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #e4e6eb;
+  }
+  
+  .feature-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
+    font-size: 14px;
+    color: #050505;
+  }
+  
+  .feature-icon {
+    margin-right: 12px;
+    font-size: 20px;
+  }
+  
+  .toggle {
+    width: 36px;
+    height: 20px;
+    background-color: #ccd0d5;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .toggle.active {
+    background-color: #1877f2;
+  }
+  
+  .toggle-slider {
+    width: 16px;
+    height: 16px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+  }
+  
+  .toggle.active .toggle-slider {
+    transform: translateX(16px);
+  }
+  
+  .widget-footer {
+    background-color: #f0f2f5;
+    padding: 12px 16px;
+    text-align: center;
+  }
+  
+  .reset-button {
+    background-color: #e4e6eb;
+    color: #050505;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .reset-button:hover {
+    background-color: #d8dadf;
+  }
+  
+  /* Add hover effect for feature items */
+  .feature-item:hover {
+    background-color: #f0f2f5;
+  }
+  
+  /* Add focus styles for accessibility */
+  .feature-button:focus,
+  .reset-button:focus {
+    outline: 2px solid #1877f2;
+    outline-offset: 2px;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 320px) {
+    .accessibility-widget {
+      width: 100%;
+    }
+  }
+  
+
+
+  /* FBAccessibility.css */
+
+/* ... (keep all the previous styles) ... */
+
+/* Add these new styles at the end of the file */
+
+/* Dark mode */
+.dark-mode {
+    background-color: #1c1e21;
+    color: #ffffff;
+  }
+  
+  .dark-mode a {
+    color: #4599ff;
+  }
+  
+  /* Dyslexia-friendly font */
+  @font-face {
+    font-family: 'Open Dyslexic';
+    src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/fonts/OpenDyslexic-Regular.otf') format('opentype');
+  }
+  
+  /* Cursor style */
+  body[style*="cursor:url"] * {
+    cursor: inherit !important;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

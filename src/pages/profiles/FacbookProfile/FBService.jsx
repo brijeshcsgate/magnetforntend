@@ -13,8 +13,9 @@ import 'swiper/css';
 
 const FBService = () => {
   return (
-    <section id="services" className="py-16 bg-gray-100">
-      <div className="container mx-auto px-4">
+    <section id="" className="py-16 px-5 bg-gray-100">
+      {/* container */}
+      <div className=" mx-auto px-4">
         <div className="flex flex-wrap">
           <div className=" lg:w-1/3">
             <div className="header-section mb-8">
