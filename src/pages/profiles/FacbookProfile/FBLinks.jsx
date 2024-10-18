@@ -15,11 +15,11 @@ const FBLinks = () => {
     ];
 
     return (
-        <section className="">
-            <div className="imp_links  mx-auto px-5">
+        <section className="fbmainbody">
+            <div className="fbimp_links  mx-auto px-3 pb-5">
             <div className="row">
           <div className="col-md-10 col-lg-8">
-            <div className="header-section pt-3 px-4">
+            <div className="fbheader-section pt-3 px-5 text-start">
             <h2 className="text-3xl font-semibold">
                Important <span className="text-blue-500">Links</span>
               </h2>
@@ -42,14 +42,6 @@ const FBLinks = () => {
              </Grid>
                     </div>
 
-                    {/* <div className="flex flex-col items-center">
-                        {linksGroup2.map((link, index) => (
-                            <div key={index} className="flex items-center">
-                                <img src={link.img} alt={link.name} className="w-6 h-6 mr-2" />
-                                <a href={link.url} className="text-lg hover:text-blue-500">{link.name}</a>
-                            </div>
-                        ))}
-                    </div> */}
                 </div>
             </div>
         </section>

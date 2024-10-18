@@ -48,18 +48,18 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
     };
 
     return (
-        <div className="header ">
-            <div className="container mx-auto bg-head">
+        <div className="fbheader ">
+            <div className="fbcontainer mx-auto fbbg-head">
                 <div className="relative">
-                    <div className="heroback">
+                    <div className="fbheroback">
                         <img src={profileImage} className="w-full h-10" />
                     </div>
-                    <div className="flex justify-between items-start  profilecont">
-                        <div className="profileimg">
+                    <div className="flex justify-between items-start  fbprofilecont">
+                        <div className="fbprofileimg">
                             <img src={profileImage} alt=""
                                 className="w-[180px] h-[180px] rounded-full object-cover" />
                         </div>
-                        <div className="aboutprofile text-left">
+                        <div className="fbaboutprofile text-left">
                             <h2 className="text-2xl font-bold">
                                 Brijesh Yadav
                                 <span className="block text-gray-500 sm:inline">(Web Developer)</span>
@@ -68,7 +68,7 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
                                 It is a long established fact that a reader will be distracted by the readable content of a
                                 page when looking at its layout.
                             </span>
-                            <div className="  flex mt-4 space-x-2 linkbar w-full justify-center">
+                            <div className="  flex mt-4 space-x-2 fblinkbar w-full justify-center">
                              
                                 {facebookLink ?
                                     <Link to={facebookLink}><FaSquareFacebook color='lightgray' fontSize={`21px`} /></Link>
@@ -84,27 +84,27 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
                             </div>
                         </div>
                         <div className="socillink flex flex-col items-end " >
-                            <div className="herologo flex items-center space-x-2 js-cent">
+                            <div className="fbherologo flex items-center space-x-2 fbjs-cent">
                                 <img src={profileImage} alt="" className="w-15 h-10 " />
                                 <img data-bs-toggle="modal" href="#exampleModalToggle" role="button" src={profileImage}
                                     alt="" className="w-10 h-10 cursor-pointer" />
                             </div>
-                            <div className="herologo ">
+                            <div className="fbherologo ">
                                 <h6 className="text-lg font-semibold">Life Insurance Corporation of India</h6>
                             </div>
-                            <div className="flex-db space-x-2  linkbutton">
+                            <div className="fbflex-db space-x-2  fblinkbutton">
                                 <FBReferrelForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsReferalForm={IsReferalForm} setIsReferalForm={setIsReferalForm} />
                                 <FBEnquiryForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsEnquiryFormData={IsEnquiryFormData} setIsEnquiryFormData={setIsEnquiryFormData} />
-                                <button onClick={generateVCard} className='ref-button flex-db'><SaveIcon /><span> Save My Contact</span></button>
+                                <button onClick={generateVCard} className='fbref-button fbflex-db'><SaveIcon /><span> Save My Contact</span></button>
 
 
                             </div>
                         </div>
                     </div>
-                    <div className="topend"></div>
+                    <div className="fbtopend"></div>
 
                     <div className="navigation pos-fix" id="navbar">
-                        <nav className="navbar navbar-expand-lg navbar-light p-0 ">
+                        <nav className="navbar navbar-expand-lg fbnavbar-light p-0 ">
                             <button style={{ boxShadow: 'none' }} className="block md:hidden" type="button" data-bs-toggle="collapse" onClick={handleToggle}
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
@@ -144,9 +144,9 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
                                     <li className="nav-item">
                                         <a className="nav-link text-blue-600" href="#paylink">Payment</a>
                                     </li>
-                                    <li className="topUserImg">
+                                    <li className="fbtopUserImg">
                                         <p className="text-gray-600">Brijesh Yadav</p>
-                                        <img className="w-10 h-10 rounded-full object-cover" src="assets/img/new.jpeg" alt="" />
+                                        <img className="w-10 h-10 rounded-full object-cover" src="/img/new.jpeg" alt="" />
                                     </li>
                                 </ul>
                             </div>

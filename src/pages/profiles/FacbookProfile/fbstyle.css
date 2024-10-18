@@ -11,9 +11,12 @@ li {
   margin: 0;
   padding: 0;
 }
-.pos-fix {
+.fbpos-fix {
 }
-.ref-button {
+
+
+.fbbg-white{background-color: #fff;}
+.fbref-button {
   padding: 4px 10px !important;
   margin-bottom: 12px !important;
   background: #1b74e4 !important;
@@ -22,42 +25,25 @@ li {
   border-radius: 5px;
 }
 
-/* .gradient-box {
-    width: 200px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-weight: bold;
-    background: linear-gradient(to right, #ff7e5f, #feb47b); 
-    border-radius: 10px;
-  } */
-
-.gradient-box {
-  /* width: 200px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center; */
+.fbgradient-box {
   color: white;
   font-weight: bold;
   background: linear-gradient(to right, #0000ff, #ff0000); /* Blue to Red */
   /* border-radius: 10px; */
 }
-.bg-head {
+.fbbg-head {
   background-color: #fff !important;
 }
-.flex-db {
+.fbflex-db {
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
-.aboutprofile {
+.fbaboutprofile {
   width: 36%;
 }
 
-.linkbutton a {
+.fblinkbutton a {
   padding: 4px 10px;
   /* margin-bottom: 12px; */
   font-weight: 500;
@@ -65,15 +51,15 @@ li {
   color: black;
 }
 
-.linkbutton a:hover {
+.fblinkbutton a:hover {
   background-color: #d9dbdd;
 }
 
-.navbar-toggler {
+.fbnavbar-toggler {
   border: none;
   display: contents;
 }
-.First-act {
+.fbFirst-act {
   padding: 4px 10px;
   margin-bottom: 12px;
   background: #1b74e4 !important;
@@ -81,23 +67,23 @@ li {
   font-weight: 500;
 }
 
-.linkbutton .btn:focus {
+.fblinkbutton .fbbtn:focus {
   box-shadow: none;
 }
 
-.aboutprofile h2 {
+.fbaboutprofile h2 {
   font-size: 2rem;
   margin: 0%;
   font-weight: 700;
 }
 
-.aboutprofile span {
+.fbaboutprofile span {
   font-size: 14px;
   line-height: 10px;
   color: #6f676b;
 }
 
-.linkbar {
+.fblinkbar {
   text-align: start;
   letter-spacing: 12px;
   font-size: 17px;
@@ -105,15 +91,15 @@ li {
   width: fit-content;
 }
 
-.itailic {
+.fbitailic {
   font-style: italic;
 }
 
-.profile {
+.fbprofile {
   align-items: center;
 }
 
-.heroback img {
+.fbheroback img {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -121,12 +107,12 @@ li {
   border-radius: 10px;
 }
 
-.header {
+.fbheader {
   position: relative;
   box-shadow: 0 1px 2px #00000033;
 }
 
-.profilecont {
+.fbprofilecont {
   position: relative;
   padding: 0 33px;
   justify-content: space-between;
@@ -137,26 +123,26 @@ li {
   top: -3rem;
 }
 
-.profileimg img {
+.fbprofileimg img {
   outline: 4px solid #ffffff;
   border-radius: 87%;
   border: 1px solid #ddd;
 }
 
-.herologo {
+.fbherologo {
   text-align: end;
   margin-bottom: 5px;
 }
 
-.herologo a img {
+.fbherologo a img {
   width: 43px;
 }
 
-.herologo h6 {
+.fbherologo h6 {
   color: #6f676b;
 }
 
-.manuBar {
+.fbmanuBar {
   position: absolute !important;
   width: 100%;
   top: 70%;
@@ -164,13 +150,13 @@ li {
   background-color: #ffffff;
 }
 
-.topend {
+.fbtopend {
   border: 1px solid #ddd;
   width: 93.9%;
   margin: auto;
 }
 
-.mainbody {
+.fbmainbody {
   background: #f0f2f5;
 }
 
@@ -182,23 +168,23 @@ li {
   margin: 9px;
 }
 
-.shadowBox {
+.fbshadowBox {
   border: none !important;
 }
 
-.userthum {
+.fbuserthum {
   display: flex;
   padding: 2rem 1rem;
   align-items: center;
 }
 
-.abouttext p {
+.fbabouttext p {
   font-weight: 20px;
   color: rgb(111, 103, 107);
-  font-size: 0.9375rem;
+  font-size: 0.fb9375rem;
 }
 
-.abouttext h5 {
+.fbabouttext h5 {
   font-weight: 700;
   width: fit-content;
   text-transform: uppercase;
@@ -206,38 +192,38 @@ li {
   font-size: 17px;
 }
 
-.userabout {
+.fbuserabout {
   padding: 1rem;
 }
 
-.userabout h5 {
+.fbuserabout h5 {
   font-weight: 500;
   width: fit-content;
   text-transform: uppercase;
 }
 
-.cont {
+.fbcont {
   display: flex;
   justify-content: space-between;
 }
 
-.address {
+.fbaddress {
   display: flex;
   justify-content: space-between;
 }
 
-.address h6 {
+.fbaddress h6 {
   margin-right: 10px;
 }
 
-.cont {
+.fbcont {
   width: 100%;
   margin: 1rem auto;
-  padding: 0.375rem 0.75rem;
+  padding: 0.fb375rem 0.fb75rem;
   font-size: 1rem;
   font-weight: 400;
   font-weight: bold;
-  line-height: 1.5;
+  line-height: 1.fb5;
   color: #1b74e4;
   background-color: #fff;
   background-clip: padding-box;
@@ -246,35 +232,35 @@ li {
   -moz-appearance: none;
   appearance: none;
   align-items: center;
-  border-radius: 0.25rem;
+  border-radius: 0.fb25rem;
   transition:
-    border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+    border-color 0.fb15s ease-in-out,
+    box-shadow 0.fb15s ease-in-out;
 }
 
-.cont h6 {
+.fbcont h6 {
   width: 50%;
   color: #3e3e3e;
   margin: 0%;
 }
 
-.cont h6:hover {
+.fbcont h6:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-.cont p {
+.fbcont p {
   font-size: 19px;
   margin: 0%;
   color: #8c939d;
   font-weight: 400;
 }
 
-#AboutSec .header-section {
+#AboutSec .fbheader-section {
   margin: 10px;
 }
 
-#AboutSec .header-section .title {
+#AboutSec .fbheader-section .fbtitle {
   position: relative;
   padding: 25px 0 0 0;
   padding-bottom: 25px;
@@ -283,11 +269,11 @@ li {
   font-size: 21px;
 }
 
-#AboutSec .header-section h2 {
+#AboutSec .fbheader-section h2 {
   color: #050505;
 }
 
-#AboutSec .header-section span {
+#AboutSec .fbheader-section span {
   color: #050505;
 }
 
@@ -297,21 +283,21 @@ li {
   box-shadow: 0 1px 2px #00000033;
   background-color: #ffffff;
   border-radius: 10px;
-  padding-bottom: 1.7rem;
+  padding-bottom: 1.fb7rem;
   margin: 9px;
 }
 
-.section-services {
+.fbsection-services {
   padding-top: 12px;
   font-family: 'Poppins', sans-serif;
   color: #000;
 }
 
-.section-services .header-section {
+.fbsection-services .fbheader-section {
   margin-bottom: 35px;
 }
 
-.section-services .header-section .title {
+.fbsection-services .fbheader-section .fbtitle {
   position: relative;
   margin-bottom: 40px;
   padding-bottom: 25px;
@@ -320,34 +306,34 @@ li {
   color: #050505;
 }
 
-.section-services {
+.fbsection-services {
   font-family: 'Poppins', sans-serif;
   color: #202020;
 }
 
-.section-services .header-section {
+.fbsection-services .fbheader-section {
   margin-bottom: 34px;
 }
 
-.section-services .header-section .title {
+.fbsection-services .fbheader-section .fbtitle {
   position: relative;
   padding-bottom: 14px;
   margin-bottom: 25px;
   padding: 25px 0 0 0;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.fb25rem;
 }
 
-.border-gallery .header-section .title {
+.fbborder-gallery .fbheader-section .fbtitle {
   position: relative;
   padding-bottom: 14px;
   margin-bottom: -25px;
   padding: 25px 0 0 0;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.fb25rem;
 }
 
-.section-services .single-service {
+.fbsection-services .fbsingle-service {
   position: relative;
   margin-top: 30px;
   background-color: #fff;
@@ -357,12 +343,12 @@ li {
   box-shadow: rgb(0 0 0 / 10%) 0px 0px 10px 0px;
 }
 
-.section-services .single-service .content {
+.fbsection-services .fbsingle-service .fbcontent {
   position: relative;
   z-index: 20;
 }
 
-.section-services .single-service .circle-before {
+.fbsection-services .fbsingle-service .fbcircle-before {
   position: absolute;
   top: 0;
   right: 0px;
@@ -372,12 +358,12 @@ li {
   background-color: rgb(27 116 228);
   border: 6px solid #ffe45c;
   border-radius: 50%;
-  opacity: 0.5;
+  opacity: 0.fb5;
   z-index: 10;
-  transition: all 0.6s;
+  transition: all 0.fb6s;
 }
 
-.section-services .single-service:hover .circle-before {
+.fbsection-services .fbsingle-service:hover .fbcircle-before {
   width: 100%;
   height: 100%;
   transform: none;
@@ -386,34 +372,34 @@ li {
   opacity: 1;
 }
 
-.section-services .single-service .icon img {
+.fbsection-services .fbsingle-service .fbicon img {
   width: 70%;
   height: 70%;
   margin-bottom: 26px;
 }
 
-.section-services .single-service .title {
+.fbsection-services .fbsingle-service .fbtitle {
   margin-bottom: 18px;
   font-weight: 700;
-  font-size: 1.25rem;
-  transition: color 0.3s;
+  font-size: 1.fb25rem;
+  transition: color 0.fb3s;
 }
 
-.section-services .single-service:hover .title {
+.fbsection-services .fbsingle-service:hover .fbtitle {
   color: #fff;
 }
 
-.section-services .single-service .description {
+.fbsection-services .fbsingle-service .fbdescription {
   margin-bottom: 35px;
   font-size: 14px;
-  transition: color 0.3s;
+  transition: color 0.fb3s;
 }
 
-.section-services .single-service:hover .description {
+.fbsection-services .fbsingle-service:hover .fbdescription {
   color: #fff;
 }
 
-.section-services .single-service a {
+.fbsection-services .fbsingle-service a {
   position: relative;
   border: 1px solid #ddd;
   padding: 6px 9px;
@@ -422,15 +408,15 @@ li {
   background-color: #1b74e4;
   font-size: 14px;
   text-decoration: none;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.fb4s;
+  transition-duration: 0.fb4s;
 }
 
-.section-services .single-service:hover a {
+.fbsection-services .fbsingle-service:hover a {
   color: #fff;
 }
 
-.section-services .single-service a:after {
+.fbsection-services .fbsingle-service a:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -438,10 +424,10 @@ li {
   right: 0;
   height: 1px;
   background-color: #1b74e4;
-  transition: background-color 0.3s;
+  transition: background-color 0.fb3s;
 }
 
-.section-services .single-service:hover a:after {
+.fbsection-services .fbsingle-service:hover a:after {
   background-color: #fff;
 }
 
@@ -454,15 +440,15 @@ li {
   border-radius: 10px;
   margin: 9px;
 }
-.MuiGrid-root {
+.fbMuiGrid-root {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
-.mt-0 {
+.fbmt-0 {
   margin-top: -20px !important;
 }
 
-.product-item {
+.fbproduct-item {
   vertical-align: bottom;
   position: relative;
   background: rgb(255, 255, 255);
@@ -471,61 +457,61 @@ li {
   box-shadow: rgb(0 0 0 / 10%) 0px 0px 10px 0px;
 }
 
-.product-item p {
+.fbproduct-item p {
   color: #6f676b;
-  font-size: 0.9375rem;
+  font-size: 0.fb9375rem;
   margin-bottom: 8px;
 }
 
-.product-thum {
+.fbproduct-thum {
   position: relative;
-  top: -24.9rem;
+  top: -24.fb9rem;
   margin: auto;
   width: 86%;
   border-radius: 12px !important;
 }
 
-.product-thum img {
+.fbproduct-thum img {
   border-radius: 12px;
 }
 
-.product-item h6 {
+.fbproduct-item h6 {
   font-size: 15px;
   font-weight: 600;
   color: #6f676b;
   margin-bottom: 15px;
 }
 
-.product-item h5 {
+.fbproduct-item h5 {
   font-weight: 700;
-  font-size: 0.9975rem;
+  font-size: 0.fb9975rem;
 }
 
-.product-item span {
+.fbproduct-item span {
   font-size: 12px;
   text-decoration: line-through;
 }
 
-.single-product {
-  margin-top: 40px;
+.fbsingle-product {
+  margin-top: 10px;
   /* height: 398px; */
 }
 
-.product-item a {
+.fbproduct-item a {
   position: relative;
   border: 1px solid #ddd;
   border-radius: 6px;
   padding: 6px 9px;
   color: #3e3e3e;
   background-color: #e4e6eb;
-  font-size: 0.8375rem;
+  font-size: 0.fb8375rem;
   font-weight: 600;
   text-decoration: none;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.fb4s;
+  transition-duration: 0.fb4s;
 }
 
-.product-item a:hover {
+.fbproduct-item a:hover {
   color: #3e3e3e;
   background-color: #cccdd1;
 }
@@ -535,7 +521,7 @@ li {
   padding: 0%;
 }
 
-.img-box {
+.fbimg-box {
   box-sizing: content-box;
   height: 250px;
   width: -webkit-fill-available;
@@ -547,7 +533,7 @@ li {
   box-shadow: rgb(0 0 0 / 20%) 0px 0px 10px 0px;
 }
 
-.img-box img {
+.fbimg-box img {
   box-sizing: content-box;
   height: 250px;
   width: -webkit-fill-available;
@@ -558,49 +544,49 @@ li {
   background-color: white;
 }
 
-.caption {
+.fbcaption {
   position: absolute;
   bottom: 5px;
   left: 20px;
   opacity: 0;
   transition:
-    transform 0.3s ease,
-    opacity 0.3s ease;
+    transform 0.fb3s ease,
+    opacity 0.fb3s ease;
 }
 
-.transparent-box {
+.fbtransparent-box {
   height: 250px;
   width: -webkit-fill-available;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0) !important;
   position: absolute;
   top: 0;
   left: 0;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.fb3s ease !important;
 }
 
-.img-box:hover img {
-  transform: scale(1.1);
+.fbimg-box:hover img {
+  transform: scale(1.fb1);
 }
 
-.img-box:hover .transparent-box {
-  background-color: rgba(0, 0, 0, 0.5);
+.fbimg-box:hover .fbtransparent-box {
+  background-color: rgba(0, 0, 0, 0.fb5);
 }
 
-.img-box:hover .caption {
+.fbimg-box:hover .fbcaption {
   transform: translateY(-20px);
   opacity: 1;
 }
 
-.img-box:hover {
+.fbimg-box:hover {
   cursor: pointer;
 }
 
-.caption > p:nth-child(2) {
-  font-size: 0.8em;
+.fbcaption > p:nth-child(2) {
+  font-size: 0.fb8em;
 }
 
-.opacity-low {
-  opacity: 0.5;
+.fbopacity-low {
+  opacity: 0.fb5;
 }
 
 iframe {
@@ -627,14 +613,14 @@ iframe {
 }
 
 /* **************************************testimoniyal********************************** */
-.transparent-box img {
+.fbtransparent-box img {
   transform: scale(1);
-  transition: transform 0.4s ease;
+  transition: transform 0.fb4s ease;
 }
 
-.swiper-wrapper img {
+.fbswiper-wrapper img {
   transform: scale(1);
-  transition: transform 0.4s ease;
+  transition: transform 0.fb4s ease;
   border: 1px solid #ddd;
 }
 
@@ -647,14 +633,14 @@ iframe {
   bottom: 0% !important;
 }
 
-.testimonial__text {
+.fbtestimonial__text {
   color: #6f676b;
-  font-size: 0.9375rem;
+  font-size: 0.fb9375rem;
 }
 
 /* *******************************************testimoniyal*************************** */
 /* SLIDER */
-.slider {
+.fbslider {
   height: 23rem;
   margin: 12px auto;
   position: relative;
@@ -665,7 +651,7 @@ iframe {
   box-shadow: 0 1px 2px #00000033;
 }
 
-.slide {
+.fbslide {
   position: absolute;
   top: 0;
   width: 100%;
@@ -675,13 +661,13 @@ iframe {
   transition: transform 1s;
 }
 
-.slide > img {
+.fbslide > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.slider__btn {
+.fbslider__btn {
   position: absolute;
   top: 49%;
   z-index: 10;
@@ -690,23 +676,23 @@ iframe {
   font-family: inherit;
   color: #333;
   border-radius: 50%;
-  height: 5.5rem;
-  width: 5.5rem;
-  font-size: 2.25rem;
+  height: 5.fb5rem;
+  width: 5.fb5rem;
+  font-size: 2.fb25rem;
   cursor: pointer;
 }
 
-.slider__btn--left {
+.fbslider__btn--left {
   left: 6%;
   transform: translate(-50%, -50%);
 }
 
-.slider__btn--right {
+.fbslider__btn--right {
   right: 6%;
   transform: translate(50%, -50%);
 }
 
-.dots {
+.fbdots {
   position: absolute;
   bottom: 5%;
   left: 50%;
@@ -714,28 +700,28 @@ iframe {
   display: flex;
 }
 
-.dots__dot {
+.fbdots__dot {
   border: none;
   background-color: #b9b9b9;
-  opacity: 0.7;
+  opacity: 0.fb7;
   height: 1rem;
   width: 1rem;
   border-radius: 50%;
-  margin-right: 1.75rem;
+  margin-right: 1.fb75rem;
   cursor: pointer;
-  transition: all 0.5s;
+  transition: all 0.fb5s;
 }
 
-.dots__dot:last-child {
+.fbdots__dot:last-child {
   margin: 0;
 }
 
-.dots__dot--active {
+.fbdots__dot--active {
   background-color: #888;
   opacity: 1;
 }
 
-.testimonial {
+.fbtestimonial {
   width: 65%;
   margin-top: 0% !important;
   margin: auto;
@@ -744,55 +730,55 @@ iframe {
   text-align: center;
 }
 
-#TESTIMONIALS .header-section {
+#TESTIMONIALS .fbheader-section {
   text-align: center;
   padding: 2rem 0 10px 0;
   color: #050505;
   text-transform: uppercase;
 }
 
-#TESTIMONIALS .header-section span {
+#TESTIMONIALS .fbheader-section span {
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.fb25rem;
 }
 
-.testimonial__header {
+.fbtestimonial__header {
   font-size: 2rem;
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.fb5rem;
 }
 
-.testimonial__author {
+.fbtestimonial__author {
   text-align: center;
   margin-top: 1rem;
 }
 
-.testimonial__photo {
+.fbtestimonial__photo {
   grid-row: 1 / span 2;
-  width: 6.5rem;
+  width: 6.fb5rem;
   border-radius: 50%;
 }
 
-.testimonial__name {
+.fbtestimonial__name {
   font-size: 1rem;
   font-weight: 500;
   align-self: end;
   margin: 0;
 }
 
-.testimonial__location {
+.fbtestimonial__location {
   font-size: 1rem;
   color: #6f676b;
-  font-size: 0.9375rem;
+  font-size: 0.fb9375rem;
 }
 
-.section__title--testimonials {
+.fbsection__title--testimonials {
   margin-bottom: 4rem;
   text-align: center;
 }
 
 /* *****************************top btn************************ */
-.gotop {
+.fbgotop {
   display: none;
   cursor: pointer;
   position: fixed;
@@ -806,19 +792,19 @@ iframe {
   border: none;
 }
 
-.go-to-top button {
+.fbgo-to-top button {
   border: 1px solid #ddd;
   border: 1px solid #ddd;
   background-color: #8dbaf2;
   font-weight: 700;
 }
 
-.go-to-top button:focus {
+.fbgo-to-top button:focus {
   outline: none;
   box-shadow: none;
 }
 
-.go-to-top .svg-inline--fa {
+.fbgo-to-top .fbsvg-inline--fa {
   color: #ffffff;
   font-size: 2rem;
 }
@@ -833,33 +819,33 @@ iframe {
   margin: 9px 9px 5rem 9px;
 }
 
-.account-text {
+.fbaccount-text {
   display: block;
   width: 100%;
-  padding: 0.375rem 0.75rem;
+  padding: 0.fb375rem 0.fb75rem;
   font-size: 1rem;
   font-weight: 600;
-  line-height: 1.5;
+  line-height: 1.fb5;
   color: #3e3e3e;
   background-color: #fff;
   background-clip: padding-box;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0.25rem;
+  border-radius: 0.fb25rem;
   transition:
-    border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+    border-color 0.fb15s ease-in-out,
+    box-shadow 0.fb15s ease-in-out;
 }
 
-.paymentSec {
+.fbpaymentSec {
   border: none !important;
   margin-top: 15rem;
 }
-.lt-sp {
+.fblt-sp {
   letter-spacing: 5px;
 }
-.paymentcard {
+.fbpaymentcard {
   background: url(../img/cardbg.jpg) no-repeat;
   background-repeat: no-repeat;
   background-size: cover;
@@ -876,37 +862,37 @@ iframe {
   box-shadow: rgb(0 0 0 / 10%) 0px 0px 10px 0px;
 }
 
-.cardQR img {
+.fbcardQR img {
   width: 20%;
   margin: 0px 0 1rem 0px;
 }
 
-.accountNum {
+.fbaccountNum {
   letter-spacing: 11px;
   font-weight: 600;
 }
 
-.accountNum p {
+.fbaccountNum p {
   color: #ffffff;
   text-shadow: 2px 2px #ffffff42;
 }
 
-.cardholder label {
+.fbcardholder label {
   font-size: 12px;
   font-weight: 600;
   color: #ffffff;
 }
 
-.cardholder p {
+.fbcardholder p {
   font-weight: 700;
   margin: 0;
   color: #ffffff;
   text-shadow: 2px 2px #ffffff42;
 }
 
-.element {
+.fbelement {
   margin-bottom: 1rem;
-  background: url('../assets/img/1.png');
+  background: url('.fb.fb/assets/img/1.fbpng');
   background-size: cover;
   padding: 47px;
   background-position: center;
@@ -914,7 +900,7 @@ iframe {
   overflow: hidden;
 }
 
-.shape {
+.fbshape {
   width: 226px;
   height: 226px;
   border-radius: 15px;
@@ -922,48 +908,48 @@ iframe {
   box-shadow: 0px 0px 0px 200px #ffffff;
 }
 
-.service-box {
+.fbservice-box {
   text-align: center;
 }
 
-.service-containet {
+.fbservice-containet {
   padding: 1rem;
   border-radius: 10px;
 }
 
-.service-containet p {
+.fbservice-containet p {
   color: #6f676b;
-  font-size: 0.9375rem;
+  font-size: 0.fb9375rem;
 }
 
-.service-containet h3 {
+.fbservice-containet h3 {
   margin-bottom: 18px;
   font-weight: 700;
-  font-size: 0.9975rem;
+  font-size: 0.fb9975rem;
   margin-bottom: 7px;
-  transition: color 0.3s ease 0s;
+  transition: color 0.fb3s ease 0s;
 }
 
-.service-containet a {
+.fbservice-containet a {
   position: relative;
   border: 1px solid #ddd;
   padding: 6px 9px;
   color: #3e3e3e;
   background-color: #e4e6eb;
-  font-size: 0.8375rem;
+  font-size: 0.fb8375rem;
   font-weight: 600;
   text-decoration: none;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.fb4s;
+  transition-duration: 0.fb4s;
   border-radius: 6px;
 }
 
-.service-containet a:hover {
+.fbservice-containet a:hover {
   color: #3e3e3e;
   background-color: #cccdd1;
 }
 
-.service-containet a:focus-visible {
+.fbservice-containet a:focus-visible {
   outline: none;
 }
 
@@ -971,22 +957,22 @@ iframe {
   display: none !important;
 }
 
-.meSwiper {
-  padding: 0 0.3rem !important;
+.fbmeSwiper {
+  padding: 0 0.fb3rem !important;
 }
 
 .swiper-button-next {
   display: none !important;
 }
 
-/* .swiper-slide{
+/* .fbswiper-slide{
     width: 385px !important;
 } */
 
-.fixed-top {
+.fbfixed-top {
   position: fixed;
   top: 0;
-  padding: 1rem 9.4rem !important;
+  padding: 1rem 9.fb4rem !important;
   right: 0;
   background: #ffffff;
   left: 0;
@@ -998,34 +984,34 @@ iframe {
   padding-top: 10px;
 }
 
-.border-gallery {
+.fbborder-gallery {
   padding: 10px 0px !important;
   /* box-shadow: 0 1px 2px #00000033; */
   /* background-color: #ffffff; */
   border-radius: 10px;
-  margin: 9px 9px 3.9rem 9px;
+  margin: 9px 9px 3.fb9rem 9px;
 }
-.mt-9 {
+.fbmt-9 {
   margin-top: -9px;
 }
-.mt-65 {
+.fbmt-65 {
   margin-top: -65px;
 }
 
-.border-gallery span {
-  font-size: 1.25rem;
+.fbborder-gallery span {
+  font-size: 1.fb25rem;
   color: #050505;
   font-weight: 700;
 }
 
-.paymentcard label {
+.fbpaymentcard label {
   font-size: 12px;
   font-weight: 600;
   color: #ffffff;
 }
 
 /* **************************************model********************************** */
-.share-dil {
+.fbshare-dil {
   margin: 7rem 2rem 3rem;
   position: relative;
   justify-content: space-between;
@@ -1034,7 +1020,7 @@ iframe {
   box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
 }
 
-.shrthum img {
+.fbshrthum img {
   position: absolute;
   width: 125px;
   height: 125px;
@@ -1045,79 +1031,79 @@ iframe {
   box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
 }
 
-.dit p {
+.fbdit p {
   font-size: 13px;
   color: #6f676b;
 }
 
-.share-dil-img img {
+.fbshare-dil-img img {
   box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
 }
 
-.link-button a {
+.fblink-button a {
   padding: 6px 9px;
   box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
   font-size: 14px;
   text-decoration: none;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.fb4s;
+  transition-duration: 0.fb4s;
   color: #000000;
   font-weight: 600;
 }
 
-.profile-shr .modal-content {
+.fbprofile-shr .fbmodal-content {
   box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
   border-radius: 20px !important;
 }
 
-.profile-shr .modal-header {
+.fbprofile-shr .fbmodal-header {
   background-color: #1b74e4 !important;
   color: #ffffff;
   border-radius: 18px 18px 0 0;
   padding: 1rem 2rem;
 }
 
-.profile-shr .modal-header button {
+.fbprofile-shr .fbmodal-header button {
   border: none;
   padding: 2px 7px;
 }
 
-.product-img img {
+.fbproduct-img img {
   width: 100%;
   box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
 }
 
-.about-prod {
+.fbabout-prod {
   padding: 1rem 0px;
   padding: 2rem;
   box-shadow: 0 0 10px 0 rgb(0 0 0 / 10%);
 }
 
-.detail .modal-header {
+.fbdetail .fbmodal-header {
   background-color: #1b74e4 !important;
   color: #ffffff;
 }
 
-.detail .modal-header button {
+.fbdetail .fbmodal-header button {
   border: none;
   padding: 2px 7px;
 }
 
-.about-prod h5 {
+.fbabout-prod h5 {
   color: #6f676b;
   font-size: 1rem;
 }
 
-.image {
+.fbimage {
   width: 100%;
   height: 200px;
 }
 
-.radio {
+.fbradio {
   display: none;
 }
 
-.images {
+.fbimages {
   overflow: hidden;
   top: 0;
   bottom: 0;
@@ -1126,46 +1112,46 @@ iframe {
   width: 100%;
 }
 
-.images-inner {
+.fbimages-inner {
   width: 500%;
-  transition: all 800ms cubic-bezier(0.77, 0, 0.175, 1);
-  transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+  transition: all 800ms cubic-bezier(0.fb77, 0, 0.fb175, 1);
+  transition-timing-function: cubic-bezier(0.fb77, 0, 0.fb175, 1);
 }
 
-.image-slide {
+.fbimage-slide {
   width: 20%;
   float: left;
 }
 
-.image-slide,
-.fake-radio,
-.radio-btn {
-  transition: all 0.5s ease-out;
+.fbimage-slide,
+.fbfake-radio,
+.fbradio-btn {
+  transition: all 0.fb5s ease-out;
 }
 
-.fake-radio {
+.fbfake-radio {
   float: right;
 }
 
-#slide1:checked ~ .images .images-inner {
+#slide1:checked ~ .fbimages .fbimages-inner {
   margin-left: 0;
 }
 
-#slide2:checked ~ .images .images-inner {
+#slide2:checked ~ .fbimages .fbimages-inner {
   margin-left: -100%;
 }
 
-#slide3:checked ~ .images .images-inner {
+#slide3:checked ~ .fbimages .fbimages-inner {
   margin-left: -200%;
 }
 
-#slide1:checked ~ div .fake-radio .radio-btn:nth-child(1),
-#slide2:checked ~ div .fake-radio .radio-btn:nth-child(2),
-#slide3:checked ~ div .fake-radio .radio-btn:nth-child(3) {
+#slide1:checked ~ div .fbfake-radio .fbradio-btn:nth-child(1),
+#slide2:checked ~ div .fbfake-radio .fbradio-btn:nth-child(2),
+#slide3:checked ~ div .fbfake-radio .fbradio-btn:nth-child(3) {
   background: red;
 }
 
-.radio-btn {
+.fbradio-btn {
   width: 9px;
   height: 9px;
   border-radius: 5px;
@@ -1175,13 +1161,13 @@ iframe {
   cursor: pointer;
 }
 
-#slide1:checked ~ .labels .label:nth-child(1),
-#slide2:checked ~ .labels .label:nth-child(2),
-#slide3:checked ~ .labels .label:nth-child(3) {
+#slide1:checked ~ .fblabels .fblabel:nth-child(1),
+#slide2:checked ~ .fblabels .fblabel:nth-child(2),
+#slide3:checked ~ .fblabels .fblabel:nth-child(3) {
   opacity: 1;
 }
 
-.label {
+.fblabel {
   opacity: 0;
   position: absolute;
 }
@@ -1227,7 +1213,7 @@ iframe {
   }
 }
 
-.st-slider > #play1:checked ~ .images .images-inner {
+.fbst-slider > #play1:checked ~ .fbimages .fbimages-inner {
   animation: slide 12300ms infinite;
 }
 
@@ -1256,7 +1242,7 @@ iframe {
 }
 
 /* *********************************************footer******************************** */
-.footer-stip {
+.fbfooter-stip {
   position: fixed;
   left: 0;
   bottom: 0;
@@ -1267,11 +1253,11 @@ iframe {
   text-align: center;
 }
 
-.footer-cont {
+.fbfooter-cont {
   padding: 1rem 2rem;
 }
 
-.footer-cont a {
+.fbfooter-cont a {
   padding: 4px 10px;
   margin-bottom: 12px;
   font-weight: 500;
@@ -1280,7 +1266,7 @@ iframe {
   margin: 0%;
 }
 
-.footer-cont a:hover {
+.fbfooter-cont a:hover {
   background-color: #d8d9dd;
 }
 
@@ -1294,44 +1280,44 @@ iframe {
 }
 
 /* ********************************links****************************** */
-.imp_links {
-  margin: 1rem 1.3rem 0 1.3rem;
-  padding: 0px 12px 2.5rem;
+.fbimp_links {
+  margin: 1rem 1.fb3rem 0 1.fb3rem;
+  padding: 0px 12px 2.fb5rem;
 
   /* box-shadow: 0 1px 2px #00000033; */
   background-color: #ffffff;
   border-radius: 10px;
 }
 
-.imp_links .header-section .title {
+.fbimp_links .fbheader-section .fbtitle {
   position: relative;
   padding-bottom: 14px;
   margin-bottom: 50px;
   padding: 25px 0 0 0;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.fb25rem;
 }
 
-.imp_links span {
+.fbimp_links span {
   /* color: #050505; */
   /* text-transform: uppercase; */
 }
 
-.link1 {
+.fblink1 {
   display: flex;
   justify-content: space-between;
 }
 
-.link2 {
+.fblink2 {
   margin-top: 2rem;
 }
 
-.link1 a {
+.fblink1 a {
   text-decoration: none;
   font-weight: 500;
 }
 
-.form-btn button {
+.fbform-btn button {
   position: relative;
   border: 1px solid #ddd;
   padding: 6px 9px;
@@ -1340,53 +1326,53 @@ iframe {
   background-color: #1b74e4;
   font-size: 14px;
   text-decoration: none;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.fb4s;
+  transition-duration: 0.fb4s;
 }
 
-.rating {
+.fbrating {
   border: none;
   float: left;
 }
 
-.rating > input {
+.fbrating > input {
   display: none;
 }
 
-.rating > label:before {
+.fbrating > label:before {
   margin: 5px;
-  font-size: 1.25em;
+  font-size: 1.fb25em;
   font-family: FontAwesome;
   display: inline-block;
   content: '\f005';
 }
 
-.rating > .half:before {
+.fbrating > .fbhalf:before {
   content: '\f089';
   position: absolute;
 }
 
-.rating > label {
+.fbrating > label {
   color: #ddd;
   float: right;
 }
 
-.rating>input:checked~label,
+.fbrating>input:checked~label,
 /* show gold star when clicked */
-.rating:not(:checked)>label:hover,
+.fbrating:not(:checked)>label:hover,
 /* hover current star */
-.rating:not(:checked)>label:hover~label {
+.fbrating:not(:checked)>label:hover~label {
   color: #ffd700;
 }
 
 /* hover previous stars in list */
 
-.rating>input:checked+label:hover,
+.fbrating>input:checked+label:hover,
 /* hover current star when changing rating */
-.rating>input:checked~label:hover,
-.rating>label:hover~input:checked~label,
+.fbrating>input:checked~label:hover,
+.fbrating>label:hover~input:checked~label,
 /* lighten current selection */
-.rating>input:checked~label:hover~label {
+.fbrating>input:checked~label:hover~label {
   color: #ffed85;
 }
 
@@ -1433,7 +1419,7 @@ blockquote:after {
   padding: 1.1rem;
 }
 
-.accountdetails label {
+.fbaccountdetails label {
   width: 54%;
   color: rgb(111, 103, 107);
   font-size: 0.9375rem;
@@ -1465,11 +1451,11 @@ blockquote:after {
   border-radius: 8px;
 }
 
-.content {
+.fbcontent {
   padding: 16px;
 }
 
-.sticky {
+.fbsticky {
   position: fixed;
   top: 0;
   left: 0%;
@@ -1480,7 +1466,7 @@ blockquote:after {
   /* background: #ffffffec !important; */
 }
 
-.topUserImg img {
+.fbtopUserImg img {
   height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -1488,25 +1474,25 @@ blockquote:after {
   margin: 0px 0 0 16px;
 }
 
-.topUserImg {
+.fbtopUserImg {
   position: relative;
   left: 18.4rem;
   display: none;
   align-items: center;
 }
 
-.topUserImg p {
+.fbtopUserImg p {
   margin: 0%;
   font-size: 15px;
   font-weight: 600;
   color: #65676b;
 }
 
-.sticky .topUserImg {
+.fbsticky .topUserImg {
   display: flex;
 }
 
-.border-offer {
+.fbborder-offer {
   padding: 10px 0px !important;
   box-shadow: 0 1px 2px #00000033;
   background-color: #ffffff;
@@ -1516,53 +1502,53 @@ blockquote:after {
 
 /* *************************************media******************************* */
 @media only screen and (max-width: 2560px) and (min-width: 1439px) {
-  .sticky {
+  .fbsticky {
     padding: 8px 41.6rem !important;
   }
 
-  .topUserImg {
-    left: 29.5rem;
+  .fbtopUserImg {
+    left: 29.fb5rem;
   }
 }
 
 @media screen and (max-width: 1440px) and (min-width: 1439px) {
-  .sticky {
+  .fbsticky {
     padding: 0 6.6rem !important;
   }
 }
 
 @media only screen and (max-width: 1024px) {
-  .sticky {
+  .fbsticky {
     padding: 8px 4.8rem !important;
   }
 
-  .topUserImg {
+  .fbtopUserImg {
     left: 7.2rem;
   }
 
-  .linkbutton {
+  .fblinkbutton {
     text-align: right;
   }
 
-  .aboutprofile {
+  .fbaboutprofile {
     width: 51%;
     margin-left: 20px;
   }
 
-  .shape {
+  .fbshape {
     width: 170px;
     height: 170px;
   }
 
-  .product-item {
-    padding: 9rem 1rem 2rem;
+  .fbproduct-item {
+    padding: 2rem 1rem 2rem;
   }
 
-  .product-item a {
+  .fbproduct-item a {
     padding: 5px 4px;
   }
 
-  .meSwiper {
+  .fbmeSwiper {
     padding: 8px 0.3rem;
   }
 
@@ -1570,114 +1556,114 @@ blockquote:after {
     padding: 10px 0px 30px 0;
   }
 
-  .slider {
+  .fbslider {
     height: 25rem;
   }
 
-  .linkbutton a {
+  .fblinkbutton a {
     font-size: 15px;
     padding: 2px 4px;
   }
 }
 
 @media screen and (max-width: 1023px) and (min-width: 768px) {
-  .form-btn {
+  .fbform-btn {
     display: inline-block;
   }
 
-  .sticky {
+  .fbsticky {
     padding: 8px 4.3rem !important;
   }
 
-  .profilecont {
+  .fbprofilecont {
     display: block;
     text-align: center;
     top: -6rem;
   }
 
-  .aboutprofile {
+  .fbaboutprofile {
     margin: 2% 0 0 0;
     width: 100%;
   }
 
-  .linkbar {
+  .fblinkbar {
     text-align: center;
     width: auto;
     margin: 0 0 10px 0;
   }
 
-  .herologo {
+  .fbherologo {
     text-align: center;
   }
 
-  .linkbutton {
+  .fblinkbutton {
     text-align: center;
   }
 
-  .linkbutton a {
+  .fblinkbutton a {
     font-size: 15px;
     padding: 7px 11px;
     margin: 1rem 0 0 0;
   }
 
-  .shadowBox .row {
+  .fbshadowBox .fbrow {
     display: block;
   }
 
-  .shadowBox .col-md-7 {
+  .fbshadowBox .fbcol-md-7 {
     width: 100%;
   }
 
-  .shadowBox .col-md-5 {
+  .fbshadowBox .fbcol-md-5 {
     width: 100%;
   }
 
-  .cont {
+  .fbcont {
     justify-content: flex-start;
   }
 
-  .cont h6 {
+  .fbcont h6 {
     margin: 0 0 0 1rem;
     width: 100%;
   }
 
-  .shape {
+  .fbshape {
     width: 138px;
     height: 138px;
   }
 
-  .element {
+  .fbelement {
     padding: 22px;
   }
 
-  .button_dil a {
+  .fbbutton_dil a {
     display: block;
     margin: 6px 0;
     border-radius: 8px;
     text-align: center;
   }
 
-  .service-containet p {
+  .fbservice-containet p {
     margin: 0 0 9px 0;
   }
 
-  .product-thum {
-    top: -26.5rem;
+  .fbproduct-thum {
+    top: -26.fb5rem;
   }
 
-  .product-item {
-    padding: 6rem 1rem 2rem;
+  .fbproduct-item {
+    padding: 2rem 1rem 2rem;
   }
 
-  .single-product {
+  .fbsingle-product {
     /* height: 393px; */
   }
 
-  .img-box {
+  .fbimg-box {
     height: auto;
   }
 
-  .img-box img {
+  .fbimg-box img {
     height: auto;
   }
 
@@ -1685,34 +1671,34 @@ blockquote:after {
     height: auto;
   }
 
-  .slider {
+  .fbslider {
     height: 27rem;
   }
 
-  .paymentcard {
+  .fbpaymentcard {
     width: 76%;
     margin: auto;
     right: 12%;
     top: 12%;
   }
 
-  .paymentSec {
+  .fbpaymentSec {
     margin-top: 19rem;
   }
 
-  .accountdetails label {
+  .fbaccountdetails label {
     width: 50%;
   }
 
-  .heroback img {
+  .fbheroback img {
     height: 17rem;
   }
 
-  .userthum {
+  .fbuserthum {
     padding: 2rem 1rem 0rem;
   }
 
-  .topUserImg {
+  .fbtopUserImg {
     display: none !important;
   }
 
@@ -1721,169 +1707,169 @@ blockquote:after {
   }
 
   #navbar {
-    padding: 11px 2.1rem;
+    padding: 11px 2.fb1rem;
   }
 }
 
 @media screen and (max-width: 767px) and (min-width: 375px) {
-  .sticky {
+  .fbsticky {
     padding: 8px 2.8rem !important;
   }
 
-  .navbar-light .navbar-toggler p {
+  .fbnavbar-light .navbar-toggler p {
     font-size: 15px;
     font-weight: 500;
   }
 
-  .navbar-toggler {
+  .fbnavbar-toggler {
     border: none;
   }
 
-  .footer-cont {
+  .fbfooter-cont {
     padding: 1rem 0%;
   }
 
-  .footer-cont a {
+  .fbfooter-cont a {
     padding: 2px 4px;
     font-size: 14px;
   }
 
-  .heroback img {
+  .fbheroback img {
     height: 9rem;
   }
 
-  .profilecont {
+  .fbprofilecont {
     display: block;
     text-align: center;
   }
 
-  .aboutprofile {
+  .fbaboutprofile {
     width: 100%;
     text-align: center;
     margin: 0%;
   }
 
-  .aboutprofile span {
+  .fbaboutprofile span {
     font-size: 12px;
   }
 
-  .linkbar {
+  .fblinkbar {
     text-align: center;
     width: 100%;
     margin-bottom: 5px;
   }
 
-  .herologo {
+  .fbherologo {
     text-align: center;
     width: 100%;
   }
 
-  .linkbutton {
+  .fblinkbutton {
     text-align: center;
     width: 100%;
     font-size: 10px;
     justify-content: center;
   }
 
-  .linkbutton a {
+  .fblinkbutton a {
     font-size: 14px;
     padding: 5px 3px;
     margin: 1% 0;
     width: inherit;
   }
 
-  .profilecont {
+  .fbprofilecont {
     top: -5rem;
   }
 
-  .profileimg img {
+  .fbprofileimg img {
     /* width: 100%; */
   }
 
-  .cont h6 {
+  .fbcont h6 {
     width: 100%;
     margin-left: 15px;
   }
 
-  .product-item {
-    padding: 9rem 1rem 2rem;
+  .fbproduct-item {
+    padding: 2rem 1rem 2rem;
   }
 
   #products {
     padding: 10px 0px 0px 0;
   }
 
-  .product-thum {
+  .fbproduct-thum {
     top: -29rem;
   }
 
-  .single-product {
-    margin-top: 90px;
+  .fbsingle-product {
+    margin-top: 20px;
     /* height: 420px; */
   }
 
-  .link1 {
+  .fblink1 {
     display: block;
   }
 
-  .link1 a {
+  .fblink1 a {
     margin-left: 13px;
   }
 
-  .link1 div {
+  .fblink1 div {
     margin: 15px 0;
   }
 
-  .testimonial {
+  .fbtestimonial {
     width: 100%;
   }
 
-  .slider {
+  .fbslider {
     height: 29rem;
   }
 
-  .paymentcard {
+  .fbpaymentcard {
     display: none;
   }
 
-  .paymentSec {
+  .fbpaymentSec {
     margin-top: 0%;
   }
 
-  .accountdetails .d-flex {
+  .fbaccountdetails .fbd-flex {
     display: block !important;
     margin: 0%;
   }
 
-  .accountdetails .account-text {
+  .fbaccountdetails .fbaccount-text {
     padding: 0%;
   }
 
-  .link2 {
+  .fblink2 {
     margin-top: 0%;
   }
 
-  .imp_links .header-section .title {
+  .fbimp_links .fbheader-section .fbtitle {
     margin-bottom: 22px;
   }
 
-  .imp_links {
-    padding: 10px 12px 1.5rem;
+  .fbimp_links {
+    padding: 10px 12px 1.fb5rem;
   }
 
-  .aboutprofile h2 {
+  .fbaboutprofile h2 {
     font-size: 1.7rem;
   }
 
-  .userthum {
+  .fbuserthum {
     padding: 2rem 1rem 0rem;
   }
 
-  .img-box {
+  .fbimg-box {
     height: auto;
   }
 
-  .img-box img {
+  .fbimg-box img {
     height: auto;
   }
 
@@ -1891,18 +1877,18 @@ blockquote:after {
     height: auto;
   }
 
-  .button_dil a {
+  .fbbutton_dil a {
     display: block;
     margin: 6px 0;
     border-radius: 8px;
     text-align: center;
   }
 
-  .share-dil {
+  .fbshare-dil {
     display: block;
   }
 
-  .shrthum img {
+  .fbshrthum img {
     bottom: 19.4rem;
     width: 100px;
     /* max-width: 100%; */
@@ -1911,15 +1897,15 @@ blockquote:after {
     right: -3.4rem;
   }
 
-  .share-dil-img {
+  .fbshare-dil-img {
     margin: 1rem 0 0 0;
   }
 
-  .profile-shr .modal-content {
+  .fbprofile-shr .fbmodal-content {
     text-align: center;
   }
 
-  .topUserImg {
+  .fbtopUserImg {
     display: none !important;
   }
 
@@ -1931,169 +1917,169 @@ blockquote:after {
     padding: 11px 2.1rem;
   }
 
-  .pos-fix {
+  .fbpos-fix {
     position: fixed;
     top: 0;
   }
-  .container{padding: 0px 0px 0px 5px !important;}
+  .fbcontainer{padding: 0px 0px 0px 5px !important;}
 }
 
 @media screen and (max-width: 374px) and (min-width: 290px) {
-  .profile-shr .modal-content {
+  .fbprofile-shr .fbmodal-content {
     text-align: center;
   }
 
-  .share-dil-img {
+  .fbshare-dil-img {
     margin: 1rem 0 0 0;
   }
 
-  .link-button a {
+  .fblink-button a {
     font-size: 12px;
   }
 
-  .shrthum img {
+  .fbshrthum img {
     bottom: 19.4rem;
     width: 100px;
     /* max-width: 100%; */
     margin: auto 50%;
     height: 100px;
-    right: -3.4rem;
+    right: -3.fb4rem;
   }
 
-  .share-dil {
+  .fbshare-dil {
     display: block;
   }
 
-  .form-btn button {
+  .fbform-btn button {
     font-size: 11px;
     padding: 6px 6px;
   }
 
-  .sticky {
+  .fbsticky {
     padding: 8px 2.8rem !important;
   }
 
-  .navbar-light .navbar-toggler p {
+  .fbnavbar-light .fbnavbar-toggler p {
     font-size: 15px;
   }
 
-  .footer-cont {
+  .fbfooter-cont {
     padding: 1rem 0rem;
   }
 
-  .profilecont {
+  .fbprofilecont {
     display: block;
   }
 
-  .footer-cont a {
+  .fbfooter-cont a {
     padding: 2px 3px;
     font-size: 12px;
   }
 
-  .heroback img {
+  .fbheroback img {
     height: 9rem;
   }
 
-  .profileimg img {
+  .fbprofileimg img {
     width: 70%;
   }
 
-  .profileimg {
+  .fbprofileimg {
     text-align: center;
   }
 
-  .aboutprofile {
+  .fbaboutprofile {
     width: 100%;
     text-align: center;
     margin: 0;
   }
 
-  .profilecont {
+  .fbprofilecont {
     top: -5rem;
   }
 
-  .linkbar {
+  .fblinkbar {
     width: 100%;
     text-align: center;
   }
 
-  .herologo {
+  .fbherologo {
     text-align: center;
   }
 
-  .linkbutton a {
+  .fblinkbutton a {
     font-size: 14px;
     padding: 5px 3px;
     margin: 1% 0;
     width: inherit;
   }
 
-  .linkbutton {
+  .fblinkbutton {
     text-align: center;
     width: 100%;
   }
 
-  .cont {
+  .fbcont {
     /* display: block; */
     padding: 0rem;
   }
 
-  .cont h6 {
+  .fbcont h6 {
     width: 100%;
     font-size: 12px;
     margin-left: 13px;
   }
 
-  .userthum {
+  .fbuserthum {
     padding: 2rem 1rem 0;
   }
 
-  .paymentcard {
+  .fbpaymentcard {
     display: none;
   }
 
-  .paymentSec {
+  .fbpaymentSec {
     margin-top: 0%;
   }
 
-  .accountdetails .d-flex {
+  .fbaccountdetails .fbd-flex {
     display: block !important;
     margin: 0%;
   }
 
-  .accountdetails .account-text {
+  .fbaccountdetails .fbaccount-text {
     padding: 0%;
   }
 
-  .link2 {
+  .fblink2 {
     margin-top: 0%;
   }
 
-  .imp_links .header-section .title {
+  .fbimp_links .fbheader-section .fbtitle {
     margin-bottom: 22px;
   }
 
-  .imp_links {
+  .fbimp_links {
     padding: 10px 12px 1.5rem;
   }
 
-  .link1 {
+  .fblink1 {
     display: block;
   }
 
-  .link1 a {
+  .fblink1 a {
     margin-left: 13px;
   }
 
-  .link1 div {
+  .fblink1 div {
     margin: 15px 0;
   }
 
-  .testimonial {
+  .fbtestimonial {
     width: 100%;
   }
 
-  .slider {
+  .fbslider {
     height: 32rem;
   }
 
@@ -2101,11 +2087,11 @@ blockquote:after {
     padding: 10px 0px 0 0;
   }
 
-  .img-box {
+  .fbimg-box {
     height: auto;
   }
 
-  .img-box img {
+  .fbimg-box img {
     height: auto;
   }
 
@@ -2113,35 +2099,35 @@ blockquote:after {
     height: auto;
   }
 
-  .shape {
+  .fbshape {
     width: 144px;
     height: 144px;
   }
 
-  .element {
+  .fbelement {
     padding: 26px;
   }
 
-  .button_dil a {
+  .fbbutton_dil a {
     display: block;
     margin: 6px 0;
     border-radius: 8px;
     text-align: center;
   }
 
-  .single-product {
-    margin-top: 70px;
+  .fbsingle-product {
+    margin-top: 20px;
   }
 
-  .product-thum {
+  .fbproduct-thum {
     top: -28rem;
   }
 
-  .product-item {
-    padding: 6rem 1rem 2rem;
+  .fbproduct-item {
+    padding: 2rem 1rem 2rem;
   }
 
-  .topUserImg {
+  .fbtopUserImg {
     display: none !important;
   }
 
@@ -2154,28 +2140,28 @@ blockquote:after {
   }
 }
 
-.menu-box {
+.fbmenu-box {
   display: none;
 }
 
-.menuopen {
+.fbmenuopen {
   display: block;
 }
 
-.js-cent {
+.fbjs-cent {
 }
 /* Base styles for the image container */
 
-.img-hidden {
+.fbimg-hidden {
 }
 /* Adjust styles for tablets and larger screens */
 @media (max-width: 640px) {
   /* Tablet (sm) */
-  .js-cent {
+  .fbjs-cent {
     justify-content: center !important;
   }
 
-  .img-hidden {
+  .fbimg-hidden {
     display: none;
   }
 }
@@ -2183,11 +2169,11 @@ blockquote:after {
 /* Adjust styles for desktops and larger screens */
 @media (min-width: 768px) {
   /* Desktop (md) */
-  .js-cent {
+  .fbjs-cent {
     justify-content: center !important;
   }
 
-  .img-hidden {
+  .fbimg-hidden {
     display: none;
   }
 }

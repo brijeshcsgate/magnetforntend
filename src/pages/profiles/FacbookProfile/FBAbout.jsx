@@ -8,16 +8,16 @@ const FBAbout = () => {
   };
 
   return (
-    <div className="mainbody pb-2">
+    <div className="fbmainbody pb-2">
       <div id="prolink"></div>
-      <div className="container p-4 pb-0 pt-0">
-        <div className="container">
+      <div className="fbcontainer p-4 pb-0 pt-0">
+        <div className="fbcontainer">
           <div id="AboutSec">
-            <div className="shadow-lg p-6 bg-white">
+            <div className="shadow-lg p-6 fbbg-white">
               <div className="flex flex-wrap">
                 <div className="w-full md:w-7/12">
-                  <div className="userthum">
-                    <div className="abouttext">
+                  <div className="fbuserthum">
+                    <div className="fbabouttext">
                       <h5 className="text-lg font-semibold mb-2">About Me</h5>
                       <p className="text-gray-700">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro voluptas repudiandae fuga
@@ -45,7 +45,7 @@ const FBAbout = () => {
                   </div>
                 </div>
                 <div className="w-full md:w-5/12">
-                  <div className="userabout">
+                  <div className="fbuserabout">
                     <div className="contactBTN space-y-4">
                       <ContactItem icon="fa-mobile-button" text="(+91) 8126 139 074" />
                       <ContactItem icon="fa-whatsapp-square" text="(+91) 8126 139 074" />

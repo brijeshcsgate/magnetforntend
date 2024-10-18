@@ -38,12 +38,12 @@ const testimonials = [
 const FBTestimonial = () => {
     return (
         // <div id="testilink">
-        <section className=" " id="">
-            <div className="container mx-auto px-5 pt-4">
+        <section className=" fbmainbody" id="">
+            <div className="fbcontainer mx-auto px-5 ">
 
                 <div className="row">
                     <div className="col-md-10 col-lg-8">
-                        <div className="header-section pt-3 px-4">
+                        <div className="fbheader-section pt-3 px-3">
                             <h2 className="text-3xl font-semibold">
                                 Our <span className="text-blue-500">Testimonial</span>
                             </h2>
@@ -58,15 +58,15 @@ const FBTestimonial = () => {
                     navigation
                 >
                     {testimonials.map((testimonial, index) => (
-                        <SwiperSlide key={index} className="swiper-slide">
-                            <div className="testimonial p-6 border rounded-lg shadow-lg">
-                                <address className="testimonial__author text-center">
-                                    <img src={testimonial.img} alt="" className="testimonial__photo w-16 h-16 rounded-full mx-auto" />
-                                    <h6 className="testimonial__name text-lg font-semibold">{testimonial.name}</h6>
-                                    <p className="testimonial__location text-sm text-gray-500">{testimonial.location}</p>
+                        <SwiperSlide key={index} className="swiper-slide px-3">
+                            <div className="fbtestimonial p-6 border rounded-lg shadow-lg">
+                                <address className="fbtestimonial__author text-center">
+                                    {/* <img src={testimonial.img} alt="" className="testimonial__photo w-16 h-16 rounded-full mx-auto" /> */}
+                                    <h6 className="fbtestimonial__name text-lg font-semibold">{testimonial.name}</h6>
+                                    <p className="fbtestimonial__location text-sm text-gray-500"><i>{testimonial.location}</i></p>
                                 </address>
 
-                                <blockquote className="testimonial__text mt-4 text-gray-700 italic">
+                                <blockquote className="fbtestimonial__text mt-2 text-gray-700 italic">
                                     {testimonial.text}
                                 </blockquote>
                             </div>

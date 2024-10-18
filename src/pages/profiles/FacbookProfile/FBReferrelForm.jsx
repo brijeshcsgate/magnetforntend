@@ -104,7 +104,7 @@ export default function FBReferrelForm({ profileUserId, visitorInfo,IsReferalFor
 
     return (
         <React.Fragment>
-            <button className='ref-button flex-db'
+            <button className='fbref-button fbflex-db'
                 onClick={() => { setOpen(true) }}
 
             >

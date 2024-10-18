@@ -280,7 +280,7 @@ const FBIndex = () => {
                 {+'+' + profileDetails?.countryCode + ' ' + profileDetails?.mobile}
               />
 <FBAbout/>
-<FBService/>
+<FBService profileImage={profileDetails?.profileImage}/>
 <FBProduct profileImage={profileDetails?.profileImage}/>
 <FBImage profileImage={profileDetails?.profileImage}/>
 <FBVideo/>
