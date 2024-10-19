@@ -1,11 +1,14 @@
 import { Grid } from '@mui/material';
 import React from 'react';
 
+import { Navigation,Pagination } from 'swiper/modules';
+import 'swiper/css';
+import { Swiper, SwiperSlide } from 'swiper/react';
 const FBProduct = ({profileImage}) => {
   return (
     // id products, section-services --class
-    <section className="fbmainbody" id="">
-      <div className="fbcontainer mx-auto px-5">
+    <section className="fbmainbody mn-pad" id="">
+      <div className="fbcontainer mx-auto px-3 ">
         <div className="row px-4">
           <div className="col-md-10 col-lg-8">
             <div className="fbheader-section">
@@ -18,13 +21,39 @@ const FBProduct = ({profileImage}) => {
             </div>
           </div>
         </div>
-        <div className="swiper product-br fbmeSwiper ">
-          <div className="fbswiper-wrapper px-4" style={{display:'flex'}}>
-            <Grid container sx={{ marginTop: 0, paddingTop: 0 }}>
+        {/* <div className="swiper product-br fbmeSwiper ">
+          <div className="fbswiper-wrapper px-4" style={{display:'flex'}}> */}
+            {/* <Grid container sx={{ marginTop: 0, paddingTop: 0 }}> */}
                 
-           
+            <Swiper
+          modules={[Navigation, Pagination]}
+          navigation
+          pagination={{ clickable: true }}
+          // spaceBetween={30}
+          // slidesPerView={3}
+          breakpoints={{
+            // When the screen width is >= 1024px (desktop)
+            1024: {
+              slidesPerView: 3,  // Show 3 slides for larger screens
+            },
+            // When the screen width is >= 768px (tablet)
+            768: {
+              slidesPerView: 2,  // Show 2 slides for tablet view
+            },
+            // When the screen width is >= 640px (mobile)
+            640: {
+              slidesPerView: 1,  // Show 1 slide for mobile view
+            },}}
+        // >
+     
+          className="mySwiper pl-2 pr-3"
+          // style={{display:'flex'}}
+        >
+       
             {Array.from({ length: 5 }).map((_, index) => (
-                <Grid sx={12} md={8} lg={4} >
+                // <Grid sx={12} md={8} lg={4} >
+                <SwiperSlide > 
+     
               <div className="fbswiper-slide mt-0" key={index}>
                 <div className="fbsingle-product  pr-4 rounded-lg ">
                   <div className="fbproduct-item">
@@ -51,14 +80,19 @@ const FBProduct = ({profileImage}) => {
                   </div> */}
                 </div>
               </div>
-              </Grid>
+              {/* </Grid>
             ))}
-             </Grid>
+             </Grid> */}
+               </SwiperSlide> 
+
+))}
+</Swiper>
+
           </div>
           {/* Uncomment if you want pagination */}
           {/* <div className="swiper-pagination"></div> */}
-        </div>
-      </div>
+        {/* </div> */}
+      {/* </div> */}
     </section>
   );
 };

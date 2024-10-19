@@ -103,7 +103,7 @@ const OffersCarousel = ({ offers = [] }) => {
 
                 <div className="service-bts flex-row-g15 flex-col">
                   {/* <div className="btn btn_animated has-popup"> */}
-                    <span className="circle center_icon" style={{color:''}}>
+                    <span className="circle center_icon2" style={{color:''}}>
                       <b>Starts:</b>
                      {offer?.startDate} {offer?.startTime}
                     </span>
@@ -111,7 +111,7 @@ const OffersCarousel = ({ offers = [] }) => {
                   {/* <div
                     className="btn extra contact-btn btn_animated has-popup"
                   > */}
-                    <span className="circle center_icon" style={{color:''}}>
+                    <span className="circle center_icon2" style={{color:''}}>
                         <b>Ends:</b>
                      {offer?.endDate} {offer?.endTime}
                     </span>

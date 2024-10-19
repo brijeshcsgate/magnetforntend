@@ -192,7 +192,7 @@ export default function VistiorInfoForm({ openP, visitorInfoType, profileUserId,
                                     </Label>
                                     <PhoneInput
                                         international
-                                        defaultCountry="RU"
+                                        defaultCountry="IN"
                                         value={values.mobile}
                                         onChange={(e) => setFieldValue('mobile', e)}
                                         className={cn(

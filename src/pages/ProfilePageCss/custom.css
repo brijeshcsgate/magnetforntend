@@ -270,6 +270,19 @@ a.btn.extra, .btn.extra {
     border-radius: 0!important;
     transition: padding .5s;
 }
+
+.sticky-hed2 {
+  position:  fixed!important;
+  top: 0!important;
+  left: 0!important;
+  z-index: 9!important;
+  display: flex;
+  /* background: #304fff!important; */
+  width: 100%!important;
+  padding: 7px 18px !important;
+  border-radius: 0!important;
+  transition: padding .5s;
+}
 .sticky img {
     width: 50px!important;
     height: 50px!important;

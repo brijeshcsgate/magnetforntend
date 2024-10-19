@@ -3,7 +3,7 @@ import React from 'react';
 const FBPayment = ({profileImage}) => {
   return (
     <section className="fbmainbody " id="">
-    <div className="fbcontainer mx-auto px-5">
+    <div className="fbcontainer mn-pad mx-auto px-5">
 
     <div className="fbcontainer p-4">
       <div className="">

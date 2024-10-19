@@ -174,7 +174,7 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
                                     </Label>
                                     <PhoneInput
                                         international
-                                        defaultCountry="RU"
+                                        defaultCountry="IN"
                                         value={values.mobile}
                                         onChange={(e) => setFieldValue('mobile', e)}
                                         className={cn(
@@ -243,7 +243,7 @@ export default function ReferrelInfoForm({ profileUserId, visitorInfo }) {
                                         </Label>
                                         <PhoneInput
                                             international
-                                            defaultCountry="RU"
+                                            defaultCountry="IN"
                                             value={values.ref_mobile}
                                             onChange={(e) => setFieldValue('ref_mobile', e)}
                                             className={cn(

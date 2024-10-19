@@ -8,7 +8,7 @@ import 'swiper/css';
 
 const FBService = ({profileImage}) => {
   return (
-    <section id="" className="fbmainbody pt-4 pb-2 ">
+    <section id="" className="fbmainbody pt-4 pb-2 mn-pad">
       {/* container */}
       <div className=" mx-auto px-3 ">
         <div className="flex flex-wrap">
@@ -25,30 +25,48 @@ const FBService = ({profileImage}) => {
           modules={[Navigation, Pagination]}
           navigation
           pagination={{ clickable: true }}
-          spaceBetween={30}
-          slidesPerView={3}
+          // spaceBetween={30}
+          // slidesPerView={3}
+          breakpoints={{
+            // When the screen width is >= 1024px (desktop)
+            1024: {
+              slidesPerView: 3,  // Show 3 slides for larger screens
+            },
+            // When the screen width is >= 768px (tablet)
+            768: {
+              slidesPerView: 2,  // Show 2 slides for tablet view
+            },
+            // When the screen width is >= 640px (mobile)
+            640: {
+              slidesPerView: 1,  // Show 1 slide for mobile view
+            },}}
+        // >
+     
           className="mySwiper pl-2 pr-3"
           // style={{display:'flex'}}
         >
           {/* Slide 1 */}
-            <Grid container sx={{ marginTop: 0, paddingTop: 0 }}>
+            {/* <Grid container sx={{ marginTop: 0, paddingTop: 0 }}> */}
                 
            
             {Array.from({ length: 5}).map((_, index) => (
-                <Grid sx={12} md={8} lg={4} >
+                // <Grid sx={12} md={6} lg={4} >
           
-          {/* <SwiperSlide > */}
+           <SwiperSlide > 
           <div className='p-2'>
-            <div className="fbservice-box fbbg-white  rounded-lg p-6 ">
+            <div className="fbservice-box fbbg-white  rounded-lg  ">
               <div className="fbelement">
-                <div
-                  className="fbshape bg-blue-500 h-16 w-16 mb-4 cursor-pointer"
+                {/* <div
+                  className="  rotate-image fbshape bg-blue-500 h-16 w-16 mb-4 cursor-pointer"
                   data-bs-toggle="modal"
                   data-bs-target="#myModal"
-                >
-                  <img src={profileImage} alt="" className="w-full  object-cover rounded-md" />
+                > */}
+                  <img src={profileImage} alt="" 
+                  className="w-full  object-cover image-cut fbshape rotate-image" 
+                      //  className="    object-cover rotate-image "  rotate-image rounded-md fbshape
+                  />
                   
-                </div>
+                {/* </div> */}
               </div>
               <div className="fbservice-containet">
                 <h3 className="text-xl font-semibold mb-2">LIFE INSURANCE</h3>
@@ -77,11 +95,9 @@ const FBService = ({profileImage}) => {
             </div>
             </div>
             
-          {/* </SwiperSlide> */}
+           </SwiperSlide> 
 
-              </Grid>
             ))}
-             </Grid>
         </Swiper>
 
         <div className="fbswiper-button-next"></div>

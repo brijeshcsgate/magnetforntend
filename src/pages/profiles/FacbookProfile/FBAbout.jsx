@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 
-const FBAbout = () => {
+const FBAbout = ({ aboutUs,countryCode, mobile, whatsappNumberCountryCode, whatsappNumber, 
+  email, address }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const toggleReadMore = () => {
+  // Toggle the text view
+  const toggleText = () => {
     setIsExpanded(!isExpanded);
   };
 
   return (
-    <div className="fbmainbody pb-2">
+    <div className="fbmainbody pb-2 ">
       <div id="prolink"></div>
-      <div className="fbcontainer p-4 pb-0 pt-0">
+      <div className="fbcontainer mn-pad p-4 pb-0 pt-0">
         <div className="fbcontainer">
           <div id="AboutSec">
             <div className="shadow-lg p-6 fbbg-white">
@@ -20,26 +22,12 @@ const FBAbout = () => {
                     <div className="fbabouttext">
                       <h5 className="text-lg font-semibold mb-2">About Me</h5>
                       <p className="text-gray-700">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro voluptas repudiandae fuga
-                        similique, aut, soluta veniam earum inventore nemo esse sunt cumque excepturi saepe impedit at.
-                        Aut ipsam consectetur vitae quidem. Rem neque, maxime recusandae{' '}
-                        {!isExpanded && <span id="dots">... </span>}
-                        {isExpanded && (
-                          <span id="more">
-                            totam et sit cupiditate! Dolor distinctio ipsum eveniet voluptate nobis ut quaerat fuga
-                            earum aliquam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem,
-                            corrupti sed delectus consectetur vel quis asperiores, omnis neque excepturi blanditiis
-                            accusantium. Earum impedit qui culpa voluptate quam similique quos reiciendis voluptates,
-                            consectetur non neque aut fuga, quod sit tempora, velit molestias modi quasi perspiciatis
-                            voluptatem. Ipsa blanditiis modi eos expedita.
-                          </span>
-                        )}
-                        <button
-                          className="text-blue-500 hover:text-blue-700 font-medium ml-2"
-                          onClick={toggleReadMore}
-                        >
-                          {isExpanded ? 'Read less' : 'Read more'}
-                        </button>
+                      {isExpanded ? aboutUs : aboutUs?.slice(0, 200)}
+        {aboutUs?.length >= 200 ?
+          <span onClick={toggleText} id="dots" style={{color:'blue'}}>
+            {isExpanded ? "show less" : "... see more"}
+          </span> : <></>
+        }
                       </p>
                     </div>
                   </div>

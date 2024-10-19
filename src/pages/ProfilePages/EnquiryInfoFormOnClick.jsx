@@ -136,7 +136,7 @@ export default function EnquiryInfoFormOnClick({ profileUserId, visitorInfo,open
                                     </Label>
                                     <PhoneInput
                                         international
-                                        defaultCountry="RU"
+                                        defaultCountry="IN"
                                         value={values.mobile}
                                         onChange={(e) => setFieldValue('mobile', e)}
                                         className={cn(

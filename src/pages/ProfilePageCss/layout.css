@@ -41,6 +41,13 @@
     align-items: center !important;
     justify-content: center !important;
 }
+
+.center_icon2{
+	display: flex !important;
+	text-transform: capitalize;
+    align-items: center !important;
+    /* justify-content: center !important; */
+}
 .center-align-contents{
 	display:flex !important;
 	flex-direction: row !important;

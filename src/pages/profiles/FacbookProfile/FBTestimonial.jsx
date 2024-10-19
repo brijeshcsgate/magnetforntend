@@ -39,7 +39,7 @@ const FBTestimonial = () => {
     return (
         // <div id="testilink">
         <section className=" fbmainbody" id="">
-            <div className="fbcontainer mx-auto px-5 ">
+            <div className="fbcontainer mn-pad mx-auto px-5 ">
 
                 <div className="row">
                     <div className="col-md-10 col-lg-8">

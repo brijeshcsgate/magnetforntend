@@ -15,11 +15,11 @@ const FBLinks = () => {
     ];
 
     return (
-        <section className="fbmainbody">
-            <div className="fbimp_links  mx-auto px-3 pb-5">
+        <section className="fbmainbody ">
+            <div className="fbimp_links mn-pad mx-auto px-2 pb-5">
             <div className="row">
           <div className="col-md-10 col-lg-8">
-            <div className="fbheader-section pt-3 px-5 text-start">
+            <div className="fbheader-section pt-3 px-3 text-start">
             <h2 className="text-3xl font-semibold">
                Important <span className="text-blue-500">Links</span>
               </h2>

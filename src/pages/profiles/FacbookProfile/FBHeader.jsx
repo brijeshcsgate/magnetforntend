@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './fbstyle.css'
 
 import { Link } from 'react-router-dom'
@@ -16,7 +16,61 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
 
     const [IsReferalForm, setIsReferalForm] = useState(false)
     const [IsEnquiryFormData, setIsEnquiryFormData] = useState(false)
+    const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
 
+
+    const [isSticky, setIsSticky] = useState(false);
+    const [width, setWidth] = useState(window.innerWidth);
+    useEffect(() => {
+      const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
+  
+      window.addEventListener('resize', handleResize);
+  
+      // Clean up the event listener on component unmount
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+  
+  // Function to determine device type based on width
+  const getDeviceType = () => {
+    if (width < 768) return 120;
+    if (width < 1024) return 170;
+    return 280;
+  };
+
+    useEffect(() => {
+        const handleScroll = () => {
+        //   const topOffset = document.getElementById("profileName").offsetTop;
+          const scrollPosition = window.scrollY;
+          if (scrollPosition > getDeviceType()) {
+            setIsSticky(true);
+    
+          } else {
+            setIsSticky(false);
+    
+          }
+        };
+    
+        window.addEventListener("scroll", handleScroll);
+    
+        return () => {
+          window.removeEventListener("scroll", handleScroll);
+        };
+      }, []);
+    
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobileOrTablet(window.innerWidth < 1024); // Considers devices under 1024px as mobile or tablet
+      };
+  
+      handleResize(); // Initial check
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+  
 
     const handleToggle = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -46,27 +100,27 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
 
         window.URL.revokeObjectURL(url);
     };
+    
 
     return (
         <div className="fbheader ">
-            <div className="fbcontainer mx-auto fbbg-head">
+            <div className="fbcontainer mx-auto fbbg-head mn-pad">
                 <div className="relative">
-                    <div className="fbheroback">
-                        <img src={profileImage} className="w-full h-10" />
+                    <div className="fbheroback " >
+                        <img src={coverImage} className="w-full h-10" />
                     </div>
                     <div className="flex justify-between items-start  fbprofilecont">
-                        <div className="fbprofileimg">
+                        <div className="fbprofileimg fbprofileimgposcent">
                             <img src={profileImage} alt=""
                                 className="w-[180px] h-[180px] rounded-full object-cover" />
                         </div>
-                        <div className="fbaboutprofile text-left">
+                        <div className=" lg:text-left md:text-center">
                             <h2 className="text-2xl font-bold">
-                                Brijesh Yadav
-                                <span className="block text-gray-500 sm:inline">(Web Developer)</span>
+                                {name}
+                                <span className="block text-gray-500 sm:inline"> &nbsp;&nbsp;({jobRoleName})</span>
                             </h2>
                             <span className="italic text-gray-600">
-                                It is a long established fact that a reader will be distracted by the readable content of a
-                                page when looking at its layout.
+                             {message}
                             </span>
                             <div className="  flex mt-4 space-x-2 fblinkbar w-full justify-center">
                              
@@ -83,14 +137,14 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
                                     : <></>}
                             </div>
                         </div>
-                        <div className="socillink flex flex-col items-end " >
+                        <div className="socillink flex flex-col lg:items-end md:items-center" >
                             <div className="fbherologo flex items-center space-x-2 fbjs-cent">
-                                <img src={profileImage} alt="" className="w-15 h-10 " />
-                                <img data-bs-toggle="modal" href="#exampleModalToggle" role="button" src={profileImage}
-                                    alt="" className="w-10 h-10 cursor-pointer" />
+                                <img src={orgLogo} alt="" className="w-15 h-10 " />
+                              {Qr?  <img data-bs-toggle="modal" href="#exampleModalToggle" role="button" src={Qr}
+                                    alt="" className="w-10 h-10 cursor-pointer" />:<></>}
                             </div>
                             <div className="fbherologo ">
-                                <h6 className="text-lg font-semibold">Life Insurance Corporation of India</h6>
+                                <h6 className="text-lg font-semibold">{industryName}</h6>
                             </div>
                             <div className="fbflex-db space-x-2  fblinkbutton">
                                 <FBReferrelForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsReferalForm={IsReferalForm} setIsReferalForm={setIsReferalForm} />
@@ -103,52 +157,63 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
                     </div>
                     <div className="fbtopend"></div>
 
-                    <div className="navigation pos-fix" id="navbar">
-                        <nav className="navbar navbar-expand-lg fbnavbar-light p-0 ">
-                            <button style={{ boxShadow: 'none' }} className="block md:hidden" type="button" data-bs-toggle="collapse" onClick={handleToggle}
+                    <div className="navigation pos-fix " id="navbar">
+                        <nav className={`navbar navbar-expand-lg fbnavbar-light p-0  ${isSticky ? "pl-3 pr-3 sticky-hed2 fbgradient-box" : ""}`}>
+                        {isMobileOrTablet && (
+          <>
+                            <button style={{ boxShadow: 'none' }} className="block lg:hidden" type="button" data-bs-toggle="collapse" onClick={handleToggle}
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
-                            <button style={{ border: 'none' }} className="block md:hidden p-0" data-bs-toggle="collapse" onClick={handleToggle}
+                            <button style={{ border: 'none' }} className="block lg:hidden p-0" data-bs-toggle="collapse" onClick={handleToggle}
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
                                 <div className="d-flex align-items-center">
-                                    <p className="m-0 me-2"> Brijesh Yadav</p>
+                                    <p className="m-0 me-2"> {name}</p>
                                     <img style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }}
                                         src={profileImage} alt="" />
                                 </div>
                             </button>
-                            <div className={` ${isMenuOpen ? '' : 'hidden'} md:flex md:items-center`} id="">
-
-                                {/* <div className="" id="navbarSupportedContent"> */}
+                            </>)}
+                            <div className={`${isMobileOrTablet ? (isMenuOpen ? '' : 'hidden') : 'block'} lg:flex lg:items-center`}
+                            // className={` ${isMenuOpen ? '' : 'hidden'} md:flex md:items-center`}
+                             id="">
+                              <div>
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 space-x-4">
                                     <li className="nav-item">
-                                        <a className="nav-link active text-blue-600" href="#prolink">Profile</a>
+                                        <a className={`nav-link active  ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#prolink">Profile</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link text-blue-600" href="#servlink">Services</a>
+                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#servlink">Services</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link text-blue-600" href="#prodlink">Products</a>
+                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#prodlink">Products</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link text-blue-600" href="#offer">Offers</a>
+                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#offer">Offers</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link text-blue-600" href="#imglink">Gallery</a>
+                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#imglink">Gallery</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link text-blue-600" href="#testilink">Testimonial</a>
+                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#testilink">Testimonial</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link text-blue-600" href="#paylink">Payment</a>
+                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#paylink">Payment</a>
                                     </li>
-                                    <li className="fbtopUserImg">
-                                        <p className="text-gray-600">Brijesh Yadav</p>
-                                        <img className="w-10 h-10 rounded-full object-cover" src="/img/new.jpeg" alt="" />
-                                    </li>
+
+
+
+
                                 </ul>
+                                </div>
+                                {isSticky ?
+                                <div className="flex fbposright">
+                                        <p className="text-white-600">{name}</p>
+                                        <img className="w-10 h-10 rounded-full object-cover" src={profileImage} alt="" />
+                                    </div>:<></>}
+                                    {/* </div> */}
                             </div>
                         </nav>
                     </div>

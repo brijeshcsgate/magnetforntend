@@ -27,7 +27,7 @@ const FBVideo = () => {
 
     return (
         <section className="mt-65 fbmainbody" id="">
-        <div className="fbcontainer mx-auto px-5">
+        <div className="fbcontainer mn-pad mx-auto px-5">
     
         <div className="  pb-4">
             <div className="fbcontainer mx-auto">
