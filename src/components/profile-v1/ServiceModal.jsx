@@ -7,7 +7,7 @@ import style from "./modal.module.css";
 const ServiceModal = (isOpenModal) => {
   const { viewDetialsModalV1 } = useContext(ContextAPI);
 
-  // console.log(viewDetialsModalV1)
+  console.log('viewDetialsModalV1',viewDetialsModalV1)
   var settings = {
     dots: true,
     infinite: true,

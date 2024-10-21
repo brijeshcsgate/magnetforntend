@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import React from 'react';
 
-const FBLinks = () => {
+const FBLinks = ({documentsLinks}) => {
     const linksGroup1 = [
         { img: 'assets/img/word.png', name: 'Link Name 1', url: '#' },
         { img: 'assets/img/excel.png', name: 'Link Name 2', url: '#' },
@@ -30,12 +30,12 @@ const FBLinks = () => {
                     <div className="flex flex-col items-center">
                     <Grid container>
         
-                        {linksGroup1.map((link, index) => (
+                    {documentsLinks?.map((link, index) => (
                               <Grid sx={12} md={6} lg={3}>
          
                             <div key={index} className="flex items-center px-5">
-                                <img src={`${"/img/link_ico.png"}`} alt={link.name} className="w-6 h-6 mr-2" />
-                                <a href={link.url} className="text-lg hover:text-blue-500">{link.name}</a>
+                                <img src={`${"/img/link_ico.png"}`} alt={link?.name} className="w-6 h-6 mr-2" />
+                                <a href={link.url} className="text-lg hover:text-blue-500">{link?.name}</a>
                             </div>
                             </Grid>
             ))}

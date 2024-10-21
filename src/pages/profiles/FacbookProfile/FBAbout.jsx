@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-const FBAbout = ({ aboutUs,countryCode, mobile, whatsappNumberCountryCode, whatsappNumber, 
+import { BsTelephoneFill, BsGlobe, BsTelegram } from "react-icons/bs"
+import { FaLocationPin } from "react-icons/fa6"
+import { MdMailOutline } from "react-icons/md"
+import { ImWhatsapp } from "react-icons/im"
+const FBAbout = ({ aboutUs, countryCode, mobile, whatsappNumberCountryCode, whatsappNumber,
   email, address }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -22,12 +26,12 @@ const FBAbout = ({ aboutUs,countryCode, mobile, whatsappNumberCountryCode, whats
                     <div className="fbabouttext">
                       <h5 className="text-lg font-semibold mb-2">About Me</h5>
                       <p className="text-gray-700">
-                      {isExpanded ? aboutUs : aboutUs?.slice(0, 200)}
-        {aboutUs?.length >= 200 ?
-          <span onClick={toggleText} id="dots" style={{color:'blue'}}>
-            {isExpanded ? "show less" : "... see more"}
-          </span> : <></>
-        }
+                        {isExpanded ? aboutUs : aboutUs?.slice(0, 200)}
+                        {aboutUs?.length >= 200 ?
+                          <span onClick={toggleText} id="dots" style={{ color: 'blue' }}>
+                            {isExpanded ? "show less" : "... see more"}
+                          </span> : <></>
+                        }
                       </p>
                     </div>
                   </div>
@@ -35,12 +39,23 @@ const FBAbout = ({ aboutUs,countryCode, mobile, whatsappNumberCountryCode, whats
                 <div className="w-full md:w-5/12">
                   <div className="fbuserabout">
                     <div className="contactBTN space-y-4">
-                      <ContactItem icon="fa-mobile-button" text="(+91) 8126 139 074" />
-                      <ContactItem icon="fa-whatsapp-square" text="(+91) 8126 139 074" />
-                      <ContactItem icon="fa-google" text="www.magnet.cards" />
-                      <ContactItem icon="fa-telegram" text="@gyangps" />
-                      <ContactItem icon="fa-envelope" text="gyanedra.s@troology.com" />
-                      <ContactItem icon="fa-address-card" text="Hazratganj, Lucknow, Uttar Pradesh 226001" />
+                      <ContactItem icon={<BsTelephoneFill />} text={<a href={`tel:+${countryCode}) ${mobile}`} className="hover-text " target="_blank">
+                        <span style={{ display: 'flex', flexDirection: 'row', gap: '10px' }} > <span>
+                          (+{countryCode}) {mobile}</span>
+                        </span></a>} />
+                      <ContactItem icon={<ImWhatsapp />} text={<a href={`https://wa.me/${whatsappNumber}`} target="_blank" className="hover-text ">
+                        <span style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}> <span>
+
+                          (+{whatsappNumberCountryCode}) {whatsappNumber}</span>
+                        </span></a>} />
+                      {/* <ContactItem icon="fa-google" text="www.magnet.cards" /> */}
+                      {/* <ContactItem icon="fa-telegram" text="@gyangps" /> */}
+                      <ContactItem icon={<MdMailOutline />} text=<a href={`mailto:${email}`} target="_blank" className="hover-text ">
+                        <span style={{ display: 'flex', flexDirection: 'row', gap: '10px' }} > <span>
+
+                          {email}</span>
+                        </span></a> />
+                      <ContactItem icon={<FaLocationPin />} text={address} />
                     </div>
                   </div>
                 </div>
@@ -55,7 +70,7 @@ const FBAbout = ({ aboutUs,countryCode, mobile, whatsappNumberCountryCode, whats
 
 const ContactItem = ({ icon, text }) => (
   <div className="flex items-center space-x-2">
-    <i className={`fa ${icon} text-blue-500`}></i>
+    <i >{icon}</i>
     <h6 className="text-gray-700">{text}</h6>
   </div>
 );

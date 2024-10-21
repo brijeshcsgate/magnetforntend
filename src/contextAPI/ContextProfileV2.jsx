@@ -18,8 +18,7 @@ export const ContextAPIProvider = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [serviceModalDataV2,setServiceModalDataV2]=useState([])
   const [productModalDataV2,setProductModalDataV2]=useState([])
-  
-  console.log(productModalDataV2,'---------------------------2')
+  const [offersModalDataV2,setOffersModalDataV2]=useState([])
   // Profile v4
   const [selectedTb, setSelectedTab] = useState("services");
   return (
@@ -27,6 +26,9 @@ export const ContextAPIProvider = ({ children }) => {
       value={{
         productModalDataV2,
         setProductModalDataV2,
+        offersModalDataV2,
+        setOffersModalDataV2,
+        
         serviceModalDataV2,
         setServiceModalDataV2,
         viewDetialsModalV1,

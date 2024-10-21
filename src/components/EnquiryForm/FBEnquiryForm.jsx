@@ -5,11 +5,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-// import '../../pages/ProfilePages/Phonecss.css'
+
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import FormikTextField from '@/components/inputs/formik/FormikTextField';
-import { Box, ButtonGroup,Slider } from '@mui/material';
+import { Box, ButtonGroup, Slider } from '@mui/material';
 import { toast } from 'sonner';
 import { postApi } from '@/services/method';
 import { APIS } from '@/constants/api.constant';
@@ -19,9 +19,9 @@ import FormikTextArea from '@/components/inputs/formik/FormikTextArea';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
-import PhoneInput from 'react-phone-number-input'
+
+import PhoneInput, { parsePhoneNumber } from 'react-phone-number-input'
 import { cn } from '@/utils';
-import { BriefcaseIcon } from 'lucide-react';
 const marks = [
 
     {
@@ -57,18 +57,12 @@ const validationSchema = Yup.object().shape({
     email: Yup.string()
         .email('Invalid email address')
         .required('Email is required'),
-    temperature_scale: Yup.number()
-        .required('Temperature scale is required'),
+    tempratur_scale: Yup.number()
+        .min(1, 'Value cannot be less than 1')
+        .max(5, 'Value cannot exceed 5')
+        .required('Name is required'),
 
     mobile: Yup.string()
-        .min(8, 'Please fill valid mobile no.')
-        .required('Contact number is required'),
-    ref_name: Yup.string()
-        .required('Name is required'),
-    ref_email: Yup.string()
-        .email('Invalid email address')
-        .required('Email is required'),
-    ref_mobile: Yup.string()
         .min(8, 'Please fill valid mobile no.')
         .required('Contact number is required'),
     requirement_summary: Yup.string()
@@ -76,10 +70,10 @@ const validationSchema = Yup.object().shape({
 
 
 });
-export default function FBReferrelForm({ profileUserId, visitorInfo,IsReferalForm,setIsReferalForm }) {
+export default function FBEnquiryForm({ profileUserId, visitorInfo,cl }) {
     const [charCount, setCharCount] = React.useState(0);
 
-    const [open, setOpen] = React.useState(IsReferalForm);
+    const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -88,29 +82,30 @@ export default function FBReferrelForm({ profileUserId, visitorInfo,IsReferalFor
         if (reason === 'backdropClick' || reason === 'escapeKeyDown') {
             return;
         }
-        setIsReferalForm(false)
+        // setIsEnquiryFormData(false)
         setOpen(false); // Close dialog only when the Cancel button is clicked
     };
     const handleSubmit = async (values) => {
+        console.log('values')
         values.userId = profileUserId;
-        values.tempratur_scale = values.temperature_scale;
-        await apiService.post(`${APIS.ADD_REFERREL}`, values)
+        values.tempratur_scale = values.tempratur_scale;
+        await apiService.post(`${APIS.ADD_ENQUIRY}`, values)
             .then((res) => {
                 toast.success('Data saved successfully');
             })
         setOpen(false);
 
     }
-
+    
     return (
         <React.Fragment>
-            <button className='fbref-button fbflex-db fl-g10-r' 
+
+            <button className={`fb-ser-button`}
                 onClick={() => { setOpen(true) }}
 
             >
-             <BriefcaseIcon/> <span>Refer Business</span>
-               
-            </button>
+                    Enquiry
+            </button> 
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -129,10 +124,7 @@ export default function FBReferrelForm({ profileUserId, visitorInfo,IsReferalFor
                             name: visitorInfo.name,
                             email: visitorInfo.email,
                             mobile: visitorInfo.mobile,
-                            ref_name: '',
-                            ref_email: '',
-                            ref_mobile: '',
-                            tempratur_scale: '',
+                            tempratur_scale: '4',
                             requirement_summary: '',
                             userId: ''
                         }}
@@ -140,7 +132,7 @@ export default function FBReferrelForm({ profileUserId, visitorInfo,IsReferalFor
 
                         onSubmit={(values) => handleSubmit(values)}
                     >
-                        {({ isSubmitting, setFieldValue, values }) => (
+                        {({ isSubmitting, setFieldValue, values,errors, touched  }) => (
                             <Form>
                                 <div>
                                     <FormikTextField
@@ -157,6 +149,38 @@ export default function FBReferrelForm({ profileUserId, visitorInfo,IsReferalFor
                                         name="email"
                                         isRequired
                                     />
+                                </div>
+                                <div style={{ flex: '0 0 48%' }}>
+                                    {/* <FormikTextField
+                                        label="Temperature Scale"
+                                        placeholder="5"
+                                        name="temperature_scale"
+                                        isRequired
+                                    /> */}
+                                    <Label
+                                        className={cn('c-black mb-1')} // Adjusting label styling with cn
+                                    //   htmlFor={name} // Updated to use `name` as `htmlFor` to match input id
+                                    >
+                                        Temperature Scale
+                                        {/* <span style={{ color: 'red' }}>*</span> */}
+                                    </Label>
+                                    <Box className='m-slider-width'>
+                                        <Field
+                                            name="tempratur_scale"
+                                            component={FormikSlider}
+                                            aria-label="Custom marks"
+                                            //   step={5}
+                                            //   marks={marks}
+                                            //   min={1}
+                                            //   max={5}
+                                            getAriaValueText={valuetext}
+                                            className="ml-4"
+                                        />
+                                        {/* {touched.tempratur_scale && errors.tempratur_scale ? (
+              <div style={{ color: 'red' }}>{errors.tempratur_scale}</div>
+            ) : null} */}
+                                    </Box>
+                                    {/* <NetworkSignal/> */}
                                 </div>
                                 <div>
                                     {/* <FormikTextField
@@ -175,115 +199,19 @@ export default function FBReferrelForm({ profileUserId, visitorInfo,IsReferalFor
                                         international
                                         defaultCountry="IN"
                                         value={values.mobile}
-                                        onChange={(e) => setFieldValue('mobile', e)}
+                                        // onChange={(e) => setFieldValue('mobile', e)}
+
+                                        onChange={(value) => {
+                                            setFieldValue('mobile', value);
+                                        }}
                                         className={cn(
                                             'flex h-8 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-xs ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-primary-200 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ',
                                         )}
 
                                     />
-                                </div>
-                                <div>
-                                    <FormikTextField
-                                        label="Referrel Name"
-                                        placeholder="John"
-                                        name="ref_name"
-                                        isRequired
-                                    />
-                                </div>
-                                <div>
-                                    <FormikTextField
-                                        label="Referrel Email"
-                                        placeholder="john@gmail.com"
-                                        name="ref_email"
-                                        isRequired
-                                    />
-                                </div>
-                                {/* <div>
-                                    <FormikTextField
-                                        label="Referrel Contact No."
-                                        placeholder="+91 9999999999"
-                                        name="ref_mobile"
-                                        isRequired
-                                    />
-                                </div> */}
-                                {/*                                 
-                                <div>
-                                    <FormikTextField
-                                        label="Temprature Scale"
-                                        placeholder="john@gmail.com"
-                                        name="tempratur_scale"
-                                        isRequired
-                                    />
-                                </div>
-                                <div>
-                                    <FormikTextField
-                                        label="Requirement Summary"
-                                        placeholder="+91 9999999999"
-                                        name="mobile"
-                                        isRequired
-                                    />
-                                </div> */}
-                                <div style={{ display: 'flex', justifyContent: 'space-between',flexDirection:'column' }}>
 
-                                    <div style={{ flex: '0 0 48%' }}>
-                                        {/* <FormikTextField
-                                            label="Referrel Contact No."
-                                            placeholder="+91 9999999999"
-                                            name="ref_mobile"
-                                            isRequired
-                                        /> */}
-
-
-                                        <Label
-                                            className={cn('c-black mb-1')} // Adjusting label styling with cn
-                                        //   htmlFor={name} // Updated to use `name` as `htmlFor` to match input id
-                                        >
-                                            Referrel Contact No. <span style={{ color: 'red' }}>*</span>
-                                        </Label>
-                                        <PhoneInput
-                                            international
-                                            defaultCountry="IN"
-                                            value={values.ref_mobile}
-                                            onChange={(e) => setFieldValue('ref_mobile', e)}
-                                            className={cn(
-                                                'flex h-8 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-xs ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-primary-200 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ',
-                                            )}
-
-                                        />
-                                    </div>
-                                    <div style={{ flex: '0 0 48%' }}>
-                                        {/* <FormikTextField
-                                            label="Temperature Scale"
-                                            placeholder="5"
-                                            name="temperature_scale"
-                                            isRequired
-                                        /> */}
-                                        <Label
-                                            className={cn('c-black mb-1')} // Adjusting label styling with cn
-                                        //   htmlFor={name} // Updated to use `name` as `htmlFor` to match input id
-                                        >
-                                            Temperature Scale
-                                            {/* <span style={{ color: 'red' }}>*</span> */}
-                                        </Label>
-                                        <Box className='m-slider-width'>
-                                            <Field
-                                                name="temperature_scale"
-                                                component={FormikSlider}
-                                                aria-label="Custom marks"
-                                                //   step={5}
-                                                //   marks={marks}
-                                                //   min={1}
-                                                //   max={5}
-                                                getAriaValueText={valuetext}
-                                                className="ml-4"
-                                            />
-                                            {/* {touched.tempratur_scale && errors.tempratur_scale ? (
-              <div style={{ color: 'red' }}>{errors.tempratur_scale}</div>
-            ) : null} */}
-                                        </Box>
-
-                                    </div>
                                 </div>
+
                                 <div>
 
                                     <div className="to-input-field">
@@ -298,6 +226,30 @@ export default function FBReferrelForm({ profileUserId, visitorInfo,IsReferalFor
                                             value={charCount > 0 ? values?.requirement_summary : ''}
 
                                             onChange={(e) => {
+                                                (
+                                        <Textarea
+                                            className="to-label c-black"
+                                            charCount={charCount}
+                                            name={`requirement_summary`}
+                                            maxLength={500}
+                                            rows={2}
+                                            value={charCount > 0 ? values?.requirement_summary : ''}
+
+                                            onChange={(e) => {
+                                                setFieldValue(`requirement_summary`, e.target.value);
+                                                setCharCount(e.target.value.length)
+                                            }}
+
+                                            placeholder="Requirement summary"
+                                            style={{
+                                                border: '1px solid #ccc',
+                                                borderRadius: '4px',
+                                                padding: '8px',
+                                                width: '100%',
+                                                transition: 'border-color 0.2s ease-in-out',
+                                                outline: 'none',
+                                            }}
+                                        />)
                                                 setFieldValue(`requirement_summary`, e.target.value);
                                                 setCharCount(e.target.value.length)
                                             }}
@@ -336,8 +288,6 @@ export default function FBReferrelForm({ profileUserId, visitorInfo,IsReferalFor
         </React.Fragment>
     );
 }
-
-
 
 // Slider field for Formik
 const FormikSlider = ({ field, form, ...props }) => {

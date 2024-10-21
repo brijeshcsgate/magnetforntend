@@ -3,6 +3,7 @@ import { VEHICLE } from './permissionsConstants';
 export const APIS = {
   LOGIN: 'user/login',
 
+  MAGNET_FB: 'magnetfb',
   // LOGIN: 'v1/auth/login'
   // ADD_USER: 'v1/adminusers/addUser',
   FORGET_PASSWORD: 'v1/auth/forgotPassword',
@@ -131,6 +132,7 @@ export const APIS = {
   // PROFILE_1: 'user/getAllUsers',
 
   PROFILE_1: 'user/userList',
+  MAGNET_FB: 'magnetfb',
 
   PROFILE_IDENT:'user/userListIdentifier',
   PROFILE_IDENT2:'user/magnet',

@@ -4,11 +4,12 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation,Pagination } from 'swiper/modules';
 import 'swiper/css';
-const FBImage = ({profileImage}) => {
-  const images = Array(9).fill({
-    src: profileImage,
-    caption: 'Magnet',
-  });
+import { resizeImage } from '@/pages/ProfilePages/resizeImage';
+const FBImage = ({images}) => {
+  // const images = Array(9).fill({
+  //   src: profileImage,
+  //   caption: 'Magnet',
+  // });
 
   return (
     <section className=" fbmainbody" id="">
@@ -54,7 +55,8 @@ const FBImage = ({profileImage}) => {
           className="mySwiper pl-2 pr-3"
           // style={{display:'flex'}}
         >
-                      {images.map((image, index) => (
+                      {/* {images?.length > 0 && */}
+        {images.map((image, index) => (
                <SwiperSlide > 
          
            <div className="swiper-slide pr-4 pb-2" key={index}>
@@ -63,10 +65,10 @@ const FBImage = ({profileImage}) => {
                   data-bs-target="#myimg"
                   className="fbimg-box relative"
                 >
-                  <img src={image.src} alt="" className="w-full h-auto " />
+                  <img src={image?.image} alt="" style={resizeImage(380, 290)} />
                   <div className="fbtransparent-box absolute inset-0 flex items-center justify-center  bg-opacity-30 hover:bg-opacity-50 transition duration-300">
-                    <div className="fbcaption text-white">
-                      <p>{image.caption}</p>
+                    <div className="fbcaption text-black">
+                      <p><b>{image?.name}</b></p>
                     </div>
                   </div>
                 </div>

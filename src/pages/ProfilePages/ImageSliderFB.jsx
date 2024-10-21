@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { resizeImage } from './resizeImage';
 
-const ImageSliderBulk2 = ({ images, autoChangeInterval = 3000 }) => {
+const ImageSliderFB = ({ images, autoChangeInterval = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
 
@@ -24,15 +24,15 @@ const ImageSliderBulk2 = ({ images, autoChangeInterval = 3000 }) => {
   }
 
   return (
-    <div className="relative w-full h-44 md:h-96 overflow-hidden ">
+    <div className="relative w-full h-44 md:h-96 overflow-hidden">
       <div 
-        className={`absolute inset-0 transition-opacity duration-1000 ${fadeIn ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 transition-opacity mb-2 duration-1000 ${fadeIn ? 'opacity-100' : 'opacity-0'}`}
       >
         <img 
           src={images[currentIndex]} 
           alt={`Image ${currentIndex + 1}`}
           className="w-full h-full object-cover"
-          style={resizeImage(380, 290)}
+          // style={resizeImage(380, 290)}
         />
       </div>
       
@@ -51,4 +51,4 @@ const ImageSliderBulk2 = ({ images, autoChangeInterval = 3000 }) => {
   );
 };
 
-export default ImageSliderBulk2;
+export default ImageSliderFB;

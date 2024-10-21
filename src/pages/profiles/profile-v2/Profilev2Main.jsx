@@ -54,7 +54,7 @@ const Profilev2Main = () => {
       {profileStatus === true ? <>
         <VistiorInfoForm openP={visitorInfoType != 'Not Required' ? true : false} visitorInfoType={visitorInfoType} profileUserId={profileUserId} setVisitorInfo={setVisitorInfo} />
 
-        <NavbarV2 name={profileDetails?.name} profileImage={profileDetails?.profileImage}/>
+        <NavbarV2 name={profileDetails?.name} profileImage={profileDetails?.profileImage} />
         <ProfileV2 profileDetails={profileDetails} profileUserId={profileUserId} visitorInfo={visitorInfo} name={profileDetails?.name} whatsappNumber={+"+" + profileDetails?.whatsappNumberCountryCode + " " + profileDetails?.whatsappNumber} email={profileDetails?.email} companyName={profileDetails?.orgName} designation={profileDetails?.jobRoleName} mobile=
           {+'+' + profileDetails?.countryCode + ' ' + profileDetails?.mobile} />
         <Footer profileUserId={profileUserId} visitorInfo={visitorInfo} name={profileDetails?.name} whatsappNumber={+"+" + profileDetails?.whatsappNumberCountryCode + " " + profileDetails?.whatsappNumber} email={profileDetails?.email} companyName={profileDetails?.orgName} designation={profileDetails?.jobRoleName} mobile=

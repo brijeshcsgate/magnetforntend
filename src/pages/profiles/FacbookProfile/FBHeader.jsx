@@ -8,6 +8,9 @@ import { IoLogoTwitter } from 'react-icons/io'
 import FBReferrelForm from './FBReferrelForm'
 import FBEnquiryForm from './FBEnquiryForm'
 import { SaveIcon } from 'lucide-react'
+const BASE_URL_WAPI = `${import.meta.env.VITE_APP_BASE_URL_2}`;
+
+import { APIS } from "@/constants/api.constant";
 const FBHeader = ({ profileImage, name, message, jobRoleName,
     industryName, orgLogo, facebookLink, coverImage,
     instaLink, twitterLink, linkedInLink,
@@ -21,6 +24,8 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
 
     const [isSticky, setIsSticky] = useState(false);
     const [width, setWidth] = useState(window.innerWidth);
+    const url=BASE_URL_WAPI;
+console.log('url',url)
     useEffect(() => {
       const handleResize = () => {
         setWidth(window.innerWidth);
@@ -146,10 +151,10 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
                             <div className="fbherologo ">
                                 <h6 className="text-lg font-semibold">{industryName}</h6>
                             </div>
-                            <div className="fbflex-db space-x-2  fblinkbutton">
+                            <div className="fbflex-db space-x-2  fblinkbutton flex">
                                 <FBReferrelForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsReferalForm={IsReferalForm} setIsReferalForm={setIsReferalForm} />
                                 <FBEnquiryForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsEnquiryFormData={IsEnquiryFormData} setIsEnquiryFormData={setIsEnquiryFormData} />
-                                <button onClick={generateVCard} className='fbref-button fbflex-db'><SaveIcon /><span> Save My Contact</span></button>
+                                <button onClick={generateVCard} className='fbref-button fbflex-db fl-g10-r'><SaveIcon /><span> Save My Contact</span></button>
 
 
                             </div>
@@ -158,7 +163,7 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
                     <div className="fbtopend"></div>
 
                     <div className="navigation pos-fix " id="navbar">
-                        <nav className={`navbar navbar-expand-lg fbnavbar-light p-0  ${isSticky ? "pl-3 pr-3 sticky-hed2 fbgradient-box" : ""}`}>
+                        <nav className={`navbar navbar-expand-lg fbnavbar-light p-0  ${isSticky ? "pl-3 pr-3 sticky-hed2 fbgradient-box-header" : ""}`}>
                         {isMobileOrTablet && (
           <>
                             <button style={{ boxShadow: 'none' }} className="block lg:hidden" type="button" data-bs-toggle="collapse" onClick={handleToggle}
@@ -182,35 +187,36 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
                               <div>
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 space-x-4">
                                     <li className="nav-item">
-                                        <a className={`nav-link active  ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#prolink">Profile</a>
+                                        <a className={`nav-link active  ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#profile">Profile</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#servlink">Services</a>
+                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#services">Services</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#prodlink">Products</a>
+                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#products">Products</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#offer">Offers</a>
+                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#offers">Offers</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#imglink">Gallery</a>
+                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#imageGallery">Gallery</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#testilink">Testimonial</a>
+                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#testimonials">Testimonial</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#paylink">Payment</a>
+                                        <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#payments">Payment</a>
                                     </li>
 
 
 
 
                                 </ul>
+                                
                                 </div>
                                 {isSticky ?
                                 <div className="flex fbposright">
-                                        <p className="text-white-600">{name}</p>
+                                        <p className="text-white-600 mt-2">{name}</p>
                                         <img className="w-10 h-10 rounded-full object-cover" src={profileImage} alt="" />
                                     </div>:<></>}
                                     {/* </div> */}

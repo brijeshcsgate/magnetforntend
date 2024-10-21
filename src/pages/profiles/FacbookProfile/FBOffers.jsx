@@ -9,8 +9,9 @@ import TextToggler from '@/pages/ProfilePages/TextToggler';
 import FBEnquiryForm from '@/components/EnquiryForm/FBEnquiryForm';
 import { Close } from '@mui/icons-material';
 import ImageSliderFB from '@/pages/ProfilePages/ImageSliderFB';
-const FBProduct = ({products,profileUserId, visitorInfo}) => {
-  const [productData, setProductData] = useState(products);
+import { resizeImage } from '@/pages/ProfilePages/resizeImage';
+const FBOffers = ({ item, profileUserId, visitorInfo }) => {
+  const [productData, setProductData] = useState(item);
   const [open, setOpen] = React.useState(false);
   const [selectedItem, setSelectedItem] = useState(null); // Track the selected item for details
   const handleOpen = (item) => {
@@ -22,17 +23,17 @@ const FBProduct = ({products,profileUserId, visitorInfo}) => {
     setSelectedItem(null); // Reset the selected item when dialog is closed
   };
   // const [serviceData, setServiceData] = useState(services);
-  
+
   return (
     // id products, section-services --class
-    <section className="fbmainbody mn-pad" id="">
+    <section className="fbmainbody mn-pad pt-3" id="">
       <div className="fbcontainer mx-auto px-3 ">
         <div className="row px-4">
           <div className="col-md-10 col-lg-8">
             <div className="fbheader-section">
 
               <h2 className="text-3xl font-semibold">
-                Our <span className="text-blue-500">Products</span>
+                Our <span className="text-blue-500">Offers</span>
               </h2>
             </div>
           </div>
@@ -61,38 +62,43 @@ const FBProduct = ({products,profileUserId, visitorInfo}) => {
           className="mySwiper pl-2 pr-3"
         >
 
-{productData?.length > 0 &&
-        productData.map((item, index) => (
-            // <Grid sx={12} md={8} lg={4} >
-            <SwiperSlide >
+          {productData?.length > 0 &&
+            productData.map((item, index) => (
+              // <Grid sx={12} md={8} lg={4} >
+              <SwiperSlide >
 
-              <div className="fbswiper-slide mt-0" key={index}>
-                <div className="fbsingle-product  pr-4 rounded-lg ">
-                  <div className="fbproduct-item">
-                    {/* <img src={profileImage} alt="" className="w-full  object-cover rounded-md" /> */}
-                    <ImageSliderFB images={item?.image} autoChangeInterval={2000} />
+                <div className="fbswiper-slide mt-0" key={index}>
+                  <div className="fbsingle-product  pr-4 rounded-lg ">
+                    <div className="fbproduct-item">
+                      <img src={item?.image} alt="" className="w-full  object-cover rounded-md"  style={resizeImage(380, 290)}/>
+                      {/* <ImageSliderFB images={item?.image} autoChangeInterval={2000} /> */}
 
-                    <h5 className="font-bold">{item.name}</h5>
-                    <p className="fbdescription text-gray-600">
-                    <TextToggler text={item.description} charLimit={280} isShowBtn={false} />
-                    </p>
-                    <h6 className="text-secondary">
-                    MRP:{" "}{item.price}                    </h6>
-                    <div className="flex space-x-4 justify-left">
-                    <button onClick={() => handleOpen(item)} className="fb-ser-button" >
+                      <h5 className="font-bold">{item.name}</h5>
+                      <p className="fbdescription text-gray-600">
+                        <TextToggler text={item.description} charLimit={280} isShowBtn={false} />
+                      </p>
+                      <h6 className="text-secondary">
+                        Start Date:{" "}{item.startDate}, {item.startTime}  
+                        <br/>                
+                          {/* </h6> */}
+                      {/* <h6 className="text-primary"> */}
+                      End Date:{" "}{item.endDate}, {item.endTime}                    </h6>
+
+                      <div className="flex space-x-4 justify-left">
+                        <button onClick={() => handleOpen(item)} className="fb-ser-button" >
                           View detail
                         </button>
-                        
+
                         <FBEnquiryForm profileUserId={profileUserId} visitorInfo={visitorInfo} cl='text-secondary' />
 
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-             
 
-             
-<Dialog
+
+
+                <Dialog
                   open={open}
                   onClose={handleClose}
                   aria-labelledby="alert-dialog-title"
@@ -123,7 +129,7 @@ const FBProduct = ({products,profileUserId, visitorInfo}) => {
                       >
                         <div className="image">
                           <div className="has-popup">
-                          <ImageSliderFB images={selectedItem?.image} autoChangeInterval={2000} />
+                            <img src={item?.image} alt="" className="w-full  object-cover rounded-md" />
 
                             {/* <img src={selectedItem.image} alt={selectedItem.name} /> */}
                           </div>
@@ -137,15 +143,21 @@ const FBProduct = ({products,profileUserId, visitorInfo}) => {
                             {selectedItem.description}
                           </div>
                           {/* <TextToggler text={selectedItem.description} charLimit={200} isShowBtn={false} /> */}
+                          <h6 className="text-secondary">
+                        Start Date:{" "}{item.startDate}, {item.startTime}  
+                        <br/>                
+                          {/* </h6> */}
+                      {/* <h6 className="text-primary"> */}
+                      End Date:{" "}{item.endDate}, {item.endTime}                    </h6>
 
                         </div>
                       </div>)}
 
                   </DialogContent>
                 </Dialog>
-            </SwiperSlide>
+              </SwiperSlide>
 
-          ))}
+            ))}
         </Swiper>
 
       </div>
@@ -157,4 +169,4 @@ const FBProduct = ({products,profileUserId, visitorInfo}) => {
   );
 };
 
-export default FBProduct;
+export default FBOffers;

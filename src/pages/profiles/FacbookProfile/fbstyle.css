@@ -11,6 +11,29 @@ li {
   margin: 0;
   padding: 0;
 }
+
+
+
+/* Initial button styles */
+.fb-ser-button {
+  background-color: #e4e6eb;   /* Initial background color */
+  color: #3e3e3e;             /* Text color */
+  border: none;             /* No border */
+  padding: 10px 20px;       /* Padding around the button */
+  font-size: 16px; 
+  font-weight: 500;         /* Font size */
+  cursor: pointer;          /* Pointer cursor on hover */
+  border-radius: 5px;       /* Rounded corners */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect */
+.fb-ser-button:hover {
+  background-color: #5e6c5e; /* Change background color on hover */
+  color: white;              /* Optional: change text color */
+}
+
+
 .fbpos-fix {
 }
 .fbposright{position:absolute !important; right:20px !important;gap:10px !important;}
@@ -25,7 +48,7 @@ li {
   height: 100%;
   clip-path: polygon(0% 100%, 0% 0%, 100% 0%);
 }
-.txt-color{color:#fff !important;}
+.txt-color{color:black !important;}
 /* Top half to right half */
 .top-right-triangle {
   position: absolute;
@@ -79,13 +102,26 @@ li {
   font-weight: 500 !important;
   border-radius: 5px;
 }
-
+.scroll-element-head {
+  margin: 0 !important;
+  padding: 0 !important;
+}
 .fbgradient-box {
   color: white;
   font-weight: bold;
   background: linear-gradient(to right, #0000ff, #ff0000); /* Blue to Red */
   /* border-radius: 10px; */
 }
+.fl-g10-r{
+  flex-direction: row;
+  display: flex;
+  gap: 10px;
+}
+.fbgradient-box-header{
+  color: black;
+  font-weight: bold;
+  background: grey; /* Blue to Red */
+  /* b
 .fbbg-head {
   background-color: #fff !important;
 }
@@ -158,7 +194,7 @@ li {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 14rem;
+  height: 20rem;
   border-radius: 10px;
 }
 
@@ -1771,7 +1807,7 @@ blockquote:after {
   }
 }
 
-@media screen and (max-width: 767px) and (min-width: 375px) {
+@media screen and (max-width: 767px) and (min-width: 305px) {
   .fbsticky {
     padding: 8px 2.8rem !important;
   }

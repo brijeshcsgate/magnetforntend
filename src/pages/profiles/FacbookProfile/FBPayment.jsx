@@ -1,6 +1,8 @@
+import { resizeImage } from '@/pages/ProfilePages/resizeImage';
+import { Button } from '@mui/material';
 import React from 'react';
 
-const FBPayment = ({profileImage}) => {
+const FBPayment = ({bankAccountDetails,paymentDetails}) => {
   return (
     <section className="fbmainbody " id="">
     <div className="fbcontainer mn-pad mx-auto px-5">
@@ -25,14 +27,20 @@ const FBPayment = ({profileImage}) => {
             <div className=" p-4 rounded-md fbpaymentcard" >
               <label htmlFor="upiImage" className="block text-gray-700 font-medium">UPI Image</label>
               <div className="flex  my-2">
-                <img src={profileImage} alt="QR Code" className="w-32 h-32 object-cover" />
+                <img src={paymentDetails?.image} alt="QR Code" style={resizeImage(90, 90)}className=" object-cover" />
               </div>
               <div className=" text-lg font-semibold lt-sp">
-                <p>1234 1234 1234 1234</p>
+                <p>{bankAccountDetails?.accountNumber}</p>
+                
+                {paymentDetails?.paymentGatewayLink?
+                        <div className='text-lg font-semibold lt-sp'>{`Payment Gateway Link: `} &nbsp;&nbsp;<Button variant="contained" size='small' color="success" onClick={(e) => { window.open(paymentDetails?.paymentGatewayLink, '_blank') }}>
+                              Click Here
+                            </Button></div>
+                            :<></>}
               </div>
               <div className=" mt-4">
                 <label htmlFor="accountName" className="block text-gray-700 font-medium">ACCOUNT NAME</label>
-                <p className="text-lg font-semibold">BRIJESH YADAV</p>
+                <p className="text-lg font-semibold">{bankAccountDetails?.accountName}</p>
               </div>
             </div>
 
@@ -44,19 +52,19 @@ const FBPayment = ({profileImage}) => {
                   <div className="fbaccountdetails">
                     <div className="mb-4 flex items-center">
                       <label className="font-medium text-gray-700 w-40">Bank Name:</label>
-                      <div className="ml-4 text-gray-900">Bank of Maharashtra</div>
+                      <div className="ml-4 text-gray-900">{bankAccountDetails?.bankName}</div>
                     </div>
                     <div className="mb-4 flex items-center">
                       <label className="font-medium text-gray-700 w-40">Account Number:</label>
-                      <div className="ml-4 text-gray-900">1234 1234 1234 1234</div>
+                      <div className="ml-4 text-gray-900">{bankAccountDetails?.accountNumber}</div>
                     </div>
                     <div className="mb-4 flex items-center">
                       <label className="font-medium text-gray-700 w-40">PAN Card Number:</label>
-                      <div className="ml-4 text-gray-900">AAAAA7777A</div>
+                      <div className="ml-4 text-gray-900">{bankAccountDetails?.pan}</div>
                     </div>
                     <div className="mb-4 flex items-center">
                       <label className="font-medium text-gray-700 w-40">GST No.:</label>
-                      <div className="ml-4 text-gray-900">07AAACP0165G2ZQ</div>
+                      <div className="ml-4 text-gray-900">{bankAccountDetails?.gst}</div>
                     </div>
                   </div>
                 </div>
@@ -64,17 +72,17 @@ const FBPayment = ({profileImage}) => {
                 {/* Right Column */}
                 <div>
                   <div className="fbaccountdetails">
-                    <div className="mb-4 flex items-center">
+                    {/* <div className="mb-4 flex items-center">
                       <label className="font-medium text-gray-700 w-40">Account Type:</label>
                       <div className="ml-4 text-gray-900">Savings account</div>
-                    </div>
+                    </div> */}
                     <div className="mb-4 flex items-center">
                       <label className="font-medium text-gray-700 w-40">Account Holder Name:</label>
-                      <div className="ml-4 text-gray-900">Brijesh Yadav</div>
+                      <div className="ml-4 text-gray-900">{bankAccountDetails?.accountName}</div>
                     </div>
                     <div className="mb-4 flex items-center">
                       <label className="font-medium text-gray-700 w-40">IFSC Code:</label>
-                      <div className="ml-4 text-gray-900">PUNB0733600</div>
+                      <div className="ml-4 text-gray-900">{bankAccountDetails?.ifsc}</div>
                     </div>
                     {/* <div className="mb-4 flex items-center" style={{width:'100%'}}>
                       <label className="accountdetails font-medium text-gray-700 w-40" style={{width:'54%'}}>Remark:</label>

@@ -101,7 +101,7 @@ export default function FBEnquiryForm({ profileUserId, visitorInfo,cl }) {
     return (
         <React.Fragment>
 
-            <button className={` fbref-button fbflex-db ${cl?"text-secondary":''}`}
+            <button className={` fbref-button fbflex-db fl-g10-r${cl?"text-secondary":''}`}
                 onClick={() => { setOpen(true) }}
 
             >

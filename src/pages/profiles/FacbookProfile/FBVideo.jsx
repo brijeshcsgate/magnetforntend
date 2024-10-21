@@ -12,8 +12,11 @@ import { Grid } from '@mui/material';
 // Install Swiper modules
 SwiperCore.use([Navigation, Pagination]);
 
-const FBVideo = () => {
-    const videos = [
+const FBVideo = ({videos}) => {
+
+const linksArray = videos.map(item => item.link);
+const namesArray = videos.map(item => item.name);
+    const videos2 = [
         "https://www.youtube.com/embed/Zhawgd0REhA",
         "https://www.youtube.com/embed/Zhawgd0REhA",
         "https://www.youtube.com/embed/Zhawgd0REhA",
@@ -63,20 +66,20 @@ const FBVideo = () => {
                       slidesPerView: 1,  // Show 1 slide for mobile view
                     },}}
                 >
-             
+             {/* {JSON.stringify(linksArray)} */}
                     {videos.map((video, index) => (
                         //    <Grid sx={12} md={6} lg={4}>
              
                         <SwiperSlide key={index} className="flex flex-col items-center ">
                             <iframe
                                 className="w-full h-64 rounded-md"
-                                src={video}
+                                src={video?.link}
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                             ></iframe>
                             <div className="mt-2 cursor-pointer" data-bs-toggle="modal" data-bs-target="#myvid">
-                                <p className="text-lg">Magnet</p>
+                                <p className="text-lg">{video?.name}</p>
                             </div>
                         </SwiperSlide>
                 ))}

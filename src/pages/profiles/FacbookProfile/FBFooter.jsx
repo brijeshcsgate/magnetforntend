@@ -33,15 +33,15 @@ const [IsEnquiryFormData,setIsEnquiryFormData]=useState(false)
 
 
   return (
-    <div className="bg-gray-100 pt-3  fbgradient-box " style={{position:'fixed',bottom:'0', width:'100%',zIndex:'99'}}>
+    <div className="bg-gray-100 pt-3  fbgradient-box-header " style={{position:'fixed',bottom:'0', width:'100%',zIndex:'99'}}>
       {/* <div className="container mx-auto"> */}
-        <div className="flex justify-center fbgradient-box">
-          <div className="space-x-4 fbflex-db fblinkbutton px-3">
+        <div className="flex justify-center fbgradient-box-header">
+          <div className="space-x-4 fbflex-db fblinkbutton px-3 flex">
             
             <FBReferrelForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsReferalForm={IsReferalForm} setIsReferalForm={setIsReferalForm} />
             {/* <button>Enquiry</button> */}
             <FBEnquiryForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsEnquiryFormData={IsEnquiryFormData} setIsEnquiryFormData={setIsEnquiryFormData} />
-            <button onClick={generateVCard} className='fbref-button fbflex-db'><SaveIcon/><span> Save My Contact</span></button>
+            <button onClick={generateVCard} className='fbref-button fbflex-db fl-g10-r'><SaveIcon/><span> Save My Contact</span></button>
 
 
           {/* </div> */}

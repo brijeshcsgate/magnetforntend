@@ -35,7 +35,7 @@ const testimonials = [
     },
 ];
 
-const FBTestimonial = () => {
+const FBTestimonial = ({testimonials}) => {
     return (
         // <div id="testilink">
         <section className=" fbmainbody" id="">
@@ -57,17 +57,17 @@ const FBTestimonial = () => {
                     pagination={{ clickable: true }}
                     navigation
                 >
-                    {testimonials.map((testimonial, index) => (
-                        <SwiperSlide key={index} className="swiper-slide px-3">
+                    {testimonials?.map((testimonial, index) => (
+               <SwiperSlide key={index} className="swiper-slide px-3">
                             <div className="fbtestimonial p-6 border rounded-lg shadow-lg">
                                 <address className="fbtestimonial__author text-center">
                                     {/* <img src={testimonial.img} alt="" className="testimonial__photo w-16 h-16 rounded-full mx-auto" /> */}
-                                    <h6 className="fbtestimonial__name text-lg font-semibold">{testimonial.name}</h6>
-                                    <p className="fbtestimonial__location text-sm text-gray-500"><i>{testimonial.location}</i></p>
+                                    <h6 className="fbtestimonial__name text-lg font-semibold">{testimonial?.name}</h6>
+                                    <p className="fbtestimonial__location text-sm text-gray-500"><i>{testimonial?.location}</i></p>
                                 </address>
 
                                 <blockquote className="fbtestimonial__text mt-2 text-gray-700 italic">
-                                    {testimonial.text}
+                                {testimonial?.description}
                                 </blockquote>
                             </div>
                         </SwiperSlide>

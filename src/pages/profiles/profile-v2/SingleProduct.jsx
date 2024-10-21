@@ -1,10 +1,8 @@
 
 import React, { useContext } from "react";
 import styles from "./styles/profileV2.module.css";
-import ServiceModal from "../../../components/profile-v2/ServiceModal";
 import { ContextAPI } from "../../../contextAPI/ContextProfileV2";
 import TextToggler from "@/pages/ProfilePages/TextToggler";
-import ImageSliderBulk from "@/pages/ProfilePages/ImageSliderBulk";
 import ImageSliderBulk2 from "@/pages/ProfilePages/ImageSliderBulk2";
 import EnquiryForm from "@/components/EnquiryForm/EnquiryForm";
 import ProductTempModal from "@/components/profile-v2/ProductTempModal";
