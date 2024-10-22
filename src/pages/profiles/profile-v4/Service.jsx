@@ -9,7 +9,7 @@ import { ContextAPI } from '@/contextAPI/ContextProfileV2';
 
 const Service = () => {
 const {serviceInfo,setServiceInfo}=useContext(ContextAPI)
-
+const btnStyle={ backgroundColor: "#425cbb", borderRadius: "1rem", border: "none", fontSize: "14px", fontWeight: "bold", marginLeft: "5px",padding:'6px 12px' , height:'36px'}
   const serviceModalInfo=()=>{
     setServiceInfo({data:"This is by context API"})
   }
@@ -30,8 +30,9 @@ const {serviceInfo,setServiceInfo}=useContext(ContextAPI)
                   We are a team of professional Insurance and
                   Financial Advisors who are here to cater......
                 </Card.Text>
-                <Button data-bs-toggle="modal" data-bs-target="#serviceModal" style={{ backgroundColor: "#425cbb", borderRadius: "1rem", border: "none", fontSize: "14px", fontWeight: "bold", marginLeft: "5px" }}>View Details</Button>
-                <Button onClick={serviceModalInfo} data-bs-toggle="modal" data-bs-target="#formModal" style={{ backgroundColor: "#425cbb", borderRadius: "1rem", border: "none", fontSize: "14px", fontWeight: "bold", marginLeft: "5px" }}>Enquiry</Button>
+                {/* prof4-btn */}
+                <Button data-bs-toggle="modal" data-bs-target="#serviceModal" style={btnStyle}>View Details</Button>
+                <Button onClick={serviceModalInfo} data-bs-toggle="modal" data-bs-target="#formModal"style={btnStyle}>Enquiry</Button>
               </Card.Body>
             </Card>
 

@@ -7,6 +7,7 @@ import styles from "./styles/profileV4.module.css"
 import Carousel from 'react-bootstrap/Carousel';
 
 const Products = () => {
+  const btnStyle={ backgroundColor: "#425cbb", borderRadius: "1rem", border: "none", fontSize: "14px", fontWeight: "bold", marginLeft: "5px",padding:'6px 12px' , height:'36px'}
 
   return (
     <>
@@ -44,8 +45,8 @@ const Products = () => {
                 </div>
                 <div style={{ display: "flex" }}>
 
-                  <Button data-bs-toggle="modal" data-bs-target="#serviceModal" style={{ backgroundColor: "#425cbb", border: "none", fontSize: "14px", borderRadius: "1rem", fontWeight: "bold" }}>View Details</Button>
-                  <Button data-bs-toggle="modal" data-bs-target="#formModal" style={{ backgroundColor: "#425cbb", borderRadius: "1rem", border: "none", fontSize: "14px", fontWeight: "bold", marginLeft: "5px" }}>Enquiry</Button>
+                  <Button data-bs-toggle="modal" data-bs-target="#serviceModal" style={btnStyle}>View Details</Button>
+                  <Button data-bs-toggle="modal" data-bs-target="#formModal" style={btnStyle}>Enquiry</Button>
                 </div>
               </Card.Body>
             </Card>

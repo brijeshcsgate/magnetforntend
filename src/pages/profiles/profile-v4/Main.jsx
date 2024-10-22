@@ -8,14 +8,15 @@ import Testimonials from './Testimonials';
 import Payments from './Payments';
 import Gallery from './Gallery';
 import About from './About';
-const Main = () => {
+const Main = ({ profileDetails, profileUserId, visitorInfo, name, whatsappNumber, email, companyName, designation, mobile }) => {
     const { selectedTb } = useContext(ContextAPI)
     return (
         < >
 
             <div className=''>
                 <div className={`${selectedTb === "about" ? styles?.showContent : styles?.hideContent}`}>
-                    <About />
+                    <About aboutUs={profileDetails?.aboutUs} countryCode={profileDetails?.countryCode} mobile={profileDetails?.mobile} whatsappNumberCountryCode={profileDetails?.whatsappNumberCountryCode} whatsappNumber={profileDetails?.whatsappNumber}
+              email={profileDetails?.email} address={profileDetails?.address}/>
                 </div>
                 <div className={`${selectedTb === "services" ? styles?.showContent : styles.hideContent}`}>
                     <Service />

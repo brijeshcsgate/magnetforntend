@@ -94,7 +94,7 @@ const App = () => {
         
         <Route path='/profile/:id' element={<ProfilepageUser />} />
         <Route  path='/magnetv1/:id' element={<Profilev2Main/>} />
-      <Route  path='/profiles/v4' element={<ProfileV4Main/>} />
+      <Route  path='/magnetv4/:id' element={<ProfileV4Main/>} />
       <Route  path='/profiles' element={<ProfileV1Main/>} />
       <Route  path='/magnetfb/:id' element={<FBIndex/>} />
    

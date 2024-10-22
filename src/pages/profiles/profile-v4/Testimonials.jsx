@@ -8,7 +8,8 @@ const Testimonials = () => {
 
   return (
     <>
-      <div className={styles.titleUnderline}>
+    <div className={styles.h100vh}>
+      <div className={styles.titleUnderline} >
         <span></span>
         <h5>Testimonials</h5>
       </div>
@@ -23,6 +24,7 @@ const Testimonials = () => {
           <SingleTestimonial />
         </Carousel.Item>
       </Carousel>
+      </div>
     </>
   )
 }
