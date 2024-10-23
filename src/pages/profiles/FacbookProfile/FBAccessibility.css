@@ -58,7 +58,12 @@
   }   */
 
 
-
+  .fbobjectFitcover {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 300px !important; /* You can adjust the height as needed */
+  }
+  
   /* FBAccessibility.css */
 
   .accessibility-widget {

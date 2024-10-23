@@ -19,22 +19,22 @@ const Main = ({ profileDetails, profileUserId, visitorInfo, name, whatsappNumber
               email={profileDetails?.email} address={profileDetails?.address}/>
                 </div>
                 <div className={`${selectedTb === "services" ? styles?.showContent : styles.hideContent}`}>
-                    <Service />
+                    <Service services={profileDetails?.services} profileUserId={profileUserId} visitorInfo={visitorInfo}/>
                 </div>
                 <div className={`${selectedTb === "products" ? styles.showContent : styles.hideContent}`}>
-                    <Products />
+                    <Products products={profileDetails?.products} profileUserId={profileUserId} visitorInfo={visitorInfo}/>
                 </div>
                 <div className={`${selectedTb === "offers" ? styles.showContent : styles.hideContent}`}>
-                    <Offers />
+                    <Offers item={profileDetails?.offers}/>
                 </div>
                 <div className={`${selectedTb === "gallery" ? styles.showContent : styles.hideContent}`}>
-                    <Gallery />
+                    <Gallery images={profileDetails?.imageGalleries} videos={profileDetails?.videoGalleries} documentsLinks={profileDetails?.documentsLinks}/>
                 </div>
                 <div className={`${selectedTb === "testimonials" ? styles.showContent : styles.hideContent}`}>
-                    <Testimonials />
+                    <Testimonials testimonials={profileDetails?.testimonials}/>
                 </div>
                 <div className={`${selectedTb === "payments" ? styles.showContent : styles.hideContent}`}>
-                    <Payments />
+                    <Payments bankAccountDetails={profileDetails?.bankAccountDetails} paymentDetails={profileDetails?.paymentDetails} />
                 </div>
             </div>
 

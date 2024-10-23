@@ -2,15 +2,15 @@ import React from 'react'
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-const ImageGallery = () => {
+const ImageGallery = ({images}) => {
     return (
         <Row xs={1} md={2} lg={2} xl={3} className="g-4">
-        {Array.from({ length: 4 }).map((_, idx) => (
+        {images?.map((item, idx) => (
           <Col key={idx}>
             <Card>
-              <Card.Img variant="top" src={"/imgV4/product.jpg"} />
+              <Card.Img variant="top" src={item?.image} className='fbobjectFitcover'/>
               <Card.Body>
-                <Card.Title>Image {idx+1}</Card.Title>
+                <Card.Title>{item?.name}</Card.Title>
               </Card.Body>
             </Card>
           </Col>

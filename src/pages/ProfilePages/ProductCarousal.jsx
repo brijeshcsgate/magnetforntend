@@ -10,20 +10,20 @@ import EnquiryInfoForm from './EnquiryInfoForm';
 import EnquiryInfoFormOnClick from './EnquiryInfoFormOnClick';
 import ImageSliderBulk from './ImageSliderBulk';
 
-const ProductCarousal = ({ images ,profileUserId,visitorInfo,footer }) => {
+const ProductCarousal = ({ images, profileUserId, visitorInfo, footer }) => {
   const [startIndex, setStartIndex] = useState(0);
   // console.log('images',images)
   const [width, setWidth] = useState(window.innerWidth);
-const [countImage,setCountImage]=useState(0)
+  const [countImage, setCountImage] = useState(0)
   const [openEf, setOpenEf] = React.useState(false);
   useEffect(() => {
     const intervalId = setInterval(() => {
 
-     setCountImage(countImage+1)
+      setCountImage(countImage + 1)
     }, 3000); // change image every 3 seconds
     return () => clearInterval(intervalId);
   }, [countImage]);
-  
+
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -52,7 +52,7 @@ const [countImage,setCountImage]=useState(0)
     setStartIndex((prevIndex) => Math.min(images.length - getDeviceType(), prevIndex + 1));
   };
   const [count, setCount] = useState(true);
-  
+
   const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -64,14 +64,11 @@ const [countImage,setCountImage]=useState(0)
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
     setOpen(false); // Close dialog only when the Cancel button is clicked
-};
+  };
 
   const nextSlide = () => {
     setCount(true);
     setTimeout(() => {
-      // setCurrentIndex((prevIndex) =>
-      //   prevIndex === slides.length - 1 ? 0 : prevIndex + 1
-      // );
       setCount(false);
     }, 500); // Delay for animation
   };
@@ -79,202 +76,149 @@ const [countImage,setCountImage]=useState(0)
   return (
     <div className="relative w-full  mx-auto">
       {/* <div className="flex overflow-hidden" style={{ marginLeft: '25px' ,flexDirection:'row'}}> */}
-      <Grid container spacing={2} className="overflow-hidden ml-5"style={{paddingTop:'25px',paddingBottom:'25px',paddingLeft:'15px',paddingRight:'10px'}} >
+      <Grid container spacing={2} className="overflow-hidden ml-5" style={{ paddingTop: '25px', paddingBottom: '25px', paddingLeft: '15px', paddingRight: '10px' }} >
         {images.slice(startIndex, startIndex + getDeviceType()).map((product, index) => (
-        
-        <Grid item xs={12} md={6} lg={4}>
-        <div key={startIndex + index} 
-        // className="col col-m-12 col-t-6 col-d-4 p-2 transition-all duration-300 ease-in-out "
-        >
-          
-            <div
-              key={index}
-              className=" box-item f-mockup animated  ml-4"
-              data-sr-id="4"
-              style={{
-                visibility: 'visible',
-                transform: 'translateY(0px) scale(1)',
-                opacity: '1',
-                transition:
-                  'all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)',
-                left: '2%',
-                top: '0px',
-              }}
+
+          <Grid item xs={12} md={6} lg={4}>
+            <div key={startIndex + index}
             >
-              <div className="image">
-                <div className="has-popup">
-                  {/* <img
-                    src={product?.image}
-                    // className="p-in-image-slide"
-                    className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"
-                      }`}
-                    alt={product?.name}
-                  /> */}
-                  {/* {product?.image.map((image, index) => (
-        <img
-          key={index}
-          src={image[index]}
-          alt={image.alt}
-          className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"}`}
-        />
-      ))} */}
-       <ImageSliderBulk images={product?.image} autoChangeInterval={2000} />
+
+              <div
+                key={index}
+                className=" box-item f-mockup animated  ml-4"
+                data-sr-id="4"
+                style={{
+                  visibility: 'visible',
+                  transform: 'translateY(0px) scale(1)',
+                  opacity: '1',
+                  transition:
+                    'all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)',
+                  left: '2%',
+                  top: '0px',
+                }}
+              >
+                <div className="image">
+                  <div className="has-popup">
+
+                    <ImageSliderBulk images={product?.image} autoChangeInterval={2000} />
+                  </div>
                 </div>
-              </div>
-              <div className="content-box">
-                <div className="name has-popup">
-                <strong>  <TextToggler text={product?.name} charLimit={20} isShowBtn={false} /></strong>
-                </div>
-                <p> <TextToggler text={product?.description} charLimit={20} isShowBtn={false} /></p>
-                <div className="pricing">
-                  <i
-                    style={{
-                      fontSize: '12px',
-                      position: 'relative',
-                      top: '-8px',
-                    }}
-                    className="fa fa-inr"
-                    aria-hidden="true"
-                  ></i>
-                  {/* <div className="">
-                    {' '}
-                    {product?.price}
-                  </div> */}
-                  {/* <br /> */}
-                  <span className="mrp"><strong>M.R.P.:</strong> </span>
-                  {/* <i
-                    style={{
-                      fontSize: '10px',
-                      position: 'relative',
-                      top: '-1px',
-                    }}
-                    className="fa fa-inr"
-                    aria-hidden="true"
-                  ></i> */}
-                 {product?.price}               </div>
-                {/* <div className="product-link">
-                  {product?.websiteLink}
-                </div> */}
-                <div className="service-bts flex-row-g20" style={{display:'flex', justifyContent:'space-between', width:'100%'}}>
-                  <div onClick={()=>setOpen(true)} className="btn btn_animated has-popup" style={{width:'50%'}}>
-                    <span className="circle center_icon">
-                      View detail
+                <div className="content-box">
+                  <div className="name has-popup">
+                    <strong>  <TextToggler text={product?.name} charLimit={20} isShowBtn={false} /></strong>
+                  </div>
+                  <p> <TextToggler text={product?.description} charLimit={20} isShowBtn={false} /></p>
+                  <div className="pricing">
+                    <i
+                      style={{
+                        fontSize: '12px',
+                        position: 'relative',
+                        top: '-8px',
+                      }}
+                      className="fa fa-inr"
+                      aria-hidden="true"
+                    ></i>
+                    <span className="mrp"><strong>M.R.P.:</strong> </span>
+                    {product?.price}               </div>
+                  <div className="service-bts flex-row-g20" style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                    <div onClick={() => setOpen(true)} className="btn btn_animated has-popup" style={{ width: '50%' }}>
+                      <span className="circle center_icon">
+                        View detail
                       </span>
-                  </div>
-                  {/* <Button onClick={()=>setOpen(true)} className="btn btn_animated has-popup">
-                    <span className="circle center_icon">View detail</span>
-                  </Button> */}
-                  <div
-                    className="btn extra contact-btn btn_animated has-popup"style={{width:'50%'}}
-                    onClick={()=>setOpenEf(true)}
-                  >
-                    <span 
-                    className="circle center_icon"
+                    </div>
+                    <div
+                      className="btn extra contact-btn btn_animated has-popup" style={{ width: '50%' }}
+                      onClick={() => setOpenEf(true)}
                     >
-                      Enquiry
-                    </span>
-                    <EnquiryInfoFormOnClick openEf={openEf}  setOpenEf={setOpenEf}  profileUserId={profileUserId} visitorInfo={visitorInfo} />
-               
-                    {/* <EnquiryInfoForm footer={true} profileUserId={profileUserId} visitorInfo={visitorInfo} /> */}
+                      <span
+                        className="circle center_icon"
+                      >
+                        Enquiry
+                      </span>
+                      <EnquiryInfoFormOnClick openEf={openEf} setOpenEf={setOpenEf} profileUserId={profileUserId} visitorInfo={visitorInfo} />
+
+                    </div>
                   </div>
                 </div>
+
               </div>
 
-            </div>
 
-            
-      <Dialog
+              <Dialog
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
                 // maxWidth="md"  
                 fullWidth
-                
-            >
-                <DialogTitle style={{ fontSize: '16px', fontWeight: '700' , display:'flex',flexDirection:'row', justifyContent:'space-between'}}>
-                    
-                    <span></span><span onClick={handleClose}><Close /></span>
+
+              >
+                <DialogTitle style={{ fontSize: '16px', fontWeight: '700', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+
+                  <span></span><span onClick={handleClose}><Close /></span>
                 </DialogTitle>
                 <DialogContent>
 
-                <div
-              // key={index}
-              className=" box-item f-mockup animated "
-              data-sr-id="4"
-              style={{
-                visibility: 'visible',
-                transform: 'translateY(0px) scale(1)',
-                opacity: '1',
-                transition:
-                  'all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)',
-                left: '2%',
-                top: '0px',
-              }}
-            >
-              <div className="image">
-                <div className="has-popup">
-                  {/* <img
-                    src={product?.image}
-                    alt={product?.name}
-                  /> */}
-                  <ImageSliderBulk images={product?.image} autoChangeInterval={3000} />
-       
-                </div>
-              </div>
-              <div className="content-box">
-                <div className="name has-popup">
-               <strong>   {product?.name}</strong>
-                </div>
-                <p>
-                {product?.description}
-                {/* <TextToggler text={product?.description} charLimit={200} isShowBtn={false} /> */}
-                 
-                  </p>
-                <div className="pricing">
-                  <i
+                  <div
+                    // key={index}
+                    className=" box-item f-mockup animated "
+                    data-sr-id="4"
                     style={{
-                      fontSize: '12px',
-                      position: 'relative',
-                      top: '-8px',
+                      visibility: 'visible',
+                      transform: 'translateY(0px) scale(1)',
+                      opacity: '1',
+                      transition:
+                        'all 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1), opacity 0.5s cubic-bezier(0.6, 0.2, 0.1, 1)',
+                      left: '2%',
+                      top: '0px',
                     }}
-                    className="fa fa-inr"
-                    aria-hidden="true"
-                  ></i>
-                  {/* <div className="">
-                    {' '}
-                    {product?.price}
-                  </div> */}
-                  {/* <br /> */}
-                  <span className="mrp"> <strong>M.R.P.:</strong> </span>
-                  <i
-                    style={{
-                      fontSize: '10px',
-                      position: 'relative',
-                      top: '-1px',
-                    }}
-                    className="fa fa-inr"
-                    aria-hidden="true"
-                  ></i>
-                   {/* <del>  */}
-                    {product?.price}
-                    {/* </del> */}
-                
-                  {/* <del> {product?.offerPrice}8888--Pend</del> */}
-                </div>
-                {/* <div className="product-link">
-                  {product?.websiteLink}--web link Pend
-                </div> */}
-              </div>
+                  >
+                    <div className="image">
+                      <div className="has-popup">
+                        <ImageSliderBulk images={product?.image} autoChangeInterval={3000} />
 
-            </div>
+                      </div>
+                    </div>
+                    <div className="content-box">
+                      <div className="name has-popup">
+                        <strong>   {product?.name}</strong>
+                      </div>
+                      <p>
+                        {product?.description}
+
+                      </p>
+                      <div className="pricing">
+                        <i
+                          style={{
+                            fontSize: '12px',
+                            position: 'relative',
+                            top: '-8px',
+                          }}
+                          className="fa fa-inr"
+                          aria-hidden="true"
+                        ></i>
+                        <span className="mrp"> <strong>M.R.P.:</strong> </span>
+                        <i
+                          style={{
+                            fontSize: '10px',
+                            position: 'relative',
+                            top: '-1px',
+                          }}
+                          className="fa fa-inr"
+                          aria-hidden="true"
+                        ></i>
+                        {product?.price}
+                      </div>
+                    </div>
+
+                  </div>
                 </DialogContent>
-            </Dialog>
-          </div>
+              </Dialog>
+            </div>
           </Grid>
         ))}
-        
-        </Grid>
+
+      </Grid>
       {/* </div> */}
       <button
         onClick={handlePrev}

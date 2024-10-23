@@ -27,18 +27,17 @@ const FBOffers = ({ item, profileUserId, visitorInfo }) => {
   return (
     // id products, section-services --class
     <section className="fbmainbody mn-pad pt-3" id="">
-      <div className="fbcontainer mx-auto px-3 ">
-        <div className="row px-4">
-          <div className="col-md-10 col-lg-8">
-            <div className="fbheader-section">
 
+        <div className=" mx-auto px-3 ">
+        <div className="flex flex-wrap">
+          <div className=" lg:w-1/3">
+            <div className="fbheader-section mb-2 px-4">
               <h2 className="text-3xl font-semibold">
-                Our <span className="text-blue-500">Offers</span>
+              Our <span className="text-blue-500">Offers</span>
               </h2>
             </div>
           </div>
         </div>
-
         <Swiper
           modules={[Navigation, Pagination]}
           navigation
@@ -67,8 +66,8 @@ const FBOffers = ({ item, profileUserId, visitorInfo }) => {
               // <Grid sx={12} md={8} lg={4} >
               <SwiperSlide >
 
-                <div className="fbswiper-slide mt-0" key={index}>
-                  <div className="fbsingle-product  pr-4 rounded-lg ">
+                <div className="fbswiper-slide mt-0 p-2" key={index}>
+                  <div className="fbsingle-product   ">
                     <div className="fbproduct-item">
                       <img src={item?.image} alt="" className="w-full  object-cover rounded-md"  style={resizeImage(380, 290)}/>
                       {/* <ImageSliderFB images={item?.image} autoChangeInterval={2000} /> */}

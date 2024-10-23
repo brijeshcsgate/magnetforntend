@@ -217,7 +217,9 @@ const FBIndex = () => {
           <Element name="payments" id="payments" className="scroll-element-head">
             <FBPayment bankAccountDetails={profileDetails?.bankAccountDetails} paymentDetails={profileDetails?.paymentDetails} />
           </Element> : <></>}
-
+        <Element className="scroll-element-head pb-5">
+          <div></div>
+        </Element>
         <FBFooter profileUserId={profileUserId} visitorInfo={visitorInfo} name={profileDetails?.name} whatsappNumber={+"+" + profileDetails?.whatsappNumberCountryCode + " " + profileDetails?.whatsappNumber} email={profileDetails?.email} companyName={profileDetails?.orgName} designation={profileDetails?.jobRoleName} mobile=
           {+'+' + profileDetails?.countryCode + ' ' + profileDetails?.mobile}
         />

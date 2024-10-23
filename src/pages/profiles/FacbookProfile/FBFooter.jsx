@@ -41,7 +41,7 @@ const [IsEnquiryFormData,setIsEnquiryFormData]=useState(false)
             <FBReferrelForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsReferalForm={IsReferalForm} setIsReferalForm={setIsReferalForm} />
             {/* <button>Enquiry</button> */}
             <FBEnquiryForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsEnquiryFormData={IsEnquiryFormData} setIsEnquiryFormData={setIsEnquiryFormData} />
-            <button onClick={generateVCard} className='fbref-button fbflex-db fl-g10-r'><SaveIcon/><span> Save My Contact</span></button>
+            <button onClick={generateVCard} className='fbref-button fbflex-db fl-g10-r al-cent'><SaveIcon/><span> Save My Contact</span></button>
 
 
           {/* </div> */}

@@ -9,10 +9,10 @@ const ImageSliderBulk = ({ images, autoChangeInterval = 3000 }) => {
   const goToNext = useCallback(() => {
     setFadeIn(false); // Start fade out
     setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images?.length);
       setFadeIn(true); // Start fade in
     }, 500); // Half of the transition duration
-  }, [images.length]);
+  }, [images?.length]);
 
   useEffect(() => {
     const changeInterval = setInterval(goToNext, autoChangeInterval);

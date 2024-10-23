@@ -12,7 +12,9 @@ li {
   padding: 0;
 }
 
-
+.al-cent{
+  align-items: center !important;
+}
 
 /* Initial button styles */
 .fb-ser-button {
@@ -190,6 +192,7 @@ li {
   align-items: center;
 }
 
+.mart{gap:10px;}
 .fbheroback img {
   background-repeat: no-repeat;
   background-size: cover;
@@ -544,7 +547,7 @@ li {
   position: relative;
   background: rgb(255, 255, 255);
   padding: 1rem 1rem 2rem;
-  border-radius: 17px 0px;
+  /* border-radius: 17px 0px; */
   /* box-shadow: rgb(0 0 0 / 10%) 0px 0px 10px 0px; */
 }
 
@@ -1613,6 +1616,12 @@ blockquote:after {
     padding: 8px 4.8rem !important;
   }
 
+  .fbtopend {
+    border:none;
+    width: 93.9%;
+    margin: auto;
+  }
+  .mart{margin-top: 50px;gap:10px;}
   .fbtopUserImg {
     left: 7.2rem;
   }
@@ -1661,6 +1670,14 @@ blockquote:after {
   .fbform-btn {
     display: inline-block;
   }
+  
+  .fbtopend {
+    border:none;
+    width: 93.9%;
+    margin: auto;
+  }
+  
+  .mart{margin-top: 50px;gap:10px;}
   .mn-pad{padding-left: 2% !important; padding-right: 2% !important;}
 
   .fbsticky {
@@ -1811,6 +1828,13 @@ blockquote:after {
   .fbsticky {
     padding: 8px 2.8rem !important;
   }
+  
+  .fbtopend {
+    border:none;
+    width: 93.9%;
+    margin: auto;
+  }
+  .mart{margin-top: 50px;flex-direction: column;justify-content: center;gap:10px;}
   .mn-pad{padding-left: 1% !important;padding-right: 1% !important;}
 
   .fbnavbar-light .navbar-toggler p {
@@ -2036,6 +2060,12 @@ blockquote:after {
 
   .fbshare-dil-img {
     margin: 1rem 0 0 0;
+  }
+  
+  .fbtopend {
+    border:none;
+    width: 93.9%;
+    margin: auto;
   }
 
   .fblink-button a {

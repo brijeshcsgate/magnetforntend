@@ -5,6 +5,10 @@ export const ContextAPI = createContext();
 export const ContextAPIProvider = ({ children }) => {
   const [choosenColor, setChoosenColor] = useState("");
   const [serviceInfo, setServiceInfo] = useState([]);
+  
+  const [productInfo, setProductInfo] = useState([]);
+  
+  const [offerInfo, setOfferInfo] = useState([]);
   const [showEnquiryFormModal, setShowEnquiryFormModal] = useState(false);
   const [galleryModalShow, setGalleryModalShow] = useState(false);
   const [galleryModalData, setGalleryModalData] = useState([]);
@@ -28,7 +32,10 @@ export const ContextAPIProvider = ({ children }) => {
         setProductModalDataV2,
         offersModalDataV2,
         setOffersModalDataV2,
-        
+        productInfo, 
+        setProductInfo,
+        offerInfo, 
+        setOfferInfo,
         serviceModalDataV2,
         setServiceModalDataV2,
         viewDetialsModalV1,

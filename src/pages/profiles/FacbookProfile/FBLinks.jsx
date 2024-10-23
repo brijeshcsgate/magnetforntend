@@ -15,13 +15,24 @@ const FBLinks = ({documentsLinks}) => {
     ];
 
     return (
-        <section className="fbmainbody ">
-            <div className="fbimp_links mn-pad mx-auto px-2 pb-5">
+        <section className="fbmainbody  pt-4 pb-3  mn-pad">
+            {/* <div className="fbimp_links mn-pad mx-auto px-2 pb-5">
             <div className="row">
           <div className="col-md-10 col-lg-8">
             <div className="fbheader-section pt-3 px-3 text-start">
             <h2 className="text-3xl font-semibold">
                Important <span className="text-blue-500">Links</span>
+              </h2>
+            </div>
+          </div>
+        </div> */}
+        
+      <div className=" mx-auto px-3 ">
+        <div className="flex flex-wrap">
+          <div className=" lg:w-1/3">
+            <div className="fbheader-section mb-2 px-4">
+              <h2 className="text-3xl font-semibold">
+              Important <span className="text-blue-500">Links</span>
               </h2>
             </div>
           </div>

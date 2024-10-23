@@ -10,42 +10,6 @@ const ImportantLink = ({documentsLinks}) => {
       <div className={styles.linkContainer}>
       {documentsLinks?.map((link, index) => (
                       
-        // <div className={styles.singleLink}>
-        //   <img src={`${"/img/word.png"}`} alt="word" />
-        //   <div style={{ color: `${choosenColor ? choosenColor : "#6d56c1"}` }}>
-        //     Link Name 1
-        //   </div>
-        // </div>
-        // <div className={styles.singleLink}>
-        //   <img
-        //     src={`${"/img/excel.png"}`}
-        //     alt="word"
-        //   />
-        //   <div style={{ color: `${choosenColor ? choosenColor : "#6d56c1"}` }}>
-        //     Link Name 2
-        //   </div>
-        // </div>
-        // <div className={styles.singleLink}>
-        //   <img
-        //     src={`${"/img/powerpoint.png"}`}
-        //     alt="word"
-        //   />
-        //   <div style={{ color: `${choosenColor ? choosenColor : "#6d56c1"}` }}>
-        //     Link Name 3
-        //   </div>
-        // </div>
-        // <div className={styles.singleLink}>
-        //   <img src={`${"/img/pdf.png"}`} alt="word" />
-        //   <div style={{ color: `${choosenColor ? choosenColor : "#6d56c1"}` }}>
-        //     Link Name 4
-        //   </div>
-        // </div>
-        // <div className={styles.singleLink}>
-        //   <img src={`${"/img/csv.png"}`} alt="word" />
-        //   <div style={{ color: `${choosenColor ? choosenColor : "#6d56c1"}` }}>
-        //     Link Name 5
-        //   </div>
-        // </div>
         <div className={styles.singleLink}>
           <img
             src={`${"/img/link_ico.png"}`}

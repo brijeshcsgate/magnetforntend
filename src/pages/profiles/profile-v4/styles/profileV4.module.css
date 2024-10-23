@@ -1,7 +1,12 @@
 /* .profileMargin {
     margin: 50px !important;
 } */
-
+.objectFitcover {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 200px !important; /* You can adjust the height as needed */
+  }
+  
 .prof4-btn{
     background-color:#425cbb !important;
     border-radius: 1rem !important;

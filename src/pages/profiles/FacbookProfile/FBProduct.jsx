@@ -9,7 +9,7 @@ import TextToggler from '@/pages/ProfilePages/TextToggler';
 import FBEnquiryForm from '@/components/EnquiryForm/FBEnquiryForm';
 import { Close } from '@mui/icons-material';
 import ImageSliderFB from '@/pages/ProfilePages/ImageSliderFB';
-const FBProduct = ({products,profileUserId, visitorInfo}) => {
+const FBProduct = ({ products, profileUserId, visitorInfo }) => {
   const [productData, setProductData] = useState(products);
   const [open, setOpen] = React.useState(false);
   const [selectedItem, setSelectedItem] = useState(null); // Track the selected item for details
@@ -22,15 +22,15 @@ const FBProduct = ({products,profileUserId, visitorInfo}) => {
     setSelectedItem(null); // Reset the selected item when dialog is closed
   };
   // const [serviceData, setServiceData] = useState(services);
-  
+
   return (
     // id products, section-services --class
     <section className="fbmainbody mn-pad" id="">
-      <div className="fbcontainer mx-auto px-3 ">
-        <div className="row px-4">
-          <div className="col-md-10 col-lg-8">
-            <div className="fbheader-section">
 
+      <div className=" mx-auto px-3 ">
+        <div className="flex flex-wrap">
+          <div className=" lg:w-1/3">
+            <div className="fbheader-section mb-2 px-4">
               <h2 className="text-3xl font-semibold">
                 Our <span className="text-blue-500">Products</span>
               </h2>
@@ -61,38 +61,38 @@ const FBProduct = ({products,profileUserId, visitorInfo}) => {
           className="mySwiper pl-2 pr-3"
         >
 
-{productData?.length > 0 &&
-        productData.map((item, index) => (
-            // <Grid sx={12} md={8} lg={4} >
-            <SwiperSlide >
+          {productData?.length > 0 &&
+            productData.map((item, index) => (
+              // <Grid sx={12} md={8} lg={4} >
+              <SwiperSlide >
 
-              <div className="fbswiper-slide mt-0" key={index}>
-                <div className="fbsingle-product  pr-4 rounded-lg ">
-                  <div className="fbproduct-item">
-                    {/* <img src={profileImage} alt="" className="w-full  object-cover rounded-md" /> */}
-                    <ImageSliderFB images={item?.image} autoChangeInterval={2000} />
+                <div className="pl-2 pr-2 fbswiper-slide mt-0" key={index}>
+                  <div className="fbsingle-product   ">
+                    <div className="fbproduct-item">
+                      {/* <img src={profileImage} alt="" className="w-full  object-cover rounded-md" /> */}
+                      <ImageSliderFB images={item?.image} autoChangeInterval={2000} />
 
-                    <h5 className="font-bold">{item.name}</h5>
-                    <p className="fbdescription text-gray-600">
-                    <TextToggler text={item.description} charLimit={280} isShowBtn={false} />
-                    </p>
-                    <h6 className="text-secondary">
-                    MRP:{" "}{item.price}                    </h6>
-                    <div className="flex space-x-4 justify-left">
-                    <button onClick={() => handleOpen(item)} className="fb-ser-button" >
+                      <h5 className="font-bold">{item.name}</h5>
+                      <p className="fbdescription text-gray-600">
+                        <TextToggler text={item.description} charLimit={280} isShowBtn={false} />
+                      </p>
+                      <h6 className="text-secondary">
+                        MRP:{" "}{item.price}                    </h6>
+                      <div className="flex space-x-4 justify-left">
+                        <button onClick={() => handleOpen(item)} className="fb-ser-button" >
                           View detail
                         </button>
-                        
+
                         <FBEnquiryForm profileUserId={profileUserId} visitorInfo={visitorInfo} cl='text-secondary' />
 
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-             
 
-             
-<Dialog
+
+
+                <Dialog
                   open={open}
                   onClose={handleClose}
                   aria-labelledby="alert-dialog-title"
@@ -123,7 +123,7 @@ const FBProduct = ({products,profileUserId, visitorInfo}) => {
                       >
                         <div className="image">
                           <div className="has-popup">
-                          <ImageSliderFB images={selectedItem?.image} autoChangeInterval={2000} />
+                            <ImageSliderFB images={selectedItem?.image} autoChangeInterval={2000} />
 
                             {/* <img src={selectedItem.image} alt={selectedItem.name} /> */}
                           </div>
@@ -143,9 +143,9 @@ const FBProduct = ({products,profileUserId, visitorInfo}) => {
 
                   </DialogContent>
                 </Dialog>
-            </SwiperSlide>
+              </SwiperSlide>
 
-          ))}
+            ))}
         </Swiper>
 
       </div>

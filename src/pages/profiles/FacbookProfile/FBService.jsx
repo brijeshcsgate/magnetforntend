@@ -77,7 +77,7 @@ const FBService = ({ services, profileUserId, visitorInfo }) => {
 
               <SwiperSlide >
                 <div className='p-2' key={item.id}>
-                  <div className="fbservice-box fbbg-white  rounded-lg  ">
+                  <div className="fbservice-box fbbg-white    ">
                     <div className="fbelement">
                       {/* <div
                   className="  rotate-image fbshape bg-blue-500 h-16 w-16 mb-4 cursor-pointer"

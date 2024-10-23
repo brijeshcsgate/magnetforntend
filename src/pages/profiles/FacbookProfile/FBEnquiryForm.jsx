@@ -87,7 +87,6 @@ export default function FBEnquiryForm({ profileUserId, visitorInfo,cl }) {
         setOpen(false); // Close dialog only when the Cancel button is clicked
     };
     const handleSubmit = async (values) => {
-        console.log('values')
         values.userId = profileUserId;
         values.tempratur_scale = values.tempratur_scale;
         await apiService.post(`${APIS.ADD_ENQUIRY}`, values)
@@ -101,7 +100,7 @@ export default function FBEnquiryForm({ profileUserId, visitorInfo,cl }) {
     return (
         <React.Fragment>
 
-            <button className={` fbref-button fbflex-db fl-g10-r${cl?"text-secondary":''}`}
+            <button className={`al-cent fbref-button fbflex-db fl-g10-r${cl?"text-secondary":''}`}
                 onClick={() => { setOpen(true) }}
 
             >

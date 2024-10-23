@@ -4,25 +4,22 @@ import React from 'react';
 
 const FBPayment = ({bankAccountDetails,paymentDetails}) => {
   return (
-    <section className="fbmainbody " id="">
-    <div className="fbcontainer mn-pad mx-auto px-5">
+            <section id="" className="fbmainbody pt-2 pb-2 mn-pad">
+      {/* container */}
 
-    <div className="fbcontainer p-4">
-      <div className="">
-        
-            {/* Payment Title */}
-            <div className="row mt-8">
-              <div className=" ">
-                <div className="fbheader-section">
-                <h2 className="text-3xl font-semibold">
-               Payment <span className="text-blue-500">Methods</span>
+      <div className=" mx-auto px-3 ">
+        <div className="flex flex-wrap">
+          <div className=" lg:w-1/3">
+            <div className="fbheader-section mb-2 px-4">
+              <h2 className="text-3xl font-semibold">
+              Payment <span className="text-blue-500">Methods</span>
               </h2>
-             </div>
-              </div>
             </div>
+          </div>
+        </div>
 
         <section id="PAYMENT" className='pt-3'>
-          <div className="fbcontainer fbbg-white" >
+          <div className=" fbbg-white" >
             {/* UPI Image and Account Info */}
             <div className=" p-4 rounded-md fbpaymentcard" >
               <label htmlFor="upiImage" className="block text-gray-700 font-medium">UPI Image</label>
@@ -46,7 +43,7 @@ const FBPayment = ({bankAccountDetails,paymentDetails}) => {
 
             {/* Payment Details */}
             <div className="fbbg-white p-6 shadow-md rounded-md mt-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 ">
                 {/* Left Column */}
                 <div>
                   <div className="fbaccountdetails">
@@ -97,8 +94,8 @@ const FBPayment = ({bankAccountDetails,paymentDetails}) => {
           </div>
         </section>
       </div>
-    </div>
-    </div>
+    {/* </div>
+    </div> */}
     </section>
   );
 };
