@@ -24,7 +24,7 @@ export const ContextAPIProvider = ({ children }) => {
   const [productModalDataV2,setProductModalDataV2]=useState([])
   const [offersModalDataV2,setOffersModalDataV2]=useState([])
   // Profile v4
-  const [selectedTb, setSelectedTab] = useState("services");
+  const [selectedTb, setSelectedTab] = useState("about");
   return (
     <ContextAPI.Provider
       value={{

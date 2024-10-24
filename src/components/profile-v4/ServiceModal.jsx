@@ -1,20 +1,11 @@
 import React, { useContext } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import { ContextAPI } from '@/contextAPI/ContextProfileV2';
-// import { ContextAPI } from '../../contextAPI/ContextProfileV2';
 const ServiceModal = (isOpenModal) => {
 
-  const {serviceInfo}=useContext(ContextAPI)
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
-  console.log('serviceInfo',serviceInfo)
+  const { serviceInfo } = useContext(ContextAPI)
+
   return (
     <div style={{ width: "90%" }}>
       {/* <!-- Modal --> */}
@@ -26,21 +17,9 @@ const ServiceModal = (isOpenModal) => {
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              {/* <Slider {...settings} arrows={null} dots={null}> */}
-                <div>
-                  <img width={`100%`} className={`card `} src={serviceInfo?.image} alt="" />
-                </div>
-                {/* <div>
-                  <img width={`100%`} className={`card `} src={`${"/img/1.png"}`} alt="" />
-                </div>
-                <div>
-                  <img width={`100%`} className={`card `} src={`${"/img/1.png"}`} alt="" />
-                </div>
-                <div>
-                  <img width={`100%`} className={`card `} src={`${"/img/1.png"}`} alt="" />
-                </div> */}
-                
-              {/* </Slider> */}
+              <div>
+                <img width={`100%`} className={`card `} src={serviceInfo?.image} alt="" />
+              </div>
             </div>
             <div className="modal-footer">
               {serviceInfo?.description}

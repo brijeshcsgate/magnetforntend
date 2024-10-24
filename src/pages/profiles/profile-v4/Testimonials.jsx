@@ -3,7 +3,7 @@ import styles from "./styles/profileV4.module.css"
 import SingleTestimonial from './SingleTestimonials'
 import Carousel from 'react-bootstrap/Carousel';
 
-const Testimonials = () => {
+const Testimonials = ({testimonials}) => {
 
 
   return (
@@ -14,15 +14,20 @@ const Testimonials = () => {
         <h5>Testimonials</h5>
       </div>
       <Carousel indicatorLabels={null} indicators={null} draggable={1} nextIcon={null} nextLabel={null} prevIcon={null} prevLabel={null}>
-        <Carousel.Item>
+      
+      {testimonials?.map((testimonial, index) => (
+          
+      
+        <Carousel.Item key={index}>
+          <SingleTestimonial testimonial={testimonial}/>
+        </Carousel.Item>
+        ))}
+        {/* <Carousel.Item>
           <SingleTestimonial />
         </Carousel.Item>
         <Carousel.Item>
           <SingleTestimonial />
-        </Carousel.Item>
-        <Carousel.Item>
-          <SingleTestimonial />
-        </Carousel.Item>
+        </Carousel.Item> */}
       </Carousel>
       </div>
     </>

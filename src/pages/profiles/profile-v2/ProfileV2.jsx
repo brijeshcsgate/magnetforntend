@@ -63,7 +63,7 @@ const ProfileV2 = ({ profileDetails, profileUserId, visitorInfo, name, whatsappN
           {(profileDetails?.offerStatus === true) && (profileDetails?.offers?.length > 0) ?
 
             <Element name="offers">
-              <Offers item={profileDetails?.offers} />
+              <Offers item={profileDetails?.offers} profileUserId={profileUserId} visitorInfo={visitorInfo} />
             </Element> : <></>}
           {(profileDetails?.imageGalleryStatus === true) && (profileDetails?.imageGalleries?.length > 0) ?
 

@@ -6,6 +6,12 @@
     width: 100% !important;
     height: 200px !important; /* You can adjust the height as needed */
   }
+  .h80vh{height:80vh;}
+  .p4objectFitcover2 {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 228px !important; /* You can adjust the height as needed */
+  }
   
 .prof4-btn{
     background-color:#425cbb !important;

@@ -27,7 +27,6 @@ const Profilev2Main = () => {
   const { id } = useParams(); // Access the id from URL
   let profileId = id;
 
-  console.log('profileId', profileId)
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -38,7 +37,6 @@ const Profilev2Main = () => {
         setProfileDetails(response.data);
         setProfiles(response.data.testimonials);
         setVisitorInfoType(response.data.vistor_info_type)
-        console.log('data', response)
       } catch (err) {
         setError(err.response?.data?.error || "Error fetching profile");
       } finally {

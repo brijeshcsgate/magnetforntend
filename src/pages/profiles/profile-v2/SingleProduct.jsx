@@ -7,11 +7,7 @@ import ImageSliderBulk2 from "@/pages/ProfilePages/ImageSliderBulk2";
 import EnquiryForm from "@/components/EnquiryForm/EnquiryForm";
 import ProductTempModal from "@/components/profile-v2/ProductTempModal";
 const SingleProduct = ({ item, profileUserId, visitorInfo }) => {
-  const { setProductModalDataV2 } = useContext(ContextAPI);
-  const handleSendServiceV1ModalData = (ele) => {
-    setProductModalDataV2(ele);
-    console.log(ele, '---------------------------1')
-  };
+
   return (
     <>
       <div className={styles.singleServiceContainer}>
@@ -29,19 +25,9 @@ const SingleProduct = ({ item, profileUserId, visitorInfo }) => {
               <TextToggler text={item.description} charLimit={280} isShowBtn={false} />
             </div>
             <div className="text-secondary">
-              MRP:{" "}              <span>{item.price}</span>
-              {/* <span className="text-decoration-line-through">{item.price}</span> */}            </div>
+              MRP:{" "}              <span>{item.price}</span>         </div>
             <div className={styles.singleServiceButtons}>
-              {/* <button
-                className="text-secondary"
-                data-bs-toggle="modal"
-                data-bs-target="#productModal"
-                onClick={() => handleSendServiceV1ModalData(item)}
-              >
-                View Details
-              </button> */}
-              <ProductTempModal item={item}/>
-              {/* <button className="text-secondary">Enquiry</button> */}
+              <ProductTempModal item={item} />
               <EnquiryForm profileUserId={profileUserId} visitorInfo={visitorInfo} cl='text-secondary' />
 
             </div>

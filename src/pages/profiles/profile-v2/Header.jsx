@@ -11,18 +11,17 @@ import ReferrelForm from '@/components/RefferalForm/ReferrelForm'
 import EnquiryForm from '@/components/EnquiryForm/EnquiryForm'
 
 const Header = ({ profileImage, name, message, jobRoleName,
-  industryName, orgLogo, facebookLink,coverImage,
+  industryName, orgLogo, facebookLink, coverImage,
   instaLink, twitterLink, linkedInLink,
-  youtubeLink, Qr ,profileUserId ,visitorInfo,  whatsappNumber, email, companyName, designation, mobile}) => {
-  // console.log('url',profileImage)
-  
-  
-  const [IsReferalForm,setIsReferalForm]=useState(false)
-const [IsEnquiryFormData,setIsEnquiryFormData]=useState(false)
-   
+  youtubeLink, Qr, profileUserId, visitorInfo, whatsappNumber, email, companyName, designation, mobile }) => {
 
 
-const generateVCard = () => {
+  const [IsReferalForm, setIsReferalForm] = useState(false)
+  const [IsEnquiryFormData, setIsEnquiryFormData] = useState(false)
+
+
+
+  const generateVCard = () => {
     const vCardData = `
 
 BEGIN:VCARD
@@ -45,7 +44,7 @@ END:VCARD
     link.click();
 
     window.URL.revokeObjectURL(url);
-};
+  };
 
   return (
     <>
@@ -65,20 +64,18 @@ END:VCARD
               </div>
               <div style={{ fontFamily: "Roboto Mono,monospace" }}>{industryName}</div>
               <div style={{ display: 'flex', height: '50px', gap: '10px' }} className='mt-3 mb-3'>
-              {orgLogo?  <img src={orgLogo} alt="" className="w-full h-full object-cover"
+                {orgLogo ? <img src={orgLogo} alt="" className="w-full h-full object-cover"
                   style={resizeImage(100, 50)}
-                />:<></>}
+                /> : <></>}
 
-                {Qr?
-                <img data-bs-toggle="modal" data-bs-target="#qrModal" className="w-full h-full object-cover"
-                  style={resizeImage(50, 50)} src={Qr} alt="" />:<></>}
+                {Qr ?
+                  <img data-bs-toggle="modal" data-bs-target="#qrModal" className="w-full h-full object-cover"
+                    style={resizeImage(50, 50)} src={Qr} alt="" /> : <></>}
               </div>
               <div className={`${styles.contactButton}`}>
-                {/* <button>Refer Business</button> */}
-                <ReferrelForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsReferalForm={IsReferalForm} setIsReferalForm={setIsReferalForm}/>
-                {/* <button>Enquiry</button> */}
-                <EnquiryForm profileUserId={profileUserId} visitorInfo={visitorInfo}IsEnquiryFormData={IsEnquiryFormData} setIsEnquiryFormData={setIsEnquiryFormData}/>
-               <button onClick={generateVCard}>Save My Contact</button>
+                <ReferrelForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsReferalForm={IsReferalForm} setIsReferalForm={setIsReferalForm} />
+                <EnquiryForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsEnquiryFormData={IsEnquiryFormData} setIsEnquiryFormData={setIsEnquiryFormData} />
+                <button onClick={generateVCard}>Save My Contact</button>
               </div>
               <div className={`mt-3 ${styles.socialIcon}`} >
 

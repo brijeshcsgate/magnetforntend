@@ -1,12 +1,7 @@
 import React, { useContext } from "react";
-import style from "./modal.module.css";
 import { ContextAPI } from "@/contextAPI/ContextProfileV2";
-import Slider from "react-slick";
-import ImageSliderBulk from "@/pages/ProfilePages/ImageSliderBulk";
-
 import Card from 'react-bootstrap/Card';
 import Carousel from 'react-bootstrap/Carousel';
-// import { ContextAPI } from '@/contextAPI/ContextProfileV2';
 const ProfileModal = (isOpenModal) => {
 
   const { productInfo } = useContext(ContextAPI)
@@ -27,7 +22,6 @@ const ProfileModal = (isOpenModal) => {
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              {/* <ImageSliderBulk images={productInfo?.image} autoChangeInterval={2000} /> */}
 
               <Carousel indicatorLabels={null} indicators={null} draggable={1} nextIcon={null} nextLabel={null} prevIcon={null} prevLabel={null}>
                 {productInfo?.image?.map((image, index) => (

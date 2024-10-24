@@ -18,7 +18,7 @@ const About = ({ aboutUs, countryCode, mobile, whatsappNumberCountryCode, whatsa
         setIsExpanded(!isExpanded);
     };
     return (
-        <>
+        <div className={styles.h80vh}>
             {/* About Section  */}
             <div className={styles.titleUnderline}>
                 <span></span>
@@ -92,7 +92,7 @@ const About = ({ aboutUs, countryCode, mobile, whatsappNumberCountryCode, whatsa
                 </div>
             </div>
 
-        </>
+        </div>
     )
 }
 

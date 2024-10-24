@@ -1,7 +1,9 @@
 import React from 'react'
 import { Col, Container, Image, Row } from 'react-bootstrap'
 import styles from "./styles/profileV4.module.css"
-const Payments = () => {
+import { resizeImage } from '@/pages/ProfilePages/resizeImage'
+import { Button } from '@mui/material'
+const Payments = ({ bankAccountDetails, paymentDetails }) => {
   return (
     <Container>
       <div className={styles.payment}>
@@ -10,14 +12,14 @@ const Payments = () => {
             <span></span>
             <h5>Payments</h5>
           </div>
-          <p>{`Bank Name: `} <span className='text-secondary'>{`Bank of Maharashtra`}</span></p>
-          <p>{`Account Name: `} <span className='text-secondary'>{`Shahista Naaz`}</span></p>
-          <p>{`IFSC Code: `} <span className='text-secondary'>{`PUNB0733600`}</span></p>
-          <p>{`PAN Card No: `} <span className='text-secondary'>{`AAAAA7777A`}</span></p>
-          <p>{`Account Type:  `} <span className='text-secondary'>{`Savings Account`}</span></p>
-          <p>{`Account No:  `} <span className='text-secondary'>{`XXXXXXXXXX`}</span></p>
-          <p>{`GST No.:  `} <span className='text-secondary'>{` 07AAACP0165G2ZQ`}</span></p>
-          <p>{`Remark: `} <span className='text-secondary'>{`Is it possible to reverse funds transferred to the wrong account.`}</span></p>
+          <p>{`Bank Name: `} <span className='text-secondary'>{bankAccountDetails?.accountName}</span></p>
+          <p>{`Account Name: `} <span className='text-secondary'>{bankAccountDetails?.accountName}</span></p>
+          <p>{`IFSC Code: `} <span className='text-secondary'>{bankAccountDetails?.ifsc}</span></p>
+          <p>{`PAN Card No: `} <span className='text-secondary'>{bankAccountDetails?.pan}</span></p>
+          {/* <p>{`Account Type:  `} <span className='text-secondary'>{`Savings Account`}</span></p> */}
+          <p>{`Account No:  `} <span className='text-secondary'>{bankAccountDetails?.accountNumber}</span></p>
+          <p>{`GST No.:  `} <span className='text-secondary'>{bankAccountDetails?.gst}</span></p>
+          <p>{`Remark: `} <span className='text-secondary'>{bankAccountDetails?.remark}</span></p>
         </Col>
         <Col xs={6} className={styles.UPIImg}>
           <div className={styles.titleUnderline}>
@@ -25,7 +27,11 @@ const Payments = () => {
             <h5>UPI Image</h5>
           </div>
           <br />
-          <Image src={"/imgV4/qr.png"} fluid />
+          <Image src={paymentDetails?.image} fluid style={resizeImage(100, 100)} />
+          <p>{`Payment Gateway Link: `} <span className='text-secondary'><Button variant="contained" size='small' color="success" onClick={(e) => { window.open(paymentDetails?.paymentGatewayLink, '_blank') }}>
+            Click Here
+          </Button></span></p>
+
         </Col>
       </div>
     </Container>

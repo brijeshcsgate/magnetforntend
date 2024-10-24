@@ -16,10 +16,6 @@ const VideoGallery = ({videos}) => {
                   title={video?.name}
                   dataSrId={video?.dataSrId}
                 /> 
-              {/* <Card.Img variant="top" src={"/imgV4/product.jpg"} />
-              <Card.Body>
-                <Card.Title>Video {idx+1}</Card.Title>
-              </Card.Body> */}
             </Card>
           </Col>
         ))}

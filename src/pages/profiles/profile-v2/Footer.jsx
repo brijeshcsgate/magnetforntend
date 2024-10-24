@@ -9,17 +9,17 @@ import { ContextAPI } from '../../../contextAPI/ContextProfileV2'
 import ReferrelForm from '@/components/RefferalForm/ReferrelForm'
 import EnquiryForm from '@/components/EnquiryForm/EnquiryForm'
 
-const Footer = ({profileUserId ,visitorInfo, name, whatsappNumber, email, companyName, designation, mobile ,facebookLink,
-    instaLink, twitterLink, linkedInLink,
-    youtubeLink}) => {
+const Footer = ({ profileUserId, visitorInfo, name, whatsappNumber, email, companyName, designation, mobile, facebookLink,
+  instaLink, twitterLink, linkedInLink,
+  youtubeLink }) => {
 
-    const { isScrolled, choosenColor } = useContext(ContextAPI)
-const [IsReferalForm,setIsReferalForm]=useState(false)
-const [IsEnquiryFormData,setIsEnquiryFormData]=useState(false)
-   
+  const { isScrolled, choosenColor } = useContext(ContextAPI)
+  const [IsReferalForm, setIsReferalForm] = useState(false)
+  const [IsEnquiryFormData, setIsEnquiryFormData] = useState(false)
 
 
-const generateVCard = () => {
+
+  const generateVCard = () => {
     const vCardData = `
 
 BEGIN:VCARD
@@ -42,33 +42,30 @@ END:VCARD
     link.click();
 
     window.URL.revokeObjectURL(url);
-};
-return (
-        <div className={`${styles.footerContainer}`} style={{ backgroundColor: `${choosenColor?choosenColor:"#6d56c1"}` }}>
-            <div className={`${styles.footersButton}`}>
-                {/* <button onClick={()=>setIsReferalForm(true)}>Refer Business</button> */}
-                <ReferrelForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsReferalForm={IsReferalForm} setIsReferalForm={setIsReferalForm}/>
-                {/* <button onClick={()=>{setIsEnquiryFormData(true);
-console.log('IsEnquiryFormData',IsEnquiryFormData)}}>Enquiry</button> */}
-                <EnquiryForm profileUserId={profileUserId} visitorInfo={visitorInfo}IsEnquiryFormData={IsEnquiryFormData} setIsEnquiryFormData={setIsEnquiryFormData}/>
-                <button onClick={generateVCard}>Save my Contact</button>
-            </div>
+  };
+  return (
+    <div className={`${styles.footerContainer}`} style={{ backgroundColor: `${choosenColor ? choosenColor : "#6d56c1"}` }}>
+      <div className={`${styles.footersButton}`}>
+        <ReferrelForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsReferalForm={IsReferalForm} setIsReferalForm={setIsReferalForm} />
+        <EnquiryForm profileUserId={profileUserId} visitorInfo={visitorInfo} IsEnquiryFormData={IsEnquiryFormData} setIsEnquiryFormData={setIsEnquiryFormData} />
+        <button onClick={generateVCard}>Save my Contact</button>
+      </div>
 
-            <div className={`${styles.socialIcon}`}>
-             
-            {facebookLink ?
-                  <Link to={facebookLink}><FaSquareFacebook color='lightgray' fontSize={`30px`} /></Link>
-                  : <></>}
-                {instaLink ? <Link to={instaLink}><AiFillInstagram color='lightgray' fontSize={`30px`} /></Link>
-                  : <></>}
-                {twitterLink ? <Link to={twitterLink}><IoLogoTwitter color='lightgray' fontSize={`30px`} /></Link>
-                  : <></>}
-                {youtubeLink ? <Link to={youtubeLink}><FaYoutube color='lightgray' fontSize={`30px`} /></Link>
-                  : <></>}
-                {linkedInLink ? <Link to={linkedInLink}><FaLinkedin color='lightgray' fontSize={`30px`} /></Link>
-                  : <></>} </div>
-        </div>
-    )
+      <div className={`${styles.socialIcon}`}>
+
+        {facebookLink ?
+          <Link to={facebookLink}><FaSquareFacebook color='lightgray' fontSize={`30px`} /></Link>
+          : <></>}
+        {instaLink ? <Link to={instaLink}><AiFillInstagram color='lightgray' fontSize={`30px`} /></Link>
+          : <></>}
+        {twitterLink ? <Link to={twitterLink}><IoLogoTwitter color='lightgray' fontSize={`30px`} /></Link>
+          : <></>}
+        {youtubeLink ? <Link to={youtubeLink}><FaYoutube color='lightgray' fontSize={`30px`} /></Link>
+          : <></>}
+        {linkedInLink ? <Link to={linkedInLink}><FaLinkedin color='lightgray' fontSize={`30px`} /></Link>
+          : <></>} </div>
+    </div>
+  )
 }
 
 export default Footer

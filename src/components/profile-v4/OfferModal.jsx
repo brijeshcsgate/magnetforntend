@@ -1,23 +1,14 @@
 import React, { useContext } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import { ContextAPI } from '@/contextAPI/ContextProfileV2';
-// import { ContextAPI } from '../../contextAPI/ContextProfileV2';
 const OfferModal = (isOpenModal) => {
 
-  const {offerInfo}=useContext(ContextAPI)
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
-   return (
+  const { offerInfo } = useContext(ContextAPI)
+  return (
     <div style={{ width: "90%" }}>
       {/* <!-- Modal --> */}
-      <div className={isOpenModal ? "modal fade" : ""} id="serviceModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className={isOpenModal ? "modal fade" : ""} id="offerModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -25,29 +16,22 @@ const OfferModal = (isOpenModal) => {
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              {/* <Slider {...settings} arrows={null} dots={null}> */}
-                <div>
-                  <img width={`100%`} className={`card `} src={offerInfo?.image} alt="" />
-                </div>
-                {/* <div>
-                  <img width={`100%`} className={`card `} src={`${"/img/1.png"}`} alt="" />
-                </div>
-                <div>
-                  <img width={`100%`} className={`card `} src={`${"/img/1.png"}`} alt="" />
-                </div>
-                <div>
-                  <img width={`100%`} className={`card `} src={`${"/img/1.png"}`} alt="" />
-                </div> */}
-                
-              {/* </Slider> */}
+              <div>
+                <img width={`100%`} className={`card `} src={offerInfo?.image} alt="" />
+              </div>
             </div>
-            <div className="modal-footer">
+            <p className='text-secondary p-3'>
               {offerInfo?.description}
-            </div>
+            </p>
+            <p className="text-secondary p-3">
+              <b>Start Date:</b>{" "}{offerInfo.startDate}, {offerInfo.startTime}
+              <br />
+              <b>End Date:</b>{" "}{offerInfo.endDate}, {offerInfo.endTime}                    </p>
+
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

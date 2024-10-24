@@ -13,11 +13,6 @@ const QrModal = () => {
           <div className="modal-body" style={{ display: "flex", justifyContent: "center" }}>
             <div style={{ width: "80%", textAlign: "center" }}>
 
-              {/* <img style={{
-                height: "100px",
-                width: "100px",
-                borderRadius: "50%",
-              }} src={`${"/imgV4/profile-img.jpg"}`} alt="qr" /> */}
               <h3 className="text-secondary">{`Shahista Naaz`}</h3>
               <p className="text-secondary">{`Full-stack developer`}</p>
               {/* <img src={`${"/img/qr.png"}`} alt="qr" /> */}
