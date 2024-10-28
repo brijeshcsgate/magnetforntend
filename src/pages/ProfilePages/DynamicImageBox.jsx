@@ -14,7 +14,7 @@ const DynamicImageBox = ({ imgSrc, popupHref, name, dataSrId, customStyles, setO
     >
       <div className="image">
         <div className="has-popup">
-          <img src={imgSrc} alt="" />
+          <img src={imgSrc} alt="" className='mg12objectFitcover'/>
         </div>
       </div>
       <div className="content-box">

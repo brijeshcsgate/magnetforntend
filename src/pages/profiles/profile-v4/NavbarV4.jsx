@@ -98,9 +98,10 @@ const NavbarV4 = ({name,profileImage}) => {
           id="navbarNav"
         >
           <ul
-            className={`${styles.ulNoneOnClickLi} navbar-nav col-md-8`}
-            style={{ alignItems: "center", fontWeight: "bold" }}
+            className={` ${styles.ulNoneOnClickLi} navbar-nav col-md-8 `}
+            style={{ alignItems: "center", fontWeight: "bold", ...(isMobileOrTablet && { top:'-1px ', marginTop:'0px ', paddingTop: 0 }), }}
           >
+            {!isMobileOrTablet?
             <li
               className={`${styles.userIcon} nav-link active`}
               style={{
@@ -123,7 +124,16 @@ const NavbarV4 = ({name,profileImage}) => {
                   }}
                 />
               </a>
-            </li>
+            </li>:
+            <li style={{ paddingLeft: "10px" }}>
+              <a
+                className="nav-link"
+                style={{ color: active === "about" ? "#426cc5" : "" }}
+                onClick={() => handleSelectedTab("about")}
+              >
+                About
+              </a>
+            </li>}
             <li style={{ paddingLeft: "10px" }}>
               <a
                 className="nav-link"

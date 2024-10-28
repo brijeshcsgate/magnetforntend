@@ -1,204 +1,221 @@
 /* .profileMargin {
     margin: 50px !important;
 } */
-.objectFitcover {
-    object-fit: cover !important;
-    width: 100% !important;
-    height: 200px !important; /* You can adjust the height as needed */
-  }
-  .h80vh{height:80vh;}
-  .p4objectFitcover2 {
-    object-fit: cover !important;
-    width: 100% !important;
-    height: 228px !important; /* You can adjust the height as needed */
-  }
-  
-.prof4-btn{
-    background-color:#425cbb !important;
-    border-radius: 1rem !important;
-    border:none !important;
-    font-size: 14px !important;
-    font-weight: bold !important;
-    margin-left: 5px !important;
-    padding: 6px 12px !important;
-    height: 36px !important;
 
+.menuop {
+}
+.objectFitcover {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 200px !important; /* You can adjust the height as needed */
+}
+.h80vh {
+  height: 80vh;
+}
+.p4objectFitcover2 {
+  object-fit: cover !important;
+  width: 100% !important;
+  height: 228px !important; /* You can adjust the height as needed */
+}
+.m4linespacing {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+  .m4size{font-size: 14px;}
+.pmtnContainer {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+.prof4-btn {
+  background-color: #425cbb !important;
+  border-radius: 1rem !important;
+  border: none !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  margin-left: 5px !important;
+  padding: 6px 12px !important;
+  height: 36px !important;
 }
 .infoBox div {
-    width: 100% !important;
+  width: 100% !important;
 }
 
 .intro {
-    font-size: 13px !important;
-    color: #4c4c4c !important;
-    line-height: 24px !important;
-    font-style: italic !important;
-    text-align: center !important;
-    margin: 1rem 0.5rem !important;
+  font-size: 13px !important;
+  color: #4c4c4c !important;
+  line-height: 24px !important;
+  font-style: italic !important;
+  text-align: center !important;
+  margin: 1rem 0.5rem !important;
 }
-
+.introName {
+  font-size: 13px !important;
+  color: #4c4c4c !important;
+  line-height: 24px !important;
+  /* font-style: italic !important; */
+  text-align: left !important;
+  margin: 0rem 0rem 1rem 0rem !important;
+}
+.fnSiz700 {
+  font-weight: 700 !important;
+}
 .h6 {
-    font-size: 18px !important;
-    font-weight: 500 !important;
-    text-align: center !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  text-align: center !important;
 }
 
 .licImg {
-    position: relative !important;
-    left: 50% !important;
-    transform: translate(-50%) !important;
-    margin-top: 1rem !important;
+  position: relative !important;
+  left: 50% !important;
+  transform: translate(-50%) !important;
+  margin-top: 1rem !important;
 }
 
 .button {
-    width: 180px !important;
-    background-color: #425CBB !important;
-    padding: 0px 10px !important;
-    border: none !important;
-    color: #fafafa !important;
-    border-radius: 25px !important;
-    height: 35px !important;
-    font-weight: 700 !important;
-    margin: 18px auto !important;
-    display: block !important;
+  width: 180px !important;
+  background-color: #425cbb !important;
+  padding: 0px 10px !important;
+  border: none !important;
+  color: #fafafa !important;
+  border-radius: 25px !important;
+  height: 35px !important;
+  font-weight: 700 !important;
+  margin: 18px auto !important;
+  display: block !important;
 }
 
 .buttonText {
-    float: left !important;
-    padding: 5.5px !important;
-    font-size: 14px !important;
+  float: left !important;
+  padding: 5.5px !important;
+  font-size: 14px !important;
 }
 
 .icons {
-    background-color: #fafafa !important;
-    color: black !important;
-    border-radius: 70px !important;
-    width: 24px !important;
-    height: 25px !important;
-    padding: 6px !important;
-    float: right !important;
-    margin-top: 2px !important;
-
+  background-color: #fafafa !important;
+  color: black !important;
+  border-radius: 70px !important;
+  width: 24px !important;
+  height: 25px !important;
+  padding: 6px !important;
+  float: right !important;
+  margin-top: 2px !important;
 }
 
 .iconsSpan {
-    width: 20% !important;
-    height: 40vh !important;
+  width: 20% !important;
+  height: 40vh !important;
 }
 
 .socialIconsFb {
-    margin-top: 0.5rem !important;
-    font-size: 15px !important;
-    color: black !important;
-
+  margin-top: 0.5rem !important;
+  font-size: 15px !important;
+  color: black !important;
 }
 
 .socialIconsFb:hover {
-    color: #3b5998 !important;
+  color: #3b5998 !important;
 }
 
 .socialIconsTi {
-    margin-top: 0.5rem !important;
-    font-size: 15px !important;
-    color: black !important;
-
+  margin-top: 0.5rem !important;
+  font-size: 15px !important;
+  color: black !important;
 }
 
 .socialIconsTi:hover {
-    color: #00acee !important;
+  color: #00acee !important;
 }
 
 .socialIconsInsta {
-    margin-top: 0.5rem !important;
-    font-size: 15px !important;
-    color: black !important;
-
+  margin-top: 0.5rem !important;
+  font-size: 15px !important;
+  color: black !important;
 }
 
 .socialIconsInsta:hover {
-    color: #8a3ab9 !important;
+  color: #8a3ab9 !important;
 }
 
 .socialIconsPi {
-    margin-top: 0.5rem !important;
-    font-size: 15px !important;
-    color: black !important;
-
+  margin-top: 0.5rem !important;
+  font-size: 15px !important;
+  color: black !important;
 }
 
 .socialIconsPi:hover {
-    color: #E60023 !important;
+  color: #e60023 !important;
 }
 
 .socialIconsYo {
-    margin-top: 0.5rem !important;
-    font-size: 15px !important;
-    color: black !important;
-
+  margin-top: 0.5rem !important;
+  font-size: 15px !important;
+  color: black !important;
 }
 
 .socialIconsYo:hover {
-    color: #CD201F !important;
+  color: #cd201f !important;
 }
 
 .socialIconsSpan {
-    margin-top: 1rem !important;
-    display: flex !important;
-    justify-content: center !important;
-    gap: 1rem !important;
+  margin-top: 1rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 1rem !important;
 }
 
 .a {
-    text-decoration: none !important;
-    background-color: block !important;
+  text-decoration: none !important;
+  background-color: block !important;
 }
 
 .contactBoxs {
-    display: flex !important;
-    justify-content: space-between !important;
-    width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  width: 100% !important;
 }
 
 .contactmeIcon {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
 }
 
 .main {
-    display: block !important;
-    width: 100% !important;
-    height: 100vh !important;
-    background-color: #fafafa !important;
-    padding: 5% 8% !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100vh !important;
+  background-color: #fafafa !important;
+  padding: 5% 8% !important;
 }
 
 .ProfInfo {
-    width: 22% !important;
-    height: 80vh !important;
-    background-color: #ffffff !important;
-    margin-right: 2% !important;
-    border-radius: 2% !important;
+  width: 22% !important;
+  height: 80vh !important;
+  background-color: #ffffff !important;
+  margin-right: 2% !important;
+  border-radius: 2% !important;
 }
 
 .profHeader {
-    width: 78% !important;
-    height: 10vh !important;
+  width: 78% !important;
+  height: 10vh !important;
 }
 
 .headerNav {
-    width: 100% !important;
-    height: 12vh !important;
+  width: 100% !important;
+  height: 12vh !important;
 }
 
 .profBody {
-
-    border-radius: 10px !important;
-    padding: 30px 20px !important;
+  border-radius: 10px !important;
+  padding: 30px 20px !important;
 }
 
 .padding_30 {
-    padding-top: 30px !important;
+  padding-top: 30px !important;
 }
 
 /* .paddingLeft_30 {
@@ -231,8 +248,6 @@
     color: #fafafa !important;
 } */
 
-
-
 /* .HeaderFixed {
     opacity: 1 !important;
 } */
@@ -248,79 +263,78 @@
     margin: 0 0 0 1rem !important;
 } */
 .profileNameImg {
-    display: flex !important;
-    align-items: center !important;
-    position: relative !important;
-    top: 1.2rem !important;
-    left: 1rem !important;
-    opacity: 0 !important;
-
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  top: 1.2rem !important;
+  left: 1rem !important;
+  opacity: 0 !important;
 }
 
 header nav {
-    background: #fff !important;
-    display: inline-block !important;
-    border-radius: 6px !important;
-    -moz-border-radius: 6px !important;
-    -webkit-border-radius: 6px !important;
-    height: 70px !important;
-    width: 100% !important;
-    margin-bottom: 30px !important;
-    line-height: 70px !important;
-    box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.07) !important;
-    -webkit-box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.07) !important;
-    -moz-box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.07) !important;
+  background: #fff !important;
+  display: inline-block !important;
+  border-radius: 6px !important;
+  -moz-border-radius: 6px !important;
+  -webkit-border-radius: 6px !important;
+  height: 70px !important;
+  width: 100% !important;
+  margin-bottom: 30px !important;
+  line-height: 70px !important;
+  box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.07) !important;
+  -webkit-box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.07) !important;
+  -moz-box-shadow: 0px 2px 92px 0px rgba(0, 0, 0, 0.07) !important;
 }
 
 header nav ul li {
-    float: left !important;
+  float: left !important;
 }
 
 header nav ul li a {
-    font-size: 14px !important;
-    font-weight: bold !important;
-    color: #000 !important;
-    padding: 0 10px !important;
-    line-height: 73px !important;
-    display: block !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  color: #000 !important;
+  padding: 0 10px !important;
+  line-height: 73px !important;
+  display: block !important;
 }
 
 header nav ul li a:hover {
-    transition: all ease 0.3s !important;
-    -webkit-transition: all ease 0.3s !important;
-    -moz-transition: all ease 0.3s !important;
+  transition: all ease 0.3s !important;
+  -webkit-transition: all ease 0.3s !important;
+  -moz-transition: all ease 0.3s !important;
 }
 
 header nav ul li a:after {
-    border-right: 1px solid #dfdfdf !important;
+  border-right: 1px solid #dfdfdf !important;
 }
 
 header nav a.homeBtn {
-    color: #fff !important;
-    border-radius: 6px 0 0 6px !important;
-    -webkit-border-radius: 6px 0 0 6px !important;
-    -moz-border-radius: 6px 0 0 6px !important;
-    padding: 0px 24px !important;
-    float: left !important;
-    height: 70px !important;
-    line-height: 70px !important;
-    margin-right: 10px !important;
-    transition: all ease 0.4s !important;
-    line-height: 77px !important;
+  color: #fff !important;
+  border-radius: 6px 0 0 6px !important;
+  -webkit-border-radius: 6px 0 0 6px !important;
+  -moz-border-radius: 6px 0 0 6px !important;
+  padding: 0px 24px !important;
+  float: left !important;
+  height: 70px !important;
+  line-height: 70px !important;
+  margin-right: 10px !important;
+  transition: all ease 0.4s !important;
+  line-height: 77px !important;
 }
 
 header nav a.homeBtn:hover {
-    transition: all ease 0.3s !important;
-    -webkit-transition: all ease 0.3s !important;
-    -moz-transition: all ease 0.3s !important;
+  transition: all ease 0.3s !important;
+  -webkit-transition: all ease 0.3s !important;
+  -moz-transition: all ease 0.3s !important;
 }
 
 header nav a.homeBtn i {
-    font-size: 21px !important;
+  font-size: 21px !important;
 }
 
-.ulChild a:hover{
-    cursor: pointer !important;
+.ulChild a:hover {
+  cursor: pointer !important;
 }
 /* header nav .site-btn {
     margin: 18px 18px 0 5px !important;
@@ -332,79 +346,78 @@ header nav .menuout ul.tabs li {
 } */
 
 .onResponsiveProfile {
-    display: none !important;
-
+  display: none !important;
 }
 
 .sidebarOnResponsive {
-    margin: auto !important;
+  margin: auto !important;
 }
 
 .navbarSticky {
-    position: sticky !important;
-    top: 0px !important;
+  position: sticky !important;
+  top: 0px !important;
 }
 
 .responsiveQr {
-    display: none !important;
+  display: none !important;
 }
 
 .nav {
-    position: sticky !important;
-    top: 0px !important;
+  position: sticky !important;
+  top: 0px !important;
 }
 
 .defaultQr {
-    padding-right: 1rem !important;
+  padding-right: 1rem !important;
 }
 
 .profileOnRes {
-    display: none !important;
+  display: none !important;
 }
 
 .profileAndHamburger {
-    display: none !important;
+  display: none !important;
 }
 
 header nav ul.tabs li {
-    display: none !important;
+  display: none !important;
 }
 
 header nav .menuout .menuin ul.tabs li:first-child {
-    display: none !important;
+  display: none !important;
 }
 
 header nav .menuout .menuin ul.tabs li {
-    float: none !important;
-    text-align: center !important;
-    border-bottom: solid 1px #efefef !important;
+  float: none !important;
+  text-align: center !important;
+  border-bottom: solid 1px #efefef !important;
 }
 
 header nav .menuout .menuin ul.tabs li a {
-    width: 100% !important;
-    display: block !important;
-    cursor: pointer !important;
-    line-height: 58px !important;
+  width: 100% !important;
+  display: block !important;
+  cursor: pointer !important;
+  line-height: 58px !important;
 }
 
 .carousels {
-    background-color: #f1f1f1 !important;
-    padding: 10px !important;
+  background-color: #f1f1f1 !important;
+  padding: 10px !important;
 }
 
 .carouselInner {
-    padding: 0px 10px !important;
-    background-color: #fff !important;
+  padding: 0px 10px !important;
+  background-color: #fff !important;
 }
 
 .qrImg {
-    float: right !important;
-    margin: 1rem 1rem 0 0 !important;
-    cursor: pointer !important;
+  float: right !important;
+  margin: 1rem 1rem 0 0 !important;
+  cursor: pointer !important;
 }
 
 .activeLi {
-    color: red !important;
+  color: red !important;
 }
 
 /* .qrPopup {
@@ -412,325 +425,342 @@ header nav .menuout .menuin ul.tabs li a {
 } */
 
 .modal-header {
-    border-bottom: 0 !important;
+  border-bottom: 0 !important;
 }
 
 .modal-dialog {
-    width: 368px !important;
-    border-radius: 10px !important;
+  width: 368px !important;
+  border-radius: 10px !important;
 }
 
 .qrPopup h5 {
-    color: #333 !important;
-    font-size: 25px !important;
-    margin: 1rem 0 .25rem !important;
+  color: #333 !important;
+  font-size: 25px !important;
+  margin: 1rem 0 0.25rem !important;
 }
 
 .qrPopup p {
-    font-size: 15px !important;
+  font-size: 15px !important;
 }
 
 .qrPopup a {
-    margin: 0 6px !important;
-    background: var(--color) !important;
-    color: #fff !important;
-    padding: 10px 15px !important;
+  margin: 0 6px !important;
+  background: var(--color) !important;
+  color: #fff !important;
+  padding: 10px 15px !important;
 }
 
 .payment {
-    display: flex !important;
-    justify-content: center !important;
+  display: flex !important;
+  justify-content: center !important;
 }
 
 .titleUnderline {
-    position: relative !important;
-    display: inline-block !important;
-    margin-bottom: 2rem !important;
+  position: relative !important;
+  display: inline-block !important;
+  margin-bottom: 2rem !important;
 }
-.h100vh{height:80vh;}
+.h100vh {
+  height: 80vh;
+}
 .titleUnderline span {
-    position: absolute !important;
-    height: 4px !important;
-    width: 100% !important;
-    bottom: 0px !important;
-    opacity: 0.4 !important;
-    left: 0 !important;
-    background-color: #425CBB !important;
+  position: absolute !important;
+  height: 4px !important;
+  width: 100% !important;
+  bottom: 0px !important;
+  opacity: 0.4 !important;
+  left: 0 !important;
+  background-color: #425cbb !important;
 }
 
 @media (max-width: 425px) {
-    .sidebarOnResponsive {
-        width: 100% !important;
-    }
+  .sidebarOnResponsive {
+    width: 100% !important;
+  }
 
-    .modal-des .modal-content {
-        width: 390px !important;
-    }
+  .menuop {
+    margin-top: 0px !important;
+    top: -1px !important;
+  }
+  ._menuop_11a5s_9 {
+    margin-top: 0px !important;
+    top: -1px !important;
+  }
+  .modal-des .modal-content {
+    width: 390px !important;
+  }
 
-    .profileNameImg {
-        top: 1rem !important;
-    }
+  .profileNameImg {
+    top: 1rem !important;
+  }
 
-    .profileNameImg .headerName {
-        font-size: 13px !important;
-        line-height: 18px !important;
-    }
+  .profileNameImg .headerName {
+    font-size: 13px !important;
+    line-height: 18px !important;
+  }
 }
 
 @media screen and (max-width: 991px) and (min-width: 768px) {
-    .navAndMain {
-        padding: 0px !important;
-        margin-top: 3rem !important;
-    }
+  .navAndMain {
+    padding: 0px !important;
+    margin-top: 3rem !important;
+  }
 
-    .profileOnRes {
-        display: flex !important;
-        gap: 2rem !important;
-        align-items: center !important;
-    }
+  .menuop {
+    margin-top: 0px !important;
+    top: -1px !important;
+  }
+  .profileOnRes {
+    display: flex !important;
+    gap: 2rem !important;
+    align-items: center !important;
+  }
 
-    .userIcon {
-        display: none !important;
-    }
+  .userIcon {
+    display: none !important;
+  }
 
-    .responsiveQr {
-        display: flex !important;
-    }
+  .responsiveQr {
+    display: flex !important;
+  }
 
-    .sidebarOnResponsive {
-        display: block !important;
-        width: 100% !important;
-    }
+  .sidebarOnResponsive {
+    display: block !important;
+    width: 100% !important;
+  }
 
-    .defaultQr {
-        display: none !important;
-    }
+  .defaultQr {
+    display: none !important;
+  }
 
-    .profileAndHamburger {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        width: 100% !important;
-        padding: 1rem 0.5rem !important;
-    }
+  .profileAndHamburger {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 1rem 0.5rem !important;
+  }
 
-    .navAndMain {
-        width: 100% !important;
-    }
+  .navAndMain {
+    width: 100% !important;
+  }
 
-    .toStickyNav {
-        width: 100% !important;
-    }
+  .toStickyNav {
+    width: 100% !important;
+  }
 
-    .ulChild {
-        position: relative !important;
-    }
+  .ulChild {
+    position: relative !important;
+  }
 
-    .ulChild ul {
-        border-radius: 0.8rem !important;
-        margin-top: 1rem !important;
-        position: absolute !important;
-        top: 25px !important;
-        background-color: #ffffff !important;
-        width: 100% !important;
-    }
+  .ulChild ul {
+    border-radius: 0.8rem !important;
+    margin-top: 0rem !important;
+    position: absolute !important;
+    top: -1px !important;
+    background-color: #ffffff !important;
+    width: 100% !important;
+  }
 
-    .ulChild li {
-        border-bottom: 1px solid lightgray !important;
-        width: 100% !important;
-        text-align: center !important;
-        padding: 5px 0px !important;
-    }
+  .ulChild li {
+    border-bottom: 1px solid lightgray !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 5px 0px !important;
+  }
 
-    .sidebar {
-        width: 100% !important;
-    }
+  .sidebar {
+    width: 100% !important;
+  }
 
-    .onResponsiveProfile {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        width: 100% !important;
-    }
+  .onResponsiveProfile {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
 
-    header nav {
-        margin-top: 30px !important;
-    }
+  header nav {
+    margin-top: 30px !important;
+  }
 
-    nav .social-icons {
-        display: none !important;
-    }
+  nav .social-icons {
+    display: none !important;
+  }
 
-    nav .hamburger {
-        display: none !important;
-    }
+  nav .hamburger {
+    display: none !important;
+  }
 
-    .toStickyNav {
-        position: sticky  !important;;
-        top: 0px !important;
-        z-index: 999 !important;
-    }
+  .toStickyNav {
+    position: sticky !important;
+    top: 0px !important;
+    z-index: 999 !important;
+  }
 
-    .contactBoxs {
-        display: block !important;
-        margin-top: 1rem !important;
-        width: 100% !important;
-    }
+  .contactBoxs {
+    display: block !important;
+    margin-top: 1rem !important;
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 321px) {
+  .menuop {
+    margin-top: 0px !important;
+    top: -1px !important;
+  }
+  .social-icons {
+    display: none !important;
+  }
 
-    .social-icons {
-        display: none !important;
-    }
+  header nav .hamburger {
+    border: 0 !important;
+  }
 
-    header nav .hamburger {
-        border: 0 !important;
-    }
+  footer .footer {
+    line-height: 19px !important;
+    padding-top: 14px !important;
+  }
 
-    footer .footer {
-        line-height: 19px !important;
-        padding-top: 14px !important;
-    }
-
-    .timeline li .line-title {
-        line-height: 20px !important;
-    }
+  .timeline li .line-title {
+    line-height: 20px !important;
+  }
 }
 
 @media (max-width: 768px) {
+  ._menuop_11a5s_9 {
+    margin-top: 0px !important;
+    top: -1px !important;
+  }
+  .menuop {
+    margin-top: 0px !important;
+    top: -1px !important;
+  }
+  .sidebarOnResponsive {
+    margin: auto !important;
+  }
 
-    .sidebarOnResponsive {
-        margin: auto !important;
-    }
+  .profileAndHamburger {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 1rem 0.5rem !important;
+  }
 
-    .profileAndHamburger {
-        width: 100% !important;
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 1rem 0.5rem !important;
+  .navAndMain {
+    padding: 0px !important;
+    margin-top: 3rem !important;
+  }
 
-    }
+  .userIcon {
+    display: none !important;
+  }
 
-    .navAndMain {
-        padding: 0px !important;
-        margin-top: 3rem !important;
-    }
+  .profileOnRes {
+    display: flex !important;
+    gap: 1rem !important;
+    align-items: center !important;
+  }
 
-    .userIcon {
-        display: none !important;
-    }
+  .toStickyNav {
+    position: sticky !important;
+    top: 0px !important;
+    z-index: 999 !important;
+  }
 
-    .profileOnRes {
-        display: flex !important;
-        gap: 1rem !important;
-        align-items: center !important;
-    }
+  .ulChild {
+    position: relative !important;
+  }
 
-    .toStickyNav {
-        position: sticky  !important;;
-        top: 0px !important;
-        z-index: 999 !important;
-    }
+  .ulChild ul {
+    border-radius: 0.8rem !important;
+    margin-top: 0rem !important;
+    position: absolute !important;
+    top: -1px !important;
+    background-color: #ffffff !important;
+    width: 100% !important;
+  }
 
-    .ulChild {
-        position: relative !important;
-    }
+  .ulChild li {
+    border-bottom: 1px solid lightgray !important;
+    width: 100% !important;
+    text-align: center !important;
+    padding: 5px 0px !important;
+  }
 
-    .ulChild ul {
-        border-radius: 0.8rem !important;
-        margin-top: 1rem !important;
-        position: absolute !important;
-        top: 25px !important;
-        background-color: #ffffff !important;
-        width: 100% !important;
-    }
+  .homeBtn {
+    display: none !important;
+  }
 
-    .ulChild li {
-        border-bottom: 1px solid lightgray !important;
-        width: 100% !important;
-        text-align: center !important;
-        padding: 5px 0px !important;
-    }
+  .payment {
+    display: block !important;
+    margin-top: 1rem !important;
+  }
 
-    .homeBtn {
-        display: none !important;
-    }
+  .UPIImg {
+    margin-top: 4rem !important;
+  }
 
-    .payment {
-        display: block !important;
-        margin-top: 1rem !important;
-    }
+  .defaultQr {
+    display: none !important;
+  }
 
-    .UPIImg {
-        margin-top: 4rem !important;
-    }
-
-    .defaultQr {
-        display: none !important;
-    }
-
-    .contactBoxs {
-        display: block !important;
-        margin-top: 1rem !important;
-        width: 100% !important;
-    }
+  .contactBoxs {
+    display: block !important;
+    margin-top: 1rem !important;
+    width: 100% !important;
+  }
 }
 
+@media screen and (max-width: 425px) {
+  .sidebarOnResponsive {
+    padding: 10px !important;
+    margin: auto !important;
+  }
 
-@media screen and (max-width:425px) {
-    .sidebarOnResponsive {
-        padding: 10px  !important;;
-        margin: auto !important;
+  .sidebar {
+    padding: 0px !important;
+    margin: 0px !important;
+  }
 
-    }
+  .containerFluid {
+    margin: 0px !important;
+    padding: 0px !important;
+    width: 100% !important;
+  }
 
-    .sidebar {
-        padding: 0px !important;
-        margin: 0px !important;
+  .userName {
+    font-size: 12px !important;
+  }
 
-    }
+  .mobileQR {
+    height: 30px !important;
+  }
 
-    .containerFluid {
-        margin: 0px !important;
-        padding: 0px !important;
-        width: 100% !important;
+  .profileOnRes {
+    gap: 5px !important;
+  }
 
-    }
+  .hamburgerOnMobile {
+    display: flex !important;
+    align-items: center !important;
+  }
 
-    .userName {
-        font-size: 12px !important;
-    }
+  .hamburgerOnMobile button {
+    text-align: center !important;
+    position: relative !important;
+    padding: 15px !important;
+  }
 
-    .mobileQR {
-        height: 30px !important;
-    }
-
-    .profileOnRes {
-        gap: 5px !important;
-
-    }
-
-    .hamburgerOnMobile {
-        display: flex !important;
-        align-items: center !important;
-
-    }
-
-    .hamburgerOnMobile button {
-        text-align: center !important;
-        position: relative !important;
-        padding: 15px !important;
-    }
-
-    .hamburgerOnMobile button span {
-        font-size: 12px !important;
-        position: absolute !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-    }
+  .hamburgerOnMobile button span {
+    font-size: 12px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
 }
 
 /* .seeMoreLass {

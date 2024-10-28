@@ -41,10 +41,10 @@ const SideBarProfile = ({ profileImage, name, message, jobRoleName,
 
   return (
     <div className={`${style.containerFluid}`}>
-      <div>
+      <div className='mb-4'>
         <div>
           <span className="card-title text-uppercase fw-bold fs-17">{name}</span>
-          <p className="fs-13">{jobRoleName}</p>
+          <p className={`${style.introName}`}>{jobRoleName}</p>
         </div>
         <div >
           <img src={profileImage} alt="Shahista-profile" />

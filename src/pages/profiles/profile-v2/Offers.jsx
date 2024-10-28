@@ -30,7 +30,7 @@ const Offers = ({ item, profileUserId, visitorInfo }) => {
 
             <div className={styles.singleServiceContainer}>
               <div className={styles.singleServiceImage}>
-                <img src={item?.image} alt={item?.name} />
+                <img src={item?.image} alt={item?.name} className={styles.mgv2objectFitcover}/>
               </div>
               <div className={styles.singleServiceDetails}>
                 <div>

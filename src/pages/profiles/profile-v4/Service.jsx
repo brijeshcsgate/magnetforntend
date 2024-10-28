@@ -23,9 +23,9 @@ const Service = ({ services, profileUserId, visitorInfo }) => {
   }
   return (
     <>
-      <div className={styles.titleUnderline}>
+      <div >
         <span></span>
-        <h5>Service</h5>
+        <h5 className={styles.fnSiz700}>Service</h5>
       </div>
       <Row xs={1} md={2} lg={2} xl={3} className="g-3" >
         {services?.length > 0 &&

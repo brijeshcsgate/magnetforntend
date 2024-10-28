@@ -9,9 +9,9 @@ const Gallery = ({images,videos,documentsLinks,imageGalleryStatus,videoGallerySt
     <div>
        {(imageGalleryStatus === true) && (images?.length > 0) ?
 <>
-      <div className={styles.titleUnderline}>
+      <div >
         <span></span>
-        <h5>Image</h5>
+        <h5 className={styles.fnSiz700}>Image</h5>
       </div>
       <ImageGallery images={images} />
       <br />
@@ -19,18 +19,18 @@ const Gallery = ({images,videos,documentsLinks,imageGalleryStatus,videoGallerySt
       </>: <></>}
           {(videoGalleryStatus === true) && (videos?.length > 0) ?
 <>
-      <div className={styles.titleUnderline}>
+      <div >
         <span></span>
-        <h5>Video</h5>
+        <h5 className={styles.fnSiz700}>Video</h5>
       </div>
       <VideoGallery  videos={videos}/></>: <></>}
           {(linkStatus === true && (documentsLinks?.length > 0)) ?
 <>
       <br />
       <br />
-      <div className={styles.titleUnderline}>
+      <div >
         <span></span>
-        <h5>Important Link</h5>
+        <h5 className={styles.fnSiz700}>Important Link</h5>
       </div>
       <ImportantLink documentsLinks={documentsLinks}/>
     </>:<></>}

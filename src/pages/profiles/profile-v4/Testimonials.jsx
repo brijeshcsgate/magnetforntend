@@ -9,9 +9,9 @@ const Testimonials = ({testimonials}) => {
   return (
     <>
     <div className={styles.h100vh}>
-      <div className={styles.titleUnderline} >
+      <div className={styles.m4linespacing}>
         <span></span>
-        <h5>Testimonials</h5>
+        <h5 className={styles.fnSiz700}>Testimonials</h5>
       </div>
       <Carousel indicatorLabels={null} indicators={null} draggable={1} nextIcon={null} nextLabel={null} prevIcon={null} prevLabel={null}>
       

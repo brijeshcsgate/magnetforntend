@@ -10,7 +10,7 @@ const FBPayment = ({bankAccountDetails,paymentDetails}) => {
       <div className=" mx-auto px-3 ">
         <div className="flex flex-wrap">
           <div className=" lg:w-1/3">
-            <div className="fbheader-section mb-2 px-4">
+            <div className="fbheader-section mb-2 px-2">
               <h2 className="text-3xl font-semibold">
               Payment <span className="text-blue-500">Methods</span>
               </h2>

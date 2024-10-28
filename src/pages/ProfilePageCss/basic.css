@@ -42,6 +42,12 @@ body {
 	/* color: black;  */
 	/* transition: color 0.3s ease;  */
   }
+  
+.mg12objectFitcover {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 300px !important; /* You can adjust the height as needed */
+  }
   .flex-col{
 	display:flex !important;
 	flex-direction: column !important;

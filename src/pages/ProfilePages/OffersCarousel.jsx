@@ -67,7 +67,9 @@ const OffersCarousel = ({ offers = [] }) => {
         
         <Grid item xs={12} md={6} lg={4}>
        
-       <div key={startIndex + index} className="  transition-all duration-300 ease-in-out" >
+       <div key={startIndex + index} 
+      //  className="  transition-all duration-300 ease-in-out" 
+       >
             <div
               key={index}
               className=" box-item f-mockup animated"
@@ -87,10 +89,10 @@ const OffersCarousel = ({ offers = [] }) => {
                 <div className="has-popup">
                   <img
                     src={offer?.image}
-                    style={resizeImage(346, 384)}
+                    style={resizeImage(342, 228)}
                     // className="p-in-image-slide"
-                    className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"
-                      }`}
+                    // className={`p-in-image-slide2 ${count ? "p-in-slide-out" : "p-in-slide-in"
+                      // }`}
                     alt={offer?.name}
                   />
                 </div>

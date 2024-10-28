@@ -4,6 +4,7 @@ import ServiceModal from "../../../components/profile-v2/ServiceModal";
 import { ContextAPI } from "../../../contextAPI/ContextProfileV2";
 import TextToggler from "@/pages/ProfilePages/TextToggler";
 import EnquiryForm from "@/components/EnquiryForm/EnquiryForm";
+import { resizeImage } from "@/pages/ProfilePages/resizeImage";
 const SingleService = ({ item,profileUserId, visitorInfo }) => {
   const { setServiceModalDataV2 } = useContext(ContextAPI);
   const handleSendServiceV1ModalData = (ele) => {
@@ -13,7 +14,8 @@ const SingleService = ({ item,profileUserId, visitorInfo }) => {
     <>
       <div className={styles.singleServiceContainer}>
         <div className={styles.singleServiceImage}>
-          <img src={item.image} alt={item.name} />
+          <img src={item.image} alt={item.name}    className={styles.mgv2objectFitcover}
+       />
         </div>
         <div className={styles.singleServiceDetails}>
           <div>

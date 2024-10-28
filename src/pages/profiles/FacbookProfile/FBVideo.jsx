@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
-import SwiperCore from 'swiper';
-
 import { Navigation, Pagination } from 'swiper/modules';
-
-// Import Swiper styles
-import 'swiper/swiper-bundle.css';
-import { Grid } from '@mui/material';
-
-// Install Swiper modules
-SwiperCore.use([Navigation, Pagination]);
-
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 const FBVideo = ({ videos }) => {
+  const [activeVideoIndex, setActiveVideoIndex] = useState(null);
+
+  const handlePlay = (index) => {
+    setActiveVideoIndex(index);
+  };
 
 
   return (
@@ -22,7 +19,7 @@ const FBVideo = ({ videos }) => {
       <div className=" mx-auto px-3 ">
         <div className="flex flex-wrap">
           <div className=" lg:w-1/3">
-            <div className="fbheader-section mb-2 px-4">
+            <div className="fbheader-section mb-2 px-2">
               <h2 className="text-3xl font-semibold">
                 Our <span className="text-blue-500">Videos</span>
               </h2>
@@ -31,11 +28,8 @@ const FBVideo = ({ videos }) => {
         </div>
 
         <Swiper className="mySwiper pl-2 pr-3"
-          // navigation pagination
-
           modules={[Navigation, Pagination]}
           spaceBetween={20}
-          // slidesPerView={3} // Set to how many slides you want visible at a time
           navigation
           pagination={{ clickable: true }}
           breakpoints={{
@@ -53,28 +47,36 @@ const FBVideo = ({ videos }) => {
             },
           }}
         >
-          {/* {JSON.stringify(linksArray)} */}
           {videos.map((video, index) => (
-            //    <Grid sx={12} md={6} lg={4}>
+            //  <div>
+            <SwiperSlide key={index}>
 
-            <SwiperSlide>
-
-              <div className="swiper-slide pt-2 pl-2 pb-2" key={index}>
+              <div className="swiper-slide pt-2 pl-2 pb-2" >
 
                 <div className="fbservice-box fbbg-white    ">
-                  <iframe
-                    className="w-full h-64 rounded-md"
-                    src={video?.link}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
+                  <div className={`${index}?'video-wrapper':''`}    >
+                    {activeVideoIndex !== index && (
+                      <div
+                        className="video-overlay"
+                        onClick={() => handlePlay(index)}
+                      ></div>
+                    )}
+                    <iframe
+                      className="w-full h-64 rounded-md"
+                      src={video?.link}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+
                 </div>
                 <div className="mt-2 cursor-pointer" data-bs-toggle="modal" data-bs-target="#myvid">
                   <p className="text-lg">{video?.name}</p>
                 </div>
               </div>
             </SwiperSlide>
+            // </div>
           ))}
         </Swiper>
       </div>

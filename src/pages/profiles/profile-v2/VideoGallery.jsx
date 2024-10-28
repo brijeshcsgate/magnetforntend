@@ -11,7 +11,7 @@ const VideoGallery = ({ videos }) => {
 
         {videos?.length > 0 &&
           videos.map((video, index) => (
-            <div key={video.id}>
+            <div key={video.id} className={styles.pt2v10}>
               <VideoCard
                 key={index}
                 popupHref={video?.link}

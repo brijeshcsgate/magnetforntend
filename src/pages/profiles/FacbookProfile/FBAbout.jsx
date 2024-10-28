@@ -14,7 +14,7 @@ const FBAbout = ({ aboutUs, countryCode, mobile, whatsappNumberCountryCode, what
   };
 
   return (
-    <div className="fbmainbody pb-2 ">
+    <div className="fbmainbody pb-2  pr-4 fb-pad-left-2">
       <div id="prolink"></div>
       <div className="fbcontainer mn-pad p-4 pb-0 pt-0">
         <div className="fbcontainer">

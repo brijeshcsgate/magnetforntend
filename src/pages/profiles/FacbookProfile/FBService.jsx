@@ -34,7 +34,8 @@ const FBService = ({ services, profileUserId, visitorInfo }) => {
       <div className=" mx-auto px-3 ">
         <div className="flex flex-wrap">
           <div className=" lg:w-1/3">
-            <div className="fbheader-section mb-2 px-4">
+          {/* md:px-2 xs:px-3 lg:px-4 */}
+            <div className="fbheader-section mb-2 px-2">
               <h2 className="text-3xl font-semibold">
                 WHAT WE <span className="text-blue-500">Service</span>
               </h2>
@@ -79,11 +80,6 @@ const FBService = ({ services, profileUserId, visitorInfo }) => {
                 <div className='p-2' key={item.id}>
                   <div className="fbservice-box fbbg-white    ">
                     <div className="fbelement">
-                      {/* <div
-                  className="  rotate-image fbshape bg-blue-500 h-16 w-16 mb-4 cursor-pointer"
-                  data-bs-toggle="modal"
-                  data-bs-target="#myModal"
-                > */}
                       <img src={item.image} alt={item.name} style={resizeImage(380, 290)}
                         className="w-full  object-cover image-cut fbshape rotate-image"
                       //  className="    object-cover rotate-image "  rotate-image rounded-md fbshape
@@ -101,7 +97,7 @@ const FBService = ({ services, profileUserId, visitorInfo }) => {
                         <button onClick={() => handleOpen(item)} className="fb-ser-button" >
                           <span className="">View detail</span>
                         </button>
-                        
+
                         <FBEnquiryForm profileUserId={profileUserId} visitorInfo={visitorInfo} cl='text-secondary' />
 
                       </div>

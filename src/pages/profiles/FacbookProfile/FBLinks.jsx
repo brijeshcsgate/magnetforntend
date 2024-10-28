@@ -30,7 +30,7 @@ const FBLinks = ({documentsLinks}) => {
       <div className=" mx-auto px-3 ">
         <div className="flex flex-wrap">
           <div className=" lg:w-1/3">
-            <div className="fbheader-section mb-2 px-4">
+            <div className="fbheader-section mb-2 px-2">
               <h2 className="text-3xl font-semibold">
               Important <span className="text-blue-500">Links</span>
               </h2>
@@ -44,7 +44,7 @@ const FBLinks = ({documentsLinks}) => {
                     {documentsLinks?.map((link, index) => (
                               <Grid sx={12} md={6} lg={3}>
          
-                            <div key={index} className="flex items-center px-5">
+                            <div key={index} className="flex items-center px-3">
                                 <img src={`${"/img/link_ico.png"}`} alt={link?.name} className="w-6 h-6 mr-2" />
                                 <a href={link.url} className="text-lg hover:text-blue-500">{link?.name}</a>
                             </div>

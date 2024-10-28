@@ -41,7 +41,7 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
 
     // Function to determine device type based on width
     const getDeviceType = () => {
-        if (width < 768) return 120;
+        if (width < 768) return 100;
         if (width < 1024) return 170;
         return 280;
     };
@@ -112,7 +112,7 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
             <div className="fbcontainer mx-auto fbbg-head mn-pad">
                 <div className="relative">
                     <div className="fbheroback " >
-                        <img src={coverImage} className="w-full h-10" />
+                        <img src={coverImage} className="w-full h-10 max-h-[500px] object-cover" />
                     </div>
                     <div className="flex justify-between items-start  fbprofilecont">
                         <div className="flex   mart" >
@@ -121,7 +121,7 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
                                 className="w-[180px] h-[180px] rounded-full object-cover" />
                         </div>
                         <div className=" lg:text-left md:text-center pt-5">
-                            <h2 className="text-2xl font-bold">
+                            <h2 className="text-2xl font-bold pt-2">
                                 {name}
                                 <span className="block text-gray-500 sm:inline"> &nbsp;&nbsp;({jobRoleName})</span>
                             </h2>
@@ -166,9 +166,10 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
 
                     <div className="navigation pos-fix " id="navbar">
                         <nav className={`navbar navbar-expand-lg fbnavbar-light p-0  ${isSticky ? "pl-3 pr-3 sticky-hed2 fbgradient-box-header" : ""}`}>
-                            {isMobileOrTablet && (
+                            {isMobileOrTablet  && (
                                 <>
-                                    <button style={{ boxShadow: 'none' }} className="block lg:hidden" type="button" data-bs-toggle="collapse" onClick={handleToggle}
+                                <div className='fb-wd-100'style={{display:'flex', flexDirection:'row', justifyContent:'space-between'}}>
+                                    <button style={{ boxShadow: 'none' }} className="block lg:hidden " type="button" data-bs-toggle="collapse" onClick={handleToggle}
                                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                         aria-expanded="false" aria-label="Toggle navigation">
                                         <span className="navbar-toggler-icon"></span>
@@ -182,31 +183,32 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
                                                 src={profileImage} alt="" />
                                         </div>
                                     </button>
+                                    </div>
                                 </>)}
                             <div className={`${isMobileOrTablet ? (isMenuOpen ? '' : 'hidden') : 'block'} lg:flex lg:items-center`}
                                 // className={` ${isMenuOpen ? '' : 'hidden'} md:flex md:items-center`}
                                 id="">
                                 <div>
                                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 space-x-4">
-                                        <li className="nav-item">
-                                            <a className={`nav-link active  ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#profile">Profile</a>
+                                        <li className="nav-item" onClick={handleToggle}>
+                                            <a className={`nav-link active  ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#profile" >Profile</a>
                                         </li>
-                                        <li className="nav-item">
+                                        <li className="nav-item" onClick={handleToggle}>
                                             <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#services">Services</a>
                                         </li>
-                                        <li className="nav-item">
+                                        <li className="nav-item" onClick={handleToggle}>
                                             <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#products">Products</a>
                                         </li>
-                                        <li className="nav-item">
+                                        <li className="nav-item" onClick={handleToggle}>
                                             <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#offers">Offers</a>
                                         </li>
-                                        <li className="nav-item">
+                                        <li className="nav-item" onClick={handleToggle}>
                                             <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#imageGallery">Gallery</a>
                                         </li>
-                                        <li className="nav-item">
+                                        <li className="nav-item" onClick={handleToggle}>
                                             <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#testimonials">Testimonial</a>
                                         </li>
-                                        <li className="nav-item">
+                                        <li className="nav-item" onClick={handleToggle}>
                                             <a className={`nav-link ${isSticky ? "text-white-600 txt-color" : "text-blue-600"}`} href="#payments">Payment</a>
                                         </li>
 
@@ -216,7 +218,7 @@ const FBHeader = ({ profileImage, name, message, jobRoleName,
                                     </ul>
 
                                 </div>
-                                {isSticky ?
+                                {isSticky && !isMobileOrTablet?
                                     <div className="flex fbposright">
                                         <p className="text-white-600 mt-2">{name}</p>
                                         <img className="w-10 h-10 rounded-full object-cover" src={profileImage} alt="" />

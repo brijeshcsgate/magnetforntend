@@ -20,9 +20,9 @@ const About = ({ aboutUs, countryCode, mobile, whatsappNumberCountryCode, whatsa
     return (
         <div className={styles.h80vh}>
             {/* About Section  */}
-            <div className={styles.titleUnderline}>
+            <div >
                 <span></span>
-                <h5>About</h5>
+                <h5 className={styles.fnSiz700}>About</h5>
             </div>
             <p style={{ padding: "0px 10px" }} className='text-secondary'> {isExpanded ? aboutUs : aboutUs?.slice(0, 200)}
                 {aboutUs?.length >= 200 ?
