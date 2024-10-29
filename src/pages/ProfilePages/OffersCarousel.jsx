@@ -59,9 +59,9 @@ const OffersCarousel = ({ offers = [] }) => {
     }, 500); // Delay for animation
   };
   return (
-    <div className="relative w-full  mx-auto">
+    <div className="relative w-full  mx-auto ml-10px">
       {/* <div className="flex overflow-hidden" style={{ marginLeft: '25px' }}> */}
-      <Grid container spacing={2} className="overflow-hidden"style={{paddingTop:'25px',paddingBottom:'25px',paddingLeft:'10px',paddingRight:'10px'}} >
+      <Grid container spacing={2} className="overflow-hidden py25px25 " >
     
         {offers.slice(startIndex, startIndex + getDeviceType()).map((offer, index) => (
         
@@ -183,8 +183,8 @@ const OffersCarousel = ({ offers = [] }) => {
       <button
         onClick={handlePrev}
         disabled={startIndex === 0}
-        style={{ left: '-25px' }}
-        className="absolute  top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
+        
+        className="absolute left25  top-1/2 transform -translate-y-1/2 lrbtn p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
@@ -192,8 +192,8 @@ const OffersCarousel = ({ offers = [] }) => {
       <button
         onClick={handleNext}
         disabled={startIndex >= offers.length - getDeviceType()}
-        style={{ right: '-25px' }}
-        className="absolute  top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
+        
+        className="absolute right25 top-1/2 transform -translate-y-1/2 lrbtn p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
       >
         <ChevronRight className="w-6 h-6" />
       </button>

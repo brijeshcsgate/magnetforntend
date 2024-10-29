@@ -313,9 +313,9 @@ const ProfilepageUser = () => {
               </div>
             </section>
             {/* <!-- Wrapper --> */}
-            <div className="wrapper">
+            <div className="wrapper ">
               {/* <!-- Section About --> */}
-              <section className="section about" ref={sectionRefs.Profile}>
+              <section className="section about aboutPx" ref={sectionRefs.Profile}>
                 <div className="content-box">
                   <div className="row">
                     <div className="col col-m-12 col-t-5 col-d-5">
@@ -424,7 +424,7 @@ const ProfilepageUser = () => {
                       position: "relative",
                     }}
                   >
-                    <div className="row">
+                    <div className="row ">
 
                       <ProductCarousal images={profileDetails?.products} footer={true} profileUserId={profileUserId} visitorInfo={visitorInfo} />
                     </div>
@@ -565,9 +565,9 @@ const ProfilepageUser = () => {
 
                   <div className="row">
                     {(profileDetails?.bankAccountStatus === true) && (profileDetails?.bankAccountDetails?.bankName || profileDetails?.bankAccountDetails?.accountName || profileDetails?.bankAccountDetails?.ifsc) ?
-                      <div className="col col-m-12 col-t-6 col-d-6">
+                      <div className="col col-m-12 col-t-6 col-d-6 pl11pr11">
                         <div
-                          className="content-box animated"
+                          className="content-box animated "
                           data-sr-id="14"
                           style={{
                             visibility: "visible",
@@ -638,7 +638,7 @@ const ProfilepageUser = () => {
                         </div>
                       </div> : <></>}
                     {(profileDetails?.ePaymentStatus === true) && ((profileDetails?.paymentDetails?.image) || (profileDetails?.paymentDetails?.upiId) || profileDetails?.paymentDetails?.paymentGatewayLink) ?
-                      <div className="col col-m-12 col-t-6 col-d-6">
+                      <div className="col col-m-12 col-t-6 col-d-6 pl11pr11">
                         <div
                           className="content-box animated upi-img"
                           data-sr-id="15"

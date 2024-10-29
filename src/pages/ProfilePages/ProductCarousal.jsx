@@ -74,9 +74,9 @@ const ProductCarousal = ({ images, profileUserId, visitorInfo, footer }) => {
   };
 
   return (
-    <div className="relative w-full  mx-auto">
+    <div className="relative w-full  mx-auto product-spacing">
       {/* <div className="flex overflow-hidden" style={{ marginLeft: '25px' ,flexDirection:'row'}}> */}
-      <Grid container spacing={2} className="overflow-hidden ml-5" style={{ paddingTop: '25px', paddingBottom: '25px', paddingLeft: '15px', paddingRight: '10px' }} >
+      <Grid container spacing={2} className="overflow-hidden ml-5 py25px25"  >
         {images.slice(startIndex, startIndex + getDeviceType()).map((product, index) => (
 
           <Grid item xs={12} md={6} lg={4}>
@@ -223,16 +223,16 @@ const ProductCarousal = ({ images, profileUserId, visitorInfo, footer }) => {
       <button
         onClick={handlePrev}
         disabled={startIndex === 0}
-        style={{ left: '-15px' }}
-        className="absolute  top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
+        // style={{ left: '-15px' }}
+        className="absolute ml-5px left25  top-1/2 transform -translate-y-1/2 lrbtn p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={handleNext}
         disabled={startIndex >= images.length - getDeviceType()}
-        style={{ right: '-32px' }}
-        className="absolute  top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
+        // style={{ right: '-32px' }}
+        className="absolute  productR5 top-1/2 transform -translate-y-1/2 lrbtn p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
       >
         <ChevronRight className="w-6 h-6" />
       </button>

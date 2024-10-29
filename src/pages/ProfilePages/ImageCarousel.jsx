@@ -45,12 +45,12 @@ const ImageCarousel = ({ images }) => {
   return (
     <div className="relative w-full  mx-auto">
       {/* <div className="flex overflow-hidden" style={{marginLeft:'25px'}}> */}
-      <Grid container spacing={2} className="overflow-hidden" style={{ padding: '25px', paddingRight: '25px' }} >
+      <Grid container spacing={2} className="overflow-hidden py25px25"  >
 
         {images.slice(startIndex, startIndex + getDeviceType()).map((image, index) => (
           <Grid item xs={12} md={6} lg={4}>
 
-            <div key={startIndex + index} className="p-2 transition-all duration-300 ease-in-out" >
+            <div key={startIndex + index} className=" transition-all duration-300 ease-in-out" >
               {/* <div  className="w-full h-48 object-cover rounded-lg" >{image}</div> */}
               <DynamicImageBox
                 key={index}
@@ -94,16 +94,16 @@ const ImageCarousel = ({ images }) => {
       <button
         onClick={handlePrev}
         disabled={startIndex === 0}
-        style={{ left: '-25px' }}
-        className="absolute  top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
+        
+        className="absolute  left25 top-1/2 transform -translate-y-1/2 lrbtn p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={handleNext}
         disabled={startIndex >= images.length - getDeviceType()}
-        style={{ right: '-25px' }}
-        className="absolute  top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
+        
+        className="absolute  right25 top-1/2 transform -translate-y-1/2 lrbtn p-2 rounded-full shadow-md hover:bg-opacity-75 transition-all duration-200 ease-in-out disabled:opacity-30 disabled:cursor-not-allowed"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
