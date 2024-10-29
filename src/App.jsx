@@ -43,13 +43,15 @@ const App = () => {
     queryKey: ['verifyToken'],
     queryFn: async () =>
       await apiService.get('v1/auth/verifyToken').then((res) => {
-        // if (res.code === 200) {
+        if (res.code === 200) {
           setIsAuthenticated(true);
           setUser(res.data?.user);
           setPermissions(res.data?.user?.roleId?.permissions);
-        // } else {
-        //   setIsAuthenticated(false);
-        // }
+        } else {
+          // setIsAuthenticated(false);
+          
+          setIsAuthenticated(true);
+        }
       }),
     retry: false,
     refetchOnWindowFocus: false,
@@ -87,22 +89,23 @@ const App = () => {
 
   return (
     <><Toaster />    <Routes>
-       
+
       {isAuthenticated
-        ? renderRoutes(protectedRoutes, AdminLayout)
+        ?
+         renderRoutes(protectedRoutes, AdminLayout)
         : renderRoutes(publicRoutes, CommonLayout)}
-        
-        <Route path='/profile/:id' element={<ProfilepageUser />} />
-        <Route  path='/magnetv1/:id' element={<Profilev2Main/>} />
-      <Route  path='/magnetv4/:id' element={<ProfileV4Main/>} />
-      <Route  path='/profiles' element={<ProfileV1Main/>} />
-      <Route  path='/magnetfb/:id' element={<FBIndex/>} />
-   
-        {/* <Route path='/dashboard' element={<AnalyticsDashboard />} /> */}
+
+      <Route path='/profile/:id' element={<ProfilepageUser />} />
+      <Route path='/magnetv1/:id' element={<Profilev2Main />} />
+      <Route path='/magnetv4/:id' element={<ProfileV4Main />} />
+      <Route path='/profiles' element={<ProfileV1Main />} />
+      <Route path='/magnetfb/:id' element={<FBIndex />} />
+
+      {/* <Route path='/dashboard' element={<AnalyticsDashboard />} /> */}
 
 
     </Routes>
-     {/* <AnalyticsDisplay/> */}
+      {/* <AnalyticsDisplay/> */}
     </>
 
   );

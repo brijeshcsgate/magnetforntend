@@ -95,18 +95,17 @@ const TextField = ({
           </div>} */}
         {touched && error && (
           <div className="error-message">
-            {error.charAt(0).toUpperCase() + error.slice(1).toLowerCase()}
+            {error.charAt(0).toUpperCase() + error?.slice(1).toLowerCase()}
           </div>
         )}
       </div>
 
-      <Tooltip title={helpertext}>
+      {/* <Tooltip title={helpertext}>
 
         {helpertext && <div className="bottom-label fnt-12">
-          {/* {helpertext} */}
           {helpertext.length > 55 ? `${helpertext.substring(0, 55)}...` : helpertext}
         </div>}
-      </Tooltip>
+      </Tooltip> */}
 
     </>
   );

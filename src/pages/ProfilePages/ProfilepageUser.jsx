@@ -6,17 +6,7 @@ import "../ProfilePageCss/ionicons.css";
 import "../ProfilePageCss/owl-carousel.css";
 import "../ProfilePageCss/magnific-popup.css";
 import "../ProfilePageCss/custom.css";
-import qr from "./Images/qr.png";
-import img3 from "./Images/product.jpg";
-import pdf from "./Images/pdf.png";
-import word from "./Images/word.png";
-import excel from "./Images/excel.png";
-import csv from "./Images/csv.png";
-import ppt from "./Images/powerpoint.png";
-import linkico from "./Images/link_ico.png";
-import bgimg from "./Images/slide-bg.jpg";
 import "../ProfilePageCss/carousel.css";
-import { Carousel } from "react-responsive-carousel";
 import { useParams } from "react-router-dom";
 import { APIS } from "@/constants/api.constant";
 import apiService, { axiosInstanceWapi } from "@/lib/apiService";
@@ -35,7 +25,6 @@ import EnquiryInfoForm from "./EnquiryInfoForm";
 import ReferrelInfoForm from "./ReferrelInfoForm";
 import { Button } from "@mui/material";
 import NoAccessibleProfile from "../NoAccessibleProfile/NoAccessibleProfile";
-import { Helmet } from "react-helmet";
 import VCardGenerator from "@/components/VCardGenerator/VCardGenerator";
 
 const ProfilepageUser = () => {
@@ -71,21 +60,17 @@ const ProfilepageUser = () => {
     };
 
     window.addEventListener('resize', handleResize);
-
-    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
 
-  // Function to determine device type based on width
   const getDeviceType = () => {
     if (width < 768) return 120;
     if (width < 1024) return 170;
     return 280;
   };
 
-  // Auto-increment count to cycle through profiles
   useEffect(() => {
     const interval = setInterval(() => {
       setCount((prevCount) => (prevCount + 1) % profiles.length);

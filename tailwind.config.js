@@ -24,7 +24,7 @@ module.exports = {
         "gray-quaternary": "#9A9998",
         "blue-primary-200": "#006CB8",
         "blue-primary-100": "#CDE9F6",
-        "border-primary": "#e0e0e0",
+        // "border-primary": "#e0e0e0",
       },
       keyframes: {
         "accordion-down": {

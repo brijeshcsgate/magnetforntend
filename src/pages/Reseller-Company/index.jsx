@@ -70,11 +70,12 @@ export default function ResellCompany() {
 
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate =useNavigate()
   const HEAD_BUTTONS = [
     {
       label: 'Add User',
       children: (
-        <Button onClick={() => navigate(ROUTES.ADD_USER)}>Invite</Button>
+        <Button onClick={() => navigate(ROUTES.RESELLCOMP_ADD)}>Invite</Button>
       ),
     },
     {

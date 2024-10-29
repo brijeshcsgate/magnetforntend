@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 const useAppStore = create((set) => ({
-  isAuthenticated: false,
+  isAuthenticated: true,
   setIsAuthenticated: (isAuthenticated) => set({ isAuthenticated }),
   token: null,
   setToken: (token) => set({ token }),

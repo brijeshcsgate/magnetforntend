@@ -151,8 +151,8 @@ const CustomSelect = ({
         : [] // Ensure selectedValue is an array
     );
 
-    return data.pages.flatMap((page) =>
-      page.results.filter((result) => !existingValues.has(result.value))
+    return data?.pages?.flatMap((page) =>
+      page?.results?.filter((result) => !existingValues.has(result.value))
     );
   }, [data, selectedValue]);
 
@@ -449,8 +449,8 @@ const FormikSelect = ({
   }, [defaultValue, JSON.stringify(otherFilters)]);
 
   const selectedValue = isMulti
-    ? options.filter(({ value }) => field?.value?.includes(value))
-    : options.find(({ value }) => value === field.value);
+    ? options?.filter(({ value }) => field?.value?.includes(value))
+    : options?.find(({ value }) => value === field.value);
 
   const LoadingIndicator = () => (
     <div className="loading-indicator" style={{ padding: '10px' }}>

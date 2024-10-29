@@ -125,7 +125,7 @@ const [industries, setIndustries] = useState([]);
 // Fetch industry options from backend
 
 useEffect(() => {
-  axios.get(`${BASE_URL_WAPI}/industry`)
+  axios.get(`${BASE_URL_WAPI}industry`)
     .then(response => {
       setIndustries(response.data.data);
     })
@@ -383,8 +383,6 @@ const handleImageChange = (event, setFieldValue) => {
                 >
                   
                   <Heading>
-                      {/* {
-                    id ? 'Edit' : 'Add'} */}
                      Let's MAGNETize an Organization</Heading>
                      Invite an Organization to onboard on MAGNET and Invite there users
                   <div className="width90">
@@ -409,31 +407,6 @@ const handleImageChange = (event, setFieldValue) => {
                             options={industries}
                           />
                           
-      {/* <div>
-        <label htmlFor="industry">Industry:</label>
-        <select
-          id="industry"
-          name="industry"
-          value={data.industry}
-          // onChange={handleChange}
-          
-          onChange={(e)=>setFieldValue('data.industry',e.target.value)}
-          required
-        >
-          <option value="">Select an industry</option>
-          {industries?.map((industry) => (
-            <option key={industry._id} value={industry._id}>
-              {industry.industry}
-            </option>
-          ))}
-        </select>
-      </div> */}
-                        {/* <FormikTextField
-                            label="Industry"
-                            placeholder="Select"
-                            name="industry"
-                            // isRequired
-                          /> */}
                         </div>
                       </div>
                       

@@ -14,8 +14,8 @@ const AdminLayout = (props) => {
   const getUser = async () => {
     try {
       const res = await apiService.get(APIS.USER_PROFILE);
-      setUser(res.data.userDetails);
-      setPermissions(res.data.userDetails?.roleId?.permissions);
+      setUser(res.data?.userDetails);
+      setPermissions(res.data?.userDetails?.roleId?.permissions);
     } catch (error) {
       console.error('Error fetching user profile:', error);
     }
