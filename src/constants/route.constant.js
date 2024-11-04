@@ -18,7 +18,7 @@ export const ROUTES = {
 RESELLERCOMPANY: '/reseller-company',
 RESELLCOMP_ADD: '/reseller-company/add',
 
-RESELLCOMP_ADDEDIT: '/reseller-company/form',
+RESELLCOMP_ADDEDIT: '/reseller-company/update',
 
 RESELLCOMP_PREVIE: '/reseller-company/preview',
 

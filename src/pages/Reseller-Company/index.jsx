@@ -3,6 +3,8 @@ import {
   EllipsisIcon,
   EyeIcon,
   PencilIcon,
+  PencilRulerIcon,
+  ShareIcon,
   TicketSlashIcon,
   UserRoundCheck,
   UserRoundX,
@@ -26,34 +28,7 @@ import { useContext, useEffect, useState } from 'react';
 import { patchApi } from '@/services/method';
 import { Tooltip } from '@mui/material';
 import { CounterContext } from '@/components/Layout/commonLayout/TitleOfPageProvider';
-
-
-
-
-
-const columns = [
-  { field: 'name', headerName: 'name', width: 170 },
-
-
-  { field: 'mobile', headerName: 'Contact', width: 170 },
-
-  { field: 'industry', headerName: 'Industry', width: 170 },
-
-  { field: 'address', headerName: 'Location', width: 170 },
-
-  { field: 'name', headerName: 'User', width: 170 },
-
-  { field: 'userType', headerName: 'Type', width: 170 },
-
-  { field: '', headerName: 'Action', width: 170 },
-
-]
-
-
-
-
-
-
+import { InspectionFormsIcon } from '@/assets/Icons';
 
 
 
@@ -70,7 +45,7 @@ export default function ResellCompany() {
 
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate =useNavigate()
+  const navigate = useNavigate()
   const HEAD_BUTTONS = [
     {
       label: 'Add User',
@@ -122,6 +97,94 @@ export default function ResellCompany() {
 
     fetchData();
   }, []);
+
+  // const navigate = useNavigate();
+  const navigateToEdit = (rowData) => {
+    console.log('rowData',rowData)
+    navigate(`${ROUTES.RESELLCOMP_ADDEDIT}/${rowData?.id}`, {
+      state: { isEditeActive: true },
+    });
+  };
+  const navigateToView = (rowData) => {
+    navigate(`${ROUTES.RESELLCOMP_ADD}`, {
+      state: { id: rowData?.id },
+    });
+  };
+
+
+
+  
+const columns = [
+  { field: 'name', headerName: 'name', width: 170 },
+
+
+  { field: 'mobile', headerName: 'Contact', width: 170 },
+
+  { field: 'industry', headerName: 'Industry', width: 170 },
+
+  { field: 'address', headerName: 'Location', width: 170 },
+
+  { field: 'name', headerName: 'User', width: 170 },
+
+  { field: 'userType', headerName: 'Type', width: 170 },
+
+  // { field: '', headerName: 'Action', width: 170 },
+  {
+    field: 'threedot',
+    headerName: 'Action',
+    headerClassName: 'super-app-theme--header hide-img-bordersvg',
+    width: 100,
+    editable: false,
+    renderCell: (params) => {
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <Button variant="outline" size="icon" className="group">
+              <EllipsisIcon className="text-blue-primary-200 group-hover:text-white" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem onClick={() => navigateToView(params.row)}>
+              <EyeIcon className="size-4 mr-2" />
+              <span>View</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => navigateToEdit(params.row)}>
+              <PencilIcon className="size-4 mr-2" />
+              <span>Edit</span>
+            </DropdownMenuItem>
+            
+            <DropdownMenuItem >
+              <InspectionFormsIcon className="size-4 mr-2" />
+              <span>Profile Inspection</span>
+            </DropdownMenuItem>
+            
+            <DropdownMenuItem >
+              <ShareIcon className="size-4 mr-2" />
+              <span>Leads/Referral </span>
+            </DropdownMenuItem>
+            <DropdownMenuItem
+           
+            >
+              {params?.row.isActive === true ? (
+                <UserRoundX className="size-4 mr-2" />
+              ) : (
+                <UserRoundCheck className="size-4 mr-2" />
+              )}
+              <span>
+                {params?.row.isActive === true ? 'Inactive' : 'Active'}
+              </span>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleInvite(params?.row)}>
+              <PencilRulerIcon className="size-4 mr-2" />
+              <span>Update Referral Code</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    },
+  },
+]
+
   return (
     <PaginatedTableView
       // queryKey={`routes ${userApiData}`}

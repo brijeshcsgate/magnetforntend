@@ -5,9 +5,6 @@ import {
   Heading,
   SidePanel,
 } from '@/components/AddFormLayout/AddFormLayout';
-import { Checkbox } from '@/components/ui/checkbox';
-// import './ResellCompanyAddEdit.css';
-import moment from 'moment';
 import BreadCrumbs from '@/components/common/BreadCrumbs/BreadCrumbs';
 import Button from '@/components/common/Button/Button';
 import FormikTextField from '@/components/inputs/formik/FormikTextField';
@@ -18,34 +15,21 @@ import { ErrorMessage, Formik } from 'formik';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as Yup from 'yup';
-import FormikRadioGroup from '@/components/inputs/formik/FormikRadioGroup';
-import FormikDocumentUploder from '@/components/inputs/formik/FormikDocumentUploader/FormikDocumentUploader';
 import { customEmailValidation } from '@/utils/custValidations';
 import { toast } from 'react-toastify';
 import {
-  bloodGroup,
-  validateAlphabets,
   validateMobileNumber,
   validatePincode,
-  governmentIssueCards,
-  startSpcaeRemover,
 } from '@/utils/common.helper';
-import { getTodaysDate } from '@/utils/dateHelper';
-import { DatePickerInput } from '@/components/common/DateTimeInputs';
-import {
-  CustomSelect,
-  CustomSelectById,
-  FormikSelect,
-} from '@/components/common/CustomSelect';
 import apiService, { BASE_URL_WAPI } from '@/lib/apiService';
-import { generateRandomString } from '@/lib/utils';
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
-// import CustomOptionSelect from '../../components/common/CustomSelect/CustomOptionSelect';
 
 import { CounterContext } from '@/components/Layout/commonLayout/TitleOfPageProvider';
 import CustomOptionSelect from '@/components/common/CustomSelect/CustomOptionSelect';
 import axios from 'axios';
+import ImageUploadPreview from '@/components/ui/ImageUploader';
+import { ROUTES } from '@/constants/route.constant';
 
 const fetchRolePermissions = async (inputValue, page) => {
   const limit = 15;
@@ -81,76 +65,43 @@ const validationSchema = Yup.object().shape({
 
 const ResellCompanyAddEdit = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
-//   const [data, setData] = useState({
-//     invitationCode: '',
-//     userType: '',
-//     name: '',
-//     orgName: '',
-//     mobile: '',
-//     email: '',
-//     address: '',
-//     country: '',
-//     state: '',
-    
-// city: '',
-// industry: '',
-// pinCode: '',
-// gstNo: '',
-// orgLogo: '',
-   
-//   });
-const [imagePreview, setImagePreview] = useState(null);
-const [data, setData] = useState({
-  orgName: '',
-  industry: null,
-  name: '',
-  email: '',
-  mobile: '',
-  address: '',
-  country: '',
-  state: '',
-  city: '',
-  pinCode: '',
-  gstNo: '',
-  countryCode: '+1', // Default country code
-  orgLogo: null,
-});
+  // const { id } = useParams();
+  const  id  = '67285f5778b20a3696017ebb';
+  
+console.log('id-----------71', id)
+  const [imagePreview, setImagePreview] = useState(null);
+  const [data, setData] = useState({
+    orgName: '',
+    industry: null,
+    name: '',
+    email: '',
+    mobile: '',
+    address: '',
+    country: '',
+    state: '',
+    city: '',
+    pinCode: '',
+    gstNo: '',
+    countryCode: '+1', // Default country code
+    orgLogo: null,
+  });
 
 
 
 
-const [industries, setIndustries] = useState([]);
+  const [industries, setIndustries] = useState([]);
 
-// Fetch industry options from backend
+  // Fetch industry options from backend
 
-useEffect(() => {
-  axios.get(`${BASE_URL_WAPI}industry`)
-    .then(response => {
-      setIndustries(response.data.data);
-    })
-    .catch(error => {
-      console.error('Error fetching industries:', error);
-    });
-}, []);
-
-// Handle input change
-const handleChange = (e) => {
-  // setFormData({
-  //   ...formData,
-  //   [e.target.name]: e.target.value
-  // });
-};
-
-
-
-
-
-
-
-
-
-
+  useEffect(() => {
+    axios.get(`${BASE_URL_WAPI}industry`)
+      .then(response => {
+        setIndustries(response.data.data);
+      })
+      .catch(error => {
+        console.error('Error fetching industries:', error);
+      });
+  }, []);
 
   const { setCount } = useContext(CounterContext);
   useEffect(() => {
@@ -159,63 +110,25 @@ const handleChange = (e) => {
   const fetchUserById = useQuery({
     queryKey: ['userById', id || ''],
     queryFn: async () =>
-      await apiService.get(`${APIS.USERS_BY_ID}/${id || ''}`).then((res) => {
-        const editData = res?.data;
-        // setData({
-        //   employeeId: editData?.employeeId,
-        //   roleId: [
-        //     {
-        //       label: editData?.roleId?.description,
-        //       value: editData?.roleId?._id,
-        //     },
-        //   ],
-        //   roleType: editData?.roleType,
-        //   contractStartDate: editData?.servicePeriod?.startDate,
-        //   contractEndDate: editData?.servicePeriod?.endDate,
-        //   stateId: editData?.stateId._id,
-        //   regionId: editData?.regionId.map((r) => r._id) || [],
-        //   depotId: editData?.depotId.map((r) => r._id) || [],
-        //   payRollId: editData?.payRollId,
-        //   profileImage: editData?.profileImage,
-        //   name: {
-        //     english: editData?.name?.english,
-        //     hindi: editData?.name?.hindi,
-        //   },
-        //   loginEmail: editData?.loginEmail,
-        //   loginMobile: editData?.loginMobile,
-        //   dob: editData?.dob,
-        //   fatherName: {
-        //     english: editData?.fatherName?.english,
-        //     hindi: editData?.fatherName?.hindi,
-        //   },
-        //   emergencyNo: editData?.emergencyNumber,
-
-        //   govtIssuedCard: editData?.govtIssuedCard,
-        //   cardNo: editData?.cardNumber,
-        //   bloodGroup: editData?.bloodGroup,
-        //   govImage: editData?.govImage,
-        //   designation: editData?.designation,
-        //   presentAddress: {
-        //     country: editData?.presentAddress?.country,
-        //     stateId: editData?.presentAddress?.stateId?.id,
-        //     districtId: editData?.presentAddress?.districtId?.id,
-        //     pinCode: editData?.presentAddress?.pinCode,
-        //     address1: editData?.presentAddress?.address1,
-        //     address2: editData?.presentAddress?.address2,
-        //   },
-        //   sameAddress: false,
-        //   permanentAddress: {
-        //     country: editData?.permanentAddress?.country,
-        //     stateId: editData?.permanentAddress?.stateId?.id,
-        //     districtId: editData?.permanentAddress?.districtId?.id,
-        //     pinCode: editData?.permanentAddress?.pinCode,
-        //     address1: editData?.permanentAddress?.address1,
-        //     address2: editData?.permanentAddress?.address2,
-        //   },
-
-        //   employmentStatus: editData?.employmentStatus,
-        //   contractorId: editData?.contractorId,
-        // });
+      await apiService.get(`${APIS.COMP_RESEL}/${id || ''}`).then((res) => {
+        const editData = res?.data[0];
+        console.log('editData',editData)
+        setData({
+          orgName: editData?.orgName,
+          industry: editData?.industry,
+          name: editData?.name,
+          email: editData?.email,
+          mobile: editData?.mobile,
+          address: editData?.address,
+          country: editData?.country,
+          state: editData?.state,
+          city: editData?.city,
+          pinCode: editData?.pinCode,
+          gstNo: editData?.gstNo,
+          countryCode: editData?.countryCode || '+1', // Default country code
+          orgLogo: editData?.orgLogo,
+        });
+        console.log('data',data)
         return res.data;
       }),
     enabled: id !== '',
@@ -228,12 +141,12 @@ const handleChange = (e) => {
   // };
 
 
-    const handleSubmit = (values, { setSubmitting, resetForm }) => {
-      let payload = {
-      }
+  const handleSubmit = (values, { setSubmitting, resetForm }) => {
+    let payload = {
+    }
 
-console.log('valuse',values.orgLogo)
-      const formData = new FormData();
+    console.log('valuse', values.orgLogo)
+    const formData = new FormData();
     formData.append('name', values.name);
     formData.append('orgName', values.orgName);
     formData.append('mobile', values.mobile);
@@ -249,60 +162,60 @@ console.log('valuse',values.orgLogo)
     formData.append('invitationCode', 'S16974');
 
     formData.append('countryCode', '+91');
-    
+
     formData.append('userType', 'Company');
-    
+
     // formData.append('orgLogo', values.orgLogo);
 
-   
 
-      if (id) {
-        payload._id = id;
-        patchApi(APIS.UPDATE_USER_BY_ID, id, payload).then(() => {
-          toast.success('Data updated successfully');
+
+    if (id) {
+      
+    formData.append('_id', id);
+      // payload._id = id;
+      patchApi(APIS.EDIT_RESEL_COMP, id, formData).then(() => {
+        toast.success('Data updated successfully');
+        if (values?.saveAndNew) {
+          resetForm();
+          setData(initialValues);
+        } else {
+          navigate(ROUTES.RESELLERCOMPANY);
+        }
+      });
+    } else {
+      postApi(APIS.ADD_USER, formData)
+        .then((res) => {
+          toast.success('Data saved successfully');
           if (values?.saveAndNew) {
             resetForm();
             setData(initialValues);
           } else {
-            navigate(-1);
+            navigate(ROUTES.RESELLERCOMPANY);
           }
+        })
+        .finally(() => {
+          setSubmitting(false);
         });
-      } else {
-        postApi(APIS.ADD_USER, formData)
-          .then((res) => {
-            toast.success('Data saved successfully');
-            if (values?.saveAndNew) {
-              resetForm();
-              setData(initialValues);
-            } else {
-              navigate(-1);
-            }
-          })
-          .finally(() => {
-            setSubmitting(false);
-          });
-      }
-    };
-
-
-  
-// Handle image change and show preview
-const handleImageChange = (event, setFieldValue) => {
-  const file = event.target.files[0];
-  setFieldValue('orgLogo', file);
-
-  const reader = new FileReader();
-  reader.onloadend = () => {
-    setImagePreview(reader.result);
+    }
   };
-  reader.readAsDataURL(file);
-};
+
+
+
+  // Handle image change and show preview
+  // const handleImageChange = (event, setFieldValue) => {
+  //   const file = event.target.files[0];
+  //   setFieldValue('orgLogo', file);
+
+  //   const reader = new FileReader();
+  //   reader.onloadend = () => {
+  //     setImagePreview(reader.result);
+  //   };
+  //   reader.readAsDataURL(file);
+  // };
 
   if (id && fetchUserById.isLoading) {
     return <div>Loading...</div>;
   }
-  const currentDate = dayjs();
-  const min18YearsDate = currentDate.subtract(18, 'year');
   return (
     <Formik
       enableReinitialize
@@ -316,19 +229,6 @@ const handleImageChange = (event, setFieldValue) => {
         handleSubmit: formikSubmit,
         values,
       }) => {
-        useEffect(() => {
-          if (values?.sameAddress) {
-            setFieldValue('permanentAddress', {
-              ...values?.permanentAddress,
-              address1: values?.presentAddress?.address1,
-              address2: values?.presentAddress?.address2,
-              country: values?.presentAddress?.country,
-              stateId: values?.presentAddress?.stateId,
-              districtId: values?.presentAddress?.districtId,
-              pinCode: values?.presentAddress?.pinCode,
-            });
-          }
-        }, [values?.sameAddress, values?.userType]);
         return (
           <Container>
             <div className="">
@@ -343,7 +243,7 @@ const handleImageChange = (event, setFieldValue) => {
                     <Heading>
                       {/* {
                     id ? 'Edit' : 'Add'} */}
-                     Reseller</Heading>
+                      Reseller</Heading>
                   </div>
                   <ButtonContainer>
                     <Button
@@ -370,10 +270,11 @@ const handleImageChange = (event, setFieldValue) => {
                       onClick={() => {
                         formikSubmit();
                       }}
-                      loading={isSubmitting && !values?.saveAndNew}
+                      // loading={isSubmitting && !values?.saveAndNew}
                     >
                       {id ? 'Update' : 'Save'}
                     </Button>
+                    
                   </ButtonContainer>
                 </Header>
 
@@ -381,61 +282,62 @@ const handleImageChange = (event, setFieldValue) => {
                   className="add-v-form"
                   style={{ padding: '20px', justifyContent: 'center' }}
                 >
-                  
+
                   <Heading>
-                     Let's MAGNETize an Organization</Heading>
-                     Invite an Organization to onboard on MAGNET and Invite there users
+                    Let's MAGNETize an Organization</Heading>
+                  Invite an Organization to onboard on MAGNET and Invite there users
                   <div className="width90">
                     <div className="add-v-form-section  pt-43  w100 add-edit-user-card">
                       <SidePanel title={`Organization Information`} />
 
                       <div className="group-type-3-equal">
-                        <div className="w-100 flex-1">
+                        {/* <div className="w-100 flex-1"> */}
                           <FormikTextField
                             label="Organization Name"
                             placeholder="Enter organization name"
                             name="orgName"
                             isRequired
                           />
-                        </div>
-                        
-                        <div className="flex-1 w-100">
+                        {/* </div>
+
+                        <div className="flex-1 w-100"> */}
                           <CustomOptionSelect
                             name="industry"
                             label="industry"
                             placeholder="Select"
                             options={industries}
+                            className={`flex justify-between items-center `}
                           />
-                          
-                        </div>
+
+                        {/* </div> */}
                       </div>
-                      
+
                     </div>
                     <div className="add-v-form-section  pt-43  w100 add-edit-user-card">
                       <SidePanel title={`Concerned Information`} />
 
                       <div className="group-type-3-equal">
-                        <div className="w-100 flex-1">
+                        {/* <div className="w-100 flex-1"> */}
                           <FormikTextField
                             label="name"
                             placeholder="name"
                             name="name"
-                            // isRequired
+                          // isRequired
                           />
-                        </div>
-                        <div className="w-100 flex-1">
-                        <FormikTextField
+                        {/* </div>
+                        <div className="w-100 flex-1"> */}
+                          <FormikTextField
                             label="email"
                             placeholder="email"
                             name="email"
-                            // isRequired
+                          // isRequired
                           />
-                        </div>
+                        {/* </div> */}
                       </div>
-                      
+
                       <div className="group-type-3-equal">
-                        
-                        <div className="w-100 flex-1">
+
+                        {/* <div className="w-100 flex-1"> */}
                           <FormikTextField
                             label="mobile"
                             placeholder="mobile"
@@ -447,16 +349,30 @@ const handleImageChange = (event, setFieldValue) => {
                                 'mobile'
                               )
                             }
-                            // isRequired
+                          // isRequired
                           />
-                        </div>
+                        {/* </div> */}
                       </div>
                     </div>
                     <div className="add-v-form-section  pt-43  w100 add-edit-user-card">
                       <SidePanel title={`BILLING & SHIPPING INFORMATION`} />
 
                       <div className="group-type-3-equal">
-                        <div className="flex-1 w-100">
+                        {/* <div className="flex-1 w-100"> */}
+                          <FormikTextField
+                            label="Address"
+                            placeholder="Address"
+                            name="pinCode"
+                            onChange={(e) =>
+                              validatePincode(
+                                e,
+                                setFieldValue,
+                                'pinCode'
+                              )
+                            }
+                          />
+                        {/* </div>
+                        <div className="flex-1 w-100"> */}
                           <FormikTextField
                             label="Pin Code"
                             placeholder="Enter pin code"
@@ -469,33 +385,39 @@ const handleImageChange = (event, setFieldValue) => {
                               )
                             }
                           />
-                        </div>
-                        <div className="flex-1 w-100">
-                          <FormikTextField
+                        {/* </div>
+                        <div className="flex-1 w-100"> */}
+                          <CustomOptionSelect
+                            name="country"
                             label="country"
                             placeholder="country"
-                            name="country"
-                            // isRequired
+                            options={industries}
+                            className={`flex justify-between items-center `}
                           />
-                        </div>
-                        <div className="flex-1 w-100">
-                       
-<FormikTextField
-                            label="state"
-                            placeholder="state"
+
+                        {/* </div>
+                        <div className="flex-1 w-100"> */}
+
+                          <CustomOptionSelect
                             name="state"
-                            // isRequired
+                            label="state"
+                            placeholder="Select"
+                            options={industries}
+                            className={`flex justify-between items-center `}
                           />
+
                         </div>
-                      </div>
-                        <div className="flex-1 w-100">
-                        <FormikTextField
-                            label="city"
-                            placeholder="city"
-                            name="city"
-                            // isRequired
-                          />
-                        </div>
+                      {/* </div>
+                      <div className="flex-1 w-100"> */}
+                        <CustomOptionSelect
+                          name="city"
+                          label="city"
+                          placeholder="Select"
+                          options={industries}
+                          className={`flex justify-between items-center `}
+                        />
+
+                      {/* </div> */}
                     </div>
                     <div className="add-v-form-section  pt-43  w100 add-edit-user-card">
                       <SidePanel title={`Additional Information`} />
@@ -507,46 +429,36 @@ const handleImageChange = (event, setFieldValue) => {
                             label="gstNo"
                             placeholder="gstNo"
                             name="gstNo"
-                            // isRequired
+                          // isRequired
                           />
                         </div>
                       </div>
-                
 
+                      {/* <div>
+                        <label htmlFor="orgLogo">Image</label>
+                        <input
+                          id="orgLogo"
+                          name="orgLogo"
+                          type="file"
+                          accept="image/*"
+                          onChange={(event) => handleImageChange(event, setFieldValue)}
+                        />
+                        <ErrorMessage name="orgLogo" component="div" className="error" />
+                      </div>
 
-
-{/* <FormikDocumentUploder
-                            name="orgLogo"
-                            id="govImage-crew"
-                            title="Logo"
-                            message="or drag & drop Logo files here"
-                            btnText="BROWSE FILE"
-                            bottomMessage="Supported File Format: jpeg, png & pdf (upto 1 MB)"
-                            accept="image/*,application/pdf"
-                            isSingle={true}
-                          /> */}
-
-
-
-<div>
-            <label htmlFor="orgLogo">Image</label>
-            <input
-              id="orgLogo"
-              name="orgLogo"
-              type="file"
-              accept="image/*"
-              onChange={(event) => handleImageChange(event, setFieldValue)}
-            />
-            <ErrorMessage name="orgLogo" component="div" className="error" />
-          </div>
-
-          {imagePreview && (
-            <div>
-              <h4>Image Preview:</h4>
-              <img src={imagePreview} alt="Preview" width="150" />
-            </div>
-          )}
-
+                      {imagePreview && (
+                        <div>
+                          <h4>Image Preview:</h4>
+                          <img src={imagePreview} alt="Preview" width="150" />
+                        </div>
+                      )} */}
+                      <ImageUploadPreview
+                        field="orgLogo"
+                        label="Organization Logo"
+                        setFieldValue={setFieldValue}
+                        imageurl={data?.orgLogo?data?.orgLogo:''}
+                        error={<ErrorMessage name="orgLogo" />}
+                      />
                     </div>
                   </div>
                 </div>

@@ -71,19 +71,21 @@ const getDefaultEndpoint = (id) => `v2/masters/search/${id}`;
 const CustomOptionSelect = ({ name, label, placeholder, options, className = "" }) => {
   // console.log('options',options)
   return (
-    <div>
-      <Label htmlFor={name}>
+    <div 
+    className='flex pb-2 pt-2 align-item pl-3 pr-3'>
+      <Label htmlFor={name} 
+        className='w-1/5 pt-2'>
           {label}{' '}
         </Label>
-    
-    <Field name={name} className="custom-select-component"> 
+    <div className="w-3/5">
+    <Field name={name} className="custom-select-component "> 
       
       {({ field, form }) => (
         <Select
           value={form.values[name]}
           onValueChange={(value) =>{ form.setFieldValue(name, value)}}
         >
-          <SelectTrigger className={` ${className}`}>
+          <SelectTrigger className={`flex justify-between items-center ${className}?${className}:''`}>
             <SelectValue placeholder={placeholder} />
           </SelectTrigger>
           <SelectContent className='dropdown-list-limit'>
@@ -99,7 +101,7 @@ const CustomOptionSelect = ({ name, label, placeholder, options, className = "" 
         </Select>
       )}
     </Field>
-    </div>
+    </div></div>
   );
 };
 

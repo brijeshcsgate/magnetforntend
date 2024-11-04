@@ -43,14 +43,19 @@ const TextField = ({
 
   return (
     <>
-      <div className="to-input-field" key={key}>
+      <div
+      //  className="to-input-field"
+      className='flex pb-2 pt-2 align-item pl-3 pr-3'
+      // className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4'
+       key={key}>
         <Label
-          className={cn('c-black mb-1', labelClassName)} // Adjusting label styling with cn
+        className='w-1/5 pt-2'
+          // className={cn('c-black mb-1', labelClassName)} // Adjusting label styling with cn
           htmlFor={name} // Updated to use `name` as `htmlFor` to match input id
         >
           {labelName} {isRequired && <span style={{ color: 'red' }}>*</span>}
         </Label>
-        <div className="relative">
+        <div className="relative w-3/5">
           {' '}
           {/* Wrapper to position prefix, suffix, and input correctly */}
           {prefix && (

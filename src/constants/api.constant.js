@@ -86,11 +86,17 @@ export const APIS = {
 
   USER_ALL_LIST: '/v1/user',
   COMP_RESEL: '/user/getAllUsers',
+  // COMP_RESEL_ID: '/user/getAllUsers',
+  
   // USER_ALL_LIST: '/industry',
   UPDATE_USER_BY_ID: 'v1/user',
 
   ADD_USER: '/user/signup',
+  EDIT_RESEL_COMP: '/user/updateReselCompany',
 
+  // EDIT_RESEL_COMP: '/user/updateProfile',
+
+  
 
   // /visitors
   // https://magnet.evalue8.info/api/user/signup

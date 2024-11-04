@@ -15,7 +15,7 @@ const TableContainer = ({ children }) => (
 const Header = ({ style = {}, children }) => (
   <div
     style={style}
-    className="flex justify-between pb-5 border-b border-[#D8D8D8] md:p-5 sticky-header"
+    className="flex justify-between  border-b border-[#D8D8D8] md:p-5 sticky-header "
   >
     {children}
   </div>
@@ -25,7 +25,7 @@ const Heading = ({ children }) => (
 );
 
 const ButtonContainer = ({ children }) => (
-  <div className="add-v-form-top-button flex flex-col md:flex-row gap-15px">
+  <div className="add-v-form-top-button flex flex-row md:flex-row gap-15px">
     {children}
   </div>
 );
