@@ -11,25 +11,21 @@ export const ROUTES = {
   PRIVACYPOLICE: '/privacy-policy',
   TERMS_CONDITIONS: '/terms-conditions',
 
+  //   Reseller/Company
 
-//   Reseller/Company
+  RESELLERCOMPANY: '/reseller-company',
+  RESELLCOMP_ADD: '/reseller-company/add',
 
+  RESELLCOMP_ADDEDIT: '/reseller-company/update',
 
-RESELLERCOMPANY: '/reseller-company',
-RESELLCOMP_ADD: '/reseller-company/add',
-
-RESELLCOMP_ADDEDIT: '/reseller-company/update',
-
-RESELLCOMP_PREVIE: '/reseller-company/preview',
+  RESELLCOMP_PREVIE: '/reseller-company/preview',
 
 
 
-
-
-//profiles pages
-
-
-PROFILE_1: '/profile/v1',
+  MAGUSER:'/mag-user',
+  MAGUSER_ADD:'/mag-user/add',
+  
+  MAGUSER_EDIT:'/mag-user/edit',
 
 
 
@@ -42,37 +38,9 @@ PROFILE_1: '/profile/v1',
 
 
 
+  //profiles pages
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  PROFILE_1: '/profile/v1',
 
   //Inspections
 
@@ -94,7 +62,7 @@ PROFILE_1: '/profile/v1',
   INSPECTIONS_EDIT_FORM_BUILDER_FORM: '/workshop_inspections_view',
   INSPECTIONS_ITEM_FAILURES: '/inspections/itemFailues',
   INSPECTIONS_SCHEDULES: '/inspections/schedule',
-  
+
   //Vehicles
   VEHICLES: '/vehicles',
   DISPATCHER: '/dispatcher',
@@ -265,7 +233,7 @@ PROFILE_1: '/profile/v1',
   ADD_FUEL_CHARGING: '/fuel-charging/add',
   UPDATE_FUEL_CHARGING: '/fuel-charging/edit',
   // PREVIEW_FUEL_CHARGING: '/fuel-charging/preview/:id',
-  
+
   PREVIEW_FUEL_CHARGING: '/fuel-charging/preview',
   FUEL_CHARGING: '/fuel-charging',
   ADD_FUEL_CHARGING: '/fuel-charging/add',

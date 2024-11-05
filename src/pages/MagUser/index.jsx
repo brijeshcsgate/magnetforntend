@@ -32,13 +32,13 @@ import { InspectionFormsIcon } from '@/assets/Icons';
 
 
 
-export default function ResellCompany() {
+export default function MagUsers() {
 
 
   const { setCount } = useContext(CounterContext);
 
   useEffect(() => {
-    setCount('Reseller/Company');
+    setCount('Users');
   }, []);
 
   const [rows, setRows] = useState([]);
@@ -48,7 +48,7 @@ export default function ResellCompany() {
     {
       label: 'Add User',
       children: (
-        <Button onClick={() => navigate(ROUTES.RESELLCOMP_ADD)}>Invite</Button>
+        <Button onClick={() => navigate(ROUTES.MAGUSER_ADD)}>Add User</Button>
       ),
     },
     {
@@ -72,17 +72,20 @@ export default function ResellCompany() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await apiService.get(`${APIS.COMP_RESEL}`, {
+        const response = await apiService.get(`${APIS.MAG_USERS}`, {
         });; // Replace with your API endpoint
+
+
+        console.log('response',response.data)
         setRows(
-          response.result.map((item) => ({
+          response.data.map((item) => ({
             // Assuming `item` is an object, you can restructure it here
             id: item._id,                // Assign a new field name if needed
             name: item.name,
             mobile: item.mobile,
             industry: item.industry,
             address: item.address,
-            name: item.name,
+            orgName: item.orgName,
             userType: item.userType, // Map the existing fields
           }))
         );
@@ -113,7 +116,7 @@ export default function ResellCompany() {
 
   
 const columns = [
-  { field: 'name', headerName: 'name', width: 170 },
+  { field: 'name', headerName: 'Name', width: 170 },
 
 
   { field: 'mobile', headerName: 'Contact', width: 170 },
@@ -122,9 +125,9 @@ const columns = [
 
   { field: 'address', headerName: 'Location', width: 170 },
 
-  { field: 'name', headerName: 'User', width: 170 },
+  { field: 'orgName', headerName: 'Mapping', width: 170 },
 
-  { field: 'userType', headerName: 'Type', width: 170 },
+  { field: 'userType', headerName: 'Magnet', width: 170 },
 
   // { field: '', headerName: 'Action', width: 170 },
   {
@@ -184,6 +187,7 @@ const columns = [
 ]
 
   return (
+  
     <PaginatedTableView
       // queryKey={`routes ${userApiData}`}
       // queryFn={fetchRoutes}
@@ -199,5 +203,6 @@ const columns = [
       checkboxSelection={true}
 
     />
+    
   );
 }

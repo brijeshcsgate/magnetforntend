@@ -66,6 +66,8 @@ import PreviewResellCompany from './pages/Reseller-Company/Reseller-company-prev
 import ResellCompanyAddEdit from './pages/Reseller-Company/Reseller-company-add-edt/ResellCompanyAddEdit';
 import ProfilepageUser from './pages/ProfilePages/ProfilepageUser';
 import ExampleFormImplementation from './pages/FormMui';
+import MagUsers from './pages/MagUser';
+import MagUserAddEdit from './pages/MagUser/MagUserAddEdit/MagUserAddEdit';
 // import UserListView from './pages/user/index2';
 // import PreviewUsers from './pages/user-role/UserPreview';
 // import InspectionFormList from './pages/InspectionModule/InspectionForm/InspectionFormList/InspectionFormList';
@@ -225,6 +227,26 @@ const protectedRoutes = [
     component: ResellCompanyAddEdit,
     // //permission: { moduleName: 'User Management', actions: 'update' },
   },
+  
+  {
+    path: ROUTES.MAGUSER,
+    component: MagUsers,
+    // //permission: { moduleName: 'User Management', actions: 'create' },
+  },
+  
+  {
+    path: `${ROUTES.MAGUSER_ADD}`,
+    component: MagUserAddEdit,
+    // //permission: { moduleName: 'User Management', actions: 'update' },
+  },
+  {
+    path: `${ROUTES.MAGUSER_EDIT}/:id`,
+    component: ResellCompanyAddEdit,
+    // //permission: { moduleName: 'User Management', actions: 'update' },
+  },
+
+
+  
   {
     path: ROUTES.RESELLCOMP_PREVIE,
     component: PreviewResellCompany,

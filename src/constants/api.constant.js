@@ -86,17 +86,15 @@ export const APIS = {
 
   USER_ALL_LIST: '/v1/user',
   COMP_RESEL: '/user/getAllUsers',
-  // COMP_RESEL_ID: '/user/getAllUsers',
-  
-  // USER_ALL_LIST: '/industry',
+
+  MAG_USERS: '/user/userList',
+
   UPDATE_USER_BY_ID: 'v1/user',
 
   ADD_USER: '/user/signup',
   EDIT_RESEL_COMP: '/user/updateReselCompany',
 
   // EDIT_RESEL_COMP: '/user/updateProfile',
-
-  
 
   // /visitors
   // https://magnet.evalue8.info/api/user/signup
@@ -140,20 +138,18 @@ export const APIS = {
   PROFILE_1: 'user/userList',
   MAGNET_FB: 'magnetfb',
 
-  PROFILE_IDENT:'user/userListIdentifier',
-  PROFILE_IDENT2:'user/magnet',
+  PROFILE_IDENT: 'user/userListIdentifier',
+  PROFILE_IDENT2: 'user/magnet',
 
-  VISTORS_REPORT:'user/getAllVistorsReport',
- 
+  VISTORS_REPORT: 'user/getAllVistorsReport',
+
   INDUSTRY: 'industry',
 
   ADD_VISITOR: 'visitors',
   ADD_ENQUIRY: 'enquiry',
   ADD_REFERREL: 'referrel',
-  
+
   GET_VISITOR: 'user/visitors',
   GET_ENQUIRY: 'user/enquiry',
   GET_REFERREL: 'user/referrel',
-
-
 };

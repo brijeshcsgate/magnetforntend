@@ -6,7 +6,7 @@ import {
   SidePanel,
 } from '@/components/AddFormLayout/AddFormLayout';
 import { Checkbox } from '@/components/ui/checkbox';
-import './AddEditUser.css';
+// import './AddEditUser.css';
 import moment from 'moment';
 import BreadCrumbs from '@/components/common/BreadCrumbs/BreadCrumbs';
 import Button from '@/components/common/Button/Button';

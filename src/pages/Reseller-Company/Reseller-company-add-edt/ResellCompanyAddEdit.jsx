@@ -21,6 +21,7 @@ import {
   validateMobileNumber,
   validatePincode,
 } from '@/utils/common.helper';
+import './AddEditUser.css';
 import apiService, { BASE_URL_WAPI } from '@/lib/apiService';
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
@@ -65,10 +66,7 @@ const validationSchema = Yup.object().shape({
 
 const ResellCompanyAddEdit = () => {
   const navigate = useNavigate();
-  // const { id } = useParams();
-  const  id  = '67285f5778b20a3696017ebb';
-  
-console.log('id-----------71', id)
+  const { id } = useParams();
   const [imagePreview, setImagePreview] = useState(null);
   const [data, setData] = useState({
     orgName: '',
